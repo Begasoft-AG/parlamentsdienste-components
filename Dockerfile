@@ -4,14 +4,15 @@ WORKDIR /app
 COPY . .
 
 RUN npm install -g pnpm
-RUN yes | pnpm install
+ENV CI=true
+RUN pnpm install
 RUN npm run build:storybook
 
 # # final image build
 FROM nginx:mainline-alpine AS middlestep
 
-LABEL maintainer=support@lambda-it.ch \
-    org.opencontainers.image.source=https://github.com/Lambda-IT/parlamentsdienste-components
+LABEL maintainer=support@begasoft.ch
+LABEL org.opencontainers.image.source=https://github.com/begasoft-ag/parlamentsdienste-components
 
 WORKDIR /usr/share/nginx/html
 
