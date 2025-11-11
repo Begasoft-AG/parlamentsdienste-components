@@ -13,7 +13,7 @@
         "rxjs": "^7.0.0 || ^8.0.0"
     },
     "dependencies": {
-        "@parlamentsdienste/pdcomponents-core": "4.0.0"
+        "@parlamentsdienste/pdcomponents-core": "4.0.0-rc.1"
     },
     "sideEffects": false
 }

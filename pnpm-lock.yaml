@@ -9,10 +9,10 @@ importers:
   .:
     dependencies:
       '@parlamentsdienste/pdcomponents-angular':
-        specifier: workspace:*
+        specifier: 4.0.0-rc.1
         version: link:packages/angular
       '@parlamentsdienste/pdcomponents-core':
-        specifier: workspace:*
+        specifier: 4.0.0-rc.1
         version: link:packages/core
     devDependencies:
       '@analogjs/vite-plugin-angular':
@@ -238,7 +238,7 @@ importers:
   docs:
     devDependencies:
       '@parlamentsdienste/pdcomponents-core':
-        specifier: 4.0.0
+        specifier: 4.0.0-rc.1
         version: link:../packages/core
       '@storybook/addon-docs':
         specifier: 9.0.4
@@ -274,7 +274,7 @@ importers:
         specifier: ^19.0.0 || ^20.0.0
         version: 19.2.13(@angular/common@19.2.13(@angular/core@19.2.13(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.13(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@19.2.13(@angular/common@19.2.13(@angular/core@19.2.13(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.13(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2)
       '@parlamentsdienste/pdcomponents-core':
-        specifier: 4.0.0
+        specifier: 4.0.0-rc.1
         version: link:../core
       rxjs:
         specifier: ^7.0.0 || ^8.0.0
@@ -308,7 +308,7 @@ importers:
         version: 4.6.13
     devDependencies:
       '@parlamentsdienste/angular-output-target':
-        specifier: 0.0.1
+        specifier: 1.0.0
         version: link:../../libs/angular-output-target
       '@stencil/core':
         specifier: ^4.31.0
@@ -335,20 +335,29 @@ importers:
   packages/react:
     dependencies:
       '@parlamentsdienste/pdcomponents-core':
-        specifier: 4.0.0
+        specifier: 4.0.0-rc.1
         version: link:../core
       '@stencil/react-output-target':
         specifier: ^1.1.1
-        version: 1.1.1(@stencil/core@4.31.0)(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        version: 1.1.1(@stencil/core@4.31.0)(@types/react@19.1.6)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react:
+        specifier: ^18.0.0 || ^19.0.0
+        version: 19.0.0
+      react-dom:
+        specifier: ^18.0.0 || ^19.0.0
+        version: 19.0.0(react@19.0.0)
 
   packages/vue:
     dependencies:
       '@parlamentsdienste/pdcomponents-core':
-        specifier: 4.0.0
+        specifier: 4.0.0-rc.1
         version: link:../core
       '@stencil/vue-output-target':
         specifier: ^0.10.8
         version: 0.10.8(@stencil/core@4.31.0)(vue@3.5.17(typescript@5.8.3))
+      vue:
+        specifier: '>=3.4.38 <4.0.0'
+        version: 3.5.17(typescript@5.8.3)
 
 packages:
 
@@ -9383,7 +9392,7 @@ snapshots:
 
   '@babel/helper-annotate-as-pure@7.27.3':
     dependencies:
-      '@babel/types': 7.27.3
+      '@babel/types': 7.28.0
 
   '@babel/helper-compilation-targets@7.27.2':
     dependencies:
@@ -9460,14 +9469,14 @@ snapshots:
   '@babel/helper-member-expression-to-functions@7.27.1':
     dependencies:
       '@babel/traverse': 7.27.3
-      '@babel/types': 7.27.3
+      '@babel/types': 7.28.0
     transitivePeerDependencies:
       - supports-color
 
   '@babel/helper-module-imports@7.27.1':
     dependencies:
       '@babel/traverse': 7.27.3
-      '@babel/types': 7.27.3
+      '@babel/types': 7.28.0
     transitivePeerDependencies:
       - supports-color
 
@@ -9509,7 +9518,7 @@ snapshots:
 
   '@babel/helper-optimise-call-expression@7.27.1':
     dependencies:
-      '@babel/types': 7.27.3
+      '@babel/types': 7.28.0
 
   '@babel/helper-plugin-utils@7.27.1': {}
 
@@ -9552,7 +9561,7 @@ snapshots:
   '@babel/helper-skip-transparent-expression-wrappers@7.27.1':
     dependencies:
       '@babel/traverse': 7.27.3
-      '@babel/types': 7.27.3
+      '@babel/types': 7.28.0
     transitivePeerDependencies:
       - supports-color
 
@@ -9570,7 +9579,7 @@ snapshots:
     dependencies:
       '@babel/template': 7.27.2
       '@babel/traverse': 7.27.3
-      '@babel/types': 7.27.3
+      '@babel/types': 7.28.0
     transitivePeerDependencies:
       - supports-color
 
@@ -10757,14 +10766,14 @@ snapshots:
     dependencies:
       '@babel/core': 7.26.10
       '@babel/helper-plugin-utils': 7.27.1
-      '@babel/types': 7.27.3
+      '@babel/types': 7.28.0
       esutils: 2.0.3
 
   '@babel/preset-modules@0.1.6-no-external-plugins(@babel/core@7.27.3)':
     dependencies:
       '@babel/core': 7.27.3
       '@babel/helper-plugin-utils': 7.27.1
-      '@babel/types': 7.27.3
+      '@babel/types': 7.28.0
       esutils: 2.0.3
 
   '@babel/preset-react@7.27.1(@babel/core@7.27.3)':
@@ -13093,13 +13102,13 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
 
-  '@stencil/react-output-target@1.1.1(@stencil/core@4.31.0)(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@stencil/react-output-target@1.1.1(@stencil/core@4.31.0)(@types/react@19.1.6)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
       '@lit/react': 1.0.7(@types/react@19.1.6)
       '@stencil/core': 4.31.0
-      html-react-parser: 5.2.5(@types/react@19.1.6)(react@19.1.0)
-      react: 19.1.0
-      react-dom: 19.1.0(react@19.1.0)
+      html-react-parser: 5.2.5(@types/react@19.1.6)(react@19.0.0)
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
       react-style-stringify: 1.2.0
       ts-morph: 22.0.0
     transitivePeerDependencies:
@@ -13228,7 +13237,7 @@ snapshots:
 
   '@svgr/hast-util-to-babel-ast@8.0.0':
     dependencies:
-      '@babel/types': 7.27.3
+      '@babel/types': 7.28.0
       entities: 4.5.0
 
   '@svgr/plugin-jsx@8.1.0(@svgr/core@8.1.0(typescript@5.7.3))':
@@ -13415,16 +13424,16 @@ snapshots:
 
   '@types/babel__generator@7.27.0':
     dependencies:
-      '@babel/types': 7.27.3
+      '@babel/types': 7.28.0
 
   '@types/babel__template@7.4.4':
     dependencies:
-      '@babel/parser': 7.27.3
-      '@babel/types': 7.27.3
+      '@babel/parser': 7.28.0
+      '@babel/types': 7.28.0
 
   '@types/babel__traverse@7.20.7':
     dependencies:
-      '@babel/types': 7.27.3
+      '@babel/types': 7.28.0
 
   '@types/body-parser@1.19.5':
     dependencies:
@@ -15884,11 +15893,11 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.0.0
 
-  html-react-parser@5.2.5(@types/react@19.1.6)(react@19.1.0):
+  html-react-parser@5.2.5(@types/react@19.1.6)(react@19.0.0):
     dependencies:
       domhandler: 5.0.3
       html-dom-parser: 5.1.1
-      react: 19.1.0
+      react: 19.0.0
       react-property: 2.0.2
       style-to-js: 1.1.16
     optionalDependencies:
