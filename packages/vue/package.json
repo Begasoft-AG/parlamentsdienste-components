@@ -2,13 +2,13 @@
     "name": "@parlamentsdienste/pdcomponents-vue",
     "version": "4.0.0-rc.1",
     "description": "Component Library for Swiss Parliamentary Services - Vue-Wrapper Lib",
-    "type": "module",
-    "main": "./index.mjs",
+    "main": "./index.js",
     "types": "./index.d.ts",
     "exports": {
         ".": {
             "types": "./index.d.ts",
-            "import": "./index.mjs"
+            "import": "./index.mjs",
+            "require": "./index.js"
         }
     },
     "repository": {
