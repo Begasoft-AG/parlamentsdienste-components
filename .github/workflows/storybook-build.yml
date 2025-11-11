@@ -14,7 +14,7 @@ concurrency: deploy-${{ github.ref }}
 
 env:
   DOCKER_CONFIG: $HOME/.docker
-  STORYBOOK_IMAGE: Begasoft-AG/parlamentsdienste-components/storybook
+  STORYBOOK_IMAGE: begasoft-ag/parlamentsdienste-components/storybook
   TAG: "dev"
   REGISTRY: ghcr.io
 
