@@ -25,7 +25,7 @@ spec:
         spec:
             containers:
                 - name: parlamentsdienste-components-storybook-prod
-                  image: ghcr.io/lambda-it/parlamentsdienste-components/storybook:dev
+                  image: ghcr.io/begasoft-ag/parlamentsdienste-components/storybook:dev
                   imagePullPolicy: Always
                   ports:
                       - containerPort: 8080
