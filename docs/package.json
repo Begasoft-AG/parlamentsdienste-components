@@ -1,6 +1,6 @@
 {
     "name": "docs",
-    "version": "4.0.0",
+    "version": "4.0.0-rc.1",
     "description": "Documentation (Storybook) for the Swiss Parliamentary Services Component Library",
     "main": "app.js",
     "devDependencies": {

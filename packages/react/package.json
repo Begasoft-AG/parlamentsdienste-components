@@ -1,7 +1,7 @@
 {
     "name": "@parlamentsdienste/pdcomponents-react",
     "description": "Component Library for Swiss Parliamentary Services - React-Wrapper Lib",
-    "version": "4.0.0",
+    "version": "4.0.0-rc.1",
     "main": "./index.js",
     "types": "./index.d.ts",
     "exports": {

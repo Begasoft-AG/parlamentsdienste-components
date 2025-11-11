@@ -1,6 +1,6 @@
 {
     "name": "@parlamentsdienste/source",
-    "version": "4.0.0",
+    "version": "4.0.0-rc.1",
     "license": "MIT",
     "description": "Component Library for Swiss Parliamentary Services",
     "scripts": {
