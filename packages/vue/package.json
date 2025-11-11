@@ -11,6 +11,14 @@
             "require": "./index.js"
         }
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Begasoft-AG/parlamentsdienste-components.git"
+    },
+    "license": "AGPL-3.0",
+    "peerDependencies": {
+        "vue": ">=3.4.38 <4.0.0"
+    },
     "dependencies": {
         "@parlamentsdienste/pdcomponents-core": "4.0.0",
         "@stencil/vue-output-target": "^0.10.8"

@@ -42,7 +42,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/stenciljs/component-starter.git"
+        "url": "https://github.com/Begasoft-AG/parlamentsdienste-components.git"
     },
     "files": [
         "dist/",
@@ -76,5 +76,5 @@
         "jest-cli": "^29.7.0",
         "puppeteer": "^24.3.0"
     },
-    "license": "MIT"
+    "license": "AGPL-3.0"
 }

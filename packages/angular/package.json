@@ -2,6 +2,11 @@
     "name": "@parlamentsdienste/pdcomponents-angular",
     "version": "4.0.0",
     "description": "Component Library for Swiss Parliamentary Services - Angular-Wrapper Lib",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Begasoft-AG/parlamentsdienste-components.git"
+    },
+    "license": "AGPL-3.0",
     "peerDependencies": {
         "@angular/core": "^19.0.0 || ^20.0.0",
         "@angular/forms": "^19.0.0 || ^20.0.0",
