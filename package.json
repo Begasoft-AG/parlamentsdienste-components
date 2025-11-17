@@ -1,6 +1,6 @@
 {
     "name": "@parlamentsdienste/source",
-    "version": "4.0.0-rc.1",
+    "version": "4.0.0-rc.2",
     "license": "MIT",
     "description": "Component Library for Swiss Parliamentary Services",
     "scripts": {
@@ -26,7 +26,12 @@
         "pack:angular": "cd packages/angular/dist && npm pack && cd ../../..",
         "pack:react": "cd packages/react/dist && npm pack && cd ../../..",
         "pack:vue": "cd packages/vue/dist && npm pack && cd ../../..",
-        "pack:all": "npm run pack:core && npm run pack:angular && npm run pack:react && npm run pack:vue"
+        "pack:all": "npm run pack:core && npm run pack:angular && npm run pack:react && npm run pack:vue",
+        "publish:core": "cd packages/core && npm publish && cd ../..",
+        "publish:angular": "cd packages/angular/dist && npm publish && cd ../../..",
+        "publish:react": "cd packages/react/dist && npm publish && cd ../../..",
+        "publish:vue": "cd packages/vue/dist && npm publish && cd ../../..",
+        "publish:all": "npm run publish:core && npm run publish:angular && npm run publish:react && npm run publish:vue"
     },
     "private": true,
     "workspaces": [
@@ -111,7 +116,7 @@
         "zone.js": "~0.15.0"
     },
     "dependencies": {
-        "@parlamentsdienste/pdcomponents-angular": "4.0.0-rc.1",
-        "@parlamentsdienste/pdcomponents-core": "4.0.0-rc.1"
+        "@parlamentsdienste/pdcomponents-angular": "4.0.0-rc.2",
+        "@parlamentsdienste/pdcomponents-core": "4.0.0-rc.2"
     }
 }

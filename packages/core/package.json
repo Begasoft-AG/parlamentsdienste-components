@@ -1,6 +1,6 @@
 {
     "name": "@parlamentsdienste/pdcomponents-core",
-    "version": "4.0.0-rc.1",
+    "version": "4.0.0-rc.2",
     "type": "module",
     "description": "Component Library for Swiss Parliamentary Services - Webcomponents Core Lib",
     "types": "dist/types/index.d.ts",
@@ -58,7 +58,7 @@
         "flatpickr": "^4.6.13"
     },
     "devDependencies": {
-        "@parlamentsdienste/angular-output-target": "4.0.0-rc.1",
+        "@parlamentsdienste/angular-output-target": "4.0.0-rc.2",
         "@stencil/core": "^4.31.0",
         "@stencil/vue-output-target": "^0.10.8",
         "@types/jest": "^29.5.14",

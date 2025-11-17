@@ -1,7 +1,7 @@
 {
     "name": "@parlamentsdienste/pdcomponents-react",
     "description": "Component Library for Swiss Parliamentary Services - React-Wrapper Lib",
-    "version": "4.0.0-rc.1",
+    "version": "4.0.0-rc.2",
     "type": "module",
     "types": "./index.d.ts",
     "exports": {
@@ -24,7 +24,7 @@
         "react-dom": "^18.0.0 || ^19.0.0"
     },
     "dependencies": {
-        "@parlamentsdienste/pdcomponents-core": "4.0.0-rc.1",
+        "@parlamentsdienste/pdcomponents-core": "4.0.0-rc.2",
         "@stencil/react-output-target": "^1.1.1"
     }
 }
