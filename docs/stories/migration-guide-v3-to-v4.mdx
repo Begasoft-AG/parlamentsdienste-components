@@ -1,0 +1,111 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Docs/Migration Guide v3 to v4" />
+
+# Migration Guide: v3.x to v4.0
+
+This guide helps you migrate from version 3.x to 4.0 of the Parlamentsdienste Components library.
+
+## Overview
+
+Version 4.0 is a major update that introduces framework-specific wrapper libraries for Angular, React, and Vue. This provides better integration with each framework's ecosystem, particularly for form handling.
+
+## Installation
+
+In version 4.0, install the wrapper package for your framework. The core package is automatically installed as a dependency:
+
+**Angular:**
+
+```bash
+npm install @parlamentsdienste/pdcomponents-angular
+```
+
+**React:**
+
+```bash
+npm install @parlamentsdienste/pdcomponents-react
+```
+
+**Vue:**
+
+```bash
+npm install @parlamentsdienste/pdcomponents-vue
+```
+
+The wrapper libraries automatically include the correct version of `@parlamentsdienste/pdcomponents-core` as a dependency.
+
+## Framework Support
+
+Version 4.0 has been build to work with the latest framework versions:
+
+-   **Angular:** 19+ (with reactive forms support)
+-   **React:** 18+ and 19+
+-   **Vue:** 3.4.38+ (with two-way binding support)
+
+## Breaking Changes
+
+### 1. Event Value Structure Change
+
+**Affected Components:** `pd-input`, `pd-textarea`, `pd-search`, `pd-slider`
+
+**What Changed:**
+These components now emit the value directly instead of wrapping it in an object with a `value` property. This change makes the API consistent with other components like `pd-dropdown` and `pd-combobox`.
+
+**Migration:**
+
+**Vue Example:**
+
+**Before (v3.x):**
+
+```typescript
+<pd-input @pd-change="onChange"></pd-input>
+
+const onChange = (event) => { const value = event.detail.value; // wrapped console.log(value); }
+```
+
+**After (v4.0):**
+
+```typescript
+<pd-input @pd-change="onChange"></pd-input>
+
+const onChange = (event) => { const value = event.detail; // direct console.log(value); }
+```
+
+**Why This Change:**
+This change enables proper two-way data binding in the wrapper libraries and ensures consistent behavior across all form components. It's particularly important for Angular's reactive forms and Vue's v-model support.
+
+### 2. New `selected` Propertyn
+
+**Affected Components:** `pd-dropdown`, `pd-combobox`
+
+**What Changed:**
+A new `selected` property has been added to support framework-specific value accessors and two-way binding.
+
+**Usage:**
+
+**Angular (with reactive forms):**
+
+```jsx
+<pd-dropdown [formControl]="myControl"></pd-dropdown>
+// The selected property is handled internally by the Angular wrapper
+```
+
+**Vue (with v-model):**
+
+```jsx
+<pd-dropdown v-model="selectedValue"></pd-dropdown>
+// The selected property enables v-model support
+```
+
+**React:**
+
+```jsx
+<PdDropdown selected={selectedItem} onPdChange={e => setSelectedItem(e.detail)} />
+```
+
+**Note:** For most use cases, you can continue using the `pd-change` event as before. The `selected` property is primarily used internally by the framework wrappers for form integration.
+
+## Updated Dependencies
+
+-   **Stencil:** Updated to 4.31.0
+-   **Storybook:** Updated to 9.0.4
