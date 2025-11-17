@@ -54,8 +54,6 @@ export const config: Config = {
             copy: [
                 { src: 'styles/typography.css', dest: 'typography.css' },
                 { src: 'assets/fonts', dest: 'assets/fonts' },
-                { src: '../README.md' },
-                { src: '../LICENSE' },
             ],
         },
         {
