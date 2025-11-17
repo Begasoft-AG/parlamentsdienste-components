@@ -308,7 +308,7 @@ importers:
         version: 4.6.13
     devDependencies:
       '@parlamentsdienste/angular-output-target':
-        specifier: 1.0.0
+        specifier: 4.0.0-rc.1
         version: link:../../libs/angular-output-target
       '@stencil/core':
         specifier: ^4.31.0

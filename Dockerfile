@@ -3,8 +3,10 @@ FROM node:24-alpine AS ui-builder
 WORKDIR /app
 COPY . .
 
-RUN npm install -g pnpm
+# Enable corepack and prepare pnpm
+RUN corepack enable && corepack prepare pnpm@latest --activate
 ENV CI=true
+
 RUN pnpm install
 RUN npm run build:storybook
 

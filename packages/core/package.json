@@ -1,53 +1,44 @@
 {
     "name": "@parlamentsdienste/pdcomponents-core",
     "version": "4.0.0-rc.1",
+    "type": "module",
     "description": "Component Library for Swiss Parliamentary Services - Webcomponents Core Lib",
-    "main": "dist/index.cjs.js",
-    "module": "dist/index.js",
     "types": "dist/types/index.d.ts",
     "collection": "dist/collection/collection-manifest.json",
     "collection:main": "dist/collection/index.js",
-    "unpkg": "dist/core/core.esm.js",
-    "typesVersions": {
-        "*": {
-            "loader": [
-                "loader/index.d.ts"
-            ],
-            "components": [
-                "components/index.d.ts"
-            ],
-            "components/*.js": [
-                "components/*.d.ts"
-            ]
-        }
-    },
     "exports": {
+        ".": {
+            "types": "./dist/types/index.d.ts",
+            "default": "./dist/index.js"
+        },
         "./loader": {
-            "import": "./loader/index.js",
-            "require": "./loader/index.cjs"
+            "types": "./loader/index.d.ts",
+            "default": "./loader/index.js"
         },
         "./components": {
-            "import": "./components/index.js",
-            "require": "./components/index.cjs"
+            "types": "./components/index.d.ts",
+            "default": "./components/index.js"
         },
-        "./components/*.js": {
-            "import": "./components/*.js"
-        },
-        "./styles/*.css": {
-            "import": "./dist/parlamentsdienstecore/*.css"
-        },
+        "./components/*.js": "./components/*.js",
+        "./styles/*.css": "./dist/parlamentsdienstecore/*.css",
         "./utils": {
-            "import": "./src/utils/index.ts"
+            "types": "./dist/types/utils/index.d.ts",
+            "default": "./dist/collection/utils/index.js"
         }
     },
     "repository": {
         "type": "git",
         "url": "https://github.com/Begasoft-AG/parlamentsdienste-components.git"
     },
+    "publishConfig": {
+        "access": "public"
+    },
     "files": [
         "dist/",
         "loader/",
-        "components/"
+        "components/",
+        "LICENSE",
+        "README.md"
     ],
     "scripts": {
         "build": "stencil build",
