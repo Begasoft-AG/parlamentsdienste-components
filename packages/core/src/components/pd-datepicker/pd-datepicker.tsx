@@ -121,7 +121,6 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
             this.pdChange.emit({ selectedDates, dateStr });
             if (this.currentValue === '') this.pdValueUpdate.emit({ selectedDates, dateStr });
         },
-        allowInput: this.allowInput,
         disableMobile: true,
     };
 
@@ -142,6 +141,11 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
     @Watch('date')
     handleDateChange(date: DateOption | DateOption[]) {
         this.setDate(date);
+    }
+
+    @Watch('allowInput')
+    handleAllowInputChange(value: boolean) {
+        this.flatpickr?.set('allowInput', value);
     }
 
     /**
@@ -209,7 +213,10 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
 
     public setFlatpickrInstance() {
         if (this.flatpickr) return;
-        this.flatpickr = flatpickr(this.contentWrapperElement, Object.assign(this.defaultConfig, this.config));
+        this.flatpickr = flatpickr(
+            this.contentWrapperElement,
+            Object.assign(this.defaultConfig, { allowInput: this.allowInput }, this.config),
+        );
     }
 
     public componentDidLoad() {
@@ -217,6 +224,15 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
         if (this.date) {
             this.flatpickr.setDate(this.date, false);
             this.currentValue = this.flatpickr.input.value;
+        }
+    }
+
+    private handleInputBlur() {
+        if (!this.flatpickr?.config?.allowInput) return;
+        const newValue = this.dateInputField.value;
+        if (newValue !== this.currentValue) {
+            // Delegate to flatpickr so it parses/validates the typed value and fires onChange
+            this.flatpickr.setDate(newValue, true);
         }
     }
 
@@ -236,10 +252,8 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
                         'pd-datepicker-disabled': this.disabled,
                         'pd-datepicker-readonly': this.readonly,
                         'pd-datepicker-error': this.error,
-                        'pd-datepicker-allowinput': this.allowInput,
                     }}
-                    style={this.verticalAdjust ? { '--pd-datepicker-vertical-adjust': '1.5625rem' } : {}}
-                >
+                    style={this.verticalAdjust ? { '--pd-datepicker-vertical-adjust': '1.5625rem' } : {}}>
                     {this.renderLabel()}
                     <div ref={el => (this.contentWrapperElement = el)} class="wrapper">
                         <input
@@ -259,6 +273,7 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
                             placeholder={this.placeholder}
                             tabindex={this.readonly ? '-1' : null} // this is not an optimal solution as it removes ability to copy&paste with focus
                             size={this.size}
+                            onBlur={() => this.handleInputBlur()}
                             data-input
                         />
 
@@ -288,7 +303,11 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
     private renderClearIcon() {
         if (this.hideClearIcon || this.currentValue === '' || this.readonly || this.disabled) return;
         return (
-            <button class="pd-datepicker-icon clear-icon" onClick={() => this.clear()} tabindex="-1" data-test="pd-datepicker-reset">
+            <button
+                class="pd-datepicker-icon clear-icon"
+                onClick={() => this.clear()}
+                tabindex="-1"
+                data-test="pd-datepicker-reset">
                 <pd-icon name="cancel" size={2.4}></pd-icon>
             </button>
         );

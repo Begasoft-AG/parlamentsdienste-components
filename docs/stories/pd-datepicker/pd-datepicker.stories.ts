@@ -1,4 +1,5 @@
 import type { ArgTypes, Meta, StoryObj } from '@storybook/html-vite';
+import { addEventlisteners } from '../utils/eventListeners';
 
 const defaultArgs = {
     label: 'Label Text',
@@ -24,6 +25,9 @@ const meta: Meta<DatepickerArgs> = {
 };
 
 export default meta;
+
+const events = ['pd-change', 'pd-open', 'pd-close', 'pd-month-change', 'pd-year-change', 'pd-ready', 'pd-value-update'];
+addEventlisteners('pd-datepicker', events);
 
 ///////////////////////////////////////////////////////////////////////////
 

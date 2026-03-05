@@ -110,6 +110,7 @@ function buttonClicked() {
                 label="pd-datepicker"
                 v-model="date"
                 data-test="pd-datepicker"
+                allow-input
                 @pd-change="(d:any) => {date = d.detail.dateStr}" />
             <PdCheckbox text="pd-checkbox" v-model="checkbox" data-test="pd-checkbox" />
             <PdRadioGroup name="radio-group-1" v-model="radio" data-test="pd-radio-group">
