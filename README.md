@@ -8,7 +8,7 @@ wurde die vorliegende Bibliothek mit StencilJS umgesetzt und 2025 mit Wrapper f√
 ## Library Dokumentation
 
 Components Docs (Storybook):  
-https://parlamentsdienste-components.bgs.lambda-it.ch/
+https://parlamentsdienste-components.prod.sw.begasoft.ch
 
 **Links Dokumentation**
 
