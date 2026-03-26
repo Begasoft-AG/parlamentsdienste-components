@@ -1,18 +1,16 @@
 /// <reference types='vitest' />
-import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import vue from '@vitejs/plugin-vue';
 import * as path from 'path';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig(() => ({
     root: __dirname,
     cacheDir: '../../node_modules/.vite/packages/vue',
     plugins: [
         vue(),
-        nxViteTsPaths(),
-        nxCopyAssetsPlugin(['*.md']),
+        tsconfigPaths(),
         dts({ entryRoot: 'src', tsconfigPath: path.join(__dirname, 'tsconfig.lib.json'), pathsToAliases: false }),
     ],
     // Uncomment this if you are using workers.

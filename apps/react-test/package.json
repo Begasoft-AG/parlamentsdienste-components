@@ -1,0 +1,11 @@
+{
+    "name": "react-test",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "vite dev",
+        "build": "vite build",
+        "preview": "vite preview",
+        "e2e": "playwright test"
+    }
+}
