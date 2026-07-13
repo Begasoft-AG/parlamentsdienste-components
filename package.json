@@ -1,6 +1,6 @@
 {
     "name": "@parlamentsdienste/source",
-    "version": "4.0.1",
+    "version": "4.0.2",
     "license": "MIT",
     "description": "Component Library for Swiss Parliamentary Services",
     "scripts": {
@@ -105,7 +105,7 @@
         "zone.js": "~0.15.0"
     },
     "dependencies": {
-        "@parlamentsdienste/pdcomponents-angular": "4.0.1",
-        "@parlamentsdienste/pdcomponents-core": "4.0.1"
+        "@parlamentsdienste/pdcomponents-angular": "4.0.2",
+        "@parlamentsdienste/pdcomponents-core": "4.0.2"
     }
 }
