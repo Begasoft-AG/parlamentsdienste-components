@@ -3,4 +3,11 @@ packages:
     - 'libs/*'
     - 'packages/*'
     - 'docs'
+allowBuilds:
+    '@parcel/watcher': true
+    '@swc/core': true
+    esbuild: true
+    lmdb: true
+    msgpackr-extract: true
+    puppeteer: true
 linkWorkspacePackages: true

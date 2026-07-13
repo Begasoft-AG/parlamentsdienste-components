@@ -21,7 +21,7 @@
         "test:react": "pnpm --filter react-test run e2e",
         "test:vue": "pnpm --filter vue-test run e2e",
         "injectOpSecrets:registry": "op inject -i ./deployment/registry-secret.template -o ./deployment/registry-secret.yaml && echo 'Secrets injected!'",
-        "update-versions": "npx tsx tools/update-versions.js",
+        "update-versions": "npx tsx tools/update-versions.ts",
         "pack:core": "cd packages/core && npm pack && cd ../..",
         "pack:angular": "cd packages/angular/dist && npm pack && cd ../../..",
         "pack:react": "cd packages/react/dist && npm pack && cd ../../..",

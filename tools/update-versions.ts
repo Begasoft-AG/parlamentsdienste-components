@@ -1,11 +1,18 @@
 // import { execSync } from 'node:child_process';
+import fs from 'node:fs';
 import path from 'node:path';
+import readline from 'node:readline';
 
 // Define the project paths relative to the repo root
-const projects = ['.', 'packages/core', 'packages/angular', 'packages/react', 'packages/vue', 'docs'];
-
-// Prompt for the new version
-const readline = require('readline');
+const projects = [
+    '.',
+    'libs/angular-output-target',
+    'packages/core',
+    'packages/angular',
+    'packages/react',
+    'packages/vue',
+    'docs',
+];
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -18,7 +25,6 @@ rl.question('Enter the new version: ', (newVersion: string) => {
         console.log(`Updating version in ${absPath} to ${newVersion}...`);
         const pkgPath = path.join(absPath, 'package.json');
         try {
-            const fs = require('fs');
             const pkgText = fs.readFileSync(pkgPath, 'utf8');
             const pkg = JSON.parse(pkgText);
 
