@@ -27,10 +27,6 @@ export default defineConfig(() => ({
             ],
         }),
     ],
-    // Uncomment this if you are using workers.
-    // worker: {
-    //  plugins: [ nxViteTsPaths() ],
-    // },
     build: {
         outDir: '../../dist/apps/vue-test',
         emptyOutDir: true,
