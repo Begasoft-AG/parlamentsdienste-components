@@ -30,6 +30,9 @@ jobs:
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
 
+            - name: Build Angular output target
+              run: pnpm run build:angular-output-target
+
             - name: Build core lib
               run: pnpm run build:core
 
