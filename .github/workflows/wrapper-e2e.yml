@@ -1,52 +1,52 @@
 name: wrapper e2e tests
 
 on:
-    push:
-        branches:
-            - main
-    pull_request:
-        branches:
-            - main
-    workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
-    angular-test-app-e2e-tests:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v4
+  angular-test-app-e2e-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
 
-            - name: Install pnpm
-              uses: pnpm/action-setup@v4
-              with:
-                  version: 10
-                  run_install: false
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 10
+          run_install: false
 
-            - name: Set up Node.js
-              uses: actions/setup-node@v4
-              with:
-                  node-version: '22'
-                  cache: 'pnpm'
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          cache: "pnpm"
 
-            - name: Install dependencies
-              run: pnpm install --frozen-lockfile
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-            - name: Cache Playwright browsers
-              uses: actions/cache@v4
-              with:
-                  path: ~/.cache/ms-playwright
-                  key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
 
-            - name: install playwright (chromium only)
-              run: pnpm exec playwright install chromium
+      - name: install playwright (chromium only)
+        run: pnpm exec playwright install chromium
 
-            - name: Build All
-              run: pnpm run build:all
+      - name: Build All
+        run: pnpm run build:all
 
-            - name: Run Angular Wrapper tests
-              run: pnpm run test:angular
+      - name: Run Angular Wrapper tests
+        run: pnpm run test:angular
 
-            - name: Run React Wrapper tests
-              run: pnpm run test:react
+      - name: Run React Wrapper tests
+        run: pnpm run test:react
 
-            - name: Run Vue Wrapper tests
-              run: pnpm run test:vue
+      - name: Run Vue Wrapper tests
+        run: pnpm run test:vue

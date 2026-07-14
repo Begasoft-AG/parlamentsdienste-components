@@ -22,6 +22,7 @@
         "test:vue": "pnpm --filter vue-test run e2e",
         "injectOpSecrets:registry": "op inject -i ./deployment/registry-secret.template -o ./deployment/registry-secret.yaml && echo 'Secrets injected!'",
         "update-versions": "npx tsx tools/update-versions.ts",
+        "clean:dist": "rm -rf packages/core/dist packages/vue/dist packages/angular/dist packages/react/dist libs/angular-output-target/dist docs/storybook-static",
         "pack:core": "cd packages/core && npm pack && cd ../..",
         "pack:angular": "cd packages/angular/dist && npm pack && cd ../../..",
         "pack:react": "cd packages/react/dist && npm pack && cd ../../..",
@@ -34,6 +35,9 @@
         "publish:all": "npm run publish:core && npm run publish:angular && npm run publish:react && npm run publish:vue"
     },
     "private": true,
+    "engines": {
+        "node": ">=24.0.0 <25.0.0"
+    },
     "workspaces": [
         "apps/*",
         "libs/*",
