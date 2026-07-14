@@ -1,6 +1,6 @@
 {
     "name": "@parlamentsdienste/pdcomponents-angular",
-    "version": "4.0.1",
+    "version": "4.0.2",
     "type": "module",
     "description": "Component Library for Swiss Parliamentary Services - Angular-Wrapper Lib",
     "repository": {
@@ -8,6 +8,9 @@
         "url": "https://github.com/Begasoft-AG/parlamentsdienste-components.git"
     },
     "license": "AGPL-3.0",
+    "scripts": {
+        "build": "node ../../node_modules/ng-packagr/cli/main.js -p ng-package.json -c tsconfig.lib.prod.json"
+    },
     "publishConfig": {
         "access": "public"
     },
@@ -17,7 +20,7 @@
         "rxjs": "^7.0.0 || ^8.0.0"
     },
     "dependencies": {
-        "@parlamentsdienste/pdcomponents-core": "4.0.1"
+        "@parlamentsdienste/pdcomponents-core": "4.0.2"
     },
     "sideEffects": false
 }

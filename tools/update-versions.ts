@@ -1,11 +1,12 @@
 // import { execSync } from 'node:child_process';
+import fs from 'node:fs';
 import path from 'node:path';
+import readline from 'node:readline';
 
 // Define the project paths relative to the repo root
 const projects = ['.', 'packages/core', 'packages/angular', 'packages/react', 'packages/vue', 'docs'];
 
-// Prompt for the new version
-const readline = require('readline');
+const internalWorkspacePackages = new Set(['@parlamentsdienste/angular-output-target']);
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -18,7 +19,6 @@ rl.question('Enter the new version: ', (newVersion: string) => {
         console.log(`Updating version in ${absPath} to ${newVersion}...`);
         const pkgPath = path.join(absPath, 'package.json');
         try {
-            const fs = require('fs');
             const pkgText = fs.readFileSync(pkgPath, 'utf8');
             const pkg = JSON.parse(pkgText);
 
@@ -28,7 +28,7 @@ rl.question('Enter the new version: ', (newVersion: string) => {
             // Update dependencies with @parlamentsdienste scope
             if (pkg.dependencies) {
                 for (const dep in pkg.dependencies) {
-                    if (dep.startsWith('@parlamentsdienste/')) {
+                    if (dep.startsWith('@parlamentsdienste/') && !internalWorkspacePackages.has(dep)) {
                         pkg.dependencies[dep] = newVersion;
                     }
                 }
@@ -37,7 +37,7 @@ rl.question('Enter the new version: ', (newVersion: string) => {
             // Update devDependencies with @parlamentsdienste scope
             if (pkg.devDependencies) {
                 for (const dep in pkg.devDependencies) {
-                    if (dep.startsWith('@parlamentsdienste/')) {
+                    if (dep.startsWith('@parlamentsdienste/') && !internalWorkspacePackages.has(dep)) {
                         pkg.devDependencies[dep] = newVersion;
                     }
                 }

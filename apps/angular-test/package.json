@@ -1,0 +1,10 @@
+{
+    "name": "angular-test",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "build": "ng build",
+        "serve": "ng serve",
+        "e2e": "playwright test"
+    }
+}

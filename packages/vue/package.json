@@ -1,15 +1,19 @@
 {
     "name": "@parlamentsdienste/pdcomponents-vue",
-    "version": "4.0.1",
+    "version": "4.0.2",
     "type": "module",
     "description": "Component Library for Swiss Parliamentary Services - Vue-Wrapper Lib",
-    "types": "./index.d.ts",
+    "types": "./dist/index.d.ts",
     "exports": {
         ".": {
-            "types": "./index.d.ts",
-            "default": "./index.js"
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
         }
     },
+    "files": [
+        "dist/",
+        "README.md"
+    ],
     "publishConfig": {
         "access": "public"
     },
@@ -19,11 +23,14 @@
         "url": "https://github.com/Begasoft-AG/parlamentsdienste-components.git"
     },
     "license": "AGPL-3.0",
+    "scripts": {
+        "build": "vite build"
+    },
     "peerDependencies": {
         "vue": ">=3.4.38 <4.0.0"
     },
     "dependencies": {
-        "@parlamentsdienste/pdcomponents-core": "4.0.1",
+        "@parlamentsdienste/pdcomponents-core": "4.0.2",
         "@stencil/vue-output-target": "^0.10.8"
     }
 }

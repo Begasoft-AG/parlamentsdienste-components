@@ -8,7 +8,7 @@
 
 ## Architecture Overview
 
-Nx monorepo (pnpm) with four publishable packages and a Storybook docs app.
+pnpm workspace monorepo with four publishable packages and a Storybook docs app.
 
 ```
 packages/core/          # StencilJS web components — source of truth
