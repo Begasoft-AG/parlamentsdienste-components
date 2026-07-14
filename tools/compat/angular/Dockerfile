@@ -30,17 +30,22 @@ RUN pnpm run build:angular-output-target \
     && pnpm run build:core \
     && pnpm run build:angular
     
-RUN mkdir -p /opt/pd-angular-compat/packs \
+RUN mkdir -p /tmp/packs \
     && core_pack_name="$(cd packages/core && npm pack)" \
-    && mv "packages/core/$core_pack_name" "/opt/pd-angular-compat/packs/$core_pack_name" \
+    && mv "packages/core/$core_pack_name" "/tmp/packs/$core_pack_name" \
     && angular_pack_name="$(cd packages/angular/dist && npm pack)" \
-    && mv "packages/angular/dist/$angular_pack_name" "/opt/pd-angular-compat/packs/$angular_pack_name"
+    && mv "packages/angular/dist/$angular_pack_name" "/tmp/packs/$angular_pack_name"
 
 FROM base AS runtime
 
-COPY --from=pack-builder /opt/pd-angular-compat/packs /opt/pd-angular-compat/packs
-COPY tools/compat/angular /opt/pd-angular-compat/tools/compat/angular
+COPY --from=pack-builder /tmp/packs /tmp/packs
+COPY tools/compat/angular /tmp/compat-dir
 
-RUN chmod +x /opt/pd-angular-compat/tools/compat/angular/compat-check.sh
+WORKDIR /tmp/compat-dir
 
-CMD ["/opt/pd-angular-compat/tools/compat/angular/compat-check.sh"]
+RUN npm install --no-audit --no-fund \
+    && npx playwright install --with-deps chromium
+
+RUN chmod +x /tmp/compat-dir/compat-check.sh
+
+CMD ["/tmp/compat-dir/compat-check.sh"]

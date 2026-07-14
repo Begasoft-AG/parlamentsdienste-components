@@ -1,7 +1,7 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { setAssetPath } from '@parlamentsdienste/pdcomponents-core/components';
-import { AppComponent } from './app/app.component';
+import { AngularFormComponent } from './app/angular-form.component';
 
 setAssetPath('http://localhost:4200');
 
-bootstrapApplication(AppComponent).catch(error => console.error(error));
+bootstrapApplication(AngularFormComponent).catch(error => console.error(error));

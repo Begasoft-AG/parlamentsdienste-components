@@ -7,11 +7,15 @@ if [[ -z "${ANGULAR_VERSION:-}" ]]; then
     exit 1
 fi
 
-readonly temp_root="/tmp/pd-angular-compat"
+readonly consumer_app_root="/tmp/angular-app"
+readonly compat_dir="/tmp/compat-dir"
+readonly prebuilt_pack_dir="/tmp/packs"
 readonly angular_major="${ANGULAR_VERSION%%.*}"
-readonly prebuilt_pack_dir="/opt/pd-angular-compat/packs"
-readonly template_dir="/opt/pd-angular-compat/tools/compat/angular/angular-$angular_major"
+readonly template_dir="$compat_dir/angular-$angular_major"
 readonly legacy_peer_deps="${LEGACY_PEER_DEPS:-false}"
+readonly run_e2e="${RUN_E2E:-false}"
+readonly project_name="angular${angular_major}-consumer"
+readonly consumer_dir="$consumer_app_root/$project_name"
 
 status="FAIL"
 
@@ -23,20 +27,15 @@ log_step() {
     printf '\n==> %s\n' "$1"
 }
 
-cleanup() {
-    rm -rf "$temp_root"
-}
-
 trap finish EXIT
 
-cleanup
-mkdir -p "$temp_root/consumer"
+mkdir -p "$consumer_app_root"
 
 log_step "Using prebuilt component tarballs from image cache"
-cd "$temp_root/consumer"
+cd "$consumer_app_root"
 
 log_step "Scaffolding fresh Angular ${ANGULAR_VERSION} consumer"
-npx -y "@angular/cli@$ANGULAR_VERSION" new "angular${angular_major}-consumer" \
+npx -y "@angular/cli@$ANGULAR_VERSION" new "$project_name" \
     --defaults \
     --minimal \
     --package-manager npm \
@@ -44,9 +43,9 @@ npx -y "@angular/cli@$ANGULAR_VERSION" new "angular${angular_major}-consumer" \
     --skip-git \
     --skip-tests \
     --standalone \
-    --style css
+    --style scss
 
-cd "angular${angular_major}-consumer"
+cd "$project_name"
 
 log_step "Installing packed component packages"
 install_args=(--no-audit --no-fund)
@@ -58,11 +57,18 @@ npm install "${install_args[@]}" \
     "$(compgen -G "$prebuilt_pack_dir/parlamentsdienste-pdcomponents-core-*.tgz" | head -n 1)" \
     "$(compgen -G "$prebuilt_pack_dir/parlamentsdienste-pdcomponents-angular-*.tgz" | head -n 1)"
 
-log_step "Injecting minimal pd-button consumer"
-cp "$template_dir/src/main.ts" src/main.ts
-cp "$template_dir/src/app/app.component.ts" src/app/app.component.ts
+log_step "Injecting Angular ${angular_major} compatibility fixture"
+cp "$template_dir/angular.json" angular.json
+rm -rf src
+cp -R "$template_dir/src" ./src
 
 log_step "Building Angular ${ANGULAR_VERSION} consumer"
 npm run build
+
+if [[ "$run_e2e" == "true" ]]; then
+    log_step "Running Playwright end-to-end tests"
+    cd "$compat_dir"
+    COMPAT_CONSUMER_DIR="$consumer_dir" npx playwright test
+fi
 
 status="PASS"
