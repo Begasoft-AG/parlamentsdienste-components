@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import {
     PdButton,
@@ -50,6 +50,9 @@ export class AngularFormComponent {
         { id: '6', label: 'Motion', value: 'a6' },
     ];
 
+    signalInputValue = signal('Initial signal value');
+    signalOutput = computed(() => this.signalInputValue());
+
     testForm = new FormGroup({
         input: new FormControl('Some text...', [Validators.minLength(3)]),
         dropdown: new FormControl(this.items[5]),
@@ -71,5 +74,13 @@ export class AngularFormComponent {
     buttonClicked() {
         console.log('Button clicked');
         this.testForm.get('input')?.disable();
+    }
+
+    handleSignalInputChange(value: string) {
+        this.signalInputValue.set(value);
+    }
+
+    resetSignalInput() {
+        this.signalInputValue.set('Reset from Angular signal');
     }
 }

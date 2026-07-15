@@ -231,3 +231,31 @@ test('pd-button', async ({ page }) => {
     expect(buttonClicked).toBe(true);
     expect(await input.isDisabled()).toBe(true);
 });
+
+test('angular signals update pd-input in both directions', async ({ page }) => {
+    await page.goto('/');
+
+    const signalInput = page.locator('[data-test="signal-input"] input');
+    const signalOutput = page.locator('[data-test="signal-output"]');
+    const resetButton = page.locator('[data-test="signal-reset-button"]');
+    const dependentButton = page.locator('[data-test="signal-dependent-button"]');
+    const readDependentDisabled = () =>
+        dependentButton.evaluate(element => Boolean((element as HTMLPdButtonElement).disabled));
+
+    await expect(signalInput).toHaveValue('Initial signal value');
+    await expect(signalOutput).toHaveText('Initial signal value');
+    expect(await readDependentDisabled()).toBe(false);
+
+    await signalInput.fill('Updated from pd-input');
+    await expect(signalOutput).toHaveText('Updated from pd-input');
+    expect(await readDependentDisabled()).toBe(false);
+
+    await signalInput.fill('');
+    await expect(signalOutput).toHaveText('');
+    expect(await readDependentDisabled()).toBe(true);
+
+    await resetButton.click();
+    await expect(signalInput).toHaveValue('Reset from Angular signal');
+    await expect(signalOutput).toHaveText('Reset from Angular signal');
+    expect(await readDependentDisabled()).toBe(false);
+});

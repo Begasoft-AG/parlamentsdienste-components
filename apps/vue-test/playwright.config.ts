@@ -1,9 +1,11 @@
 import { defineConfig, devices } from '@playwright/test';
+import os from 'node:os';
 import path from 'node:path';
 
 // For CI, you may want to set BASE_URL to the deployed application.
 const baseURL = process.env['BASE_URL'] || 'http://localhost:4200';
 const workspaceRoot = path.resolve(__dirname, '../..');
+const outputDir = path.join(os.tmpdir(), 'pdcomponents-playwright', 'vue-test');
 
 /**
  * Read environment variables from file.
@@ -16,17 +18,19 @@ const workspaceRoot = path.resolve(__dirname, '../..');
  */
 export default defineConfig({
     testDir: './e2e',
-    outputDir: './test-results',
+    outputDir,
+    preserveOutput: 'never',
     fullyParallel: true,
     forbidOnly: !!process.env.CI,
     retries: process.env.CI ? 2 : 0,
     workers: process.env.CI ? 1 : undefined,
-    reporter: [['html', { outputFolder: './playwright-report' }]],
+    reporter: 'list',
     /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
     use: {
         baseURL,
-        /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-        trace: 'on-first-retry',
+        trace: 'off',
+        screenshot: 'off',
+        video: 'off',
     },
     /* Run your local dev server before starting the tests */
     webServer: {

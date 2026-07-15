@@ -33,4 +33,18 @@
         <pd-textarea label="pd-textarea" formControlName="textarea" auto-grow data-test="pd-textarea"></pd-textarea>
         <pd-button (click)="buttonClicked()" data-test="pd-button">pd-button</pd-button>
     </form>
+
+    <section data-test="signal-section">
+        <h2>Angular Signals</h2>
+        <pd-input
+            [value]="signalInputValue()"
+            (pd-change)="handleSignalInputChange($any($event.detail))"
+            label="signal input"
+            data-test="signal-input"></pd-input>
+        <p data-test="signal-output">{{ signalOutput() }}</p>
+        <pd-button (click)="resetSignalInput()" data-test="signal-reset-button">Reset signal</pd-button>
+        <pd-button [disabled]="signalOutput() === ''" data-test="signal-dependent-button"
+            >Signal dependent button</pd-button
+        >
+    </section>
 </div>

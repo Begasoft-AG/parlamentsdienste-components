@@ -1,0 +1,259 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Docs/Compatibility" />
+
+export const statusConfig = {
+    compatible: {
+        icon: 'status_green',
+        label: 'compatible',
+        color: '#5c940d',
+    },
+    'not-compatible': {
+        icon: 'status_red',
+        label: 'not compatible',
+        color: '#c92a2a',
+    },
+    'not-tested': {
+        icon: 'status_undefined',
+        label: 'not tested',
+        color: '#868e96',
+    },
+};
+
+export const compatibilityData = {
+    angular: [
+        {
+            compLibVersion: '4.0.2',
+            frameworkVersion: '22',
+            nodeVersion: '24',
+            status: 'compatible',
+            notes: '',
+        },
+        {
+            compLibVersion: '4.0.2',
+            frameworkVersion: '21',
+            nodeVersion: '24',
+            status: 'compatible',
+            notes: '',
+        },
+        {
+            compLibVersion: '4.0.2',
+            frameworkVersion: '20',
+            nodeVersion: '24',
+            status: 'compatible',
+            notes: '',
+        },
+        {
+            compLibVersion: '4.0.2',
+            frameworkVersion: '19',
+            nodeVersion: '22',
+            status: 'compatible',
+            notes: '',
+        },
+    ],
+    react: [
+        {
+            compLibVersion: '4.0.2',
+            frameworkVersion: '19',
+            nodeVersion: '24',
+            viteVersion: '6',
+            status: 'compatible',
+            notes: '',
+        },
+        {
+            compLibVersion: '4.0.2',
+            frameworkVersion: '18',
+            nodeVersion: '22',
+            viteVersion: '6',
+            status: 'compatible',
+            notes: '',
+        },
+    ],
+    vue: [
+        {
+            compLibVersion: '4.0.2',
+            frameworkVersion: '3.5.39',
+            nodeVersion: '24',
+            viteVersion: '6',
+            status: 'compatible',
+            notes: '',
+        },
+        {
+            compLibVersion: '4.0.2',
+            frameworkVersion: '3.4.38',
+            nodeVersion: '22',
+            viteVersion: '6',
+            status: 'compatible',
+            notes: '',
+        },
+    ],
+};
+
+export const parseVersion = value =>
+    String(value)
+        .split('.')
+        .map(part => Number.parseInt(part, 10));
+
+export const compareVersion = (left, right) => {
+    const leftParts = parseVersion(left);
+    const rightParts = parseVersion(right);
+    const maxLength = Math.max(leftParts.length, rightParts.length);
+
+    for (let index = 0; index < maxLength; index += 1) {
+        const leftPart = leftParts[index] ?? 0;
+        const rightPart = rightParts[index] ?? 0;
+
+        if (leftPart !== rightPart) {
+            return leftPart - rightPart;
+        }
+    }
+
+    return 0;
+
+};
+
+export const sortRows = rows =>
+    [...rows].sort((left, right) => {
+        const releaseComparison = compareVersion(right.compLibVersion, left.compLibVersion);
+
+        if (releaseComparison !== 0) {
+            return releaseComparison;
+        }
+
+        return compareVersion(right.frameworkVersion, left.frameworkVersion);
+    });
+
+export function StatusBadge({ status }) {
+    const config = statusConfig[status];
+
+    return (
+        <span className={`compat-status compat-status-${status}`} style={{ color: config.color }}>
+            <pd-icon name={config.icon} size="2.5" style={{ fill: config.color }}></pd-icon>
+            <span>{config.label}</span>
+        </span>
+    );
+
+}
+
+export function CompatibilityTable({ columns, rows }) {
+    return (
+        <table className="compat-table">
+            <thead>
+                <tr>
+                    {columns.map(column => (
+                        <th key={column.key} scope="col">
+                            {column.label}
+                        </th>
+                    ))}
+                </tr>
+            </thead>
+            <tbody>
+                {sortRows(rows).map((row, index) => (
+                    <tr key={`${row.compLibVersion}-${row.frameworkVersion}-${row.nodeVersion}-${index}`}>
+                        {columns.map(column => (
+                            <td key={column.key}>
+                                {column.key === 'status' ? <StatusBadge status={row.status} /> : row[column.key] || '-'}
+                            </td>
+                        ))}
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+    );
+}
+
+# Compatibility Matrix
+
+This matrix is maintained manually. A combination is only marked as compatible after explicit confirmation.
+
+Supported peer ranges are Angular 17-22, React 18-19 and Vue 3.4.38+. The table below focuses on a small set of verified reference setups instead of every possible combination.
+
+<div className="compat-legend">
+    <StatusBadge status="compatible" />
+    <StatusBadge status="not-compatible" />
+    <StatusBadge status="not-tested" />
+</div>
+
+## Angular
+
+<CompatibilityTable
+    columns={[
+        { key: 'compLibVersion', label: 'Componentlib Version' },
+        { key: 'frameworkVersion', label: 'Angular version' },
+        { key: 'nodeVersion', label: 'Node version' },
+        { key: 'status', label: 'Status' },
+        { key: 'notes', label: 'Notes' },
+    ]}
+    rows={compatibilityData.angular}
+/>
+
+## React
+
+<CompatibilityTable
+    columns={[
+        { key: 'compLibVersion', label: 'Componentlib Version' },
+        { key: 'frameworkVersion', label: 'React version' },
+        { key: 'nodeVersion', label: 'Node version' },
+        { key: 'viteVersion', label: 'Vite version' },
+        { key: 'status', label: 'Status' },
+        { key: 'notes', label: 'Notes' },
+    ]}
+    rows={compatibilityData.react}
+/>
+
+## Vue
+
+<CompatibilityTable
+    columns={[
+        { key: 'compLibVersion', label: 'Componentlib Version' },
+        { key: 'frameworkVersion', label: 'Vue version' },
+        { key: 'nodeVersion', label: 'Node version' },
+        { key: 'viteVersion', label: 'Vite version' },
+        { key: 'status', label: 'Status' },
+        { key: 'notes', label: 'Notes' },
+    ]}
+    rows={compatibilityData.vue}
+/>
+
+<style>
+    {`
+        .compat-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin: 1rem 0 1.5rem;
+        }
+
+        .compat-status {
+            align-items: center;
+            display: inline-flex;
+            font-weight: 600;
+            gap: 0.35rem;
+            line-height: 1.2;
+            white-space: nowrap;
+        }
+
+        .compat-table {
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+            width: 100%;
+        }
+
+        .compat-table th,
+        .compat-table td {
+            border-bottom: 1px solid #dee2e6;
+            padding: 0.75rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .compat-table th {
+            background: #f8f9fa;
+            font-weight: 700;
+        }
+
+        .compat-table tbody tr:hover {
+            background: #f8f9fa;
+        }
+    `}
+</style>
