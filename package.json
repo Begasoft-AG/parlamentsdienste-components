@@ -3,6 +3,7 @@
     "version": "4.0.2",
     "license": "MIT",
     "description": "Component Library for Swiss Parliamentary Services",
+    "packageManager": "pnpm@11.13.0",
     "scripts": {
         "build:angular-output-target": "pnpm --filter @parlamentsdienste/angular-output-target run build",
         "build:core": "pnpm --filter @parlamentsdienste/pdcomponents-core run build",
@@ -36,7 +37,8 @@
     },
     "private": true,
     "engines": {
-        "node": "22 || 24"
+        "node": "^24.0.0",
+        "pnpm": "11.13.0"
     },
     "workspaces": [
         "apps/*",

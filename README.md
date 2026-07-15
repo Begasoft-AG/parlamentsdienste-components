@@ -23,9 +23,11 @@ https://parlamentsdienste-components.prod.sw.begasoft.ch
 Die Bibliothek verwendet pnpm als Paketmanager. Um die Abhängigkeiten zu installieren, führen Sie den folgenden Befehl aus:
 
 ```bash
-npm install --global pnpm
+corepack enable
 pnpm install
 ```
+
+Die Root-Konfiguration pinnt pnpm explizit über `packageManager`. Unterstützte Node-Version für Entwicklung und CI ist 24.x.
 
 ## Lizenz
 

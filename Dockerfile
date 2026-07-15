@@ -3,12 +3,12 @@ FROM node:24-alpine AS ui-builder
 WORKDIR /app
 COPY . .
 
-# Enable corepack and prepare pnpm
-RUN corepack enable && corepack prepare pnpm@latest --activate
+# Use the pnpm version pinned in the root packageManager field.
+RUN corepack enable
 ENV CI=true
 
-RUN pnpm install
-RUN npm run build:storybook
+RUN pnpm install --frozen-lockfile
+RUN pnpm run build:storybook
 
 # # final image build
 FROM nginx:mainline-alpine AS middlestep
