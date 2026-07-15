@@ -1,5 +1,5 @@
-import { Menu } from '../pd-menu';
 import { newSpecPage } from '@stencil/core/testing';
+import { Menu } from '../pd-menu';
 
 describe('pd-menu', () => {
     it('renders', async () => {
@@ -15,7 +15,7 @@ describe('pd-menu', () => {
                                     <pd-icon class="pd-menu-icon" name="menu_actions" size="2"></pd-icon>
                                 </button>
                                 <div>
-                                    <div class="pd-menu-content" style="display: none; position: absolute; left: 0; top: 0; margin: 0;">
+                                    <div class="pd-menu-content" data-popper-placement="bottom-start" data-popper-reference-hidden style="display: none; position: absolute; left: 0; top: 0; margin: 0; right: auto; bottom: auto; transform: translate(0px, 0px);">
                                         <slot></slot>
                                     </div>
                                 </div>

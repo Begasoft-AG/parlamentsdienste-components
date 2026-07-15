@@ -12,7 +12,7 @@ describe('pd-datepicker', () => {
                 <mock:shadow-root>
                     <label class="pd-datepicker-label">
                         <div class="wrapper">
-                            <input class="pd-datepicker-input" data-input data-test="pd-datepicker-input" size="1">
+                            <input class="flatpickr-input pd-datepicker-input" data-input data-test="pd-datepicker-input" readonly="readonly" size="1" type="text">
                             <pd-icon class="calendar-icon pd-datepicker-icon" data-toggle name="calendar" size="2.4"></pd-icon>
                         </div>
                     </label>

@@ -1,13 +1,16 @@
 packages:
-    - 'apps/*'
-    - 'libs/*'
-    - 'packages/*'
-    - 'docs'
+  - 'apps/*'
+  - 'libs/*'
+  - 'packages/*'
+  - 'docs'
 allowBuilds:
-    '@parcel/watcher': true
-    '@swc/core': true
-    esbuild: true
-    lmdb: true
-    msgpackr-extract: true
-    puppeteer: true
+  '@parcel/watcher': true
+  '@swc/core': true
+  esbuild: true
+  lmdb: true
+  msgpackr-extract: true
+  puppeteer: true
 linkWorkspacePackages: true
+minimumReleaseAgeExclude:
+  - '@stencil/react-output-target@1.6.1'
+  - '@stencil/vue-output-target@0.14.1'

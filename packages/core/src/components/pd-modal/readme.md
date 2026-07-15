@@ -36,7 +36,7 @@ interface PdModalConfig {
 
 | Property | Attribute | Description              | Type            | Default     |
 | -------- | --------- | ------------------------ | --------------- | ----------- |
-| `config` | `config`  | Configuration properties | `PdModalConfig` | `undefined` |
+| `config` | --        | Configuration properties | `PdModalConfig` | `undefined` |
 
 
 ## Events

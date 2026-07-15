@@ -17,6 +17,7 @@ export namespace Components {
         "actionHref": string;
         /**
           * Target for action href (eg. _blank)
+          * @default '_blank'
          */
         "actionTarget": string;
         /**
@@ -29,22 +30,27 @@ export namespace Components {
         "actionTextExpanded": string;
         /**
           * Display an option to close the alert
+          * @default false
          */
         "closable": boolean;
         /**
           * Color schema used for the alert
+          * @default 'primary'
          */
         "color": 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
         /**
           * Enable expandable content
+          * @default false
          */
         "expandable": boolean;
         /**
           * Expands / collapses the panel content
+          * @default false
          */
         "expanded": boolean;
         /**
           * Hide alert icon
+          * @default false
          */
         "hideIcon": boolean;
     }
@@ -57,20 +63,24 @@ export namespace Components {
     interface PdBackdrop {
         /**
           * Invisible backdrop when set to false
+          * @default true
          */
         "visible": boolean;
     }
     interface PdButton {
         /**
           * Color schema used for the button
+          * @default 'primary'
          */
         "color": PdButtonColor;
         /**
           * Sets button to disbaled state
+          * @default false
          */
         "disabled": boolean;
         /**
           * Sets button to 100% width
+          * @default false
          */
         "fullWidth": boolean;
         /**
@@ -79,26 +89,32 @@ export namespace Components {
         "href": string;
         /**
           * Sets the position of the icon
+          * @default 'none'
          */
         "iconLocation": PdIconLocation;
         /**
           * Use outline schema
+          * @default false
          */
         "outline": boolean;
         /**
           * Set href to create a link button
+          * @default false
          */
         "showAsLink": boolean;
         /**
           * Button size
+          * @default 'normal'
          */
         "size": PdButtonSize;
         /**
           * Sets target for link button e.g. '_blank'
+          * @default '_blank'
          */
         "target": string;
         /**
           * Sets button type |button|submit|reset|
+          * @default 'button'
          */
         "type": PdButtonType;
     }
@@ -107,18 +123,22 @@ export namespace Components {
     interface PdCheckbox {
         /**
           * Sets check state of the checkbox true/false
+          * @default false
          */
         "checked": boolean;
         /**
           * Sets checkbox to disabled state
+          * @default false
          */
         "disabled": boolean;
         /**
           * Shows error state
+          * @default false
          */
         "error": boolean;
         /**
           * indeterminate state
+          * @default false
          */
         "isIndeterminate": boolean;
         /**
@@ -127,78 +147,96 @@ export namespace Components {
         "name": string;
         /**
           * If `true`, the user cannot modify the value.
+          * @default false
          */
         "readonly": boolean;
         /**
           * If `true`, the user must fill in a value before submitting a form.
+          * @default false
          */
         "required": boolean;
         /**
           * Checkbox description text
+          * @default ''
          */
         "text": string;
         /**
           * value of checkbox
+          * @default false
          */
         "value": boolean;
         /**
           * Default vertical adjustment for inline forms
+          * @default false
          */
         "verticalAdjust": boolean;
     }
     interface PdChip {
         /**
           * Sets chip to checked state
+          * @default false
          */
         "checked": boolean;
         /**
           * Sets chip to disabled state
+          * @default false
          */
         "disabled": boolean;
         /**
           * Sets chip to readonly state
+          * @default false
          */
         "readonly": boolean;
         /**
           * Sets chip type |text|toggle|filter|
+          * @default 'text'
          */
         "type": ChipType;
     }
     interface PdCombobox {
         /**
           * If true, the combobox will not search/filter in the items (for example when the combobox is used to make backend searches)
+          * @default false
          */
         "disableFilter": boolean;
         /**
           * If `true`, the button to deselect all selected items will not be shown.
+          * @default false
          */
         "disableMultiselectCounter": boolean;
         /**
           * If `true`, the user cannot interact with the input.
+          * @default false
          */
         "disabled": boolean;
         /**
           * Enable selection of an empty item
+          * @default false
          */
         "emptyItem": boolean;
         /**
           * Data used for the empty item
+          * @default {         id: 'emptyitem',         label: '-',         value: null,     }
          */
         "emptyItemData": ComboboxItem;
         /**
           * Shows error state
+          * @default false
          */
         "error": boolean;
         /**
           * Show matching parts in results as highlighted
+          * @default true
          */
         "highlight"?: boolean;
         /**
           * Items visible in dropdown
+          * @default 5
          */
         "itemCount": number;
         /**
           * Values shown as combobox items
+          * @default []
          */
         "items": ComboboxItem[];
         /**
@@ -207,6 +245,7 @@ export namespace Components {
         "label"?: string;
         /**
           * If `true`, the combobox can select multiple items.
+          * @default false
          */
         "multiselect": boolean;
         /**
@@ -215,10 +254,12 @@ export namespace Components {
         "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
+          * @default false
          */
         "readonly": boolean;
         /**
           * If `true`, the user must fill in a value before submitting a form.
+          * @default false
          */
         "required": boolean;
         /**
@@ -227,10 +268,12 @@ export namespace Components {
         "reset": () => Promise<void>;
         /**
           * If `true`, the combobox get a selected state like a dropdown.
+          * @default false
          */
         "selectable": boolean;
         /**
           * To select an item by prop. This prop is used for the two-way binding.
+          * @default null
          */
         "selected": ComboboxItem | ComboboxItem[] | null;
         /**
@@ -247,18 +290,22 @@ export namespace Components {
         "setSelectedIndex": (index: number) => Promise<void>;
         /**
           * Input tag size (check pd-input 'size' for more info)
+          * @default 1
          */
         "size"?: number;
         /**
           * The value of the input.
+          * @default ''
          */
         "value"?: string;
         /**
           * Default vertical adjustment for inline forms
+          * @default false
          */
         "verticalAdjust": boolean;
         /**
           * If `true`, the combobox is replaced with a simple text
+          * @default false
          */
         "viewOnly": boolean;
     }
@@ -269,6 +316,7 @@ export namespace Components {
         "activate": () => Promise<void>;
         /**
           * Allow manual input
+          * @default false
          */
         "allowInput": boolean;
         /**
@@ -289,18 +337,22 @@ export namespace Components {
         "date": DateOption | DateOption[];
         /**
           * If `true`, the user cannot interact with the input.
+          * @default false
          */
         "disabled": boolean;
         /**
           * Shows error state
+          * @default false
          */
         "error": boolean;
         /**
           * Hides the clear icon
+          * @default false
          */
         "hideClearIcon"?: boolean;
         /**
           * If `true`, a calendar icon is shown at the end of the input.
+          * @default true
          */
         "icon": boolean;
         /**
@@ -317,10 +369,12 @@ export namespace Components {
         "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
+          * @default false
          */
         "readonly": boolean;
         /**
           * If `true`, the user must fill in a value before submitting a form.
+          * @default false
          */
         "required": boolean;
         /**
@@ -333,6 +387,7 @@ export namespace Components {
         "setDate": (date: DateOption | DateOption[], triggerChange?: boolean, format?: string) => Promise<void>;
         /**
           * Input tag size (check pd-input 'size' for more info)
+          * @default 1
          */
         "size"?: number;
         /**
@@ -341,32 +396,39 @@ export namespace Components {
         "toggle": () => Promise<void>;
         /**
           * Default vertical adjustment for inline forms
+          * @default false
          */
         "verticalAdjust": boolean;
     }
     interface PdDropdown {
         /**
           * If `true`, the user cannot interact with the input.
+          * @default false
          */
         "disabled": boolean;
         /**
           * Enable selection of an empty item
+          * @default false
          */
         "emptyItem": boolean;
         /**
           * Data used for the empty item
+          * @default {         id: '0',         label: '-',         value: null,     }
          */
         "emptyItemData": DropdownItem;
         /**
           * Shows error state
+          * @default false
          */
         "error": boolean;
         /**
           * Items visible in dropdown
+          * @default 5
          */
         "itemCount": number;
         /**
           * Items to display and select in dropdown
+          * @default []
          */
         "items": DropdownItem[];
         /**
@@ -375,14 +437,17 @@ export namespace Components {
         "label"?: string;
         /**
           * Placeholder when no item is selected
+          * @default ''
          */
         "placeholder": string;
         /**
           * If `true`, the user cannot modify the value.
+          * @default false
          */
         "readonly": boolean;
         /**
           * If `true`, the user must fill in a value before submitting a form.
+          * @default false
          */
         "required": boolean;
         /**
@@ -391,6 +456,7 @@ export namespace Components {
         "reset": () => Promise<void>;
         /**
           * To select an item by prop. Needs to be an object with an id property, a string or a number.
+          * @default null
          */
         "selected": DropdownItem;
         /**
@@ -399,14 +465,17 @@ export namespace Components {
         "setSelectedIndex": (index: number) => Promise<void>;
         /**
           * Selected item text wrap on words
+          * @default 'no-wrap'
          */
         "textWrap": TextWrap;
         /**
           * Default vertical adjustment for inline forms
+          * @default false
          */
         "verticalAdjust": boolean;
         /**
           * If `true`, the dropdown is replaced with a simple text
+          * @default false
          */
         "viewOnly": boolean;
     }
@@ -425,14 +494,17 @@ export namespace Components {
         "iconSrc"?: string;
         /**
           * If `true`, the item displays a checkbox (for multiselect comboboxes).
+          * @default false
          */
         "multiselect": boolean;
         /**
           * Sets this item to selected
+          * @default false
          */
         "selected": boolean;
         /**
           * Value for this item
+          * @default ''
          */
         "value": string;
     }
@@ -451,6 +523,7 @@ export namespace Components {
         "iconTitle": string;
         /**
           * Icon will be loaded lazily when it is visible
+          * @default true
          */
         "lazy": boolean;
         /**
@@ -459,6 +532,7 @@ export namespace Components {
         "name"?: string;
         /**
           * Rotation in 'deg'
+          * @default 0
          */
         "rotate": number;
         /**
@@ -471,6 +545,7 @@ export namespace Components {
         "spin": number;
         /**
           * change animation direction
+          * @default false
          */
         "spinReverse": boolean;
         /**
@@ -485,18 +560,22 @@ export namespace Components {
         "accept"?: string;
         /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+          * @default 'off'
          */
         "autocapitalize": string;
         /**
           * Indicates whether the value of the control can be automatically completed by the browser.
+          * @default 'off'
          */
         "autocomplete": 'on' | 'off';
         /**
           * Whether auto correction should be enabled when the user is entering/editing the text value.
+          * @default 'off'
          */
         "autocorrect": 'on' | 'off';
         /**
           * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+          * @default false
          */
         "autofocus": boolean;
         /**
@@ -505,6 +584,7 @@ export namespace Components {
         "characterCountText"?: string;
         /**
           * If `true`, a clear icon will appear in the input when there is a value. Clicking it clears the input.
+          * @default false
          */
         "clearInput": boolean;
         /**
@@ -513,10 +593,12 @@ export namespace Components {
         "clearOnEdit"?: boolean;
         /**
           * If `true`, the user cannot interact with the input.
+          * @default false
          */
         "disabled": boolean;
         /**
           * Shows error state
+          * @default false
          */
         "error": boolean;
         /**
@@ -561,10 +643,12 @@ export namespace Components {
         "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
+          * @default false
          */
         "readonly": boolean;
         /**
           * If `true`, the user must fill in a value before submitting a form.
+          * @default false
          */
         "required": boolean;
         /**
@@ -573,10 +657,12 @@ export namespace Components {
         "setFocus": () => Promise<void>;
         /**
           * Shows the character count below the input.
+          * @default false
          */
         "showCharacterCount": boolean;
         /**
           * The initial size of the control. This value is in pixels unless the value of the type attribute is `"text"` or `"password"`, in which case it is an integer number of characters. This attribute applies only when the `type` attribute is set to `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, or `"password"`, otherwise it is ignored.
+          * @default 1
          */
         "size"?: number;
         /**
@@ -585,18 +671,22 @@ export namespace Components {
         "step"?: string;
         /**
           * The type of control to display. The default type is text.
+          * @default 'text'
          */
         "type": TextFieldTypes;
         /**
           * The value of the input.
+          * @default ''
          */
         "value"?: string | number;
         /**
           * Default vertical adjustment for inline forms
+          * @default false
          */
         "verticalAdjust": boolean;
         /**
           * If `true`, the input is replaced with a simple text
+          * @default false
          */
         "viewOnly": boolean;
     }
@@ -607,6 +697,7 @@ export namespace Components {
         "color": string | undefined;
         /**
           * Switch between background and dot color mode
+          * @default false
          */
         "hasDot": boolean;
     }
@@ -621,34 +712,42 @@ export namespace Components {
     interface PdListItemExpandable {
         /**
           * Shows edit button
+          * @default false
          */
         "checkbox": boolean;
         /**
           * Sets check state of the checkbox true/false
+          * @default false
          */
         "checked": boolean;
         /**
           * Expands / collapses the inner content of the list item
+          * @default true
          */
         "collapsed": boolean;
         /**
           * Adds content click event and style to item
+          * @default false
          */
         "contentClick": boolean;
         /**
           * Shows edit button
+          * @default false
          */
         "edit": boolean;
         /**
           * Shows expand button with simple event (no expandable inner content)
+          * @default false
          */
         "expand": boolean;
         /**
           * Shows expand (toggle) button for expandable inner content
+          * @default false
          */
         "expandable": boolean;
         /**
           * Shows menu button
+          * @default false
          */
         "menu": boolean;
         /**
@@ -663,14 +762,17 @@ export namespace Components {
         "close": () => Promise<void>;
         /**
           * Switch dark colors to bright font color
+          * @default false
          */
         "invertColor": boolean;
         /**
           * Items to display and select in dropdown
+          * @default []
          */
         "items": any[];
         /**
           * Label nearby to the dot menu icon
+          * @default ''
          */
         "label": string;
         /**
@@ -679,20 +781,24 @@ export namespace Components {
         "open": () => Promise<void>;
         /**
           * Prefered placement of menu dropdown
+          * @default 'bottom-start'
          */
         "placement": PdPlacement;
         /**
           * Menu size
+          * @default 'normal'
          */
         "size": PdButtonSize;
     }
     interface PdMenuItem {
         /**
           * Sets item to disbaled state
+          * @default false
          */
         "disabled": boolean;
         /**
           * Text for this item
+          * @default ''
          */
         "text": string;
     }
@@ -703,9 +809,15 @@ export namespace Components {
         "config": PdModalConfig;
     }
     interface PdNavbar {
+        /**
+          * @default 800
+         */
         "mobileBreakpoint": number;
     }
     interface PdNavbarItem {
+        /**
+          * @default false
+         */
         "enabled": boolean;
         /**
           * Set href to create a link button
@@ -713,21 +825,28 @@ export namespace Components {
         "href": string;
         /**
           * Sets target for link button e.g. '_blank'
+          * @default '_blank'
          */
         "target": string;
+        /**
+          * @default ''
+         */
         "text": string;
     }
     interface PdPanel {
         /**
           * Expands / collapses the panel content
+          * @default false
          */
         "collapsed": boolean;
         /**
           * Show/hide collapse button
+          * @default false
          */
         "collapsible": boolean;
         /**
           * Use as a subpanel
+          * @default false
          */
         "subpanel": boolean;
     }
@@ -741,48 +860,59 @@ export namespace Components {
     interface PdProgressBar {
         /**
           * status color of progress-bar
+          * @default 'primary'
          */
         "color": 'primary' | 'success' | 'danger' | 'warning' | 'info';
         /**
           * decimals of value
+          * @default 2
          */
         "decimals": number;
         /**
           * description of progress-bar
+          * @default false
          */
         "label": boolean;
         /**
           * show striped version of progress-bar
+          * @default false
          */
         "striped": boolean;
         /**
           * current value of progress bar 0.0 to 1.0
+          * @default 0.0
          */
         "value": number;
     }
     interface PdRadio {
         /**
           * Checks radio
+          * @default false
          */
         "checked": boolean;
         /**
           * Sets radio to disabled state
+          * @default false
          */
         "disabled": boolean;
         /**
           * Shows error state
+          * @default false
          */
         "error": boolean;
         /**
           * Label used by radio
+          * @default null
          */
         "label"?: string;
         /**
           * Name of radio. Used to group radios together
+          * @default ''
          */
         "name": string;
         /**
           * If `true`, the user cannot modify the value.
+          * @default false
          */
         "readonly": boolean;
         /**
@@ -791,38 +921,46 @@ export namespace Components {
         "value"?: any;
         /**
           * Default vertical adjustment for inline forms
+          * @default false
          */
         "verticalAdjust": boolean;
     }
     interface PdRadioGroup {
         /**
           * If `true`, the user cannot interact with the radio buttons.
+          * @default false
          */
         "disabled": boolean;
         /**
           * Shows error state
+          * @default false
          */
         "error": boolean;
         /**
           * Name of the radio-group. Used to group radios together
+          * @default ''
          */
         "name": string;
         /**
           * If `true`, the user cannot modify the value.
+          * @default false
          */
         "readonly": boolean;
         /**
           * Value of the radio-group. Used to set the value of the selected radio
+          * @default null
          */
         "value": string;
     }
     interface PdSearch {
         /**
           * If `true`, the user cannot interact with the input.
+          * @default false
          */
         "disabled": boolean;
         /**
           * Show matching parts in resuls as highlighted
+          * @default true
          */
         "highlight"?: boolean;
         /**
@@ -835,6 +973,7 @@ export namespace Components {
         "placeholder"?: string;
         /**
           * Values shown as search results
+          * @default []
          */
         "results": string[];
         /**
@@ -843,10 +982,12 @@ export namespace Components {
         "setFocus": () => Promise<void>;
         /**
           * Input tag size (check pd-input 'size' for more info)
+          * @default 1
          */
         "size"?: number;
         /**
           * The value of the input.
+          * @default ''
          */
         "value"?: string | number;
     }
@@ -855,6 +996,7 @@ export namespace Components {
     interface PdSidebarItem {
         /**
           * show an item as active
+          * @default false
          */
         "active": boolean;
         /**
@@ -871,88 +1013,108 @@ export namespace Components {
         "iconName": string;
         /**
           * Icon size
+          * @default 2
          */
         "size": number;
         /**
           * Sets target for link button e.g. '_blank'
+          * @default '_blank'
          */
         "target": string;
         /**
           * Item text
+          * @default ''
          */
         "text": string;
     }
     interface PdSkeleton {
         /**
           * Sets the height of the skeleton loader
+          * @default '32px'
          */
         "height": string;
         /**
           * Sets the widht of the skeleton loader
+          * @default '100%'
          */
         "width": string;
     }
     interface PdSlider {
         /**
           * If `true`, the user cannot interact with the input.
+          * @default false
          */
         "disabled": boolean;
         /**
           * Shows error state
+          * @default false
          */
         "error": boolean;
         /**
           * max value
+          * @default 100
          */
         "max": number;
         /**
           * min value
+          * @default 0
          */
         "min": number;
         /**
           * slider name
+          * @default ''
          */
         "name": string;
         /**
           * If `true`, the user cannot modify the value.
+          * @default false
          */
         "readonly": boolean;
         /**
           * value steps
+          * @default 1
          */
         "step": number;
         /**
           * slider value
+          * @default null
          */
         "value"?: number;
     }
     interface PdSort {
         /**
           * If `true`, the user cannot interact with the input.
+          * @default false
          */
         "disabled": boolean;
         /**
           * Enable selection of an empty item
+          * @default false
          */
         "emptyItem": boolean;
         /**
           * Data used for the empty item
+          * @default {         id: '0',         label: '-',         value: null,         sort: null,     }
          */
         "emptyItemData": SortDropdownItem;
         /**
           * Items visible in dropdown
+          * @default 7
          */
         "itemCount": number;
         /**
           * Items to display and select in dropdown
+          * @default []
          */
         "items": SortDropdownItem[];
         /**
           * Label
+          * @default 'Sortieren nach:'
          */
         "label": string;
         /**
           * Placeholder when no item is selected
+          * @default ''
          */
         "placeholder": string;
         /**
@@ -961,10 +1123,12 @@ export namespace Components {
         "reset": () => Promise<void>;
         /**
           * Enables the revert item at the bottom of the dropdown
+          * @default false
          */
         "reverseItem": boolean;
         /**
           * Data used for the reverse item at the bottom of the dropdown
+          * @default {         label: 'Sort. Umkehren',         selected: false,     }
          */
         "reverseItemData": SortRevertItem;
         /**
@@ -975,22 +1139,27 @@ export namespace Components {
     interface PdTable {
         /**
           * A definition for each column of the table
+          * @default []
          */
         "columns": PdColumn[];
         /**
           * Sets selectable rows to disabled
+          * @default false
          */
         "disabled": boolean;
         /**
           * Disables the sort, filter and pagination of the component. Enables pd-sort, pd-filter-input, pd-filter-change events Enables a slot for a external pagination-component
+          * @default false
          */
         "externalRowHandling": boolean;
         /**
           * Height of header cells
+          * @default '48'
          */
         "headerHeight": string;
         /**
           * The table style
+          * @default 'dark'
          */
         "headerStyle": PdTableStyle;
         /**
@@ -1000,47 +1169,58 @@ export namespace Components {
         "menuLabel": string;
         /**
           * The minimum width the table should take
+          * @default '300'
          */
         "minWidth": string;
         /**
           * Available Page sizes for paging
+          * @default [         { id: '1', label: '10', value: 10, selected: true },         { id: '2', label: '25', value: 25 },         { id: '3', label: '100', value: 100 },     ]
          */
         "pageSizes": DropdownItem[];
         /**
           * Enables paging
+          * @default false
          */
         "paging": boolean;
         /**
           * Location of paging element
+          * @default 'right'
          */
         "pagingLocation": PdPagingLocation;
         /**
           * Sets selectable rows to readonly
+          * @default false
          */
         "readonly": boolean;
         "refresh": () => Promise<void>;
         /**
           * Height of rows
+          * @default '48'
          */
         "rowHeight": string;
         /**
           * The data definition for each row to display
+          * @default []
          */
         "rows": PdTableRow[];
         /**
           * Make rows selectable with a checkbox
+          * @default false
          */
         "selectable": boolean;
         /**
           * If externalRowHandling is true, this property can be used to set the status of the checkbox on the top left of the table
+          * @default 'none'
          */
         "selectedStatus": PdTableSelectedStatus;
         /**
           * Show button column and context menu
+          * @default false
          */
         "showActionColumn": boolean;
         /**
           * Allow to render a status icon per row
+          * @default false
          */
         "showStatus": boolean;
         "unselectAll": () => Promise<void>;
@@ -1051,30 +1231,36 @@ export namespace Components {
         "setValue": (value: string) => Promise<void>;
         /**
           * filter value
+          * @default ''
          */
         "value": string;
     }
     interface PdTabs {
         /**
           * Light mode
+          * @default false
          */
         "light": boolean;
         /**
           * List of tab texts
+          * @default []
          */
         "tabs": TabValue[];
     }
     interface PdTextarea {
         /**
           * If `true`, the element height will increase based on the value.
+          * @default false
          */
         "autoGrow": boolean;
         /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+          * @default 'none'
          */
         "autocapitalize": string;
         /**
           * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+          * @default false
          */
         "autofocus": boolean;
         /**
@@ -1087,6 +1273,7 @@ export namespace Components {
         "cols"?: number;
         /**
           * If `true`, the user cannot interact with the textarea.
+          * @default false
          */
         "disabled": boolean;
         /**
@@ -1095,6 +1282,7 @@ export namespace Components {
         "enterkeyhint"?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
         /**
           * Shows error state
+          * @default false
          */
         "error": boolean;
         /**
@@ -1119,14 +1307,17 @@ export namespace Components {
         "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
+          * @default false
          */
         "readonly": boolean;
         /**
           * If `true`, the user must fill in a value before submitting a form.
+          * @default false
          */
         "required": boolean;
         /**
           * The number of visible text lines for the control.
+          * @default 1
          */
         "rows"?: number;
         /**
@@ -1135,18 +1326,22 @@ export namespace Components {
         "setFocus": () => Promise<void>;
         /**
           * Shows the character count below the input.
+          * @default false
          */
         "showCharacterCount": boolean;
         /**
           * If `true`, the element will have its spelling and grammar checked.
+          * @default false
          */
         "spellcheck": boolean;
         /**
           * The value of the textarea.
+          * @default ''
          */
         "value"?: string;
         /**
           * If `true`, the textarea is replaced with a simple text
+          * @default false
          */
         "viewOnly": boolean;
         /**
@@ -1157,16 +1352,19 @@ export namespace Components {
     interface PdTimeline {
         /**
           * Adds rounded bottom of the date line to indicate that the timeline ends here
+          * @default false
          */
         "end": boolean;
         /**
           * Adds rounded top of the date line to indicate that the timeline starts here
+          * @default false
          */
         "start": boolean;
     }
     interface PdTimelineDate {
         /**
           * Timeline date
+          * @default ''
          */
         "date": string;
         /**
@@ -1179,6 +1377,7 @@ export namespace Components {
         "href": string;
         /**
           * Header link target
+          * @default '_blank'
          */
         "target": string;
     }
@@ -1193,6 +1392,7 @@ export namespace Components {
         "info": string;
         /**
           * Changes max-with of the toast
+          * @default 'large'
          */
         "size": 'small' | 'large';
     }
@@ -1878,6 +2078,7 @@ declare namespace LocalJSX {
         "actionHref"?: string;
         /**
           * Target for action href (eg. _blank)
+          * @default '_blank'
          */
         "actionTarget"?: string;
         /**
@@ -1890,22 +2091,27 @@ declare namespace LocalJSX {
         "actionTextExpanded"?: string;
         /**
           * Display an option to close the alert
+          * @default false
          */
         "closable"?: boolean;
         /**
           * Color schema used for the alert
+          * @default 'primary'
          */
         "color"?: 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
         /**
           * Enable expandable content
+          * @default false
          */
         "expandable"?: boolean;
         /**
           * Expands / collapses the panel content
+          * @default false
          */
         "expanded"?: boolean;
         /**
           * Hide alert icon
+          * @default false
          */
         "hideIcon"?: boolean;
         /**
@@ -1931,20 +2137,28 @@ declare namespace LocalJSX {
         "onPd-tap"?: (event: PdBackdropCustomEvent<void>) => void;
         /**
           * Invisible backdrop when set to false
+          * @default true
          */
         "visible"?: boolean;
     }
     interface PdButton {
         /**
           * Color schema used for the button
+          * @default 'primary'
          */
         "color"?: PdButtonColor;
         /**
           * Sets button to disbaled state
+          * @default false
          */
         "disabled"?: boolean;
         /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
           * Sets button to 100% width
+          * @default false
          */
         "fullWidth"?: boolean;
         /**
@@ -1953,26 +2167,36 @@ declare namespace LocalJSX {
         "href"?: string;
         /**
           * Sets the position of the icon
+          * @default 'none'
          */
         "iconLocation"?: PdIconLocation;
         /**
+          * The name of the element, used when submitting an HTML form.
+         */
+        "name"?: string;
+        /**
           * Use outline schema
+          * @default false
          */
         "outline"?: boolean;
         /**
           * Set href to create a link button
+          * @default false
          */
         "showAsLink"?: boolean;
         /**
           * Button size
+          * @default 'normal'
          */
         "size"?: PdButtonSize;
         /**
           * Sets target for link button e.g. '_blank'
+          * @default '_blank'
          */
         "target"?: string;
         /**
           * Sets button type |button|submit|reset|
+          * @default 'button'
          */
         "type"?: PdButtonType;
     }
@@ -1981,18 +2205,22 @@ declare namespace LocalJSX {
     interface PdCheckbox {
         /**
           * Sets check state of the checkbox true/false
+          * @default false
          */
         "checked"?: boolean;
         /**
           * Sets checkbox to disabled state
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Shows error state
+          * @default false
          */
         "error"?: boolean;
         /**
           * indeterminate state
+          * @default false
          */
         "isIndeterminate"?: boolean;
         /**
@@ -2002,32 +2230,39 @@ declare namespace LocalJSX {
         "onPd-checked"?: (event: PdCheckboxCustomEvent<boolean>) => void;
         /**
           * If `true`, the user cannot modify the value.
+          * @default false
          */
         "readonly"?: boolean;
         /**
           * If `true`, the user must fill in a value before submitting a form.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Checkbox description text
+          * @default ''
          */
         "text"?: string;
         /**
           * value of checkbox
+          * @default false
          */
         "value"?: boolean;
         /**
           * Default vertical adjustment for inline forms
+          * @default false
          */
         "verticalAdjust"?: boolean;
     }
     interface PdChip {
         /**
           * Sets chip to checked state
+          * @default false
          */
         "checked"?: boolean;
         /**
           * Sets chip to disabled state
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -2040,48 +2275,59 @@ declare namespace LocalJSX {
         "onPd-remove-chip"?: (event: PdChipCustomEvent<any>) => void;
         /**
           * Sets chip to readonly state
+          * @default false
          */
         "readonly"?: boolean;
         /**
           * Sets chip type |text|toggle|filter|
+          * @default 'text'
          */
         "type"?: ChipType;
     }
     interface PdCombobox {
         /**
           * If true, the combobox will not search/filter in the items (for example when the combobox is used to make backend searches)
+          * @default false
          */
         "disableFilter"?: boolean;
         /**
           * If `true`, the button to deselect all selected items will not be shown.
+          * @default false
          */
         "disableMultiselectCounter"?: boolean;
         /**
           * If `true`, the user cannot interact with the input.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Enable selection of an empty item
+          * @default false
          */
         "emptyItem"?: boolean;
         /**
           * Data used for the empty item
+          * @default {         id: 'emptyitem',         label: '-',         value: null,     }
          */
         "emptyItemData"?: ComboboxItem;
         /**
           * Shows error state
+          * @default false
          */
         "error"?: boolean;
         /**
           * Show matching parts in results as highlighted
+          * @default true
          */
         "highlight"?: boolean;
         /**
           * Items visible in dropdown
+          * @default 5
          */
         "itemCount"?: number;
         /**
           * Values shown as combobox items
+          * @default []
          */
         "items"?: ComboboxItem[];
         /**
@@ -2090,6 +2336,7 @@ declare namespace LocalJSX {
         "label"?: string;
         /**
           * If `true`, the combobox can select multiple items.
+          * @default false
          */
         "multiselect"?: boolean;
         /**
@@ -2114,40 +2361,49 @@ declare namespace LocalJSX {
         "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
+          * @default false
          */
         "readonly"?: boolean;
         /**
           * If `true`, the user must fill in a value before submitting a form.
+          * @default false
          */
         "required"?: boolean;
         /**
           * If `true`, the combobox get a selected state like a dropdown.
+          * @default false
          */
         "selectable"?: boolean;
         /**
           * To select an item by prop. This prop is used for the two-way binding.
+          * @default null
          */
         "selected"?: ComboboxItem | ComboboxItem[] | null;
         /**
           * Input tag size (check pd-input 'size' for more info)
+          * @default 1
          */
         "size"?: number;
         /**
           * The value of the input.
+          * @default ''
          */
         "value"?: string;
         /**
           * Default vertical adjustment for inline forms
+          * @default false
          */
         "verticalAdjust"?: boolean;
         /**
           * If `true`, the combobox is replaced with a simple text
+          * @default false
          */
         "viewOnly"?: boolean;
     }
     interface PdDatepicker {
         /**
           * Allow manual input
+          * @default false
          */
         "allowInput"?: boolean;
         /**
@@ -2160,18 +2416,22 @@ declare namespace LocalJSX {
         "date"?: DateOption | DateOption[];
         /**
           * If `true`, the user cannot interact with the input.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Shows error state
+          * @default false
          */
         "error"?: boolean;
         /**
           * Hides the clear icon
+          * @default false
          */
         "hideClearIcon"?: boolean;
         /**
           * If `true`, a calendar icon is shown at the end of the input.
+          * @default true
          */
         "icon"?: boolean;
         /**
@@ -2197,44 +2457,54 @@ declare namespace LocalJSX {
         "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
+          * @default false
          */
         "readonly"?: boolean;
         /**
           * If `true`, the user must fill in a value before submitting a form.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Input tag size (check pd-input 'size' for more info)
+          * @default 1
          */
         "size"?: number;
         /**
           * Default vertical adjustment for inline forms
+          * @default false
          */
         "verticalAdjust"?: boolean;
     }
     interface PdDropdown {
         /**
           * If `true`, the user cannot interact with the input.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Enable selection of an empty item
+          * @default false
          */
         "emptyItem"?: boolean;
         /**
           * Data used for the empty item
+          * @default {         id: '0',         label: '-',         value: null,     }
          */
         "emptyItemData"?: DropdownItem;
         /**
           * Shows error state
+          * @default false
          */
         "error"?: boolean;
         /**
           * Items visible in dropdown
+          * @default 5
          */
         "itemCount"?: number;
         /**
           * Items to display and select in dropdown
+          * @default []
          */
         "items"?: DropdownItem[];
         /**
@@ -2244,30 +2514,37 @@ declare namespace LocalJSX {
         "onPd-change"?: (event: PdDropdownCustomEvent<DropdownItem>) => void;
         /**
           * Placeholder when no item is selected
+          * @default ''
          */
         "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
+          * @default false
          */
         "readonly"?: boolean;
         /**
           * If `true`, the user must fill in a value before submitting a form.
+          * @default false
          */
         "required"?: boolean;
         /**
           * To select an item by prop. Needs to be an object with an id property, a string or a number.
+          * @default null
          */
         "selected"?: DropdownItem;
         /**
           * Selected item text wrap on words
+          * @default 'no-wrap'
          */
         "textWrap"?: TextWrap;
         /**
           * Default vertical adjustment for inline forms
+          * @default false
          */
         "verticalAdjust"?: boolean;
         /**
           * If `true`, the dropdown is replaced with a simple text
+          * @default false
          */
         "viewOnly"?: boolean;
     }
@@ -2286,14 +2563,17 @@ declare namespace LocalJSX {
         "iconSrc"?: string;
         /**
           * If `true`, the item displays a checkbox (for multiselect comboboxes).
+          * @default false
          */
         "multiselect"?: boolean;
         /**
           * Sets this item to selected
+          * @default false
          */
         "selected"?: boolean;
         /**
           * Value for this item
+          * @default ''
          */
         "value"?: string;
     }
@@ -2312,6 +2592,7 @@ declare namespace LocalJSX {
         "iconTitle"?: string;
         /**
           * Icon will be loaded lazily when it is visible
+          * @default true
          */
         "lazy"?: boolean;
         /**
@@ -2320,6 +2601,7 @@ declare namespace LocalJSX {
         "name"?: string;
         /**
           * Rotation in 'deg'
+          * @default 0
          */
         "rotate"?: number;
         /**
@@ -2332,6 +2614,7 @@ declare namespace LocalJSX {
         "spin"?: number;
         /**
           * change animation direction
+          * @default false
          */
         "spinReverse"?: boolean;
         /**
@@ -2346,18 +2629,22 @@ declare namespace LocalJSX {
         "accept"?: string;
         /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+          * @default 'off'
          */
         "autocapitalize"?: string;
         /**
           * Indicates whether the value of the control can be automatically completed by the browser.
+          * @default 'off'
          */
         "autocomplete"?: 'on' | 'off';
         /**
           * Whether auto correction should be enabled when the user is entering/editing the text value.
+          * @default 'off'
          */
         "autocorrect"?: 'on' | 'off';
         /**
           * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+          * @default false
          */
         "autofocus"?: boolean;
         /**
@@ -2366,6 +2653,7 @@ declare namespace LocalJSX {
         "characterCountText"?: string;
         /**
           * If `true`, a clear icon will appear in the input when there is a value. Clicking it clears the input.
+          * @default false
          */
         "clearInput"?: boolean;
         /**
@@ -2374,10 +2662,12 @@ declare namespace LocalJSX {
         "clearOnEdit"?: boolean;
         /**
           * If `true`, the user cannot interact with the input.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Shows error state
+          * @default false
          */
         "error"?: boolean;
         /**
@@ -2438,18 +2728,22 @@ declare namespace LocalJSX {
         "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
+          * @default false
          */
         "readonly"?: boolean;
         /**
           * If `true`, the user must fill in a value before submitting a form.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Shows the character count below the input.
+          * @default false
          */
         "showCharacterCount"?: boolean;
         /**
           * The initial size of the control. This value is in pixels unless the value of the type attribute is `"text"` or `"password"`, in which case it is an integer number of characters. This attribute applies only when the `type` attribute is set to `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, or `"password"`, otherwise it is ignored.
+          * @default 1
          */
         "size"?: number;
         /**
@@ -2458,18 +2752,22 @@ declare namespace LocalJSX {
         "step"?: string;
         /**
           * The type of control to display. The default type is text.
+          * @default 'text'
          */
         "type"?: TextFieldTypes;
         /**
           * The value of the input.
+          * @default ''
          */
         "value"?: string | number;
         /**
           * Default vertical adjustment for inline forms
+          * @default false
          */
         "verticalAdjust"?: boolean;
         /**
           * If `true`, the input is replaced with a simple text
+          * @default false
          */
         "viewOnly"?: boolean;
     }
@@ -2480,6 +2778,7 @@ declare namespace LocalJSX {
         "color"?: string | undefined;
         /**
           * Switch between background and dot color mode
+          * @default false
          */
         "hasDot"?: boolean;
     }
@@ -2494,34 +2793,42 @@ declare namespace LocalJSX {
     interface PdListItemExpandable {
         /**
           * Shows edit button
+          * @default false
          */
         "checkbox"?: boolean;
         /**
           * Sets check state of the checkbox true/false
+          * @default false
          */
         "checked"?: boolean;
         /**
           * Expands / collapses the inner content of the list item
+          * @default true
          */
         "collapsed"?: boolean;
         /**
           * Adds content click event and style to item
+          * @default false
          */
         "contentClick"?: boolean;
         /**
           * Shows edit button
+          * @default false
          */
         "edit"?: boolean;
         /**
           * Shows expand button with simple event (no expandable inner content)
+          * @default false
          */
         "expand"?: boolean;
         /**
           * Shows expand (toggle) button for expandable inner content
+          * @default false
          */
         "expandable"?: boolean;
         /**
           * Shows menu button
+          * @default false
          */
         "menu"?: boolean;
         /**
@@ -2552,32 +2859,39 @@ declare namespace LocalJSX {
     interface PdMenu {
         /**
           * Switch dark colors to bright font color
+          * @default false
          */
         "invertColor"?: boolean;
         /**
           * Items to display and select in dropdown
+          * @default []
          */
         "items"?: any[];
         /**
           * Label nearby to the dot menu icon
+          * @default ''
          */
         "label"?: string;
         /**
           * Prefered placement of menu dropdown
+          * @default 'bottom-start'
          */
         "placement"?: PdPlacement;
         /**
           * Menu size
+          * @default 'normal'
          */
         "size"?: PdButtonSize;
     }
     interface PdMenuItem {
         /**
           * Sets item to disbaled state
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Text for this item
+          * @default ''
          */
         "text"?: string;
     }
@@ -2600,10 +2914,16 @@ declare namespace LocalJSX {
         "onPd-escape"?: (event: PdModalCustomEvent<void>) => void;
     }
     interface PdNavbar {
+        /**
+          * @default 800
+         */
         "mobileBreakpoint"?: number;
         "onPd-menu"?: (event: PdNavbarCustomEvent<void>) => void;
     }
     interface PdNavbarItem {
+        /**
+          * @default false
+         */
         "enabled"?: boolean;
         /**
           * Set href to create a link button
@@ -2611,17 +2931,23 @@ declare namespace LocalJSX {
         "href"?: string;
         /**
           * Sets target for link button e.g. '_blank'
+          * @default '_blank'
          */
         "target"?: string;
+        /**
+          * @default ''
+         */
         "text"?: string;
     }
     interface PdPanel {
         /**
           * Expands / collapses the panel content
+          * @default false
          */
         "collapsed"?: boolean;
         /**
           * Show/hide collapse button
+          * @default false
          */
         "collapsible"?: boolean;
         /**
@@ -2630,6 +2956,7 @@ declare namespace LocalJSX {
         "onPd-collapsed"?: (event: PdPanelCustomEvent<any>) => void;
         /**
           * Use as a subpanel
+          * @default false
          */
         "subpanel"?: boolean;
     }
@@ -2646,48 +2973,59 @@ declare namespace LocalJSX {
     interface PdProgressBar {
         /**
           * status color of progress-bar
+          * @default 'primary'
          */
         "color"?: 'primary' | 'success' | 'danger' | 'warning' | 'info';
         /**
           * decimals of value
+          * @default 2
          */
         "decimals"?: number;
         /**
           * description of progress-bar
+          * @default false
          */
         "label"?: boolean;
         /**
           * show striped version of progress-bar
+          * @default false
          */
         "striped"?: boolean;
         /**
           * current value of progress bar 0.0 to 1.0
+          * @default 0.0
          */
         "value"?: number;
     }
     interface PdRadio {
         /**
           * Checks radio
+          * @default false
          */
         "checked"?: boolean;
         /**
           * Sets radio to disabled state
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Shows error state
+          * @default false
          */
         "error"?: boolean;
         /**
           * Label used by radio
+          * @default null
          */
         "label"?: string;
         /**
           * Name of radio. Used to group radios together
+          * @default ''
          */
         "name"?: string;
         /**
           * If `true`, the user cannot modify the value.
+          * @default false
          */
         "readonly"?: boolean;
         /**
@@ -2696,39 +3034,47 @@ declare namespace LocalJSX {
         "value"?: any;
         /**
           * Default vertical adjustment for inline forms
+          * @default false
          */
         "verticalAdjust"?: boolean;
     }
     interface PdRadioGroup {
         /**
           * If `true`, the user cannot interact with the radio buttons.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Shows error state
+          * @default false
          */
         "error"?: boolean;
         /**
           * Name of the radio-group. Used to group radios together
+          * @default ''
          */
         "name"?: string;
         "onPd-change"?: (event: PdRadioGroupCustomEvent<string>) => void;
         /**
           * If `true`, the user cannot modify the value.
+          * @default false
          */
         "readonly"?: boolean;
         /**
           * Value of the radio-group. Used to set the value of the selected radio
+          * @default null
          */
         "value"?: string;
     }
     interface PdSearch {
         /**
           * If `true`, the user cannot interact with the input.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Show matching parts in resuls as highlighted
+          * @default true
          */
         "highlight"?: boolean;
         /**
@@ -2761,14 +3107,17 @@ declare namespace LocalJSX {
         "placeholder"?: string;
         /**
           * Values shown as search results
+          * @default []
          */
         "results"?: string[];
         /**
           * Input tag size (check pd-input 'size' for more info)
+          * @default 1
          */
         "size"?: number;
         /**
           * The value of the input.
+          * @default ''
          */
         "value"?: string | number;
     }
@@ -2777,6 +3126,7 @@ declare namespace LocalJSX {
     interface PdSidebarItem {
         /**
           * show an item as active
+          * @default false
          */
         "active"?: boolean;
         /**
@@ -2793,46 +3143,56 @@ declare namespace LocalJSX {
         "iconName"?: string;
         /**
           * Icon size
+          * @default 2
          */
         "size"?: number;
         /**
           * Sets target for link button e.g. '_blank'
+          * @default '_blank'
          */
         "target"?: string;
         /**
           * Item text
+          * @default ''
          */
         "text"?: string;
     }
     interface PdSkeleton {
         /**
           * Sets the height of the skeleton loader
+          * @default '32px'
          */
         "height"?: string;
         /**
           * Sets the widht of the skeleton loader
+          * @default '100%'
          */
         "width"?: string;
     }
     interface PdSlider {
         /**
           * If `true`, the user cannot interact with the input.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Shows error state
+          * @default false
          */
         "error"?: boolean;
         /**
           * max value
+          * @default 100
          */
         "max"?: number;
         /**
           * min value
+          * @default 0
          */
         "min"?: number;
         /**
           * slider name
+          * @default ''
          */
         "name"?: string;
         /**
@@ -2845,76 +3205,93 @@ declare namespace LocalJSX {
         "onPd-input"?: (event: PdSliderCustomEvent<number>) => void;
         /**
           * If `true`, the user cannot modify the value.
+          * @default false
          */
         "readonly"?: boolean;
         /**
           * value steps
+          * @default 1
          */
         "step"?: number;
         /**
           * slider value
+          * @default null
          */
         "value"?: number;
     }
     interface PdSort {
         /**
           * If `true`, the user cannot interact with the input.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Enable selection of an empty item
+          * @default false
          */
         "emptyItem"?: boolean;
         /**
           * Data used for the empty item
+          * @default {         id: '0',         label: '-',         value: null,         sort: null,     }
          */
         "emptyItemData"?: SortDropdownItem;
         /**
           * Items visible in dropdown
+          * @default 7
          */
         "itemCount"?: number;
         /**
           * Items to display and select in dropdown
+          * @default []
          */
         "items"?: SortDropdownItem[];
         /**
           * Label
+          * @default 'Sortieren nach:'
          */
         "label"?: string;
         "onPd-change"?: (event: PdSortCustomEvent<SortDropdownItem>) => void;
         "onPd-reverse"?: (event: PdSortCustomEvent<SortDropdownItem>) => void;
         /**
           * Placeholder when no item is selected
+          * @default ''
          */
         "placeholder"?: string;
         /**
           * Enables the revert item at the bottom of the dropdown
+          * @default false
          */
         "reverseItem"?: boolean;
         /**
           * Data used for the reverse item at the bottom of the dropdown
+          * @default {         label: 'Sort. Umkehren',         selected: false,     }
          */
         "reverseItemData"?: SortRevertItem;
     }
     interface PdTable {
         /**
           * A definition for each column of the table
+          * @default []
          */
         "columns"?: PdColumn[];
         /**
           * Sets selectable rows to disabled
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Disables the sort, filter and pagination of the component. Enables pd-sort, pd-filter-input, pd-filter-change events Enables a slot for a external pagination-component
+          * @default false
          */
         "externalRowHandling"?: boolean;
         /**
           * Height of header cells
+          * @default '48'
          */
         "headerHeight"?: string;
         /**
           * The table style
+          * @default 'dark'
          */
         "headerStyle"?: PdTableStyle;
         /**
@@ -2924,6 +3301,7 @@ declare namespace LocalJSX {
         "menuLabel"?: string;
         /**
           * The minimum width the table should take
+          * @default '300'
          */
         "minWidth"?: string;
         /**
@@ -2960,42 +3338,52 @@ declare namespace LocalJSX {
         "onPd-view"?: (event: PdTableCustomEvent<any>) => void;
         /**
           * Available Page sizes for paging
+          * @default [         { id: '1', label: '10', value: 10, selected: true },         { id: '2', label: '25', value: 25 },         { id: '3', label: '100', value: 100 },     ]
          */
         "pageSizes"?: DropdownItem[];
         /**
           * Enables paging
+          * @default false
          */
         "paging"?: boolean;
         /**
           * Location of paging element
+          * @default 'right'
          */
         "pagingLocation"?: PdPagingLocation;
         /**
           * Sets selectable rows to readonly
+          * @default false
          */
         "readonly"?: boolean;
         /**
           * Height of rows
+          * @default '48'
          */
         "rowHeight"?: string;
         /**
           * The data definition for each row to display
+          * @default []
          */
         "rows"?: PdTableRow[];
         /**
           * Make rows selectable with a checkbox
+          * @default false
          */
         "selectable"?: boolean;
         /**
           * If externalRowHandling is true, this property can be used to set the status of the checkbox on the top left of the table
+          * @default 'none'
          */
         "selectedStatus"?: PdTableSelectedStatus;
         /**
           * Show button column and context menu
+          * @default false
          */
         "showActionColumn"?: boolean;
         /**
           * Allow to render a status icon per row
+          * @default false
          */
         "showStatus"?: boolean;
     }
@@ -3014,12 +3402,14 @@ declare namespace LocalJSX {
         "onPd-filter-input"?: (event: PdTableFilterCustomEvent<string>) => void;
         /**
           * filter value
+          * @default ''
          */
         "value"?: string;
     }
     interface PdTabs {
         /**
           * Light mode
+          * @default false
          */
         "light"?: boolean;
         /**
@@ -3028,20 +3418,24 @@ declare namespace LocalJSX {
         "onPd-change"?: (event: PdTabsCustomEvent<TabValue>) => void;
         /**
           * List of tab texts
+          * @default []
          */
         "tabs"?: TabValue[];
     }
     interface PdTextarea {
         /**
           * If `true`, the element height will increase based on the value.
+          * @default false
          */
         "autoGrow"?: boolean;
         /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+          * @default 'none'
          */
         "autocapitalize"?: string;
         /**
           * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+          * @default false
          */
         "autofocus"?: boolean;
         /**
@@ -3054,6 +3448,7 @@ declare namespace LocalJSX {
         "cols"?: number;
         /**
           * If `true`, the user cannot interact with the textarea.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -3062,6 +3457,7 @@ declare namespace LocalJSX {
         "enterkeyhint"?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
         /**
           * Shows error state
+          * @default false
          */
         "error"?: boolean;
         /**
@@ -3102,30 +3498,37 @@ declare namespace LocalJSX {
         "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
+          * @default false
          */
         "readonly"?: boolean;
         /**
           * If `true`, the user must fill in a value before submitting a form.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The number of visible text lines for the control.
+          * @default 1
          */
         "rows"?: number;
         /**
           * Shows the character count below the input.
+          * @default false
          */
         "showCharacterCount"?: boolean;
         /**
           * If `true`, the element will have its spelling and grammar checked.
+          * @default false
          */
         "spellcheck"?: boolean;
         /**
           * The value of the textarea.
+          * @default ''
          */
         "value"?: string;
         /**
           * If `true`, the textarea is replaced with a simple text
+          * @default false
          */
         "viewOnly"?: boolean;
         /**
@@ -3136,16 +3539,19 @@ declare namespace LocalJSX {
     interface PdTimeline {
         /**
           * Adds rounded bottom of the date line to indicate that the timeline ends here
+          * @default false
          */
         "end"?: boolean;
         /**
           * Adds rounded top of the date line to indicate that the timeline starts here
+          * @default false
          */
         "start"?: boolean;
     }
     interface PdTimelineDate {
         /**
           * Timeline date
+          * @default ''
          */
         "date"?: string;
         /**
@@ -3158,6 +3564,7 @@ declare namespace LocalJSX {
         "href"?: string;
         /**
           * Header link target
+          * @default '_blank'
          */
         "target"?: string;
     }
@@ -3176,100 +3583,412 @@ declare namespace LocalJSX {
         "onPd-closed"?: (event: PdToastCustomEvent<any>) => void;
         /**
           * Changes max-with of the toast
+          * @default 'large'
          */
         "size"?: 'small' | 'large';
     }
+
+    interface PdAlertAttributes {
+        "color": 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
+        "closable": boolean;
+        "actionText": string;
+        "actionTextExpanded": string;
+        "actionHref": string;
+        "actionTarget": string;
+        "hideIcon": boolean;
+        "expandable": boolean;
+        "expanded": boolean;
+    }
+    interface PdAnimationAttributes {
+        "name": '404' | 'access-denied' | 'error' | 'under-construction';
+    }
+    interface PdBackdropAttributes {
+        "visible": boolean;
+    }
+    interface PdButtonAttributes {
+        "disabled": boolean;
+        "type": PdButtonType;
+        "color": PdButtonColor;
+        "size": PdButtonSize;
+        "outline": boolean;
+        "fullWidth": boolean;
+        "href": string;
+        "showAsLink": boolean;
+        "target": string;
+        "iconLocation": PdIconLocation;
+    }
+    interface PdCheckboxAttributes {
+        "text": string;
+        "disabled": boolean;
+        "readonly": boolean;
+        "required": boolean;
+        "checked": boolean;
+        "value": boolean;
+        "isIndeterminate": boolean;
+        "name": string;
+        "error": boolean;
+        "verticalAdjust": boolean;
+    }
+    interface PdChipAttributes {
+        "disabled": boolean;
+        "readonly": boolean;
+        "checked": boolean;
+        "type": ChipType;
+    }
+    interface PdComboboxAttributes {
+        "emptyItem": boolean;
+        "disabled": boolean;
+        "viewOnly": boolean;
+        "readonly": boolean;
+        "required": boolean;
+        "selectable": boolean;
+        "multiselect": boolean;
+        "disableMultiselectCounter": boolean;
+        "placeholder": string;
+        "value": string;
+        "label": string;
+        "itemCount": number;
+        "highlight": boolean;
+        "error": boolean;
+        "size": number;
+        "verticalAdjust": boolean;
+        "disableFilter": boolean;
+    }
+    interface PdDatepickerAttributes {
+        "date": string;
+        "disabled": boolean;
+        "readonly": boolean;
+        "required": boolean;
+        "icon": boolean;
+        "label": string;
+        "error": boolean;
+        "placeholder": string;
+        "allowInput": boolean;
+        "verticalAdjust": boolean;
+        "size": number;
+        "hideClearIcon": boolean;
+    }
+    interface PdDropdownAttributes {
+        "placeholder": string;
+        "itemCount": number;
+        "emptyItem": boolean;
+        "disabled": boolean;
+        "viewOnly": boolean;
+        "label": string;
+        "readonly": boolean;
+        "required": boolean;
+        "error": boolean;
+        "verticalAdjust": boolean;
+        "textWrap": TextWrap;
+    }
+    interface PdDropdownItemAttributes {
+        "value": string;
+        "selected": boolean;
+        "multiselect": boolean;
+        "highlight": string;
+        "iconName": string;
+        "iconSrc": string;
+    }
+    interface PdIconAttributes {
+        "src": string;
+        "name": string;
+        "size": number;
+        "lazy": boolean;
+        "rotate": number;
+        "flip": 'x' | 'y' | 'xy';
+        "spin": number;
+        "spinReverse": boolean;
+        "iconTitle": string;
+        "iconDescription": string;
+    }
+    interface PdInputAttributes {
+        "accept": string;
+        "autocapitalize": string;
+        "autocomplete": 'on' | 'off';
+        "autocorrect": 'on' | 'off';
+        "autofocus": boolean;
+        "clearInput": boolean;
+        "clearOnEdit": boolean;
+        "disabled": boolean;
+        "viewOnly": boolean;
+        "inputmode": 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        "max": string;
+        "maxlength": number;
+        "min": string;
+        "minlength": number;
+        "multiple": boolean;
+        "name": string;
+        "pattern": string;
+        "placeholder": string;
+        "readonly": boolean;
+        "required": boolean;
+        "step": string;
+        "size": number;
+        "type": TextFieldTypes;
+        "value": string;
+        "label": string;
+        "error": boolean;
+        "verticalAdjust": boolean;
+        "showCharacterCount": boolean;
+        "characterCountText": string;
+    }
+    interface PdLabelAttributes {
+        "hasDot": boolean;
+        "color": string | undefined;
+    }
+    interface PdListItemAttributes {
+        "status": PdStatus;
+    }
+    interface PdListItemExpandableAttributes {
+        "status": PdStatus;
+        "collapsed": boolean;
+        "checkbox": boolean;
+        "edit": boolean;
+        "expand": boolean;
+        "menu": boolean;
+        "expandable": boolean;
+        "checked": boolean;
+        "contentClick": boolean;
+    }
+    interface PdMenuAttributes {
+        "label": string;
+        "invertColor": boolean;
+        "size": PdButtonSize;
+        "placement": PdPlacement;
+    }
+    interface PdMenuItemAttributes {
+        "text": string;
+        "disabled": boolean;
+    }
+    interface PdNavbarAttributes {
+        "mobileBreakpoint": number;
+    }
+    interface PdNavbarItemAttributes {
+        "text": string;
+        "enabled": boolean;
+        "href": string;
+        "target": string;
+    }
+    interface PdPanelAttributes {
+        "collapsed": boolean;
+        "collapsible": boolean;
+        "subpanel": boolean;
+    }
+    interface PdProgressBarAttributes {
+        "color": 'primary' | 'success' | 'danger' | 'warning' | 'info';
+        "value": number;
+        "label": boolean;
+        "decimals": number;
+        "striped": boolean;
+    }
+    interface PdRadioAttributes {
+        "checked": boolean;
+        "value": string;
+        "label": string;
+        "name": string;
+        "disabled": boolean;
+        "readonly": boolean;
+        "verticalAdjust": boolean;
+        "error": boolean;
+    }
+    interface PdRadioGroupAttributes {
+        "name": string;
+        "value": string;
+        "disabled": boolean;
+        "error": boolean;
+        "readonly": boolean;
+    }
+    interface PdSearchAttributes {
+        "disabled": boolean;
+        "placeholder": string;
+        "value": string;
+        "label": string;
+        "highlight": boolean;
+        "size": number;
+    }
+    interface PdSidebarItemAttributes {
+        "text": string;
+        "active": boolean;
+        "href": string;
+        "icon": string;
+        "iconName": string;
+        "size": number;
+        "target": string;
+    }
+    interface PdSkeletonAttributes {
+        "height": string;
+        "width": string;
+    }
+    interface PdSliderAttributes {
+        "max": number;
+        "min": number;
+        "step": number;
+        "name": string;
+        "disabled": boolean;
+        "readonly": boolean;
+        "error": boolean;
+        "value": number;
+    }
+    interface PdSortAttributes {
+        "placeholder": string;
+        "itemCount": number;
+        "emptyItem": boolean;
+        "reverseItem": boolean;
+        "disabled": boolean;
+        "label": string;
+    }
+    interface PdTableAttributes {
+        "headerHeight": string;
+        "rowHeight": string;
+        "minWidth": string;
+        "headerStyle": PdTableStyle;
+        "showActionColumn": boolean;
+        "selectable": boolean;
+        "disabled": boolean;
+        "readonly": boolean;
+        "showStatus": boolean;
+        "menuLabel": string;
+        "paging": boolean;
+        "pagingLocation": PdPagingLocation;
+        "externalRowHandling": boolean;
+        "selectedStatus": PdTableSelectedStatus;
+    }
+    interface PdTableFilterAttributes {
+        "value": string;
+    }
+    interface PdTabsAttributes {
+        "light": boolean;
+    }
+    interface PdTextareaAttributes {
+        "autocapitalize": string;
+        "autofocus": boolean;
+        "disabled": boolean;
+        "viewOnly": boolean;
+        "inputmode": 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+        "enterkeyhint": 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
+        "maxlength": number;
+        "minlength": number;
+        "placeholder": string;
+        "readonly": boolean;
+        "required": boolean;
+        "spellcheck": boolean;
+        "cols": number;
+        "rows": number;
+        "wrap": 'hard' | 'soft' | 'off';
+        "label": string;
+        "error": boolean;
+        "autoGrow": boolean;
+        "value": string;
+        "showCharacterCount": boolean;
+        "characterCountText": string;
+    }
+    interface PdTimelineAttributes {
+        "start": boolean;
+        "end": boolean;
+    }
+    interface PdTimelineDateAttributes {
+        "header": string;
+        "href": string;
+        "target": string;
+        "date": string;
+    }
+    interface PdToastAttributes {
+        "header": string;
+        "info": string;
+        "size": 'small' | 'large';
+    }
+
     interface IntrinsicElements {
-        "pd-alert": PdAlert;
-        "pd-animation": PdAnimation;
-        "pd-backdrop": PdBackdrop;
-        "pd-button": PdButton;
+        "pd-alert": Omit<PdAlert, keyof PdAlertAttributes> & { [K in keyof PdAlert & keyof PdAlertAttributes]?: PdAlert[K] } & { [K in keyof PdAlert & keyof PdAlertAttributes as `attr:${K}`]?: PdAlertAttributes[K] } & { [K in keyof PdAlert & keyof PdAlertAttributes as `prop:${K}`]?: PdAlert[K] };
+        "pd-animation": Omit<PdAnimation, keyof PdAnimationAttributes> & { [K in keyof PdAnimation & keyof PdAnimationAttributes]?: PdAnimation[K] } & { [K in keyof PdAnimation & keyof PdAnimationAttributes as `attr:${K}`]?: PdAnimationAttributes[K] } & { [K in keyof PdAnimation & keyof PdAnimationAttributes as `prop:${K}`]?: PdAnimation[K] };
+        "pd-backdrop": Omit<PdBackdrop, keyof PdBackdropAttributes> & { [K in keyof PdBackdrop & keyof PdBackdropAttributes]?: PdBackdrop[K] } & { [K in keyof PdBackdrop & keyof PdBackdropAttributes as `attr:${K}`]?: PdBackdropAttributes[K] } & { [K in keyof PdBackdrop & keyof PdBackdropAttributes as `prop:${K}`]?: PdBackdrop[K] };
+        "pd-button": Omit<PdButton, keyof PdButtonAttributes> & { [K in keyof PdButton & keyof PdButtonAttributes]?: PdButton[K] } & { [K in keyof PdButton & keyof PdButtonAttributes as `attr:${K}`]?: PdButtonAttributes[K] } & { [K in keyof PdButton & keyof PdButtonAttributes as `prop:${K}`]?: PdButton[K] };
         "pd-button-group": PdButtonGroup;
-        "pd-checkbox": PdCheckbox;
-        "pd-chip": PdChip;
-        "pd-combobox": PdCombobox;
-        "pd-datepicker": PdDatepicker;
-        "pd-dropdown": PdDropdown;
-        "pd-dropdown-item": PdDropdownItem;
-        "pd-icon": PdIcon;
-        "pd-input": PdInput;
-        "pd-label": PdLabel;
+        "pd-checkbox": Omit<PdCheckbox, keyof PdCheckboxAttributes> & { [K in keyof PdCheckbox & keyof PdCheckboxAttributes]?: PdCheckbox[K] } & { [K in keyof PdCheckbox & keyof PdCheckboxAttributes as `attr:${K}`]?: PdCheckboxAttributes[K] } & { [K in keyof PdCheckbox & keyof PdCheckboxAttributes as `prop:${K}`]?: PdCheckbox[K] };
+        "pd-chip": Omit<PdChip, keyof PdChipAttributes> & { [K in keyof PdChip & keyof PdChipAttributes]?: PdChip[K] } & { [K in keyof PdChip & keyof PdChipAttributes as `attr:${K}`]?: PdChipAttributes[K] } & { [K in keyof PdChip & keyof PdChipAttributes as `prop:${K}`]?: PdChip[K] };
+        "pd-combobox": Omit<PdCombobox, keyof PdComboboxAttributes> & { [K in keyof PdCombobox & keyof PdComboboxAttributes]?: PdCombobox[K] } & { [K in keyof PdCombobox & keyof PdComboboxAttributes as `attr:${K}`]?: PdComboboxAttributes[K] } & { [K in keyof PdCombobox & keyof PdComboboxAttributes as `prop:${K}`]?: PdCombobox[K] };
+        "pd-datepicker": Omit<PdDatepicker, keyof PdDatepickerAttributes> & { [K in keyof PdDatepicker & keyof PdDatepickerAttributes]?: PdDatepicker[K] } & { [K in keyof PdDatepicker & keyof PdDatepickerAttributes as `attr:${K}`]?: PdDatepickerAttributes[K] } & { [K in keyof PdDatepicker & keyof PdDatepickerAttributes as `prop:${K}`]?: PdDatepicker[K] };
+        "pd-dropdown": Omit<PdDropdown, keyof PdDropdownAttributes> & { [K in keyof PdDropdown & keyof PdDropdownAttributes]?: PdDropdown[K] } & { [K in keyof PdDropdown & keyof PdDropdownAttributes as `attr:${K}`]?: PdDropdownAttributes[K] } & { [K in keyof PdDropdown & keyof PdDropdownAttributes as `prop:${K}`]?: PdDropdown[K] };
+        "pd-dropdown-item": Omit<PdDropdownItem, keyof PdDropdownItemAttributes> & { [K in keyof PdDropdownItem & keyof PdDropdownItemAttributes]?: PdDropdownItem[K] } & { [K in keyof PdDropdownItem & keyof PdDropdownItemAttributes as `attr:${K}`]?: PdDropdownItemAttributes[K] } & { [K in keyof PdDropdownItem & keyof PdDropdownItemAttributes as `prop:${K}`]?: PdDropdownItem[K] };
+        "pd-icon": Omit<PdIcon, keyof PdIconAttributes> & { [K in keyof PdIcon & keyof PdIconAttributes]?: PdIcon[K] } & { [K in keyof PdIcon & keyof PdIconAttributes as `attr:${K}`]?: PdIconAttributes[K] } & { [K in keyof PdIcon & keyof PdIconAttributes as `prop:${K}`]?: PdIcon[K] };
+        "pd-input": Omit<PdInput, keyof PdInputAttributes> & { [K in keyof PdInput & keyof PdInputAttributes]?: PdInput[K] } & { [K in keyof PdInput & keyof PdInputAttributes as `attr:${K}`]?: PdInputAttributes[K] } & { [K in keyof PdInput & keyof PdInputAttributes as `prop:${K}`]?: PdInput[K] };
+        "pd-label": Omit<PdLabel, keyof PdLabelAttributes> & { [K in keyof PdLabel & keyof PdLabelAttributes]?: PdLabel[K] } & { [K in keyof PdLabel & keyof PdLabelAttributes as `attr:${K}`]?: PdLabelAttributes[K] } & { [K in keyof PdLabel & keyof PdLabelAttributes as `prop:${K}`]?: PdLabel[K] };
         "pd-list": PdList;
-        "pd-list-item": PdListItem;
-        "pd-list-item-expandable": PdListItemExpandable;
-        "pd-menu": PdMenu;
-        "pd-menu-item": PdMenuItem;
+        "pd-list-item": Omit<PdListItem, keyof PdListItemAttributes> & { [K in keyof PdListItem & keyof PdListItemAttributes]?: PdListItem[K] } & { [K in keyof PdListItem & keyof PdListItemAttributes as `attr:${K}`]?: PdListItemAttributes[K] } & { [K in keyof PdListItem & keyof PdListItemAttributes as `prop:${K}`]?: PdListItem[K] };
+        "pd-list-item-expandable": Omit<PdListItemExpandable, keyof PdListItemExpandableAttributes> & { [K in keyof PdListItemExpandable & keyof PdListItemExpandableAttributes]?: PdListItemExpandable[K] } & { [K in keyof PdListItemExpandable & keyof PdListItemExpandableAttributes as `attr:${K}`]?: PdListItemExpandableAttributes[K] } & { [K in keyof PdListItemExpandable & keyof PdListItemExpandableAttributes as `prop:${K}`]?: PdListItemExpandable[K] };
+        "pd-menu": Omit<PdMenu, keyof PdMenuAttributes> & { [K in keyof PdMenu & keyof PdMenuAttributes]?: PdMenu[K] } & { [K in keyof PdMenu & keyof PdMenuAttributes as `attr:${K}`]?: PdMenuAttributes[K] } & { [K in keyof PdMenu & keyof PdMenuAttributes as `prop:${K}`]?: PdMenu[K] };
+        "pd-menu-item": Omit<PdMenuItem, keyof PdMenuItemAttributes> & { [K in keyof PdMenuItem & keyof PdMenuItemAttributes]?: PdMenuItem[K] } & { [K in keyof PdMenuItem & keyof PdMenuItemAttributes as `attr:${K}`]?: PdMenuItemAttributes[K] } & { [K in keyof PdMenuItem & keyof PdMenuItemAttributes as `prop:${K}`]?: PdMenuItem[K] };
         "pd-modal": PdModal;
-        "pd-navbar": PdNavbar;
-        "pd-navbar-item": PdNavbarItem;
-        "pd-panel": PdPanel;
+        "pd-navbar": Omit<PdNavbar, keyof PdNavbarAttributes> & { [K in keyof PdNavbar & keyof PdNavbarAttributes]?: PdNavbar[K] } & { [K in keyof PdNavbar & keyof PdNavbarAttributes as `attr:${K}`]?: PdNavbarAttributes[K] } & { [K in keyof PdNavbar & keyof PdNavbarAttributes as `prop:${K}`]?: PdNavbar[K] };
+        "pd-navbar-item": Omit<PdNavbarItem, keyof PdNavbarItemAttributes> & { [K in keyof PdNavbarItem & keyof PdNavbarItemAttributes]?: PdNavbarItem[K] } & { [K in keyof PdNavbarItem & keyof PdNavbarItemAttributes as `attr:${K}`]?: PdNavbarItemAttributes[K] } & { [K in keyof PdNavbarItem & keyof PdNavbarItemAttributes as `prop:${K}`]?: PdNavbarItem[K] };
+        "pd-panel": Omit<PdPanel, keyof PdPanelAttributes> & { [K in keyof PdPanel & keyof PdPanelAttributes]?: PdPanel[K] } & { [K in keyof PdPanel & keyof PdPanelAttributes as `attr:${K}`]?: PdPanelAttributes[K] } & { [K in keyof PdPanel & keyof PdPanelAttributes as `prop:${K}`]?: PdPanel[K] };
         "pd-panel-content": PdPanelContent;
         "pd-panel-footer": PdPanelFooter;
         "pd-panel-header": PdPanelHeader;
-        "pd-progress-bar": PdProgressBar;
-        "pd-radio": PdRadio;
-        "pd-radio-group": PdRadioGroup;
-        "pd-search": PdSearch;
+        "pd-progress-bar": Omit<PdProgressBar, keyof PdProgressBarAttributes> & { [K in keyof PdProgressBar & keyof PdProgressBarAttributes]?: PdProgressBar[K] } & { [K in keyof PdProgressBar & keyof PdProgressBarAttributes as `attr:${K}`]?: PdProgressBarAttributes[K] } & { [K in keyof PdProgressBar & keyof PdProgressBarAttributes as `prop:${K}`]?: PdProgressBar[K] };
+        "pd-radio": Omit<PdRadio, keyof PdRadioAttributes> & { [K in keyof PdRadio & keyof PdRadioAttributes]?: PdRadio[K] } & { [K in keyof PdRadio & keyof PdRadioAttributes as `attr:${K}`]?: PdRadioAttributes[K] } & { [K in keyof PdRadio & keyof PdRadioAttributes as `prop:${K}`]?: PdRadio[K] };
+        "pd-radio-group": Omit<PdRadioGroup, keyof PdRadioGroupAttributes> & { [K in keyof PdRadioGroup & keyof PdRadioGroupAttributes]?: PdRadioGroup[K] } & { [K in keyof PdRadioGroup & keyof PdRadioGroupAttributes as `attr:${K}`]?: PdRadioGroupAttributes[K] } & { [K in keyof PdRadioGroup & keyof PdRadioGroupAttributes as `prop:${K}`]?: PdRadioGroup[K] };
+        "pd-search": Omit<PdSearch, keyof PdSearchAttributes> & { [K in keyof PdSearch & keyof PdSearchAttributes]?: PdSearch[K] } & { [K in keyof PdSearch & keyof PdSearchAttributes as `attr:${K}`]?: PdSearchAttributes[K] } & { [K in keyof PdSearch & keyof PdSearchAttributes as `prop:${K}`]?: PdSearch[K] };
         "pd-sidebar": PdSidebar;
-        "pd-sidebar-item": PdSidebarItem;
-        "pd-skeleton": PdSkeleton;
-        "pd-slider": PdSlider;
-        "pd-sort": PdSort;
-        "pd-table": PdTable;
-        "pd-table-filter": PdTableFilter;
-        "pd-tabs": PdTabs;
-        "pd-textarea": PdTextarea;
-        "pd-timeline": PdTimeline;
-        "pd-timeline-date": PdTimelineDate;
-        "pd-toast": PdToast;
+        "pd-sidebar-item": Omit<PdSidebarItem, keyof PdSidebarItemAttributes> & { [K in keyof PdSidebarItem & keyof PdSidebarItemAttributes]?: PdSidebarItem[K] } & { [K in keyof PdSidebarItem & keyof PdSidebarItemAttributes as `attr:${K}`]?: PdSidebarItemAttributes[K] } & { [K in keyof PdSidebarItem & keyof PdSidebarItemAttributes as `prop:${K}`]?: PdSidebarItem[K] };
+        "pd-skeleton": Omit<PdSkeleton, keyof PdSkeletonAttributes> & { [K in keyof PdSkeleton & keyof PdSkeletonAttributes]?: PdSkeleton[K] } & { [K in keyof PdSkeleton & keyof PdSkeletonAttributes as `attr:${K}`]?: PdSkeletonAttributes[K] } & { [K in keyof PdSkeleton & keyof PdSkeletonAttributes as `prop:${K}`]?: PdSkeleton[K] };
+        "pd-slider": Omit<PdSlider, keyof PdSliderAttributes> & { [K in keyof PdSlider & keyof PdSliderAttributes]?: PdSlider[K] } & { [K in keyof PdSlider & keyof PdSliderAttributes as `attr:${K}`]?: PdSliderAttributes[K] } & { [K in keyof PdSlider & keyof PdSliderAttributes as `prop:${K}`]?: PdSlider[K] };
+        "pd-sort": Omit<PdSort, keyof PdSortAttributes> & { [K in keyof PdSort & keyof PdSortAttributes]?: PdSort[K] } & { [K in keyof PdSort & keyof PdSortAttributes as `attr:${K}`]?: PdSortAttributes[K] } & { [K in keyof PdSort & keyof PdSortAttributes as `prop:${K}`]?: PdSort[K] };
+        "pd-table": Omit<PdTable, keyof PdTableAttributes> & { [K in keyof PdTable & keyof PdTableAttributes]?: PdTable[K] } & { [K in keyof PdTable & keyof PdTableAttributes as `attr:${K}`]?: PdTableAttributes[K] } & { [K in keyof PdTable & keyof PdTableAttributes as `prop:${K}`]?: PdTable[K] };
+        "pd-table-filter": Omit<PdTableFilter, keyof PdTableFilterAttributes> & { [K in keyof PdTableFilter & keyof PdTableFilterAttributes]?: PdTableFilter[K] } & { [K in keyof PdTableFilter & keyof PdTableFilterAttributes as `attr:${K}`]?: PdTableFilterAttributes[K] } & { [K in keyof PdTableFilter & keyof PdTableFilterAttributes as `prop:${K}`]?: PdTableFilter[K] };
+        "pd-tabs": Omit<PdTabs, keyof PdTabsAttributes> & { [K in keyof PdTabs & keyof PdTabsAttributes]?: PdTabs[K] } & { [K in keyof PdTabs & keyof PdTabsAttributes as `attr:${K}`]?: PdTabsAttributes[K] } & { [K in keyof PdTabs & keyof PdTabsAttributes as `prop:${K}`]?: PdTabs[K] };
+        "pd-textarea": Omit<PdTextarea, keyof PdTextareaAttributes> & { [K in keyof PdTextarea & keyof PdTextareaAttributes]?: PdTextarea[K] } & { [K in keyof PdTextarea & keyof PdTextareaAttributes as `attr:${K}`]?: PdTextareaAttributes[K] } & { [K in keyof PdTextarea & keyof PdTextareaAttributes as `prop:${K}`]?: PdTextarea[K] };
+        "pd-timeline": Omit<PdTimeline, keyof PdTimelineAttributes> & { [K in keyof PdTimeline & keyof PdTimelineAttributes]?: PdTimeline[K] } & { [K in keyof PdTimeline & keyof PdTimelineAttributes as `attr:${K}`]?: PdTimelineAttributes[K] } & { [K in keyof PdTimeline & keyof PdTimelineAttributes as `prop:${K}`]?: PdTimeline[K] };
+        "pd-timeline-date": Omit<PdTimelineDate, keyof PdTimelineDateAttributes> & { [K in keyof PdTimelineDate & keyof PdTimelineDateAttributes]?: PdTimelineDate[K] } & { [K in keyof PdTimelineDate & keyof PdTimelineDateAttributes as `attr:${K}`]?: PdTimelineDateAttributes[K] } & { [K in keyof PdTimelineDate & keyof PdTimelineDateAttributes as `prop:${K}`]?: PdTimelineDate[K] };
+        "pd-toast": Omit<PdToast, keyof PdToastAttributes> & { [K in keyof PdToast & keyof PdToastAttributes]?: PdToast[K] } & { [K in keyof PdToast & keyof PdToastAttributes as `attr:${K}`]?: PdToastAttributes[K] } & { [K in keyof PdToast & keyof PdToastAttributes as `prop:${K}`]?: PdToast[K] };
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "pd-alert": LocalJSX.PdAlert & JSXBase.HTMLAttributes<HTMLPdAlertElement>;
-            "pd-animation": LocalJSX.PdAnimation & JSXBase.HTMLAttributes<HTMLPdAnimationElement>;
-            "pd-backdrop": LocalJSX.PdBackdrop & JSXBase.HTMLAttributes<HTMLPdBackdropElement>;
-            "pd-button": LocalJSX.PdButton & JSXBase.HTMLAttributes<HTMLPdButtonElement>;
-            "pd-button-group": LocalJSX.PdButtonGroup & JSXBase.HTMLAttributes<HTMLPdButtonGroupElement>;
-            "pd-checkbox": LocalJSX.PdCheckbox & JSXBase.HTMLAttributes<HTMLPdCheckboxElement>;
-            "pd-chip": LocalJSX.PdChip & JSXBase.HTMLAttributes<HTMLPdChipElement>;
-            "pd-combobox": LocalJSX.PdCombobox & JSXBase.HTMLAttributes<HTMLPdComboboxElement>;
-            "pd-datepicker": LocalJSX.PdDatepicker & JSXBase.HTMLAttributes<HTMLPdDatepickerElement>;
-            "pd-dropdown": LocalJSX.PdDropdown & JSXBase.HTMLAttributes<HTMLPdDropdownElement>;
-            "pd-dropdown-item": LocalJSX.PdDropdownItem & JSXBase.HTMLAttributes<HTMLPdDropdownItemElement>;
-            "pd-icon": LocalJSX.PdIcon & JSXBase.HTMLAttributes<HTMLPdIconElement>;
-            "pd-input": LocalJSX.PdInput & JSXBase.HTMLAttributes<HTMLPdInputElement>;
-            "pd-label": LocalJSX.PdLabel & JSXBase.HTMLAttributes<HTMLPdLabelElement>;
-            "pd-list": LocalJSX.PdList & JSXBase.HTMLAttributes<HTMLPdListElement>;
-            "pd-list-item": LocalJSX.PdListItem & JSXBase.HTMLAttributes<HTMLPdListItemElement>;
-            "pd-list-item-expandable": LocalJSX.PdListItemExpandable & JSXBase.HTMLAttributes<HTMLPdListItemExpandableElement>;
-            "pd-menu": LocalJSX.PdMenu & JSXBase.HTMLAttributes<HTMLPdMenuElement>;
-            "pd-menu-item": LocalJSX.PdMenuItem & JSXBase.HTMLAttributes<HTMLPdMenuItemElement>;
-            "pd-modal": LocalJSX.PdModal & JSXBase.HTMLAttributes<HTMLPdModalElement>;
-            "pd-navbar": LocalJSX.PdNavbar & JSXBase.HTMLAttributes<HTMLPdNavbarElement>;
-            "pd-navbar-item": LocalJSX.PdNavbarItem & JSXBase.HTMLAttributes<HTMLPdNavbarItemElement>;
-            "pd-panel": LocalJSX.PdPanel & JSXBase.HTMLAttributes<HTMLPdPanelElement>;
-            "pd-panel-content": LocalJSX.PdPanelContent & JSXBase.HTMLAttributes<HTMLPdPanelContentElement>;
-            "pd-panel-footer": LocalJSX.PdPanelFooter & JSXBase.HTMLAttributes<HTMLPdPanelFooterElement>;
-            "pd-panel-header": LocalJSX.PdPanelHeader & JSXBase.HTMLAttributes<HTMLPdPanelHeaderElement>;
-            "pd-progress-bar": LocalJSX.PdProgressBar & JSXBase.HTMLAttributes<HTMLPdProgressBarElement>;
-            "pd-radio": LocalJSX.PdRadio & JSXBase.HTMLAttributes<HTMLPdRadioElement>;
-            "pd-radio-group": LocalJSX.PdRadioGroup & JSXBase.HTMLAttributes<HTMLPdRadioGroupElement>;
-            "pd-search": LocalJSX.PdSearch & JSXBase.HTMLAttributes<HTMLPdSearchElement>;
-            "pd-sidebar": LocalJSX.PdSidebar & JSXBase.HTMLAttributes<HTMLPdSidebarElement>;
-            "pd-sidebar-item": LocalJSX.PdSidebarItem & JSXBase.HTMLAttributes<HTMLPdSidebarItemElement>;
-            "pd-skeleton": LocalJSX.PdSkeleton & JSXBase.HTMLAttributes<HTMLPdSkeletonElement>;
-            "pd-slider": LocalJSX.PdSlider & JSXBase.HTMLAttributes<HTMLPdSliderElement>;
-            "pd-sort": LocalJSX.PdSort & JSXBase.HTMLAttributes<HTMLPdSortElement>;
-            "pd-table": LocalJSX.PdTable & JSXBase.HTMLAttributes<HTMLPdTableElement>;
-            "pd-table-filter": LocalJSX.PdTableFilter & JSXBase.HTMLAttributes<HTMLPdTableFilterElement>;
-            "pd-tabs": LocalJSX.PdTabs & JSXBase.HTMLAttributes<HTMLPdTabsElement>;
-            "pd-textarea": LocalJSX.PdTextarea & JSXBase.HTMLAttributes<HTMLPdTextareaElement>;
-            "pd-timeline": LocalJSX.PdTimeline & JSXBase.HTMLAttributes<HTMLPdTimelineElement>;
-            "pd-timeline-date": LocalJSX.PdTimelineDate & JSXBase.HTMLAttributes<HTMLPdTimelineDateElement>;
-            "pd-toast": LocalJSX.PdToast & JSXBase.HTMLAttributes<HTMLPdToastElement>;
+            "pd-alert": LocalJSX.IntrinsicElements["pd-alert"] & JSXBase.HTMLAttributes<HTMLPdAlertElement>;
+            "pd-animation": LocalJSX.IntrinsicElements["pd-animation"] & JSXBase.HTMLAttributes<HTMLPdAnimationElement>;
+            "pd-backdrop": LocalJSX.IntrinsicElements["pd-backdrop"] & JSXBase.HTMLAttributes<HTMLPdBackdropElement>;
+            "pd-button": LocalJSX.IntrinsicElements["pd-button"] & JSXBase.HTMLAttributes<HTMLPdButtonElement>;
+            "pd-button-group": LocalJSX.IntrinsicElements["pd-button-group"] & JSXBase.HTMLAttributes<HTMLPdButtonGroupElement>;
+            "pd-checkbox": LocalJSX.IntrinsicElements["pd-checkbox"] & JSXBase.HTMLAttributes<HTMLPdCheckboxElement>;
+            "pd-chip": LocalJSX.IntrinsicElements["pd-chip"] & JSXBase.HTMLAttributes<HTMLPdChipElement>;
+            "pd-combobox": LocalJSX.IntrinsicElements["pd-combobox"] & JSXBase.HTMLAttributes<HTMLPdComboboxElement>;
+            "pd-datepicker": LocalJSX.IntrinsicElements["pd-datepicker"] & JSXBase.HTMLAttributes<HTMLPdDatepickerElement>;
+            "pd-dropdown": LocalJSX.IntrinsicElements["pd-dropdown"] & JSXBase.HTMLAttributes<HTMLPdDropdownElement>;
+            "pd-dropdown-item": LocalJSX.IntrinsicElements["pd-dropdown-item"] & JSXBase.HTMLAttributes<HTMLPdDropdownItemElement>;
+            "pd-icon": LocalJSX.IntrinsicElements["pd-icon"] & JSXBase.HTMLAttributes<HTMLPdIconElement>;
+            "pd-input": LocalJSX.IntrinsicElements["pd-input"] & JSXBase.HTMLAttributes<HTMLPdInputElement>;
+            "pd-label": LocalJSX.IntrinsicElements["pd-label"] & JSXBase.HTMLAttributes<HTMLPdLabelElement>;
+            "pd-list": LocalJSX.IntrinsicElements["pd-list"] & JSXBase.HTMLAttributes<HTMLPdListElement>;
+            "pd-list-item": LocalJSX.IntrinsicElements["pd-list-item"] & JSXBase.HTMLAttributes<HTMLPdListItemElement>;
+            "pd-list-item-expandable": LocalJSX.IntrinsicElements["pd-list-item-expandable"] & JSXBase.HTMLAttributes<HTMLPdListItemExpandableElement>;
+            "pd-menu": LocalJSX.IntrinsicElements["pd-menu"] & JSXBase.HTMLAttributes<HTMLPdMenuElement>;
+            "pd-menu-item": LocalJSX.IntrinsicElements["pd-menu-item"] & JSXBase.HTMLAttributes<HTMLPdMenuItemElement>;
+            "pd-modal": LocalJSX.IntrinsicElements["pd-modal"] & JSXBase.HTMLAttributes<HTMLPdModalElement>;
+            "pd-navbar": LocalJSX.IntrinsicElements["pd-navbar"] & JSXBase.HTMLAttributes<HTMLPdNavbarElement>;
+            "pd-navbar-item": LocalJSX.IntrinsicElements["pd-navbar-item"] & JSXBase.HTMLAttributes<HTMLPdNavbarItemElement>;
+            "pd-panel": LocalJSX.IntrinsicElements["pd-panel"] & JSXBase.HTMLAttributes<HTMLPdPanelElement>;
+            "pd-panel-content": LocalJSX.IntrinsicElements["pd-panel-content"] & JSXBase.HTMLAttributes<HTMLPdPanelContentElement>;
+            "pd-panel-footer": LocalJSX.IntrinsicElements["pd-panel-footer"] & JSXBase.HTMLAttributes<HTMLPdPanelFooterElement>;
+            "pd-panel-header": LocalJSX.IntrinsicElements["pd-panel-header"] & JSXBase.HTMLAttributes<HTMLPdPanelHeaderElement>;
+            "pd-progress-bar": LocalJSX.IntrinsicElements["pd-progress-bar"] & JSXBase.HTMLAttributes<HTMLPdProgressBarElement>;
+            "pd-radio": LocalJSX.IntrinsicElements["pd-radio"] & JSXBase.HTMLAttributes<HTMLPdRadioElement>;
+            "pd-radio-group": LocalJSX.IntrinsicElements["pd-radio-group"] & JSXBase.HTMLAttributes<HTMLPdRadioGroupElement>;
+            "pd-search": LocalJSX.IntrinsicElements["pd-search"] & JSXBase.HTMLAttributes<HTMLPdSearchElement>;
+            "pd-sidebar": LocalJSX.IntrinsicElements["pd-sidebar"] & JSXBase.HTMLAttributes<HTMLPdSidebarElement>;
+            "pd-sidebar-item": LocalJSX.IntrinsicElements["pd-sidebar-item"] & JSXBase.HTMLAttributes<HTMLPdSidebarItemElement>;
+            "pd-skeleton": LocalJSX.IntrinsicElements["pd-skeleton"] & JSXBase.HTMLAttributes<HTMLPdSkeletonElement>;
+            "pd-slider": LocalJSX.IntrinsicElements["pd-slider"] & JSXBase.HTMLAttributes<HTMLPdSliderElement>;
+            "pd-sort": LocalJSX.IntrinsicElements["pd-sort"] & JSXBase.HTMLAttributes<HTMLPdSortElement>;
+            "pd-table": LocalJSX.IntrinsicElements["pd-table"] & JSXBase.HTMLAttributes<HTMLPdTableElement>;
+            "pd-table-filter": LocalJSX.IntrinsicElements["pd-table-filter"] & JSXBase.HTMLAttributes<HTMLPdTableFilterElement>;
+            "pd-tabs": LocalJSX.IntrinsicElements["pd-tabs"] & JSXBase.HTMLAttributes<HTMLPdTabsElement>;
+            "pd-textarea": LocalJSX.IntrinsicElements["pd-textarea"] & JSXBase.HTMLAttributes<HTMLPdTextareaElement>;
+            "pd-timeline": LocalJSX.IntrinsicElements["pd-timeline"] & JSXBase.HTMLAttributes<HTMLPdTimelineElement>;
+            "pd-timeline-date": LocalJSX.IntrinsicElements["pd-timeline-date"] & JSXBase.HTMLAttributes<HTMLPdTimelineDateElement>;
+            "pd-toast": LocalJSX.IntrinsicElements["pd-toast"] & JSXBase.HTMLAttributes<HTMLPdToastElement>;
         }
     }
 }
