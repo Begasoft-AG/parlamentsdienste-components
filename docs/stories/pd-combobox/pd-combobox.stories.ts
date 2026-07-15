@@ -48,7 +48,7 @@ const defaultArgTypes: ArgTypes = {
 };
 
 const meta: Meta<ComoboBoxArgs> = {
-    title: 'Forms + Inputs/Combobox',
+    title: 'Forms/Combobox',
     args: defaultArgs,
     argTypes: defaultArgTypes,
 };

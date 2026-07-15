@@ -25,7 +25,7 @@ const defaultArgs = {
 type DropdownArgs = typeof defaultArgs;
 
 const meta: Meta<DropdownArgs> = {
-    title: 'Forms + Inputs/Dropdown',
+    title: 'Forms/Dropdown',
     args: defaultArgs,
 };
 export default meta;

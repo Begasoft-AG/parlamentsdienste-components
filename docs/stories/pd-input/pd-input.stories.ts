@@ -19,7 +19,7 @@ const defaultArgs = {
 type InputArgs = typeof defaultArgs;
 
 const meta: Meta<InputArgs> = {
-    title: 'Forms + Inputs/Input',
+    title: 'Forms/Input',
     args: defaultArgs,
 };
 

@@ -18,7 +18,7 @@ const defaultArgTypes: ArgTypes = {
 };
 
 const meta: Meta<TabArgs> = {
-    title: 'Interactions/Tabs',
+    title: 'Navigation/Tabs',
     args: defaultArgs,
     argTypes: defaultArgTypes,
 };

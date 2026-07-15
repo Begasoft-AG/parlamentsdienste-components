@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/html-vite';
 
 const meta: Meta = {
-    title: 'Typography/Inline',
+    title: 'Foundations/Inline',
 };
 
 export default meta;

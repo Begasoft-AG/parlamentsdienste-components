@@ -19,7 +19,7 @@ const defaultArgTypes: ArgTypes = {
 };
 
 const meta: Meta<SliderArgs> = {
-    title: 'Forms + Inputs/Slider',
+    title: 'Forms/Slider',
     args: defaultArgs,
     argTypes: defaultArgTypes,
 };

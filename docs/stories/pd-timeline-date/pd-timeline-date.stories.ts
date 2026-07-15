@@ -15,7 +15,7 @@ const defaultArgTypes: ArgTypes = {
 };
 
 const meta: Meta<TimelineDateArgs> = {
-    title: 'Interactions/Timeline Date',
+    title: 'Data Display/Timeline Date',
     args: defaultArgs,
     argTypes: defaultArgTypes,
 };

@@ -14,7 +14,7 @@ const defaultArgs = {
 type RadioArgs = typeof defaultArgs;
 
 const meta: Meta<RadioArgs> = {
-    title: 'Forms + Inputs/Radio',
+    title: 'Forms/Radio',
 };
 
 export default meta;

@@ -16,7 +16,7 @@ const defaultArgTypes: ArgTypes = {
 };
 
 const meta: Meta<TooltipArgs> = {
-    title: 'Interactions/Tooltip & Popover',
+    title: 'Overlays/Tooltip & Popover',
 };
 
 export default meta;

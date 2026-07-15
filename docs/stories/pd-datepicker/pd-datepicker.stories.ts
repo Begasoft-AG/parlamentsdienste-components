@@ -19,7 +19,7 @@ const defaultArgTypes: ArgTypes = {
 };
 
 const meta: Meta<DatepickerArgs> = {
-    title: 'Forms + Inputs/Datepicker',
+    title: 'Forms/Datepicker',
     args: defaultArgs,
     argTypes: defaultArgTypes,
 };

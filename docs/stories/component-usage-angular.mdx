@@ -1,75 +1,83 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Source, Subheading, Subtitle, Title } from '@storybook/addon-docs/blocks';
 
 <Meta title="Docs/Angular/Angular Component Usage" />
 
-# Component Usage Angular
+<Title>Component Usage Angular</Title>
+<Subtitle>Use Parlamentsdienste components in Angular templates and forms.</Subtitle>
 
-<br />
-<br />
+<Subheading>Normal Property Binding</Subheading>
 
-## Normal Property Binding
-
-```typescript
+<Source
+    language="typescript"
+    code={`
 import { PdInput } from '@parlamentsdienste/pdcomponents-angular';
 
 @Component({
-    selector: 'demo-property-binding',
-    template: ` <pd-input [value]="inputValue" (pd-change)="onChange($event)" placeholder="Type something..." /> `,
-    standalone: true,
-    imports: [PdInput],
+selector: 'demo-property-binding',
+template: '<pd-input [value]="inputValue" (pd-change)="onChange($event)" placeholder="Type something..." />',
+standalone: true,
+imports: [PdInput],
 })
 export class DemoPropertyBindingComponent {
-    inputValue = 'Hello World';
-    onChange(event: any) {
-        this.inputValue = event.target.value;
-    }
+inputValue = 'Hello World';
+onChange(event: any) {
+this.inputValue = event.target.value;
 }
-```
+}
+`}
+/>
 
-## ngModel (Template-driven Forms)
+<Subheading>ngModel (Template-driven Forms)</Subheading>
 
-```typescript
+<Source
+    language="typescript"
+    code={`
 import { PdInput } from '@parlamentsdienste/pdcomponents-angular';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-    selector: 'demo-ng-model',
-    template: ` <pd-input [(ngModel)]="twoWayBinding" placeholder="Type something..." /> `,
-    standalone: true,
-    imports: [PdInput, FormsModule],
+selector: 'demo-ng-model',
+template: '<pd-input [(ngModel)]="twoWayBinding" placeholder="Type something..." />',
+standalone: true,
+imports: [PdInput, FormsModule],
 })
 export class DemoNgModelComponent {
-    twoWayBinding = 'two-way binding';
+twoWayBinding = 'two-way binding';
 }
-```
+`}
+/>
 
-## Reactive Forms
+<Subheading>Reactive Forms</Subheading>
 
-```typescript
+<Source
+    language="typescript"
+    code={`
 import { PdInput } from '@parlamentsdienste/pdcomponents-angular';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
-    selector: 'demo-reactive-forms',
-    template: `
-        <form [formGroup]="testForm">
-            <pd-input formControlName="firstname" placeholder="Firstname (min 3 chars)" />
-            <pd-input formControlName="lastname" placeholder="Lastname" />
-            <button (click)="buttonClicked()">Show Value</button>
-        </form>
-    `,
-    standalone: true,
-    imports: [PdInput, ReactiveFormsModule],
+selector: 'demo-reactive-forms',
+template: '
+<form [formGroup]="testForm">
+<pd-input formControlName="firstname" placeholder="Firstname (min 3 chars)" />
+<pd-input formControlName="lastname" placeholder="Lastname" />
+<button (click)="buttonClicked()">Show Value</button>
+</form>
+',
+standalone: true,
+imports: [PdInput, ReactiveFormsModule],
 })
 export class DemoReactiveFormsComponent {
-    testForm = new FormGroup({
-        firstname: new FormControl('John', Validators.minLength(3)),
-        lastname: new FormControl('Doe'),
-    });
+testForm = new FormGroup({
+firstname: new FormControl('John', Validators.minLength(3)),
+lastname: new FormControl('Doe'),
+});
 
     buttonClicked() {
         console.log('Button clicked');
         console.log(this.testForm.value);
     }
+
 }
-```
+`}
+/>

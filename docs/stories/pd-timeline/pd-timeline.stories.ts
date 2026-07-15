@@ -8,7 +8,7 @@ const defaultArgs = {
 type TimelineArgs = typeof defaultArgs;
 
 const meta: Meta<TimelineArgs> = {
-    title: 'Interactions/Timeline',
+    title: 'Data Display/Timeline',
 };
 
 export default meta;

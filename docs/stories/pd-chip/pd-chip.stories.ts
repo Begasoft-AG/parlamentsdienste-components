@@ -10,7 +10,7 @@ const defaultArgs = {
 type ChipArgs = typeof defaultArgs;
 
 const meta: Meta = {
-    title: 'Interactions/Chip',
+    title: 'Forms/Chip',
     args: defaultArgs,
 };
 

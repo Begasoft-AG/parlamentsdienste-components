@@ -1,61 +1,68 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Source, Subheading, Subtitle, Title } from '@storybook/addon-docs/blocks';
 
 <Meta title="Docs/React/React Component Usage" />
 
-# Component Usage React
+<Title>Component Usage React</Title>
+<Subtitle>Use Parlamentsdienste components in controlled and uncontrolled React patterns.</Subtitle>
 
-<br />
-<br />
+<Subheading>Controlled Input</Subheading>
 
-## Controlled Input
-
-```jsx
+<Source
+    language="jsx"
+    code={`
 import { PdInput } from '@parlamentsdienste/pdcomponents-react';
 import { useState } from 'react';
 
 function ControlledInputDemo() {
-    const [inputValue, setInputValue] = useState('Hello World');
-    return <PdInput value={inputValue} placeholder="Type something..." onInput={e => setInputValue(e.target.value)} />;
+const [inputValue, setInputValue] = useState('Hello World');
+return <PdInput value={inputValue} placeholder="Type something..." onInput={e => setInputValue(e.target.value)} />;
 }
-```
+`}
+/>
 
-## Uncontrolled Input with Ref
+<Subheading>Uncontrolled Input with Ref</Subheading>
 
-```jsx
+<Source
+    language="jsx"
+    code={`
 import { PdInput } from '@parlamentsdienste/pdcomponents-react';
 import { useRef } from 'react';
 
 function UncontrolledInputDemo() {
-    const inputRef = useRef(null);
-    return (
-        <>
-            <PdInput placeholder="Type something..." value="test" ref={inputRef} />
-            <button
-                onClick={() => {
-                    alert(inputRef.current?.value);
-                }}>
-                Show Value
-            </button>
-        </>
-    );
+const inputRef = useRef(null);
+return (
+<>
+<PdInput placeholder="Type something..." value="test" ref={inputRef} />
+<button
+onClick={() => {
+alert(inputRef.current?.value);
+}}>
+Show Value
+</button>
+</>
+);
 }
-```
+`}
+/>
 
-## Combobox Example
+<Subheading>Combobox Example</Subheading>
 
-```jsx
+<Source
+    language="jsx"
+    code={`
 import { PdCombobox } from '@parlamentsdienste/pdcomponents-react';
 
 const comboItems = [
-    { id: '1', label: 'Mitteilungen und Verschiedenes', value: 'a1' },
-    { id: '2', label: 'Pa.Iv. Semadeni. Fakultatives', value: 'a2' },
-    { id: '3', label: 'Obligatorisches', value: 'a3' },
-    { id: '4', label: 'Anfrage', value: 'a4' },
-    { id: '5', label: 'Interpellation', value: 'a5' },
-    { id: '6', label: 'Motion', value: 'a6' },
+{ id: '1', label: 'Mitteilungen und Verschiedenes', value: 'a1' },
+{ id: '2', label: 'Pa.Iv. Semadeni. Fakultatives', value: 'a2' },
+{ id: '3', label: 'Obligatorisches', value: 'a3' },
+{ id: '4', label: 'Anfrage', value: 'a4' },
+{ id: '5', label: 'Interpellation', value: 'a5' },
+{ id: '6', label: 'Motion', value: 'a6' },
 ];
 
 function ComboboxDemo() {
-    return <PdCombobox label="test combo" items={comboItems} multiselect selected={comboItems.slice(1, 3)} />;
+return <PdCombobox label="test combo" items={comboItems} multiselect selected={comboItems.slice(1, 3)} />;
 }
-```
+`}
+/>

@@ -4,6 +4,7 @@ import '@parlamentsdienste/pdcomponents-core/styles/parlamentsdienstecore.css';
 import '@parlamentsdienste/pdcomponents-core/styles/typography.css';
 import 'https://unpkg.com/@popperjs/core@2';
 import 'https://unpkg.com/tippy.js@6';
+import './storybook-overrides.css';
 
 const preview: Preview = {
     parameters: {
@@ -15,7 +16,18 @@ const preview: Preview = {
         },
         options: {
             storySort: {
-                order: ['Welcome', '*'],
+                order: [
+                    'Welcome',
+                    'Docs',
+                    'Foundations',
+                    'Layout',
+                    'Navigation',
+                    'Forms',
+                    'Data Display',
+                    'Feedback',
+                    'Overlays',
+                    '*',
+                ],
             },
         },
     },

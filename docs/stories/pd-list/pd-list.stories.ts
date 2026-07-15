@@ -2,7 +2,7 @@ import type { ArgTypes, Meta, StoryObj } from '@storybook/html-vite';
 import { addEventlisteners } from '../utils/eventListeners';
 
 const meta: Meta = {
-    title: 'Interactions/List',
+    title: 'Data Display/List',
 };
 
 export default meta;

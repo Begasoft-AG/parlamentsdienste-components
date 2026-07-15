@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Subheading, Title } from '@storybook/addon-docs/blocks';
 
 <Meta title="Docs/Compatibility" />
 
@@ -162,11 +162,14 @@ export function CompatibilityTable({ columns, rows }) {
     );
 }
 
-# Compatibility Matrix
+<Title>Compatibility Matrix</Title>
 
-This matrix is maintained manually. A combination is only marked as compatible after explicit confirmation.
+<p>This matrix is maintained manually. A combination is only marked as compatible after explicit confirmation.</p>
 
-Supported peer ranges are Angular 17-22, React 18-19 and Vue 3.4.38+. The table below focuses on a small set of verified reference setups instead of every possible combination.
+<p>
+    Supported peer ranges are Angular 17-22, React 18-19 and Vue 3.4.38+. The table below focuses on a small set of
+    verified reference setups instead of every possible combination.
+</p>
 
 <div className="compat-legend">
     <StatusBadge status="compatible" />
@@ -174,7 +177,7 @@ Supported peer ranges are Angular 17-22, React 18-19 and Vue 3.4.38+. The table 
     <StatusBadge status="not-tested" />
 </div>
 
-## Angular
+<Subheading>Angular</Subheading>
 
 <CompatibilityTable
     columns={[
@@ -187,7 +190,7 @@ Supported peer ranges are Angular 17-22, React 18-19 and Vue 3.4.38+. The table 
     rows={compatibilityData.angular}
 />
 
-## React
+<Subheading>React</Subheading>
 
 <CompatibilityTable
     columns={[
@@ -201,7 +204,7 @@ Supported peer ranges are Angular 17-22, React 18-19 and Vue 3.4.38+. The table 
     rows={compatibilityData.react}
 />
 
-## Vue
+<Subheading>Vue</Subheading>
 
 <CompatibilityTable
     columns={[

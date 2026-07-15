@@ -1,25 +1,28 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Source, Subheading, Subtitle, Title } from '@storybook/addon-docs/blocks';
 
 <Meta title="Docs/Vue/Vue Component Usage" />
 
-# Component Usage Vue
+<Title>Component Usage Vue</Title>
+<Subtitle>Use Parlamentsdienste components with Vue property binding and v-model.</Subtitle>
 
-<br />
-<br />
+<Subheading>Property binding</Subheading>
 
-## Property binding
-
-```typescript
+<Source
+    language="typescript"
+    code={`
 import { PdInput } from "@parlamentsdienste/pdcomponents-vue";
 
 <template>
     <PdInput :value="inputValue" @pd-change="handleChange" />
 </template>
-```
+`}
+/>
 
-## Two-way binding
+<Subheading>Two-way binding</Subheading>
 
-```typescript
+<Source
+    language="typescript"
+    code={`
 import { PdInput } from '@parlamentsdienste/pdcomponents-vue';
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
@@ -33,4 +36,5 @@ export default defineComponent({
 <template>
     <PdInput v-model="twoWayBinding" />
 </template>;
-```
+`}
+/>

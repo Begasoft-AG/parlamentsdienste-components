@@ -1,64 +1,97 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Source, Subheading, Subtitle, Title } from '@storybook/addon-docs/blocks';
 
 <Meta title="Docs/Vue/Vue Project Setup" />
 
-# Project Setup Vue
+<Title>Project Setup Vue</Title>
+<Subtitle>Install and configure the Vue package.</Subtitle>
 
-Node Version: 22<br />
-Vue Version: 3.5
+<p>
+    Node Version: 22
+    <br />
+    Vue Version: 3.5
+</p>
 
-1. Start a new vue project using vite, nuxt, nx...
+<Subheading>Start a new Vue project</Subheading>
+<p>Start a new Vue project using Vite, Nuxt, Nx, or your preferred Vue setup.</p>
 
-2. Install the parlamentsdienste components from npm:
+<Subheading>Install the parlamentsdienste components from npm</Subheading>
 
-    ```bash
-    cd my-vue-app
-    npm install @parlamentsdienste/pdcomponents-vue
-    ```
+<Source
+    language="bash"
+    code={`cd my-vue-app
+npm install @parlamentsdienste/pdcomponents-vue`}
+/>
 
-3. Make shure the assets from the core library are served as static assets. If you use vite, you can use the `vite-plugin-static-copy` plugin in your `vite.config.ts`:
+<Subheading>Serve core assets as static assets</Subheading>
+<p>
+    Make sure the assets from the core library are served as static assets. If you use Vite, you can use the{' '}
+    <code>vite-plugin-static-copy</code> plugin in your <code>vite.config.ts</code>:
+</p>
 
-    ```typescript
-    import vue from '@vitejs/plugin-vue';
-    import { defineConfig } from 'vite';
-    import { viteStaticCopy } from 'vite-plugin-static-copy';
+<Source
+    language="typescript"
+    code={`
+import vue from '@vitejs/plugin-vue';
+import { defineConfig } from 'vite';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
-    export default defineConfig({
-        plugins: [
-            vue(),
-            viteStaticCopy({
-                targets: [
-                    {
-                        src: 'node_modules/@parlamentsdienste/pdcomponents-core/dist/parlamentsdienstecore/assets',
-                        dest: '.',
-                    },
-                ],
-            }),
-        ],
-    });
-    ```
+export default defineConfig({
+    plugins: [
+        vue(),
+        viteStaticCopy({
+            targets: [
+                {
+                    src: 'node_modules/@parlamentsdienste/pdcomponents-core/dist/parlamentsdienstecore/assets',
+                    dest: '.',
+                },
+            ],
+        }),
+    ],
+});
+`}
+/>
 
-    or you can copy the assets to the `public` folder with a postinstall script in your `package.json`:
+<p>
+    You can also copy the assets to the <code>public</code> folder with a postinstall script in your{' '}
+    <code>package.json</code>:
+</p>
 
-    ```json
+<Source
+    language="json"
+    code={`
     "scripts": {
         "postinstall": "cp -R node_modules/@parlamentsdienste/pdcomponents-core/dist/parlamentsdienstecore/assets public"
     }
-    ```
+`}
+/>
 
-    Don't forget to call this script after updating the library to ensure the assets are up-to-date.
+<p>Call this script after updating the library to ensure the assets are up-to-date.</p>
 
-4. To add the base styles and fonts add these two lines to the main entry file (e.g. `main.ts`):
+<Subheading>Add base styles and fonts</Subheading>
+<p>
+    Add these two lines to the main entry file, for example <code>main.ts</code>:
+</p>
 
-    ```typescript
-    import '@parlamentsdienste/pdcomponents-core/styles/parlamentsdienstecore.css';
-    import '@parlamentsdienste/pdcomponents-core/styles/typography.css';
-    ```
+<Source
+    language="typescript"
+    code={`
+import '@parlamentsdienste/pdcomponents-core/styles/parlamentsdienstecore.css';
+import '@parlamentsdienste/pdcomponents-core/styles/typography.css';
+`}
+/>
 
-5. Call setAssetPath in your main entry file (e.g. `main.ts`) to set the asset path for the components:
+<Subheading>Set the asset path</Subheading>
+<p>
+    Call <code>setAssetPath</code> in your main entry file, for example <code>main.ts</code>, to set the asset path for
+    the components:
+</p>
 
-    ```typescript
-    import { setAssetPath } from '@parlamentsdienste/pdcomponents-core/components';
-    setAssetPath('http://localhost:5173');
-    createApp(App).mount('#app');
-    ```
+<Source
+    language="typescript"
+    code={`
+import { setAssetPath } from '@parlamentsdienste/pdcomponents-core/components';
+
+setAssetPath('http://localhost:5173');
+createApp(App).mount('#app');
+`}
+/>

@@ -8,7 +8,7 @@ const defaultArgs = {
 type LabelArgs = typeof defaultArgs;
 
 const meta: Meta<LabelArgs> = {
-    title: 'Interactions/Label',
+    title: 'Data Display/Label',
     args: defaultArgs,
     argTypes: {
         color: { control: { type: 'color' } },

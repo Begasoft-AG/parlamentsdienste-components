@@ -11,7 +11,7 @@ const defaultArgs = {
 type RadioGroupArgs = typeof defaultArgs;
 
 const meta: Meta<RadioGroupArgs> = {
-    title: 'Forms + Inputs/Radio-Group',
+    title: 'Forms/Radio Group',
     args: defaultArgs,
 };
 

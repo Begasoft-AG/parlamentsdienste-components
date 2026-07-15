@@ -116,7 +116,7 @@ const defaultArgTypes: ArgTypes = {
 };
 
 const meta: Meta<TableArgs> = {
-    title: 'Interactions/Table',
+    title: 'Data Display/Table',
     args: defaultArgs,
     argTypes: defaultArgTypes,
 };

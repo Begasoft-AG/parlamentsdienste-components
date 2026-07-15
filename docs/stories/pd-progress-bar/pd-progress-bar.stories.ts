@@ -19,7 +19,7 @@ const defaultArgTypes: ArgTypes = {
 };
 
 const meta: Meta<ProgressBarArgs> = {
-    title: 'Interactions/Progress Bar',
+    title: 'Feedback/Progress Bar',
     args: defaultArgs,
     argTypes: defaultArgTypes,
 };

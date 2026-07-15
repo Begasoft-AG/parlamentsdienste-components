@@ -2,7 +2,7 @@ import { iconMap } from '@parlamentsdienste/pdcomponents-core/utils';
 import type { ArgTypes, Meta, StoryObj } from '@storybook/html-vite';
 
 const meta: Meta = {
-    title: 'Typography/Icon',
+    title: 'Foundations/Icon',
 };
 
 export default meta;

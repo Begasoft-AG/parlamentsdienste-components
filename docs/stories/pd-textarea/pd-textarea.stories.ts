@@ -20,7 +20,7 @@ const defaultArgs = {
 type TextareaArgs = typeof defaultArgs;
 
 const meta: Meta<TextareaArgs> = {
-    title: 'Forms + Inputs/Textarea',
+    title: 'Forms/Textarea',
     args: defaultArgs,
 };
 

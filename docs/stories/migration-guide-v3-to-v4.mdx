@@ -1,111 +1,123 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Source, Subheading, Subtitle, Title } from '@storybook/addon-docs/blocks';
 
 <Meta title="Docs/Migration Guide v3 to v4" />
 
-# Migration Guide: v3.x to v4.0
+<Title>Migration Guide: v3.x to v4.0</Title>
+<Subtitle>Move from version 3.x to 4.0 of the Parlamentsdienste Components library.</Subtitle>
 
-This guide helps you migrate from version 3.x to 4.0 of the Parlamentsdienste Components library.
+<Subheading>Overview</Subheading>
 
-## Overview
+Version 4.0 is a major update that introduces framework-specific wrapper libraries for Angular, React, and Vue. This
+provides better integration with each framework's ecosystem, particularly for form handling.
 
-Version 4.0 is a major update that introduces framework-specific wrapper libraries for Angular, React, and Vue. This provides better integration with each framework's ecosystem, particularly for form handling.
+<Subheading>Installation</Subheading>
 
-## Installation
+In version 4.0, install the wrapper package for your framework. The core package is automatically installed as a
+dependency.
 
-In version 4.0, install the wrapper package for your framework. The core package is automatically installed as a dependency:
+#### Angular
 
-**Angular:**
+<Source language="bash" code={`npm install @parlamentsdienste/pdcomponents-angular`} />
 
-```bash
-npm install @parlamentsdienste/pdcomponents-angular
-```
+#### React
 
-**React:**
+<Source language="bash" code={`npm install @parlamentsdienste/pdcomponents-react`} />
 
-```bash
-npm install @parlamentsdienste/pdcomponents-react
-```
+#### Vue
 
-**Vue:**
+<Source language="bash" code={`npm install @parlamentsdienste/pdcomponents-vue`} />
 
-```bash
-npm install @parlamentsdienste/pdcomponents-vue
-```
+The wrapper libraries automatically include the correct version of <code>@parlamentsdienste/pdcomponents-core</code> as a
+dependency.
 
-The wrapper libraries automatically include the correct version of `@parlamentsdienste/pdcomponents-core` as a dependency.
-
-## Framework Support
-
-Version 4.0 has been build to work with the latest framework versions:
-
--   **Angular:** 19+ (with reactive forms support)
--   **React:** 18+ and 19+
--   **Vue:** 3.4.38+ (with two-way binding support)
-
+<br />
+<br />
 ## Breaking Changes
 
-### 1. Event Value Structure Change
+<Subheading>1. Event Value Structure Change</Subheading>
 
-**Affected Components:** `pd-input`, `pd-textarea`, `pd-search`, `pd-slider`
+-   **Affected components:** <code>pd-input</code>, <code>pd-textarea</code>, <code>pd-search</code>, <code>pd-slider</code>
+-   **What changed:** These components now emit the value directly instead of wrapping it in an object with a <code>value</code>
+    property. This change makes the API consistent with other components like <code>pd-dropdown</code> and
+    <code>pd-combobox</code>.
 
-**What Changed:**
-These components now emit the value directly instead of wrapping it in an object with a `value` property. This change makes the API consistent with other components like `pd-dropdown` and `pd-combobox`.
+<Subheading>Migration (Vue)</Subheading>
 
-**Migration:**
+#### Before (v3.x)
 
-**Vue Example:**
-
-**Before (v3.x):**
-
-```typescript
+<Source
+	language="typescript"
+	code={`
 <pd-input @pd-change="onChange"></pd-input>
 
-const onChange = (event) => { const value = event.detail.value; // wrapped console.log(value); }
-```
+const onChange = event => {
+const value = event.detail.value;
+console.log(value);
+};
+`}
+/>
 
-**After (v4.0):**
+#### After (v4.0)
 
-```typescript
+<Source
+	language="typescript"
+	code={`
 <pd-input @pd-change="onChange"></pd-input>
 
-const onChange = (event) => { const value = event.detail; // direct console.log(value); }
-```
+const onChange = event => {
+const value = event.detail;
+console.log(value);
+};
+`}
+/>
 
-**Why This Change:**
-This change enables proper two-way data binding in the wrapper libraries and ensures consistent behavior across all form components. It's particularly important for Angular's reactive forms and Vue's v-model support.
+**Why this change:** This change enables proper two-way data binding in the wrapper libraries and ensures consistent
+behavior across all form components. It's particularly important for Angular's reactive forms and Vue's v-model support.
 
-### 2. New `selected` Propertyn
+<Subheading>2. New selected Property</Subheading>
 
-**Affected Components:** `pd-dropdown`, `pd-combobox`
+-   **Affected components:** <code>pd-dropdown</code>, <code>pd-combobox</code>
+-   **What changed:** A new <code>selected</code> property has been added to support framework-specific value accessors and
+    two-way binding.
 
-**What Changed:**
-A new `selected` property has been added to support framework-specific value accessors and two-way binding.
+<Subheading>Usage</Subheading>
 
-**Usage:**
+#### Angular (reactive forms)
 
-**Angular (with reactive forms):**
-
-```jsx
+<Source
+    language="jsx"
+    code={`
 <pd-dropdown [formControl]="myControl"></pd-dropdown>
 // The selected property is handled internally by the Angular wrapper
-```
+`}
+/>
 
-**Vue (with v-model):**
+#### Vue (v-model)
 
-```jsx
+<Source
+    language="jsx"
+    code={`
 <pd-dropdown v-model="selectedValue"></pd-dropdown>
 // The selected property enables v-model support
-```
+`}
+/>
 
-**React:**
+#### React
 
-```jsx
+<Source
+    language="jsx"
+    code={`
 <PdDropdown selected={selectedItem} onPdChange={e => setSelectedItem(e.detail)} />
-```
+`}
+/>
 
-**Note:** For most use cases, you can continue using the `pd-change` event as before. The `selected` property is primarily used internally by the framework wrappers for form integration.
+**Note:** For most use cases, you can continue using the <code>pd-change</code> event as before. The
 
-## Updated Dependencies
+<code>selected</code> property is primarily used internally by the framework wrappers for form integration.
+
+<br />
+<br />
+<Subheading>Updated Dependencies</Subheading>
 
 -   **Stencil:** Updated to 4.31.0
 -   **Storybook:** Updated to 9.0.4

@@ -1,15 +1,15 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Subheading, Title } from '@storybook/addon-docs/blocks';
 
 <Meta title="Welcome" />
 
 <div className="welcome">
-    <h1>Welcome to the Parlamentsdienste Design System</h1>
+    <Title>Welcome to the Parlamentsdienste Design System</Title>
 
     <p>The Swiss Parliamentary Services function as the administrative unit of the Federal Assembly and its bodies, providing support through modern IT systems and applications. To standardize and modernize the look and feel of web applications within the Swiss Parliamentary Services, a web component library was developed using StencilJS. In 2025, it was extended with framework-specific wrappers for Angular, React, and Vue to ensure seamless integration across different frontend ecosystems.</p>
 
     <p>Here you'll find all the core components and documentation you need to create a webapp.</p>
 
-    <p>These Web-components were created using StencilJS and Storybook. For more information about how to use and integrate them into a web application, read the setup documentation in this storybook</p>
+    <p>These Web-components were created using StencilJS and Storybook. For more information about how to use and integrate them into a web application, read the setup documentation in this storybook.</p>
 
     <div className="mt-4">
         <a href="https://github.com/Begasoft-AG/parlamentsdienste-components" target="_blank"><pd-button>GITHUB Repository</pd-button></a>
@@ -18,7 +18,7 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
     </div>
 
-    <p className="mt-3 mb-2"><strong>Read more</strong></p>
+    <Subheading>Read more</Subheading>
     <ul className="mt-0 pl-0">
         <li>Web Components: <a href="https://developer.mozilla.org/en/docs/Web/Web_Components" target="_blank">Mozilla Developer - Web Components</a></li>
         <li>Building Web Components with StencilJS: <a href="https://stenciljs.com/" target="_blank">StencilJS</a></li>
@@ -35,14 +35,6 @@ import { Meta } from '@storybook/addon-docs/blocks';
         // text-align: center;
         padding-right:10%;
         padding-left:5%;
-    }
-
-    .welcome h1 {
-        line-height: 1.2;
-    }
-
-    .welcome p {
-        margin-bottom:0;
     }
 
     ul {

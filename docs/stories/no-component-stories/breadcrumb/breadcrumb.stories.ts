@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/html-vite';
 
 const meta: Meta = {
-    title: 'Interactions/Breadcrumb',
+    title: 'Navigation/Breadcrumb',
 };
 
 export default meta;

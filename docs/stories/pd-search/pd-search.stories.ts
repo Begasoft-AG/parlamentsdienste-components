@@ -16,7 +16,7 @@ const defaultArgTypes: ArgTypes = {
 };
 
 const meta: Meta<SearchArgs> = {
-    title: 'Forms + Inputs/Search',
+    title: 'Forms/Search',
     args: defaultArgs,
     argTypes: defaultArgTypes,
 };

@@ -14,7 +14,7 @@ const defaultArgs = {
 // type CheckboxArgs = typeof defaultArgs;
 
 const meta = {
-    title: 'Forms + Inputs/Checkbox',
+    title: 'Forms/Checkbox',
     args: defaultArgs,
 };
 

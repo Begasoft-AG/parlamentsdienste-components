@@ -1,60 +1,73 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Source, Subheading, Subtitle, Title } from '@storybook/addon-docs/blocks';
 
 <Meta title="Docs/Angular/Angular Project Setup" />
 
-# Project Setup Angular
+<Title>Project Setup Angular</Title>
+<Subtitle>Install and configure the Angular package.</Subtitle>
 
-Node Version: 22<br />
-Angular Version: 19
+<Subheading>Start a new Angular project using the Angular CLI</Subheading>
 
-<br />
+<Source language="bash" code={`ng new my-angular-app`} />
 
-1. Start a new angular project using the Angular CLI:
+<Subheading>Install the parlamentsdienste components from npm</Subheading>
 
-    ```bash
-    ng new my-angular-app
-    ```
+<Source
+    language="bash"
+    code={`cd my-angular-app
+npm install @parlamentsdienste/pdcomponents-angular`}
+/>
 
-2. Install the parlamentsdienste components from npm:
+<Subheading>Add fonts and icons in angular.json assets</Subheading>
+<p>
+    Add this object to the <code>angular.json</code> <code>assets</code> array:
+</p>
 
-    ```bash
-    cd my-angular-app
-    npm install @parlamentsdienste/pdcomponents-angular
-    ```
+<Source
+    language="json"
+    code={`
+    "assets": [
+          {
+            "glob": "**/*",
+            "input": "node_modules/@parlamentsdienste/pdcomponents-core/dist/parlamentsdienstecore/assets",
+            "output": "assets"
+          },
+    ]
+`}
+/>
 
-3. To add fonts and icons add this objectsto the `angular.json` assets array:
+<Subheading>Add base styles and fonts in angular.json styles</Subheading>
+<p>
+    Add these two lines to the <code>styles</code> array in <code>angular.json</code>:
+</p>
 
-    ```json
-        "assets": [
-              {
-                "glob": "**/*",
-                "input": "node_modules/@parlamentsdienste/pdcomponents-core/dist/parlamentsdienstecore/assets",
-                "output": "assets"
-              },
-        ]
-    ```
+<Source
+    language="json"
+    code={`
+    "styles": [
+        "node_modules/@parlamentsdienste/pdcomponents-core/dist/parlamentsdienstecore/typography.css",
+        "node_modules/@parlamentsdienste/pdcomponents-core/dist/parlamentsdienstecore/parlamentsdienstecore.css"
+    ],
+`}
+/>
 
-4. To add the base styles and fonts add these two lines to the `styles` array in `angular.json`:
+<Subheading>Set the asset path in your app initializer</Subheading>
+<p>
+    Call <code>setAssetPath</code> and set it to the base URL of your project:
+</p>
 
-    ```json
-        "styles": [
-            "node_modules/@parlamentsdienste/pdcomponents-core/dist/parlamentsdienstecore/typography.css",
-            "node_modules/@parlamentsdienste/pdcomponents-core/dist/parlamentsdienstecore/parlamentsdienstecore.css"
-        ],
-    ```
+<Source
+    language="typescript"
+    code={`
+import { setAssetPath } from '@parlamentsdienste/pdcomponents-core/components';
 
-5. Call setAssetPath in your app-initializer and set it to the baseUrl of your project
-
-    ```typescript
-    import { setAssetPath } from '@parlamentsdienste/pdcomponents-core/components';
-
-    bootstrapApplication(AppComponent, {
-        providers: [
-            provideAppInitializer(() => {
-                setAssetPath('http://localhost:4200');
-            }),
-            provideZoneChangeDetection({ eventCoalescing: true }),
-            provideRouter(appRoutes),
-        ],
-    }).catch(err => console.error(err));
-    ```
+bootstrapApplication(AppComponent, {
+providers: [
+provideAppInitializer(() => {
+setAssetPath('http://localhost:4200');
+}),
+provideZoneChangeDetection({ eventCoalescing: true }),
+provideRouter(appRoutes),
+],
+}).catch(err => console.error(err));
+`}
+/>

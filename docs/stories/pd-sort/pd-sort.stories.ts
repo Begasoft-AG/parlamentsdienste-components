@@ -29,7 +29,7 @@ const defaultArgTypes: ArgTypes = {
 };
 
 const meta: Meta<SortArgs> = {
-    title: 'Interactions/Sort',
+    title: 'Data Display/Sort',
     args: defaultArgs,
     argTypes: defaultArgTypes,
 };

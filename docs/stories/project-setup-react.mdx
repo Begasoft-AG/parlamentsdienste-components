@@ -1,64 +1,91 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Source, Subheading, Subtitle, Title } from '@storybook/addon-docs/blocks';
 
 <Meta title="Docs/React/React Project Setup" />
 
-# Project Setup React
+<Title>Project Setup React</Title>
+<Subtitle>Install and configure the React package.</Subtitle>
 
-Node Version: 22<br />
-React Version: 19
+<Subheading>Start a new React project</Subheading>
+<p>Start a new React project using Vite, Next.js, Nx, or your preferred React setup.</p>
 
-1. Start a new react project using vite, next.js, nx...
+<Subheading>Install the parlamentsdienste components from npm</Subheading>
 
-2. Install the parlamentsdienste components from npm:
+<Source
+    language="bash"
+    code={`cd my-react-app
+npm install @parlamentsdienste/pdcomponents-react`}
+/>
 
-    ```bash
-    cd my-react-app
-    npm install @parlamentsdienste/pdcomponents-react
-    ```
+<Subheading>Serve core assets as static assets</Subheading>
+<p>
+    Make sure the assets from the core library are served as static assets. If you use Vite, you can use the{' '}
+    <code>vite-plugin-static-copy</code> plugin in your <code>vite.config.ts</code>:
+</p>
 
-3. Make shure the assets from the core library are served as static assets. If you use vite, you can use the `vite-plugin-static-copy` plugin in your `vite.config.ts`:
+<Source
+    language="typescript"
+    code={`
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
-    ```typescript
-    import { defineConfig } from 'vite';
-    import react from '@vitejs/plugin-react';
-    import { viteStaticCopy } from 'vite-plugin-static-copy';
+export default defineConfig({
+    plugins: [
+        react(),
+        viteStaticCopy({
+            targets: [
+                {
+                    src: 'node_modules/@parlamentsdienste/pdcomponents-core/dist/parlamentsdienstecore/assets',
+                    dest: '.',
+                },
+            ],
+        }),
+    ],
+});
+`}
+/>
 
-    export default defineConfig({
-        plugins: [
-            react(),
-            viteStaticCopy({
-                targets: [
-                    {
-                        src: 'node_modules/@parlamentsdienste/pdcomponents-core/dist/parlamentsdienstecore/assets',
-                        dest: '.',
-                    },
-                ],
-            }),
-        ],
-    });
-    ```
+<p>
+    If you use Next.js, you can copy the assets to the <code>public</code> folder with a postinstall script in your{' '}
+    <code>package.json</code>:
+</p>
 
-    or if you use next.js, you can copy the assets to the `public` folder with a postinstall script in your `package.json`:
-
-    ```json
+<Source
+    language="json"
+    code={`
     "scripts": {
         "postinstall": "cp -R node_modules/@parlamentsdienste/pdcomponents-core/dist/parlamentsdienstecore/assets public"
     }
-    ```
+`}
+/>
 
-    Don't forget to call this script after updating the library to ensure the assets are up-to-date.
+<p>Call this script after updating the library to ensure the assets are up-to-date.</p>
 
-4. To add the base styles and fonts add these two lines to the main entry file (e.g. `main.tsx` or `layout.tsx`):
+<Subheading>Add base styles and fonts</Subheading>
+<p>
+    Add these two lines to the main entry file, for example <code>main.tsx</code> or <code>layout.tsx</code>:
+</p>
 
-    ```typescript
-    import '@parlamentsdienste/pdcomponents-core/styles/parlamentsdienstecore.css';
-    import '@parlamentsdienste/pdcomponents-core/styles/typography.css';
-    ```
+<Source
+    language="typescript"
+    code={`
+import '@parlamentsdienste/pdcomponents-core/styles/parlamentsdienstecore.css';
+import '@parlamentsdienste/pdcomponents-core/styles/typography.css';
+`}
+/>
 
-5. Call setAssetPath in your main entry file (e.g. `main.tsx` or `layout.tsx`) to set the asset path for the components:
+<Subheading>Set the asset path</Subheading>
+<p>
+    Call <code>setAssetPath</code> in your main entry file, for example <code>main.tsx</code> or <code>layout.tsx</code>
+    , to set the asset path for the components:
+</p>
 
-    ```typescript
-    import { setAssetPath } from '@parlamentsdienste/pdcomponents-core/components';
-    setAssetPath('http://localhost:5173');
-    createRoot(document.getElementById('root')!).render(<App />);
-    ```
+<Source
+    language="typescript"
+    code={`
+import { setAssetPath } from '@parlamentsdienste/pdcomponents-core/components';
+
+setAssetPath('http://localhost:5173');
+createRoot(document.getElementById('root')!).render(<App />);
+`}
+/>

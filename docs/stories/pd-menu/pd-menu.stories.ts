@@ -41,7 +41,7 @@ const defaultArgTypes: ArgTypes = {
 };
 
 const meta: Meta<MenuArgs> = {
-    title: 'Interactions/Menu',
+    title: 'Navigation/Menu',
     args: defaultArgs,
     argTypes: defaultArgTypes,
 };

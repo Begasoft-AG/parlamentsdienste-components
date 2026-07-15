@@ -18,7 +18,7 @@ const argTypes: ArgTypes = {
 };
 
 const meta: Meta = {
-    title: 'Interactions/Button',
+    title: 'Forms/Button',
     argTypes,
     args: defaultArgs,
 };

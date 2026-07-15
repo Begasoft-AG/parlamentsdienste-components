@@ -12,8 +12,16 @@ const defaultArgs = {
 type ModalArgs = typeof defaultArgs;
 
 const meta: Meta<ModalArgs> = {
-    title: 'Dialogs/Modal',
+    title: 'Feedback/Modal',
     args: defaultArgs,
+    parameters: {
+        docs: {
+            story: {
+                height: '24rem',
+                inline: false,
+            },
+        },
+    },
     argTypes: {
         config: { control: { type: 'object' } },
     },

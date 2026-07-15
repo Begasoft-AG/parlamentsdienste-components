@@ -21,7 +21,7 @@ const argTypes: ArgTypes = {
 };
 
 const meta: Meta<alertArgs> = {
-    title: 'Dialogs/Alert',
+    title: 'Feedback/Alert',
     args: defaultArgs,
     argTypes,
 };

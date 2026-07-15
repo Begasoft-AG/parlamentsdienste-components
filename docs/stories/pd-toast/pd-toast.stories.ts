@@ -11,7 +11,7 @@ const defaultArgs = {
 type ToastArgs = typeof defaultArgs;
 
 const meta: Meta = {
-    title: 'Dialogs/Toast',
+    title: 'Feedback/Toast',
 };
 
 export default meta;
