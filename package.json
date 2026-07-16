@@ -23,7 +23,7 @@
         "test:vue": "pnpm --filter vue-test run e2e",
         "injectOpSecrets:registry": "op inject -i ./deployment/registry-secret.template -o ./deployment/registry-secret.yaml && echo 'Secrets injected!'",
         "update-versions": "tsx tools/update-versions.ts",
-        "clean:dist": "rm -rf packages/core/dist packages/vue/dist packages/angular/dist packages/react/dist libs/angular-output-target/dist docs/storybook-static",
+        "clean:dist": "rm -rf dist packages/core/dist packages/vue/dist packages/angular/dist packages/react/dist libs/angular-output-target/dist docs/storybook-static apps/angular-test/dist apps/react-test/dist apps/vue-test/dist",
         "clean:node_modules": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
         "pack:core": "cd packages/core && npm pack && cd ../..",
         "pack:angular": "cd packages/angular/dist && npm pack && cd ../../..",

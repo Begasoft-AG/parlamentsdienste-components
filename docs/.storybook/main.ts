@@ -1,8 +1,15 @@
 import { StorybookConfig } from '@storybook/html-vite';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { mergeConfig } from 'vite';
 
+const storybookDir = path.dirname(fileURLToPath(import.meta.url));
+
 const config: StorybookConfig = {
+    features: {
+        menuOnboardingChecklist: false,
+        sidebarOnboardingChecklist: false,
+    },
     /**
      * Vite-Alias für Utils-Imports vom Core-Package.
      *
@@ -18,7 +25,7 @@ const config: StorybookConfig = {
             resolve: {
                 alias: {
                     '@parlamentsdienste/pdcomponents-core/utils': path.resolve(
-                        __dirname,
+                        storybookDir,
                         '../../packages/core/src/utils/index.ts',
                     ),
                 },

@@ -10,7 +10,7 @@
         "@types/node": "catalog:toolchain",
         "storybook": "catalog:storybook9",
         "typescript": "catalog:toolchain",
-        "vite": "catalog:vite6"
+        "vite": "catalog:vite7"
     },
     "scripts": {
         "start": "storybook dev -p 6006",

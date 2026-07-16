@@ -12,10 +12,10 @@
         "@playwright/test": "^1.36.0",
         "@types/react": "catalog:react19",
         "@types/react-dom": "catalog:react19",
-        "@vitejs/plugin-react": "catalog:vite6",
+        "@vitejs/plugin-react": "catalog:vite7",
         "typescript": "catalog:toolchain",
-        "vite": "catalog:vite6",
-        "vite-plugin-static-copy": "catalog:vite6"
+        "vite": "catalog:vite7",
+        "vite-plugin-static-copy": "catalog:vite7"
     },
     "scripts": {
         "dev": "vite dev",

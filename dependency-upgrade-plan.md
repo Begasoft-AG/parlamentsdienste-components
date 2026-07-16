@@ -22,7 +22,7 @@ Festgelegte Leitplanken:
 - Welle 5: abgeschlossen
 - Welle 6: technisch abgeschlossen
 
-Die paketlokale Dependency-Ownership wurde ab Welle 3 schrittweise umgesetzt und ist mit Welle 6 für die aktuell bekannten direkten Import- und Buildpfade abgeschlossen. Die bereits abgeschlossenen Wellen 1 und 2 wurden dafür nicht nachträglich geöffnet. Verbleibende Restpunkte sind derzeit kein Ownership-Thema mehr, sondern betreffen nur noch den gemeinsamen Release-Abschluss und die Bereinigung der veralteten TypeScript-Basiskonfiguration.
+Die paketlokale Dependency-Ownership wurde ab Welle 3 schrittweise umgesetzt und ist mit Welle 6 für die aktuell bekannten direkten Import- und Buildpfade abgeschlossen. Die bereits abgeschlossenen Wellen 1 und 2 wurden dafür nicht nachträglich geöffnet. Verbleibende Restpunkte sind derzeit kein Ownership-Thema mehr, sondern betreffen nur noch den gemeinsamen Release-Abschluss und optionale TypeScript-Nacharbeiten in einzelnen Paketen.
 
 Aktueller Branch-Stand nach Umsetzung der Wellen 3 bis 6:
 
@@ -30,7 +30,8 @@ Aktueller Branch-Stand nach Umsetzung der Wellen 3 bis 6:
 - Die framework-spezifischen Toolchains sind paketlokal deklariert; der Root enthält nur noch Orchestrierung und repo-weite Werkzeuge.
 - `pnpm-workspace.yaml` führt die verwendeten Angular-, React-, Vue-, Storybook-, Stencil- und Toolchain-Catalogs.
 - `pnpm install`, `pnpm install --frozen-lockfile`, `pnpm peers check`, `pnpm run build:all`, `pnpm --filter react-test run build` und `pnpm --filter vue-test run build` laufen grün.
-- Die Angular-bezogenen `ignoreDeprecations`-Einträge bleiben vorerst nur dort bestehen, wo noch die gemeinsame Basiskonfiguration mit veraltetem `baseUrl` und Legacy-`moduleResolution` vererbt wird.
+- Die gemeinsame TypeScript-Basiskonfiguration wurde in eine neutrale Basis und eine Web-Konfiguration aufgeteilt; temporäre `ignoreDeprecations`-Schalter sind entfernt.
+- Verbleibende TypeScript-Restpunkte sind aktuell nur noch lokale Strictness-Opt-outs in `packages/core/` und `docs/` sowie einzelne explizite `rootDir`-Angaben dort, wo TypeScript 6 sie verlangt.
 
 ## Technisches Zielbild
 
@@ -318,7 +319,7 @@ Alle Dokumentations- und Release-Artefakte nachziehen, nachdem die technischen W
 - Doku-Build
 - relevante Story-Anpassungen
 - alle `tsconfig`-Dateien am Ende noch einmal auf temporäre Upgrade-Hilfen und veraltete Compileroptionen prüfen
-- temporäre TypeScript-Kompatibilitätsschalter wie `"ignoreDeprecations": "6.0"` entfernen, sobald die eigentlichen Ursachen bereinigt sind
+- verbleibende lokale TypeScript-Sonderfälle wie Strictness-Opt-outs oder explizite `rootDir`-Vorgaben dort prüfen, wo TypeScript 6 sie verlangt
 - Changelog für den gemeinsamen Major-Release erstellen
 - Versionsanhebung über das bestehende Versionsskript erst jetzt durchführen
 - Storybook-Dependencies vollständig in `docs/` verankern
@@ -332,12 +333,13 @@ Alle Dokumentations- und Release-Artefakte nachziehen, nachdem die technischen W
 
 - `pnpm run build:storybook`
 - `pnpm install --frozen-lockfile`
+- `pnpm run build:all`
 - alle von geänderten Catalog-Einträgen betroffenen Buildpfade
 
 ### Definition of Done
 
 - Storybook baut sauber.
-- `tsconfig`-Dateien sind überprüft; temporäre Upgrade-Einträge wie `"ignoreDeprecations": "6.0"` sind entfernt, sofern kein nachweisbarer technischer Grund mehr dagegen spricht.
+- `tsconfig`-Dateien sind überprüft; die gemeinsame TS-Basiskonfiguration ist bereinigt und temporäre Upgrade-Einträge sind entfernt.
 - Changelog und Release-Notizen sind vollständig.
 - Major-Version kann konsistent angehoben werden.
 - Kein Workspace-Paket ist für direkt importierte Pakete oder aufgerufene Binaries auf Root-Hoisting angewiesen.
@@ -353,11 +355,12 @@ Alle Dokumentations- und Release-Artefakte nachziehen, nachdem die technischen W
 - Der Storybook-Buildpfad wurde so abgesichert, dass die benötigten Core-Artefakte vor dem Doku-Build erzeugt werden.
 - Das abschließende Ownership-Audit hat noch zwei implizite Pfade sichtbar gemacht und bereinigt: `tslib` im Core sowie die Core-Asset-Auflösung der React-/Vue-Test-Apps.
 - Der Changelog hat einen `Unreleased`-Eintrag für die Welle-6-Nacharbeiten.
-- Die vollständige Entfernung aller `ignoreDeprecations`-Schalter ist bewusst noch nicht erfolgt, weil `tsconfig.base.json` weiterhin die veralteten Optionen `baseUrl` und `moduleResolution: "node"` vorgibt.
+- Die gemeinsame TS-Konfiguration ist auf eine neutrale Basis plus `tsconfig.web.json` umgestellt; `ignoreDeprecations` wurde vollständig entfernt.
+- `pnpm run build:all` läuft auf diesem Stand grün.
 
 ### Offener Abschluss nach Welle 6
 
-- Die gemeinsame TypeScript-Basiskonfiguration muss noch von `baseUrl` und Legacy-Node-Resolution wegmigriert werden, damit die verbliebenen Angular-bezogenen `ignoreDeprecations`-Einträge entfallen können.
+- Optionale TypeScript-Nacharbeiten betreffen nur noch lokale Opt-outs wie `strict: false` in `packages/core/` und `docs/` sowie explizite `rootDir`-Angaben dort, wo TypeScript 6 sie für Editor oder Output-Pfad verlangt.
 - Der eigentliche gemeinsame Major-Release inklusive finaler Versionsanhebung bleibt weiterhin ein separater Abschluss-Schritt nach grünem Gesamtstand.
 
 ## Empfohlene PR-Reihenfolge

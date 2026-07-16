@@ -1,8 +1,7 @@
 {
     "extends": "../tsconfig.web.json",
     "compilerOptions": {
-        "strict": false,
-        "outDir": "dist"
+        "strict": false
     },
     "include": ["stories/**/*"]
 }
