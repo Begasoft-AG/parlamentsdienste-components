@@ -2,6 +2,21 @@
     "name": "react-test",
     "version": "0.0.0",
     "private": true,
+    "dependencies": {
+        "@parlamentsdienste/pdcomponents-core": "workspace:*",
+        "@parlamentsdienste/pdcomponents-react": "workspace:*",
+        "react": "catalog:react19",
+        "react-dom": "catalog:react19"
+    },
+    "devDependencies": {
+        "@playwright/test": "^1.36.0",
+        "@types/react": "catalog:react19",
+        "@types/react-dom": "catalog:react19",
+        "@vitejs/plugin-react": "catalog:vite6",
+        "typescript": "catalog:angular22",
+        "vite": "catalog:vite6",
+        "vite-plugin-static-copy": "catalog:vite6"
+    },
     "scripts": {
         "dev": "vite dev",
         "build": "vite build",
