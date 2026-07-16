@@ -1,13 +1,12 @@
 {
     "compilerOptions": {
         "target": "es2022",
-        "ignoreDeprecations": "6.0",
-        "forceConsistentCasingInFileNames": true,
-        "strict": true,
+        "module": "esnext",
+        "moduleResolution": "bundler",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
         "noImplicitOverride": true,
-        "noPropertyAccessFromIndexSignature": true,
-        "noImplicitReturns": true,
-        "noFallthroughCasesInSwitch": true
+        "useDefineForClassFields": false
     },
     "files": [],
     "include": [],

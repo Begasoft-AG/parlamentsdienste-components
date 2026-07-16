@@ -1,14 +1,16 @@
 {
     "compilerOptions": {
         "target": "es2022",
-        "ignoreDeprecations": "6.0",
         "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true,
-        "strict": true,
+        "module": "esnext",
+        "moduleResolution": "bundler",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
         "noImplicitOverride": true,
-        "noPropertyAccessFromIndexSignature": true,
-        "noImplicitReturns": true,
-        "noFallthroughCasesInSwitch": true
+        "paths": {
+            "@parlamentsdienste/pdcomponents-angular": ["../../packages/angular/src/index.ts"]
+        },
+        "useDefineForClassFields": false
     },
     "files": [],
     "include": [],
