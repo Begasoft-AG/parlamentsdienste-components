@@ -8,7 +8,7 @@ RUN corepack enable
 ENV CI=true
 
 RUN pnpm install --frozen-lockfile
-RUN pnpm run build:storybook
+RUN pnpm run build:angular-output-target && pnpm run build:core && pnpm run build:storybook
 
 # # final image build
 FROM nginx:mainline-alpine AS middlestep
