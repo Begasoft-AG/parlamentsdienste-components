@@ -10,7 +10,13 @@ fi
 readonly consumer_app_root="/tmp/angular-app"
 readonly compat_dir="/tmp/compat-dir"
 readonly prebuilt_pack_dir="/tmp/packs"
-readonly angular_major="${ANGULAR_VERSION%%.*}"
+if [[ "$ANGULAR_VERSION" == angular-* ]]; then
+    readonly angular_major="${ANGULAR_VERSION#angular-}"
+    readonly angular_cli_version="$angular_major"
+else
+    readonly angular_major="${ANGULAR_VERSION%%.*}"
+    readonly angular_cli_version="$ANGULAR_VERSION"
+fi
 readonly template_dir="$compat_dir/angular-$angular_major"
 readonly legacy_peer_deps="${LEGACY_PEER_DEPS:-false}"
 readonly run_e2e="${RUN_E2E:-false}"
@@ -34,8 +40,8 @@ mkdir -p "$consumer_app_root"
 log_step "Using prebuilt component tarballs from image cache"
 cd "$consumer_app_root"
 
-log_step "Scaffolding fresh Angular ${ANGULAR_VERSION} consumer"
-npx -y "@angular/cli@$ANGULAR_VERSION" new "$project_name" \
+log_step "Scaffolding fresh Angular ${angular_cli_version} consumer"
+npx -y "@angular/cli@$angular_cli_version" new "$project_name" \
     --defaults \
     --minimal \
     --package-manager npm \
@@ -62,7 +68,7 @@ cp "$template_dir/angular.json" angular.json
 rm -rf src
 cp -R "$template_dir/src" ./src
 
-log_step "Building Angular ${ANGULAR_VERSION} consumer"
+log_step "Building Angular ${angular_cli_version} consumer"
 npm run build
 
 if [[ "$run_e2e" == "true" ]]; then

@@ -559,6 +559,11 @@ export namespace Components {
          */
         "accept"?: string;
         /**
+          * Whether auto correction should be enabled when the user is entering/editing the text value.
+          * @default 'off'
+         */
+        "autoCorrect": 'on' | 'off';
+        /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
           * @default 'off'
          */
@@ -568,11 +573,6 @@ export namespace Components {
           * @default 'off'
          */
         "autocomplete": 'on' | 'off';
-        /**
-          * Whether auto correction should be enabled when the user is entering/editing the text value.
-          * @default 'off'
-         */
-        "autocorrect": 'on' | 'off';
         /**
           * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
           * @default false
@@ -2628,6 +2628,11 @@ declare namespace LocalJSX {
          */
         "accept"?: string;
         /**
+          * Whether auto correction should be enabled when the user is entering/editing the text value.
+          * @default 'off'
+         */
+        "autoCorrect"?: 'on' | 'off';
+        /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
           * @default 'off'
          */
@@ -2637,11 +2642,6 @@ declare namespace LocalJSX {
           * @default 'off'
          */
         "autocomplete"?: 'on' | 'off';
-        /**
-          * Whether auto correction should be enabled when the user is entering/editing the text value.
-          * @default 'off'
-         */
-        "autocorrect"?: 'on' | 'off';
         /**
           * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
           * @default false
@@ -3705,7 +3705,7 @@ declare namespace LocalJSX {
         "accept": string;
         "autocapitalize": string;
         "autocomplete": 'on' | 'off';
-        "autocorrect": 'on' | 'off';
+        "autoCorrect": 'on' | 'off';
         "autofocus": boolean;
         "clearInput": boolean;
         "clearOnEdit": boolean;

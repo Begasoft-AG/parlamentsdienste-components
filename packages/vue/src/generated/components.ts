@@ -248,7 +248,7 @@ export const PdInput: StencilVueComponent<JSX.PdInput, JSX.PdInput["value"]> = /
   'accept',
   'autocapitalize',
   'autocomplete',
-  'autocorrect',
+  'autoCorrect',
   'autofocus',
   'clearInput',
   'clearOnEdit',

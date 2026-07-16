@@ -24,6 +24,7 @@
         "injectOpSecrets:registry": "op inject -i ./deployment/registry-secret.template -o ./deployment/registry-secret.yaml && echo 'Secrets injected!'",
         "update-versions": "npx tsx tools/update-versions.ts",
         "clean:dist": "rm -rf packages/core/dist packages/vue/dist packages/angular/dist packages/react/dist libs/angular-output-target/dist docs/storybook-static",
+        "clean:node_modules": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
         "pack:core": "cd packages/core && npm pack && cd ../..",
         "pack:angular": "cd packages/angular/dist && npm pack && cd ../../..",
         "pack:react": "cd packages/react/dist && npm pack && cd ../../..",
@@ -37,7 +38,7 @@
     },
     "private": true,
     "engines": {
-        "node": "^24.0.0",
+        "node": ">=24.15.0 <25",
         "pnpm": "11.13.0"
     },
     "workspaces": [
@@ -47,20 +48,8 @@
         "docs"
     ],
     "devDependencies": {
-        "@angular-devkit/build-angular": "~19.2.0",
-        "@angular-devkit/core": "~19.2.0",
-        "@angular-devkit/schematics": "~19.2.0",
-        "@angular/build": "~19.2.0",
-        "@angular/cli": "~19.2.0",
-        "@angular/common": "~19.2.0",
-        "@angular/compiler": "~19.2.0",
-        "@angular/compiler-cli": "~19.2.0",
-        "@angular/core": "~19.2.0",
-        "@angular/forms": "~19.2.0",
-        "@angular/platform-browser": "~19.2.0",
         "@babel/core": "^7.14.5",
         "@playwright/test": "^1.36.0",
-        "@schematics/angular": "~19.2.0",
         "@stencil/core": "^4.43.5",
         "@stencil/react-output-target": "^1.6.1",
         "@swc/core": "~1.5.7",
@@ -70,28 +59,22 @@
         "@types/react-dom": "19.0.0",
         "@vitejs/plugin-react": "^4.2.0",
         "@vitejs/plugin-vue": "^5.2.3",
-        "angular-eslint": "^19.2.0",
         "autoprefixer": "^10.4.0",
         "eslint": "^9.8.0",
         "jiti": "2.4.2",
-        "ng-packagr": "~19.2.0",
         "postcss": "^8.4.5",
         "postcss-url": "~10.1.3",
         "react": "19.0.0",
         "react-dom": "19.0.0",
-        "rxjs": "~7.8.0",
         "tslib": "^2.3.0",
-        "typescript": "~5.7.2",
-        "typescript-eslint": "^8.19.0",
+        "typescript": "~6.0.3",
+        "typescript-eslint": "^8.64.0",
         "vite": "^6.0.0",
         "vite-plugin-dts": "~4.5.0",
         "vite-plugin-static-copy": "^3.1.0",
         "vite-tsconfig-paths": "^6.1.1",
         "vue": "^3.5.13",
-        "zone.js": "~0.15.0"
-    },
-    "dependencies": {
-        "@parlamentsdienste/pdcomponents-angular": "4.0.2",
-        "@parlamentsdienste/pdcomponents-core": "4.0.2"
+        "@parlamentsdienste/pdcomponents-angular": "workspace:*",
+        "@parlamentsdienste/pdcomponents-core": "workspace:*"
     }
 }
