@@ -1,8 +1,8 @@
 import type { Config, OutputTargetCustom } from '@stencil/core/internal';
-import { OutputTypes, normalizePath } from './utils';
+import * as path from 'path';
 import { angularDirectiveProxyOutput } from './output-angular';
 import type { OutputTargetAngular } from './types';
-import * as path from 'path';
+import { OutputTypes, normalizePath } from './utils';
 
 export const angularOutputTarget = (outputTarget: OutputTargetAngular): OutputTargetCustom => {
     let validatedOutputTarget: OutputTargetAngular;
@@ -28,8 +28,8 @@ export function normalizeOutputTarget(config: Config, outputTarget: OutputTarget
         ...outputTarget,
         excludeComponents: outputTarget.excludeComponents || [],
         valueAccessorConfigs: outputTarget.valueAccessorConfigs || [],
-        customElementsDir: outputTarget.customElementsDir || 'components',
-        outputType: outputTarget.outputType || OutputTypes['Component'],
+        customElementsDir: outputTarget.customElementsDir ?? 'components',
+        outputType: outputTarget.outputType ?? OutputTypes['Standalone'],
     };
 
     if (config.rootDir == null) {
