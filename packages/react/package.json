@@ -36,7 +36,7 @@
         "@vitejs/plugin-react": "catalog:vite6",
         "react": "catalog:react19",
         "react-dom": "catalog:react19",
-        "typescript": "catalog:angular22",
+        "typescript": "catalog:toolchain",
         "vite": "catalog:vite6",
         "vite-plugin-dts": "catalog:vite6"
     },

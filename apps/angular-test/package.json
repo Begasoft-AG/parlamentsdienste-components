@@ -24,6 +24,6 @@
         "@angular/compiler-cli": "catalog:angular22",
         "@playwright/test": "^1.36.0",
         "angular-eslint": "catalog:angular22",
-        "typescript": "catalog:angular22"
+        "typescript": "catalog:toolchain"
     }
 }

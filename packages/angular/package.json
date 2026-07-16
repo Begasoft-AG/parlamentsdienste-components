@@ -29,7 +29,7 @@
         "ng-packagr": "catalog:angular22",
         "rxjs": "catalog:angular22",
         "tslib": "^2.3.0",
-        "typescript": "catalog:angular22"
+        "typescript": "catalog:toolchain"
     },
     "dependencies": {
         "@parlamentsdienste/pdcomponents-core": "4.0.2"

@@ -13,6 +13,6 @@
         "tslib": "^2.3.0"
     },
     "devDependencies": {
-        "typescript": "catalog:angular22"
+        "typescript": "catalog:toolchain"
     }
 }

@@ -17,8 +17,9 @@ catalogs:
         angular-eslint: ^22.1.0
         ng-packagr: ~22.0.1
         rxjs: ~7.8.0
-        typescript: ~6.0.3
         zone.js: ~0.15.0
+    toolchain:
+        typescript: ~6.0.3
     react19:
         '@types/react': 19.2.17
         '@types/react-dom': 19.2.3

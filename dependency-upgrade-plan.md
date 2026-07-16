@@ -315,6 +315,7 @@ Alle Dokumentations- und Release-Artefakte nachziehen, nachdem die technischen W
 - abschließendes Dependency-Ownership-Audit für alle Workspace-Pakete durchführen
 - verbleibende paketlokal verwendete Framework-, Build- und Testwerkzeuge aus dem Root entfernen
 - gemeinsame Toolchain-, Storybook- und verbleibende Stencil-/Output-Target-Versionen in pnpm-Catalogs überführen
+- prüfen, ob weitere gemeinsam genutzte Tooling-Pakete wie `vite` oder `tslib` in einen gemeinsamen Toolchain-Catalog gehören
 - ungenutzte oder doppelte Catalog-Einträge entfernen und Catalog-Namen vereinheitlichen
 
 ### Validierung

@@ -13,7 +13,7 @@
         "@types/react": "catalog:react19",
         "@types/react-dom": "catalog:react19",
         "@vitejs/plugin-react": "catalog:vite6",
-        "typescript": "catalog:angular22",
+        "typescript": "catalog:toolchain",
         "vite": "catalog:vite6",
         "vite-plugin-static-copy": "catalog:vite6"
     },
