@@ -55,15 +55,16 @@
         "@stencil/sass": "3.0.7",
         "@stencil/store": "^2.2.2",
         "bootstrap": "^4.4.1",
-        "flatpickr": "^4.6.13"
+        "flatpickr": "^4.6.13",
+        "tslib": "catalog:toolchain"
     },
     "devDependencies": {
         "@parlamentsdienste/angular-output-target": "workspace:*",
-        "@stencil/core": "^4.43.5",
-        "@stencil/react-output-target": "^1.6.1",
-        "@stencil/vue-output-target": "^0.14.1",
+        "@stencil/core": "catalog:stencil4",
+        "@stencil/react-output-target": "catalog:stencil4",
+        "@stencil/vue-output-target": "catalog:stencil4",
         "@types/jest": "^29.5.14",
-        "@types/node": "^22.13.5",
+        "@types/node": "catalog:toolchain",
         "jest": "^29.7.0",
         "jest-cli": "^29.7.0",
         "puppeteer": "^24.3.0"

@@ -2,14 +2,12 @@ import vue from '@vitejs/plugin-vue';
 import * as path from 'path';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
-import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig(() => ({
     root: __dirname,
     cacheDir: '../../node_modules/.vite/packages/vue',
     plugins: [
         vue(),
-        tsconfigPaths(),
         dts({ entryRoot: 'src', tsconfigPath: path.join(__dirname, 'tsconfig.lib.json'), pathsToAliases: false }),
     ],
     // Configuration for building your library.

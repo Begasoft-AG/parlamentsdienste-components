@@ -12,8 +12,7 @@
         "@vitejs/plugin-vue": "catalog:vue3",
         "typescript": "catalog:toolchain",
         "vite": "catalog:vite6",
-        "vite-plugin-static-copy": "catalog:vite6",
-        "vite-tsconfig-paths": "catalog:vite6"
+        "vite-plugin-static-copy": "catalog:vite6"
     },
     "scripts": {
         "dev": "vite dev",

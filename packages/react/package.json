@@ -42,6 +42,6 @@
     },
     "dependencies": {
         "@parlamentsdienste/pdcomponents-core": "4.0.2",
-        "@stencil/react-output-target": "^1.6.1"
+        "@stencil/react-output-target": "catalog:stencil4"
     }
 }

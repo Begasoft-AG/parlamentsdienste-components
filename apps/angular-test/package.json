@@ -16,6 +16,7 @@
         "@parlamentsdienste/pdcomponents-angular": "workspace:*",
         "@parlamentsdienste/pdcomponents-core": "workspace:*",
         "rxjs": "catalog:angular22",
+        "tslib": "catalog:toolchain",
         "zone.js": "catalog:angular22"
     },
     "devDependencies": {

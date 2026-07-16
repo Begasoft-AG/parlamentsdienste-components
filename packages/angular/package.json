@@ -28,7 +28,7 @@
         "angular-eslint": "catalog:angular22",
         "ng-packagr": "catalog:angular22",
         "rxjs": "catalog:angular22",
-        "tslib": "^2.3.0",
+        "tslib": "catalog:toolchain",
         "typescript": "catalog:toolchain"
     },
     "dependencies": {

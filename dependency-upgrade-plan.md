@@ -17,10 +17,20 @@ Festgelegte Leitplanken:
 
 - Welle 1: abgeschlossen
 - Welle 2: abgeschlossen
-- Welle 3: in Arbeit
-- Wellen 4 - 6: ausstehend
+- Welle 3: abgeschlossen
+- Welle 4: abgeschlossen
+- Welle 5: abgeschlossen
+- Welle 6: technisch abgeschlossen
 
-Die paketlokale Dependency-Ownership wird ab Welle 3 schrittweise umgesetzt. Die bereits abgeschlossenen Wellen 1 und 2 werden dafür nicht nachträglich geöffnet. Verbleibende Ownership-Lücken aus deren Scope werden in der jeweils nächsten fachlich passenden Welle geschlossen.
+Die paketlokale Dependency-Ownership wurde ab Welle 3 schrittweise umgesetzt und ist mit Welle 6 für die aktuell bekannten direkten Import- und Buildpfade abgeschlossen. Die bereits abgeschlossenen Wellen 1 und 2 wurden dafür nicht nachträglich geöffnet. Verbleibende Restpunkte sind derzeit kein Ownership-Thema mehr, sondern betreffen nur noch den gemeinsamen Release-Abschluss und die Bereinigung der veralteten TypeScript-Basiskonfiguration.
+
+Aktueller Branch-Stand nach Umsetzung der Wellen 3 bis 6:
+
+- Angular 22, React 19, Vue 3 und Storybook 9 sind im Monorepo auf dem vorgesehenen Stand verdrahtet.
+- Die framework-spezifischen Toolchains sind paketlokal deklariert; der Root enthält nur noch Orchestrierung und repo-weite Werkzeuge.
+- `pnpm-workspace.yaml` führt die verwendeten Angular-, React-, Vue-, Storybook-, Stencil- und Toolchain-Catalogs.
+- `pnpm install`, `pnpm install --frozen-lockfile`, `pnpm peers check`, `pnpm run build:all`, `pnpm --filter react-test run build` und `pnpm --filter vue-test run build` laufen grün.
+- Die Angular-bezogenen `ignoreDeprecations`-Einträge bleiben vorerst nur dort bestehen, wo noch die gemeinsame Basiskonfiguration mit veraltetem `baseUrl` und Legacy-`moduleResolution` vererbt wird.
 
 ## Technisches Zielbild
 
@@ -335,6 +345,20 @@ Alle Dokumentations- und Release-Artefakte nachziehen, nachdem die technischen W
 - Gemeinsam verwendete interne Versionen sind in `pnpm-workspace.yaml` katalogisiert und werden in den Paketmanifesten über Catalog-Referenzen verwendet.
 - Öffentliche Peer-Ranges und interne `workspace:*`-Abhängigkeiten sind nicht durch Catalog-Referenzen ersetzt.
 - Der Lockfile ist nach der vollständigen Catalog-Migration mit `pnpm install --frozen-lockfile` reproduzierbar.
+
+### Umgesetzter Stand im Branch
+
+- Storybook-Dependencies sind in `docs/` verankert; der Root hält für diesen Pfad keine implizite Toolchain mehr vor.
+- Gemeinsame Storybook-, Stencil- und Toolchain-Versionen wurden in pnpm-Catalogs überführt.
+- Der Storybook-Buildpfad wurde so abgesichert, dass die benötigten Core-Artefakte vor dem Doku-Build erzeugt werden.
+- Das abschließende Ownership-Audit hat noch zwei implizite Pfade sichtbar gemacht und bereinigt: `tslib` im Core sowie die Core-Asset-Auflösung der React-/Vue-Test-Apps.
+- Der Changelog hat einen `Unreleased`-Eintrag für die Welle-6-Nacharbeiten.
+- Die vollständige Entfernung aller `ignoreDeprecations`-Schalter ist bewusst noch nicht erfolgt, weil `tsconfig.base.json` weiterhin die veralteten Optionen `baseUrl` und `moduleResolution: "node"` vorgibt.
+
+### Offener Abschluss nach Welle 6
+
+- Die gemeinsame TypeScript-Basiskonfiguration muss noch von `baseUrl` und Legacy-Node-Resolution wegmigriert werden, damit die verbliebenen Angular-bezogenen `ignoreDeprecations`-Einträge entfallen können.
+- Der eigentliche gemeinsame Major-Release inklusive finaler Versionsanhebung bleibt weiterhin ein separater Abschluss-Schritt nach grünem Gesamtstand.
 
 ## Empfohlene PR-Reihenfolge
 
