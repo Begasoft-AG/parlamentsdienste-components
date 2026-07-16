@@ -54,7 +54,6 @@
         "@swc/core": "~1.5.7",
         "@types/jest": "^29.5.14",
         "@types/node": "^20.0.0",
-        "@vitejs/plugin-vue": "^5.2.3",
         "autoprefixer": "^10.4.0",
         "eslint": "^9.8.0",
         "jiti": "2.4.2",
@@ -67,7 +66,6 @@
         "vite-plugin-dts": "~4.5.0",
         "vite-plugin-static-copy": "^3.1.0",
         "vite-tsconfig-paths": "^6.1.1",
-        "vue": "^3.5.13",
         "@parlamentsdienste/pdcomponents-angular": "workspace:*",
         "@parlamentsdienste/pdcomponents-core": "workspace:*"
     }

@@ -2,6 +2,19 @@
     "name": "vue-test",
     "version": "0.0.0",
     "private": true,
+    "dependencies": {
+        "@parlamentsdienste/pdcomponents-core": "workspace:*",
+        "@parlamentsdienste/pdcomponents-vue": "workspace:*",
+        "vue": "catalog:vue3"
+    },
+    "devDependencies": {
+        "@playwright/test": "^1.36.0",
+        "@vitejs/plugin-vue": "catalog:vue3",
+        "typescript": "catalog:toolchain",
+        "vite": "catalog:vite6",
+        "vite-plugin-static-copy": "catalog:vite6",
+        "vite-tsconfig-paths": "catalog:vite6"
+    },
     "scripts": {
         "dev": "vite dev",
         "build": "vite build",

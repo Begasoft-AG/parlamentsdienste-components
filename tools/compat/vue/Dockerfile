@@ -16,7 +16,7 @@ RUN corepack enable && corepack prepare pnpm@9 --activate
 
 FROM base AS pack-builder
 
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml tsconfig.base.json eslint.config.mjs vitest.workspace.ts ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml tsconfig.base.json eslint.config.mjs ./
 COPY libs/angular-output-target ./libs/angular-output-target
 COPY packages/core ./packages/core
 COPY packages/vue ./packages/vue
