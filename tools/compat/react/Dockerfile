@@ -4,7 +4,8 @@ FROM node:${NODE_VERSION}-bookworm-slim AS base
 
 ENV CI=true \
     npm_config_audit=false \
-    npm_config_fund=false
+    npm_config_fund=false \
+    npm_config_engine_strict=false
 
 WORKDIR /workspace
 
@@ -21,6 +22,8 @@ COPY packages/core ./packages/core
 COPY packages/react ./packages/react
 COPY libs/angular-output-target ./libs/angular-output-target
 
+RUN node -e "const fs=require('fs'),p=JSON.parse(fs.readFileSync('package.json','utf8'));delete p.engines;fs.writeFileSync('package.json',JSON.stringify(p,null,4))"
+
 RUN MSGPACKR_EXTRACT=1 pnpm install --frozen-lockfile
 RUN npm_config_build_from_source=true pnpm rebuild msgpackr-extract
 
@@ -29,10 +32,8 @@ RUN pnpm run build:core \
     && pnpm run build:react
 
 RUN mkdir -p /tmp/packs \
-    && core_pack_name="$(cd packages/core && npm pack)" \
-    && mv "packages/core/$core_pack_name" "/tmp/packs/$core_pack_name" \
-    && react_pack_name="$(cd packages/react && npm pack)" \
-    && mv "packages/react/$react_pack_name" "/tmp/packs/$react_pack_name"
+    && (cd packages/core && pnpm pack --pack-destination /tmp/packs) \
+    && (cd packages/react && pnpm pack --pack-destination /tmp/packs)
 
 FROM base AS runtime
 

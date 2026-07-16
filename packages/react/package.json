@@ -3,10 +3,10 @@
     "description": "Component Library for Swiss Parliamentary Services - React-Wrapper Lib",
     "version": "4.0.2",
     "type": "module",
-    "types": "./dist/index.d.ts",
+    "types": "./dist/src/index.d.ts",
     "exports": {
         ".": {
-            "types": "./dist/index.d.ts",
+            "types": "./dist/src/index.d.ts",
             "default": "./dist/index.js"
         }
     },

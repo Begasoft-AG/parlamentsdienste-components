@@ -6,7 +6,13 @@ import dts from 'vite-plugin-dts';
 export default defineConfig(() => ({
     root: __dirname,
     cacheDir: '../../node_modules/.vite/packages/react',
-    plugins: [react(), dts({ entryRoot: 'src', tsconfigPath: path.join(__dirname, 'tsconfig.lib.json') })],
+    plugins: [
+        react(),
+        dts({
+            entryRoot: path.join(__dirname, 'src'),
+            tsconfigPath: path.join(__dirname, 'tsconfig.lib.json'),
+        }),
+    ],
     // Configuration for building your library.
     // See: https://vitejs.dev/guide/build.html#library-mode
     build: {

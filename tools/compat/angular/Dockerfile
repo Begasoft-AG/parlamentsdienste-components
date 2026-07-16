@@ -5,7 +5,8 @@ FROM node:${NODE_VERSION}-bookworm-slim AS base
 ENV CI=true \
     NG_CLI_ANALYTICS=false \
     npm_config_audit=false \
-    npm_config_fund=false
+    npm_config_fund=false \
+    npm_config_engine_strict=false
 
 WORKDIR /workspace
 
@@ -31,10 +32,8 @@ RUN pnpm run build:angular-output-target \
     && pnpm run build:angular
     
 RUN mkdir -p /tmp/packs \
-    && core_pack_name="$(cd packages/core && npm pack)" \
-    && mv "packages/core/$core_pack_name" "/tmp/packs/$core_pack_name" \
-    && angular_pack_name="$(cd packages/angular/dist && npm pack)" \
-    && mv "packages/angular/dist/$angular_pack_name" "/tmp/packs/$angular_pack_name"
+    && (cd packages/core && pnpm pack --pack-destination /tmp/packs) \
+    && (cd packages/angular/dist && pnpm pack --pack-destination /tmp/packs)
 
 FROM base AS runtime
 

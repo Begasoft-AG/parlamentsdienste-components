@@ -8,7 +8,11 @@ export default defineConfig(() => ({
     cacheDir: '../../node_modules/.vite/packages/vue',
     plugins: [
         vue(),
-        dts({ entryRoot: 'src', tsconfigPath: path.join(__dirname, 'tsconfig.lib.json'), pathsToAliases: false }),
+        dts({
+            entryRoot: path.join(__dirname, 'src'),
+            tsconfigPath: path.join(__dirname, 'tsconfig.lib.json'),
+            pathsToAliases: false,
+        }),
     ],
     // Configuration for building your library.
     // See: https://vitejs.dev/guide/build.html#library-mode

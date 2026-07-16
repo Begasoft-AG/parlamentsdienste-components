@@ -3,10 +3,10 @@
     "version": "4.0.2",
     "type": "module",
     "description": "Component Library for Swiss Parliamentary Services - Vue-Wrapper Lib",
-    "types": "./dist/index.d.ts",
+    "types": "./dist/src/index.d.ts",
     "exports": {
         ".": {
-            "types": "./dist/index.d.ts",
+            "types": "./dist/src/index.d.ts",
             "default": "./dist/index.js"
         }
     },
