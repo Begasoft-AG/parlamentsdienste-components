@@ -34,7 +34,7 @@ jobs:
           key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - name: install playwright (chromium only)
-        run: pnpm exec playwright install chromium
+        run: pnpm --filter angular-test exec playwright install chromium
 
       - name: Build All
         run: pnpm run build:all
