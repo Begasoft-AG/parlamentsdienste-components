@@ -5,7 +5,6 @@
 !tsconfig.base.json
 !tsconfig.web.json
 !eslint.config.mjs
-!vitest.workspace.ts
 !libs/
 !libs/angular-output-target/
 !libs/angular-output-target/**

@@ -6,7 +6,7 @@ readonly script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 readonly repo_root="$(cd -- "$script_dir/../../.." && pwd)"
 
 image_tag="${IMAGE_TAG:-pd-angular-compat:local}"
-node_version="24"
+node_version="24.18.0"
 legacy_peer_deps="false"
 run_e2e="false"
 angular_version=""

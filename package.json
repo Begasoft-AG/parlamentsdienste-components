@@ -3,7 +3,7 @@
     "version": "4.0.2",
     "license": "MIT",
     "description": "Component Library for Swiss Parliamentary Services",
-    "packageManager": "pnpm@11.13.0",
+    "packageManager": "pnpm@11.23.0",
     "scripts": {
         "build:angular-output-target": "pnpm --filter @parlamentsdienste/angular-output-target run build",
         "build:core": "pnpm --filter @parlamentsdienste/pdcomponents-core run build",
@@ -25,21 +25,21 @@
         "update-versions": "tsx tools/update-versions.ts",
         "clean:dist": "rm -rf dist packages/core/dist packages/vue/dist packages/angular/dist packages/react/dist libs/angular-output-target/dist docs/storybook-static apps/angular-test/dist apps/react-test/dist apps/vue-test/dist",
         "clean:node_modules": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
-        "pack:core": "cd packages/core && npm pack && cd ../..",
-        "pack:angular": "cd packages/angular/dist && rm -f ./*.tgz && npm pack && cd ../../..",
-        "pack:react": "cd packages/react/dist && rm -f ./*.tgz && npm pack && cd ../../..",
-        "pack:vue": "cd packages/vue/dist && rm -f ./*.tgz && npm pack && cd ../../..",
+        "pack:core": "rm -rf dist/core && mkdir -p dist/core && find packages/core/dist -maxdepth 2 -name '*.tgz' -delete && pnpm --dir packages/core pack --pack-destination ../../dist/core",
+        "pack:angular": "rm -rf dist/angular && mkdir -p dist/angular && find packages/angular/dist -maxdepth 2 -name '*.tgz' -delete && pnpm --dir packages/angular/dist pack --pack-destination ../../../dist/angular",
+        "pack:react": "rm -rf dist/react && mkdir -p dist/react && find packages/react/dist -maxdepth 2 -name '*.tgz' -delete && pnpm --dir packages/react pack --pack-destination ../../dist/react",
+        "pack:vue": "rm -rf dist/vue && mkdir -p dist/vue && find packages/vue/dist -maxdepth 2 -name '*.tgz' -delete && pnpm --dir packages/vue pack --pack-destination ../../dist/vue",
         "pack:all": "npm run pack:core && npm run pack:angular && npm run pack:react && npm run pack:vue",
-        "publish:core": "cd packages/core && npm publish && cd ../..",
-        "publish:angular": "cd packages/angular/dist && rm -f ./*.tgz && npm publish && cd ../../..",
-        "publish:react": "cd packages/react/dist && rm -f ./*.tgz && npm publish && cd ../../..",
-        "publish:vue": "cd packages/vue/dist && rm -f ./*.tgz && npm publish && cd ../../..",
+        "publish:core": "npm publish dist/core/parlamentsdienste-pdcomponents-core-${npm_package_version}.tgz",
+        "publish:angular": "npm publish dist/angular/parlamentsdienste-pdcomponents-angular-${npm_package_version}.tgz",
+        "publish:react": "npm publish dist/react/parlamentsdienste-pdcomponents-react-${npm_package_version}.tgz",
+        "publish:vue": "npm publish dist/vue/parlamentsdienste-pdcomponents-vue-${npm_package_version}.tgz",
         "publish:all": "npm run publish:core && npm run publish:angular && npm run publish:react && npm run publish:vue"
     },
     "private": true,
     "engines": {
         "node": ">=24.15.0 <25",
-        "pnpm": "11.13.0"
+        "pnpm": "11.23.0"
     },
     "workspaces": [
         "apps/*",

@@ -1,4 +1,4 @@
-ARG NODE_VERSION=24
+ARG NODE_VERSION=24.18.0
 
 FROM node:${NODE_VERSION}-bookworm-slim AS base
 
@@ -14,11 +14,10 @@ RUN apt-get update \
     && apt-get install --yes --no-install-recommends python3 make g++ \
     && rm -rf /var/lib/apt/lists/*
 
-RUN corepack enable && corepack prepare pnpm@9 --activate
-
 FROM base AS pack-builder
 
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml tsconfig.base.json tsconfig.web.json eslint.config.mjs ./
+RUN corepack enable && corepack install && pnpm --version
 COPY libs/angular-output-target ./libs/angular-output-target
 COPY packages/core ./packages/core
 COPY packages/angular ./packages/angular
@@ -30,14 +29,14 @@ RUN npm_config_build_from_source=true pnpm rebuild msgpackr-extract
 RUN pnpm run build:angular-output-target \
     && pnpm run build:core \
     && pnpm run build:angular
-    
-RUN mkdir -p /tmp/packs \
-    && (cd packages/core && pnpm pack --pack-destination /tmp/packs) \
-    && (cd packages/angular/dist && pnpm pack --pack-destination /tmp/packs)
+
+RUN pnpm run pack:core \
+    && pnpm run pack:angular
 
 FROM base AS runtime
 
-COPY --from=pack-builder /tmp/packs /tmp/packs
+COPY --from=pack-builder /workspace/dist/core /tmp/packs/core
+COPY --from=pack-builder /workspace/dist/angular /tmp/packs/angular
 COPY tools/compat/angular /tmp/compat-dir
 
 WORKDIR /tmp/compat-dir

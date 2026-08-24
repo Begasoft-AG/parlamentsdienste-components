@@ -4,9 +4,38 @@ import path from 'node:path';
 import readline from 'node:readline';
 
 // Define the project paths relative to the repo root
-const projects = ['.', 'packages/core', 'packages/angular', 'packages/react', 'packages/vue', 'docs'];
+const projects = ['.', 'packages/core', 'packages/angular', 'packages/react', 'packages/vue'];
 
-const internalWorkspacePackages = new Set(['@parlamentsdienste/angular-output-target']);
+const releasablePackageNames = new Set([
+    '@parlamentsdienste/pdcomponents-core',
+    '@parlamentsdienste/pdcomponents-angular',
+    '@parlamentsdienste/pdcomponents-react',
+    '@parlamentsdienste/pdcomponents-vue',
+]);
+
+function updateInternalDependencyVersions(deps: Record<string, string> | undefined, newVersion: string): void {
+    if (!deps) {
+        return;
+    }
+
+    for (const dep of Object.keys(deps)) {
+        const currentSpecifier = deps[dep];
+
+        if (!dep.startsWith('@parlamentsdienste/')) {
+            continue;
+        }
+
+        if (currentSpecifier.startsWith('workspace:')) {
+            continue;
+        }
+
+        if (!releasablePackageNames.has(dep)) {
+            continue;
+        }
+
+        deps[dep] = newVersion;
+    }
+}
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -25,23 +54,10 @@ rl.question('Enter the new version: ', (newVersion: string) => {
             // Update version
             pkg.version = newVersion;
 
-            // Update dependencies with @parlamentsdienste scope
-            if (pkg.dependencies) {
-                for (const dep in pkg.dependencies) {
-                    if (dep.startsWith('@parlamentsdienste/') && !internalWorkspacePackages.has(dep)) {
-                        pkg.dependencies[dep] = newVersion;
-                    }
-                }
-            }
-
-            // Update devDependencies with @parlamentsdienste scope
-            if (pkg.devDependencies) {
-                for (const dep in pkg.devDependencies) {
-                    if (dep.startsWith('@parlamentsdienste/') && !internalWorkspacePackages.has(dep)) {
-                        pkg.devDependencies[dep] = newVersion;
-                    }
-                }
-            }
+            updateInternalDependencyVersions(pkg.dependencies, newVersion);
+            updateInternalDependencyVersions(pkg.devDependencies, newVersion);
+            updateInternalDependencyVersions(pkg.peerDependencies, newVersion);
+            updateInternalDependencyVersions(pkg.optionalDependencies, newVersion);
 
             fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 4) + '\n', 'utf8');
             console.log(`✅ Updated version in ${pkgPath} to ${newVersion}`);

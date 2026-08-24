@@ -4,9 +4,9 @@ Testet die Kompatibilität der parlamentsdienste-components mit verschiedenen Fr
 
 ## Struktur
 
--   **angular/** – Testet Angular-Versionen
--   **react/** – Testet React-Versionen
--   **vue/** – Testet Vue-Versionen
+- **angular/** – Testet Angular-Versionen
+- **react/** – Testet React-Versionen
+- **vue/** – Testet Vue-Versionen
 
 ## Verwendung
 
@@ -19,9 +19,9 @@ cd tools/compat/angular
 
 **Optionen:**
 
--   `--legacy-peer-deps` – npm-Flag für Legacy-Abhängigkeiten
--   `--node-version <version>` – Node.js-Version (default: 24)
--   `--e2e` – E2E-Tests mit Playwright durchführen
+- `--legacy-peer-deps` – npm-Flag für Legacy-Abhängigkeiten
+- `--node-version <version>` – Node.js-Version (default: 24.18.0)
+- `--e2e` – E2E-Tests mit Playwright durchführen
 
 **Beispiel:**
 
@@ -36,15 +36,17 @@ cd tools/compat/react  # oder vue
 ./run.sh [Optionen] <version>
 ```
 
-Für React zusätzlich:
+Für React und Vue zusätzlich:
 
--   `--vite-version <version>` – Vite-Version (default: latest)
+- `--create-vite-version <version>` – create-vite-Version (default: 9.2.0)
+
+Die Defaults sind für reproduzierbare Baseline-Tests fest gepinnt. Für einen bewussten Test gegen den neuesten Scaffolder kann `--create-vite-version latest` verwendet werden.
 
 ## Technologie
 
--   **Docker:** Isolierte Build-Umgebungen pro Version
--   **Playwright:** E2E-Tests
--   **pnpm:** Paketmanagement
+- **Docker:** Isolierte Build-Umgebungen pro Version
+- **Playwright:** E2E-Tests
+- **pnpm:** Paketmanagement
 
 ## Workflow
 

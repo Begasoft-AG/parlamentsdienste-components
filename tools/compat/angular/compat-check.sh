@@ -60,8 +60,8 @@ if [[ "$legacy_peer_deps" == "true" ]]; then
 fi
 
 npm install "${install_args[@]}" \
-    "$(compgen -G "$prebuilt_pack_dir/parlamentsdienste-pdcomponents-core-*.tgz" | head -n 1)" \
-    "$(compgen -G "$prebuilt_pack_dir/parlamentsdienste-pdcomponents-angular-*.tgz" | head -n 1)"
+    "$(compgen -G "$prebuilt_pack_dir/core/parlamentsdienste-pdcomponents-core-*.tgz" | head -n 1)" \
+    "$(compgen -G "$prebuilt_pack_dir/angular/parlamentsdienste-pdcomponents-angular-*.tgz" | head -n 1)"
 
 log_step "Injecting Angular ${angular_major} compatibility fixture"
 cp "$template_dir/angular.json" angular.json
