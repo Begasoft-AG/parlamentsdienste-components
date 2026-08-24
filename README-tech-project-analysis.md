@@ -205,7 +205,7 @@ Konkrete Risiken durch die Entfernung zentraler Monorepo-Orchestrierung:
 
 - Build-Voraussetzungen sind nicht deklarativ absicherbar, sondern nur implizit ueber Skriptordnung.
 - CI-Jobs koennen leicht Teilketten vergessen. [stencil-tests.yml](../../.github/workflows/stencil-tests.yml) baut zum Beispiel nur `build:core`, nicht explizit den Custom Output Target.
-- Docker baut in [Dockerfile](../../Dockerfile) direkt `build:storybook`, obwohl Storybook auf Core-Dist-Artefakte verweist.
+- Docker baut in [Dockerfile.storybook](../../docs/docker/Dockerfile.storybook) direkt `build:storybook`, obwohl Storybook auf Core-Dist-Artefakte verweist.
 - Keine zentrale Caching- oder Inkrementalitaetslogik erkennt automatisch, ob nur Wrapper, nur Docs oder nur Styles neu gebaut werden muessten.
 
 ## 3. Komponenten-Architektur
@@ -322,7 +322,7 @@ Die Vue-App ist analog verdrahtet: Wrapper via `@parlamentsdienste/pdcomponents-
 
 ### Deployment
 
-Das Deployment-Verzeichnis [deployment](../../deployment) enthaelt Kubernetes-Manifeste fuer Namespace, Registry-Secret und Storybook-Betrieb. Der Container-Build wird in [Dockerfile](../../Dockerfile) definiert:
+Das Deployment-Verzeichnis [deployment](../../deployment) enthaelt Kubernetes-Manifeste fuer Namespace, Registry-Secret und Storybook-Betrieb. Der Container-Build wird in [Dockerfile.storybook](../../docs/docker/Dockerfile.storybook) definiert:
 
 - Stage 1 installiert pnpm-Abhaengigkeiten und fuehrt `npm run build:storybook` aus.
 - Stage 2 kopiert `docs/storybook-static` in ein Nginx-Image und nutzt die Nginx-Templates aus [docs/nginx-config](../../docs/nginx-config).
@@ -429,7 +429,7 @@ Diese Tool-Konfigurationen ersetzen heute die fruehere zentrale Monorepo-Koordin
 3. `INPUTMAP` und `angularValueAccessorConfigs` sind synchron, aber nur organisatorisch, nicht technisch.
 4. Die Value-Accessor-Template-Generierung ist vorhanden, aber deaktiviert; das erhoeht das Risiko, dass Entwickler von einer aktiven Generierung ausgehen, die real nicht stattfindet.
 5. `libs/angular-output-target` traegt Versions- und Entry-Point-Metadaten wie ein publizierbares Paket, ist aber zugleich `private: true`; der Status als reines internes Build-Artefakt sollte bewusst so verstanden werden.
-6. [Dockerfile](../../Dockerfile) und [storybook-build.yml](../../.github/workflows/storybook-build.yml) erzwingen den Core-Build nicht explizit vor Storybook.
+6. [Dockerfile.storybook](../../docs/docker/Dockerfile.storybook) und [storybook-build.yml](../../.github/workflows/storybook-build.yml) erzwingen den Core-Build nicht explizit vor Storybook.
 
 ## Kurzfazit
 

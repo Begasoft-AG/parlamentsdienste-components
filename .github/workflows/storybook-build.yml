@@ -56,6 +56,7 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: .
+          file: docs/docker/Dockerfile.storybook
           push: true
           tags: |
             ${{ env.REGISTRY }}/${{ env.STORYBOOK_IMAGE }}:${{ env.TAG }}
