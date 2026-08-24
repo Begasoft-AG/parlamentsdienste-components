@@ -3,10 +3,10 @@
     "version": "4.0.2",
     "type": "module",
     "description": "Component Library for Swiss Parliamentary Services - Vue-Wrapper Lib",
-    "types": "./dist/index.d.ts",
+    "types": "./dist/src/index.d.ts",
     "exports": {
         ".": {
-            "types": "./dist/index.d.ts",
+            "types": "./dist/src/index.d.ts",
             "default": "./dist/index.js"
         }
     },
@@ -29,8 +29,15 @@
     "peerDependencies": {
         "vue": ">=3.4.38 <4.0.0"
     },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "catalog:vue3",
+        "typescript": "catalog:toolchain",
+        "vite": "catalog:vite7",
+        "vite-plugin-dts": "catalog:vite7",
+        "vue": "catalog:vue3"
+    },
     "dependencies": {
         "@parlamentsdienste/pdcomponents-core": "4.0.2",
-        "@stencil/vue-output-target": "^0.10.8"
+        "@stencil/vue-output-target": "catalog:stencil4"
     }
 }

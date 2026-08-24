@@ -4,10 +4,13 @@
     "description": "Documentation (Storybook) for the Swiss Parliamentary Services Component Library",
     "main": "app.js",
     "devDependencies": {
-        "@parlamentsdienste/pdcomponents-core": "4.0.2",
-        "@storybook/addon-docs": "9.0.4",
-        "@storybook/html-vite": "9.0.4",
-        "storybook": "9.0.4"
+        "@parlamentsdienste/pdcomponents-core": "workspace:*",
+        "@storybook/addon-docs": "catalog:storybook9",
+        "@storybook/html-vite": "catalog:storybook9",
+        "@types/node": "catalog:toolchain",
+        "storybook": "catalog:storybook9",
+        "typescript": "catalog:toolchain",
+        "vite": "catalog:vite7"
     },
     "scripts": {
         "start": "storybook dev -p 6006",

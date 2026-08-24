@@ -3,8 +3,6 @@
         "jsx": "react-jsx",
         "allowJs": false,
         "esModuleInterop": false,
-        "allowSyntheticDefaultImports": true,
-        "strict": true,
         "types": ["vite/client"]
     },
     "files": [],
@@ -14,5 +12,5 @@
             "path": "./tsconfig.lib.json"
         }
     ],
-    "extends": "../../tsconfig.base.json"
+    "extends": "../../tsconfig.web.json"
 }

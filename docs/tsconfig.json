@@ -1,7 +1,7 @@
 {
-    "extends": "../tsconfig.base.json",
+    "extends": "../tsconfig.web.json",
     "compilerOptions": {
-        "outDir": "dist"
+        "strict": false
     },
-    "include": ["stories/**/*", "storybook-static/**/*"]
+    "include": ["stories/**/*"]
 }

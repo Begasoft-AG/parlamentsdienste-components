@@ -7,7 +7,12 @@
 
 /* eslint-disable */
 
-import { type ComboboxItem, type DropdownItem, type InputChangeEventDetail, type PdAlertCustomEvent, type PdComboboxCustomEvent, type PdDatepickerCustomEvent, type PdDropdownCustomEvent, type PdInputCustomEvent, type PdSearchCustomEvent, type PdSortCustomEvent, type PdTableCustomEvent, type PdTabsCustomEvent, type PdTextareaCustomEvent, type SelectedEvent, type SortDropdownItem, type TabValue } from "@parlamentsdienste/pdcomponents-core";
+import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
+import { createComponent } from '@stencil/react-output-target/runtime';
+import React from 'react';
+
+import { type ComboboxItem, type DropdownItem, type InputChangeEventDetail, type PdAlertCustomEvent, type PdBackdropCustomEvent, type PdCheckboxCustomEvent, type PdChipCustomEvent, type PdComboboxCustomEvent, type PdDatepickerCustomEvent, type PdDropdownCustomEvent, type PdInputCustomEvent, type PdListItemExpandableCustomEvent, type PdModalCustomEvent, type PdNavbarCustomEvent, type PdPanelCustomEvent, type PdPanelHeaderCustomEvent, type PdRadioGroupCustomEvent, type PdSearchCustomEvent, type PdSliderCustomEvent, type PdSortCustomEvent, type PdTableCustomEvent, type PdTableFilterCustomEvent, type PdTabsCustomEvent, type PdTextareaCustomEvent, type PdToastCustomEvent, type SelectedEvent, type SortDropdownItem, type TabValue } from "@parlamentsdienste/pdcomponents-core";
+import type { Components } from "@parlamentsdienste/pdcomponents-core/components";
 import { PdAlert as PdAlertElement, defineCustomElement as definePdAlert } from "@parlamentsdienste/pdcomponents-core/components/pd-alert.js";
 import { PdAnimation as PdAnimationElement, defineCustomElement as definePdAnimation } from "@parlamentsdienste/pdcomponents-core/components/pd-animation.js";
 import { PdBackdrop as PdBackdropElement, defineCustomElement as definePdBackdrop } from "@parlamentsdienste/pdcomponents-core/components/pd-backdrop.js";
@@ -50,17 +55,14 @@ import { PdTextarea as PdTextareaElement, defineCustomElement as definePdTextare
 import { PdTimelineDate as PdTimelineDateElement, defineCustomElement as definePdTimelineDate } from "@parlamentsdienste/pdcomponents-core/components/pd-timeline-date.js";
 import { PdTimeline as PdTimelineElement, defineCustomElement as definePdTimeline } from "@parlamentsdienste/pdcomponents-core/components/pd-timeline.js";
 import { PdToast as PdToastElement, defineCustomElement as definePdToast } from "@parlamentsdienste/pdcomponents-core/components/pd-toast.js";
-import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
-import { createComponent } from '@stencil/react-output-target/runtime';
-import React from 'react';
 
 export type PdAlertEvents = {
     onPdClosed: EventName<PdAlertCustomEvent<MouseEvent>>,
-    onPdAction: EventName<CustomEvent<void>>,
-    onPdCollapsed: EventName<CustomEvent<boolean>>
+    onPdAction: EventName<PdAlertCustomEvent<void>>,
+    onPdCollapsed: EventName<PdAlertCustomEvent<boolean>>
 };
 
-export const PdAlert: StencilReactComponent<PdAlertElement, PdAlertEvents> = /*@__PURE__*/ createComponent<PdAlertElement, PdAlertEvents>({
+export const PdAlert: StencilReactComponent<PdAlertElement, PdAlertEvents, Components.PdAlert> = /*@__PURE__*/ createComponent<PdAlertElement, PdAlertEvents, Components.PdAlert>({
     tagName: 'pd-alert',
     elementClass: PdAlertElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -75,7 +77,7 @@ export const PdAlert: StencilReactComponent<PdAlertElement, PdAlertEvents> = /*@
 
 export type PdAnimationEvents = NonNullable<unknown>;
 
-export const PdAnimation: StencilReactComponent<PdAnimationElement, PdAnimationEvents> = /*@__PURE__*/ createComponent<PdAnimationElement, PdAnimationEvents>({
+export const PdAnimation: StencilReactComponent<PdAnimationElement, PdAnimationEvents, Components.PdAnimation> = /*@__PURE__*/ createComponent<PdAnimationElement, PdAnimationEvents, Components.PdAnimation>({
     tagName: 'pd-animation',
     elementClass: PdAnimationElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -84,9 +86,9 @@ export const PdAnimation: StencilReactComponent<PdAnimationElement, PdAnimationE
     defineCustomElement: definePdAnimation
 });
 
-export type PdBackdropEvents = { onPdTap: EventName<CustomEvent<void>> };
+export type PdBackdropEvents = { onPdTap: EventName<PdBackdropCustomEvent<void>> };
 
-export const PdBackdrop: StencilReactComponent<PdBackdropElement, PdBackdropEvents> = /*@__PURE__*/ createComponent<PdBackdropElement, PdBackdropEvents>({
+export const PdBackdrop: StencilReactComponent<PdBackdropElement, PdBackdropEvents, Components.PdBackdrop> = /*@__PURE__*/ createComponent<PdBackdropElement, PdBackdropEvents, Components.PdBackdrop>({
     tagName: 'pd-backdrop',
     elementClass: PdBackdropElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -97,7 +99,7 @@ export const PdBackdrop: StencilReactComponent<PdBackdropElement, PdBackdropEven
 
 export type PdButtonEvents = NonNullable<unknown>;
 
-export const PdButton: StencilReactComponent<PdButtonElement, PdButtonEvents> = /*@__PURE__*/ createComponent<PdButtonElement, PdButtonEvents>({
+export const PdButton: StencilReactComponent<PdButtonElement, PdButtonEvents, Components.PdButton> = /*@__PURE__*/ createComponent<PdButtonElement, PdButtonEvents, Components.PdButton>({
     tagName: 'pd-button',
     elementClass: PdButtonElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -108,7 +110,7 @@ export const PdButton: StencilReactComponent<PdButtonElement, PdButtonEvents> = 
 
 export type PdButtonGroupEvents = NonNullable<unknown>;
 
-export const PdButtonGroup: StencilReactComponent<PdButtonGroupElement, PdButtonGroupEvents> = /*@__PURE__*/ createComponent<PdButtonGroupElement, PdButtonGroupEvents>({
+export const PdButtonGroup: StencilReactComponent<PdButtonGroupElement, PdButtonGroupEvents, Components.PdButtonGroup> = /*@__PURE__*/ createComponent<PdButtonGroupElement, PdButtonGroupEvents, Components.PdButtonGroup>({
     tagName: 'pd-button-group',
     elementClass: PdButtonGroupElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -117,9 +119,9 @@ export const PdButtonGroup: StencilReactComponent<PdButtonGroupElement, PdButton
     defineCustomElement: definePdButtonGroup
 });
 
-export type PdCheckboxEvents = { onPdChecked: EventName<CustomEvent<boolean>> };
+export type PdCheckboxEvents = { onPdChecked: EventName<PdCheckboxCustomEvent<boolean>> };
 
-export const PdCheckbox: StencilReactComponent<PdCheckboxElement, PdCheckboxEvents> = /*@__PURE__*/ createComponent<PdCheckboxElement, PdCheckboxEvents>({
+export const PdCheckbox: StencilReactComponent<PdCheckboxElement, PdCheckboxEvents, Components.PdCheckbox> = /*@__PURE__*/ createComponent<PdCheckboxElement, PdCheckboxEvents, Components.PdCheckbox>({
     tagName: 'pd-checkbox',
     elementClass: PdCheckboxElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -129,11 +131,11 @@ export const PdCheckbox: StencilReactComponent<PdCheckboxElement, PdCheckboxEven
 });
 
 export type PdChipEvents = {
-    onPdRemoveChip: EventName<CustomEvent<any>>,
-    onPdCheckChip: EventName<CustomEvent<any>>
+    onPdRemoveChip: EventName<PdChipCustomEvent<any>>,
+    onPdCheckChip: EventName<PdChipCustomEvent<any>>
 };
 
-export const PdChip: StencilReactComponent<PdChipElement, PdChipEvents> = /*@__PURE__*/ createComponent<PdChipElement, PdChipEvents>({
+export const PdChip: StencilReactComponent<PdChipElement, PdChipEvents, Components.PdChip> = /*@__PURE__*/ createComponent<PdChipElement, PdChipEvents, Components.PdChip>({
     tagName: 'pd-chip',
     elementClass: PdChipElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -148,11 +150,11 @@ export const PdChip: StencilReactComponent<PdChipElement, PdChipEvents> = /*@__P
 export type PdComboboxEvents = {
     onPdInput: EventName<PdComboboxCustomEvent<InputChangeEventDetail>>,
     onPdChange: EventName<PdComboboxCustomEvent<ComboboxItem | ComboboxItem[]>>,
-    onPdBlur: EventName<CustomEvent<void>>,
-    onPdFocus: EventName<CustomEvent<void>>
+    onPdBlur: EventName<PdComboboxCustomEvent<void>>,
+    onPdFocus: EventName<PdComboboxCustomEvent<void>>
 };
 
-export const PdCombobox: StencilReactComponent<PdComboboxElement, PdComboboxEvents> = /*@__PURE__*/ createComponent<PdComboboxElement, PdComboboxEvents>({
+export const PdCombobox: StencilReactComponent<PdComboboxElement, PdComboboxEvents, Components.PdCombobox> = /*@__PURE__*/ createComponent<PdComboboxElement, PdComboboxEvents, Components.PdCombobox>({
     tagName: 'pd-combobox',
     elementClass: PdComboboxElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -170,19 +172,13 @@ export type PdDatepickerEvents = {
     onPdChange: EventName<PdDatepickerCustomEvent<{ selectedDates: Date[]; dateStr: string }>>,
     onPdOpen: EventName<PdDatepickerCustomEvent<{ selectedDates: Date[]; dateStr: string }>>,
     onPdClose: EventName<PdDatepickerCustomEvent<{ selectedDates: Date[]; dateStr: string }>>,
-    onPdMonthChange: EventName<PdDatepickerCustomEvent<{
-        selectedDates: Date[];
-        dateStr: string;
-    }>>,
+    onPdMonthChange: EventName<PdDatepickerCustomEvent<{ selectedDates: Date[]; dateStr: string; }>>,
     onPdYearChange: EventName<PdDatepickerCustomEvent<{ selectedDates: Date[]; dateStr: string }>>,
     onPdReady: EventName<PdDatepickerCustomEvent<{ selectedDates: Date[]; dateStr: string }>>,
-    onPdValueUpdate: EventName<PdDatepickerCustomEvent<{
-        selectedDates: Date[];
-        dateStr: string;
-    }>>
+    onPdValueUpdate: EventName<PdDatepickerCustomEvent<{ selectedDates: Date[]; dateStr: string; }>>
 };
 
-export const PdDatepicker: StencilReactComponent<PdDatepickerElement, PdDatepickerEvents> = /*@__PURE__*/ createComponent<PdDatepickerElement, PdDatepickerEvents>({
+export const PdDatepicker: StencilReactComponent<PdDatepickerElement, PdDatepickerEvents, Components.PdDatepicker> = /*@__PURE__*/ createComponent<PdDatepickerElement, PdDatepickerEvents, Components.PdDatepicker>({
     tagName: 'pd-datepicker',
     elementClass: PdDatepickerElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -201,7 +197,7 @@ export const PdDatepicker: StencilReactComponent<PdDatepickerElement, PdDatepick
 
 export type PdDropdownEvents = { onPdChange: EventName<PdDropdownCustomEvent<DropdownItem>> };
 
-export const PdDropdown: StencilReactComponent<PdDropdownElement, PdDropdownEvents> = /*@__PURE__*/ createComponent<PdDropdownElement, PdDropdownEvents>({
+export const PdDropdown: StencilReactComponent<PdDropdownElement, PdDropdownEvents, Components.PdDropdown> = /*@__PURE__*/ createComponent<PdDropdownElement, PdDropdownEvents, Components.PdDropdown>({
     tagName: 'pd-dropdown',
     elementClass: PdDropdownElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -212,7 +208,7 @@ export const PdDropdown: StencilReactComponent<PdDropdownElement, PdDropdownEven
 
 export type PdDropdownItemEvents = NonNullable<unknown>;
 
-export const PdDropdownItem: StencilReactComponent<PdDropdownItemElement, PdDropdownItemEvents> = /*@__PURE__*/ createComponent<PdDropdownItemElement, PdDropdownItemEvents>({
+export const PdDropdownItem: StencilReactComponent<PdDropdownItemElement, PdDropdownItemEvents, Components.PdDropdownItem> = /*@__PURE__*/ createComponent<PdDropdownItemElement, PdDropdownItemEvents, Components.PdDropdownItem>({
     tagName: 'pd-dropdown-item',
     elementClass: PdDropdownItemElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -223,7 +219,7 @@ export const PdDropdownItem: StencilReactComponent<PdDropdownItemElement, PdDrop
 
 export type PdIconEvents = NonNullable<unknown>;
 
-export const PdIcon: StencilReactComponent<PdIconElement, PdIconEvents> = /*@__PURE__*/ createComponent<PdIconElement, PdIconEvents>({
+export const PdIcon: StencilReactComponent<PdIconElement, PdIconEvents, Components.PdIcon> = /*@__PURE__*/ createComponent<PdIconElement, PdIconEvents, Components.PdIcon>({
     tagName: 'pd-icon',
     elementClass: PdIconElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -235,11 +231,11 @@ export const PdIcon: StencilReactComponent<PdIconElement, PdIconEvents> = /*@__P
 export type PdInputEvents = {
     onPdInput: EventName<PdInputCustomEvent<KeyboardEvent>>,
     onPdChange: EventName<PdInputCustomEvent<InputChangeEventDetail>>,
-    onPdBlur: EventName<CustomEvent<void>>,
-    onPdFocus: EventName<CustomEvent<void>>
+    onPdBlur: EventName<PdInputCustomEvent<void>>,
+    onPdFocus: EventName<PdInputCustomEvent<void>>
 };
 
-export const PdInput: StencilReactComponent<PdInputElement, PdInputEvents> = /*@__PURE__*/ createComponent<PdInputElement, PdInputEvents>({
+export const PdInput: StencilReactComponent<PdInputElement, PdInputEvents, Components.PdInput> = /*@__PURE__*/ createComponent<PdInputElement, PdInputEvents, Components.PdInput>({
     tagName: 'pd-input',
     elementClass: PdInputElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -255,7 +251,7 @@ export const PdInput: StencilReactComponent<PdInputElement, PdInputEvents> = /*@
 
 export type PdLabelEvents = NonNullable<unknown>;
 
-export const PdLabel: StencilReactComponent<PdLabelElement, PdLabelEvents> = /*@__PURE__*/ createComponent<PdLabelElement, PdLabelEvents>({
+export const PdLabel: StencilReactComponent<PdLabelElement, PdLabelEvents, Components.PdLabel> = /*@__PURE__*/ createComponent<PdLabelElement, PdLabelEvents, Components.PdLabel>({
     tagName: 'pd-label',
     elementClass: PdLabelElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -266,7 +262,7 @@ export const PdLabel: StencilReactComponent<PdLabelElement, PdLabelEvents> = /*@
 
 export type PdListEvents = NonNullable<unknown>;
 
-export const PdList: StencilReactComponent<PdListElement, PdListEvents> = /*@__PURE__*/ createComponent<PdListElement, PdListEvents>({
+export const PdList: StencilReactComponent<PdListElement, PdListEvents, Components.PdList> = /*@__PURE__*/ createComponent<PdListElement, PdListEvents, Components.PdList>({
     tagName: 'pd-list',
     elementClass: PdListElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -277,7 +273,7 @@ export const PdList: StencilReactComponent<PdListElement, PdListEvents> = /*@__P
 
 export type PdListItemEvents = NonNullable<unknown>;
 
-export const PdListItem: StencilReactComponent<PdListItemElement, PdListItemEvents> = /*@__PURE__*/ createComponent<PdListItemElement, PdListItemEvents>({
+export const PdListItem: StencilReactComponent<PdListItemElement, PdListItemEvents, Components.PdListItem> = /*@__PURE__*/ createComponent<PdListItemElement, PdListItemEvents, Components.PdListItem>({
     tagName: 'pd-list-item',
     elementClass: PdListItemElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -287,14 +283,14 @@ export const PdListItem: StencilReactComponent<PdListItemElement, PdListItemEven
 });
 
 export type PdListItemExpandableEvents = {
-    onPdEdit: EventName<CustomEvent<void>>,
-    onPdExpand: EventName<CustomEvent<void>>,
-    onPdSelected: EventName<CustomEvent<boolean>>,
-    onPdCollapsed: EventName<CustomEvent<boolean>>,
-    onPdContentClick: EventName<CustomEvent<void>>
+    onPdEdit: EventName<PdListItemExpandableCustomEvent<void>>,
+    onPdExpand: EventName<PdListItemExpandableCustomEvent<void>>,
+    onPdSelected: EventName<PdListItemExpandableCustomEvent<boolean>>,
+    onPdCollapsed: EventName<PdListItemExpandableCustomEvent<boolean>>,
+    onPdContentClick: EventName<PdListItemExpandableCustomEvent<void>>
 };
 
-export const PdListItemExpandable: StencilReactComponent<PdListItemExpandableElement, PdListItemExpandableEvents> = /*@__PURE__*/ createComponent<PdListItemExpandableElement, PdListItemExpandableEvents>({
+export const PdListItemExpandable: StencilReactComponent<PdListItemExpandableElement, PdListItemExpandableEvents, Components.PdListItemExpandable> = /*@__PURE__*/ createComponent<PdListItemExpandableElement, PdListItemExpandableEvents, Components.PdListItemExpandable>({
     tagName: 'pd-list-item-expandable',
     elementClass: PdListItemExpandableElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -311,7 +307,7 @@ export const PdListItemExpandable: StencilReactComponent<PdListItemExpandableEle
 
 export type PdMenuEvents = NonNullable<unknown>;
 
-export const PdMenu: StencilReactComponent<PdMenuElement, PdMenuEvents> = /*@__PURE__*/ createComponent<PdMenuElement, PdMenuEvents>({
+export const PdMenu: StencilReactComponent<PdMenuElement, PdMenuEvents, Components.PdMenu> = /*@__PURE__*/ createComponent<PdMenuElement, PdMenuEvents, Components.PdMenu>({
     tagName: 'pd-menu',
     elementClass: PdMenuElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -322,7 +318,7 @@ export const PdMenu: StencilReactComponent<PdMenuElement, PdMenuEvents> = /*@__P
 
 export type PdMenuItemEvents = NonNullable<unknown>;
 
-export const PdMenuItem: StencilReactComponent<PdMenuItemElement, PdMenuItemEvents> = /*@__PURE__*/ createComponent<PdMenuItemElement, PdMenuItemEvents>({
+export const PdMenuItem: StencilReactComponent<PdMenuItemElement, PdMenuItemEvents, Components.PdMenuItem> = /*@__PURE__*/ createComponent<PdMenuItemElement, PdMenuItemEvents, Components.PdMenuItem>({
     tagName: 'pd-menu-item',
     elementClass: PdMenuItemElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -332,12 +328,12 @@ export const PdMenuItem: StencilReactComponent<PdMenuItemElement, PdMenuItemEven
 });
 
 export type PdModalEvents = {
-    onPdClosed: EventName<CustomEvent<void>>,
-    onPdBackdrop: EventName<CustomEvent<void>>,
-    onPdEscape: EventName<CustomEvent<void>>
+    onPdClosed: EventName<PdModalCustomEvent<void>>,
+    onPdBackdrop: EventName<PdModalCustomEvent<void>>,
+    onPdEscape: EventName<PdModalCustomEvent<void>>
 };
 
-export const PdModal: StencilReactComponent<PdModalElement, PdModalEvents> = /*@__PURE__*/ createComponent<PdModalElement, PdModalEvents>({
+export const PdModal: StencilReactComponent<PdModalElement, PdModalEvents, Components.PdModal> = /*@__PURE__*/ createComponent<PdModalElement, PdModalEvents, Components.PdModal>({
     tagName: 'pd-modal',
     elementClass: PdModalElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -350,9 +346,9 @@ export const PdModal: StencilReactComponent<PdModalElement, PdModalEvents> = /*@
     defineCustomElement: definePdModal
 });
 
-export type PdNavbarEvents = { onPdMenu: EventName<CustomEvent<void>> };
+export type PdNavbarEvents = { onPdMenu: EventName<PdNavbarCustomEvent<void>> };
 
-export const PdNavbar: StencilReactComponent<PdNavbarElement, PdNavbarEvents> = /*@__PURE__*/ createComponent<PdNavbarElement, PdNavbarEvents>({
+export const PdNavbar: StencilReactComponent<PdNavbarElement, PdNavbarEvents, Components.PdNavbar> = /*@__PURE__*/ createComponent<PdNavbarElement, PdNavbarEvents, Components.PdNavbar>({
     tagName: 'pd-navbar',
     elementClass: PdNavbarElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -363,7 +359,7 @@ export const PdNavbar: StencilReactComponent<PdNavbarElement, PdNavbarEvents> = 
 
 export type PdNavbarItemEvents = NonNullable<unknown>;
 
-export const PdNavbarItem: StencilReactComponent<PdNavbarItemElement, PdNavbarItemEvents> = /*@__PURE__*/ createComponent<PdNavbarItemElement, PdNavbarItemEvents>({
+export const PdNavbarItem: StencilReactComponent<PdNavbarItemElement, PdNavbarItemEvents, Components.PdNavbarItem> = /*@__PURE__*/ createComponent<PdNavbarItemElement, PdNavbarItemEvents, Components.PdNavbarItem>({
     tagName: 'pd-navbar-item',
     elementClass: PdNavbarItemElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -372,9 +368,9 @@ export const PdNavbarItem: StencilReactComponent<PdNavbarItemElement, PdNavbarIt
     defineCustomElement: definePdNavbarItem
 });
 
-export type PdPanelEvents = { onPdCollapsed: EventName<CustomEvent<any>> };
+export type PdPanelEvents = { onPdCollapsed: EventName<PdPanelCustomEvent<any>> };
 
-export const PdPanel: StencilReactComponent<PdPanelElement, PdPanelEvents> = /*@__PURE__*/ createComponent<PdPanelElement, PdPanelEvents>({
+export const PdPanel: StencilReactComponent<PdPanelElement, PdPanelEvents, Components.PdPanel> = /*@__PURE__*/ createComponent<PdPanelElement, PdPanelEvents, Components.PdPanel>({
     tagName: 'pd-panel',
     elementClass: PdPanelElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -385,7 +381,7 @@ export const PdPanel: StencilReactComponent<PdPanelElement, PdPanelEvents> = /*@
 
 export type PdPanelContentEvents = NonNullable<unknown>;
 
-export const PdPanelContent: StencilReactComponent<PdPanelContentElement, PdPanelContentEvents> = /*@__PURE__*/ createComponent<PdPanelContentElement, PdPanelContentEvents>({
+export const PdPanelContent: StencilReactComponent<PdPanelContentElement, PdPanelContentEvents, Components.PdPanelContent> = /*@__PURE__*/ createComponent<PdPanelContentElement, PdPanelContentEvents, Components.PdPanelContent>({
     tagName: 'pd-panel-content',
     elementClass: PdPanelContentElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -396,7 +392,7 @@ export const PdPanelContent: StencilReactComponent<PdPanelContentElement, PdPane
 
 export type PdPanelFooterEvents = NonNullable<unknown>;
 
-export const PdPanelFooter: StencilReactComponent<PdPanelFooterElement, PdPanelFooterEvents> = /*@__PURE__*/ createComponent<PdPanelFooterElement, PdPanelFooterEvents>({
+export const PdPanelFooter: StencilReactComponent<PdPanelFooterElement, PdPanelFooterEvents, Components.PdPanelFooter> = /*@__PURE__*/ createComponent<PdPanelFooterElement, PdPanelFooterEvents, Components.PdPanelFooter>({
     tagName: 'pd-panel-footer',
     elementClass: PdPanelFooterElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -405,9 +401,9 @@ export const PdPanelFooter: StencilReactComponent<PdPanelFooterElement, PdPanelF
     defineCustomElement: definePdPanelFooter
 });
 
-export type PdPanelHeaderEvents = { onPdHover: EventName<CustomEvent<boolean>> };
+export type PdPanelHeaderEvents = { onPdHover: EventName<PdPanelHeaderCustomEvent<boolean>> };
 
-export const PdPanelHeader: StencilReactComponent<PdPanelHeaderElement, PdPanelHeaderEvents> = /*@__PURE__*/ createComponent<PdPanelHeaderElement, PdPanelHeaderEvents>({
+export const PdPanelHeader: StencilReactComponent<PdPanelHeaderElement, PdPanelHeaderEvents, Components.PdPanelHeader> = /*@__PURE__*/ createComponent<PdPanelHeaderElement, PdPanelHeaderEvents, Components.PdPanelHeader>({
     tagName: 'pd-panel-header',
     elementClass: PdPanelHeaderElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -418,7 +414,7 @@ export const PdPanelHeader: StencilReactComponent<PdPanelHeaderElement, PdPanelH
 
 export type PdProgressBarEvents = NonNullable<unknown>;
 
-export const PdProgressBar: StencilReactComponent<PdProgressBarElement, PdProgressBarEvents> = /*@__PURE__*/ createComponent<PdProgressBarElement, PdProgressBarEvents>({
+export const PdProgressBar: StencilReactComponent<PdProgressBarElement, PdProgressBarEvents, Components.PdProgressBar> = /*@__PURE__*/ createComponent<PdProgressBarElement, PdProgressBarEvents, Components.PdProgressBar>({
     tagName: 'pd-progress-bar',
     elementClass: PdProgressBarElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -429,7 +425,7 @@ export const PdProgressBar: StencilReactComponent<PdProgressBarElement, PdProgre
 
 export type PdRadioEvents = NonNullable<unknown>;
 
-export const PdRadio: StencilReactComponent<PdRadioElement, PdRadioEvents> = /*@__PURE__*/ createComponent<PdRadioElement, PdRadioEvents>({
+export const PdRadio: StencilReactComponent<PdRadioElement, PdRadioEvents, Components.PdRadio> = /*@__PURE__*/ createComponent<PdRadioElement, PdRadioEvents, Components.PdRadio>({
     tagName: 'pd-radio',
     elementClass: PdRadioElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -438,9 +434,9 @@ export const PdRadio: StencilReactComponent<PdRadioElement, PdRadioEvents> = /*@
     defineCustomElement: definePdRadio
 });
 
-export type PdRadioGroupEvents = { onPdChange: EventName<CustomEvent<string>> };
+export type PdRadioGroupEvents = { onPdChange: EventName<PdRadioGroupCustomEvent<string>> };
 
-export const PdRadioGroup: StencilReactComponent<PdRadioGroupElement, PdRadioGroupEvents> = /*@__PURE__*/ createComponent<PdRadioGroupElement, PdRadioGroupEvents>({
+export const PdRadioGroup: StencilReactComponent<PdRadioGroupElement, PdRadioGroupEvents, Components.PdRadioGroup> = /*@__PURE__*/ createComponent<PdRadioGroupElement, PdRadioGroupEvents, Components.PdRadioGroup>({
     tagName: 'pd-radio-group',
     elementClass: PdRadioGroupElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -453,11 +449,11 @@ export type PdSearchEvents = {
     onPdInput: EventName<PdSearchCustomEvent<InputChangeEventDetail>>,
     onPdChange: EventName<PdSearchCustomEvent<InputChangeEventDetail>>,
     onPdSearch: EventName<PdSearchCustomEvent<InputChangeEventDetail>>,
-    onPdBlur: EventName<CustomEvent<void>>,
-    onPdFocus: EventName<CustomEvent<void>>
+    onPdBlur: EventName<PdSearchCustomEvent<void>>,
+    onPdFocus: EventName<PdSearchCustomEvent<void>>
 };
 
-export const PdSearch: StencilReactComponent<PdSearchElement, PdSearchEvents> = /*@__PURE__*/ createComponent<PdSearchElement, PdSearchEvents>({
+export const PdSearch: StencilReactComponent<PdSearchElement, PdSearchEvents, Components.PdSearch> = /*@__PURE__*/ createComponent<PdSearchElement, PdSearchEvents, Components.PdSearch>({
     tagName: 'pd-search',
     elementClass: PdSearchElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -474,7 +470,7 @@ export const PdSearch: StencilReactComponent<PdSearchElement, PdSearchEvents> = 
 
 export type PdSidebarEvents = NonNullable<unknown>;
 
-export const PdSidebar: StencilReactComponent<PdSidebarElement, PdSidebarEvents> = /*@__PURE__*/ createComponent<PdSidebarElement, PdSidebarEvents>({
+export const PdSidebar: StencilReactComponent<PdSidebarElement, PdSidebarEvents, Components.PdSidebar> = /*@__PURE__*/ createComponent<PdSidebarElement, PdSidebarEvents, Components.PdSidebar>({
     tagName: 'pd-sidebar',
     elementClass: PdSidebarElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -485,7 +481,7 @@ export const PdSidebar: StencilReactComponent<PdSidebarElement, PdSidebarEvents>
 
 export type PdSidebarItemEvents = NonNullable<unknown>;
 
-export const PdSidebarItem: StencilReactComponent<PdSidebarItemElement, PdSidebarItemEvents> = /*@__PURE__*/ createComponent<PdSidebarItemElement, PdSidebarItemEvents>({
+export const PdSidebarItem: StencilReactComponent<PdSidebarItemElement, PdSidebarItemEvents, Components.PdSidebarItem> = /*@__PURE__*/ createComponent<PdSidebarItemElement, PdSidebarItemEvents, Components.PdSidebarItem>({
     tagName: 'pd-sidebar-item',
     elementClass: PdSidebarItemElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -496,7 +492,7 @@ export const PdSidebarItem: StencilReactComponent<PdSidebarItemElement, PdSideba
 
 export type PdSkeletonEvents = NonNullable<unknown>;
 
-export const PdSkeleton: StencilReactComponent<PdSkeletonElement, PdSkeletonEvents> = /*@__PURE__*/ createComponent<PdSkeletonElement, PdSkeletonEvents>({
+export const PdSkeleton: StencilReactComponent<PdSkeletonElement, PdSkeletonEvents, Components.PdSkeleton> = /*@__PURE__*/ createComponent<PdSkeletonElement, PdSkeletonEvents, Components.PdSkeleton>({
     tagName: 'pd-skeleton',
     elementClass: PdSkeletonElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -506,11 +502,11 @@ export const PdSkeleton: StencilReactComponent<PdSkeletonElement, PdSkeletonEven
 });
 
 export type PdSliderEvents = {
-    onPdInput: EventName<CustomEvent<number>>,
-    onPdChange: EventName<CustomEvent<number>>
+    onPdInput: EventName<PdSliderCustomEvent<number>>,
+    onPdChange: EventName<PdSliderCustomEvent<number>>
 };
 
-export const PdSlider: StencilReactComponent<PdSliderElement, PdSliderEvents> = /*@__PURE__*/ createComponent<PdSliderElement, PdSliderEvents>({
+export const PdSlider: StencilReactComponent<PdSliderElement, PdSliderEvents, Components.PdSlider> = /*@__PURE__*/ createComponent<PdSliderElement, PdSliderEvents, Components.PdSlider>({
     tagName: 'pd-slider',
     elementClass: PdSliderElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -527,7 +523,7 @@ export type PdSortEvents = {
     onPdReverse: EventName<PdSortCustomEvent<SortDropdownItem>>
 };
 
-export const PdSort: StencilReactComponent<PdSortElement, PdSortEvents> = /*@__PURE__*/ createComponent<PdSortElement, PdSortEvents>({
+export const PdSort: StencilReactComponent<PdSortElement, PdSortEvents, Components.PdSort> = /*@__PURE__*/ createComponent<PdSortElement, PdSortEvents, Components.PdSort>({
     tagName: 'pd-sort',
     elementClass: PdSortElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -541,16 +537,16 @@ export const PdSort: StencilReactComponent<PdSortElement, PdSortEvents> = /*@__P
 
 export type PdTableEvents = {
     onPdSelected: EventName<PdTableCustomEvent<SelectedEvent>>,
-    onPdEdit: EventName<CustomEvent<any>>,
-    onPdView: EventName<CustomEvent<any>>,
-    onPdDelete: EventName<CustomEvent<any>>,
-    onPdClickedRow: EventName<CustomEvent<any>>,
-    onPdSort: EventName<CustomEvent<{}>>,
-    onPdFilterChange: EventName<CustomEvent<{}>>,
-    onPdFilterInput: EventName<CustomEvent<string>>
+    onPdEdit: EventName<PdTableCustomEvent<any>>,
+    onPdView: EventName<PdTableCustomEvent<any>>,
+    onPdDelete: EventName<PdTableCustomEvent<any>>,
+    onPdClickedRow: EventName<PdTableCustomEvent<any>>,
+    onPdSort: EventName<PdTableCustomEvent<{}>>,
+    onPdFilterChange: EventName<PdTableCustomEvent<{}>>,
+    onPdFilterInput: EventName<PdTableCustomEvent<string>>
 };
 
-export const PdTable: StencilReactComponent<PdTableElement, PdTableEvents> = /*@__PURE__*/ createComponent<PdTableElement, PdTableEvents>({
+export const PdTable: StencilReactComponent<PdTableElement, PdTableEvents, Components.PdTable> = /*@__PURE__*/ createComponent<PdTableElement, PdTableEvents, Components.PdTable>({
     tagName: 'pd-table',
     elementClass: PdTableElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -569,12 +565,12 @@ export const PdTable: StencilReactComponent<PdTableElement, PdTableEvents> = /*@
 });
 
 export type PdTableFilterEvents = {
-    onPdConfirm: EventName<CustomEvent<string>>,
-    onPdClose: EventName<CustomEvent<void>>,
-    onPdFilterInput: EventName<CustomEvent<string>>
+    onPdConfirm: EventName<PdTableFilterCustomEvent<string>>,
+    onPdClose: EventName<PdTableFilterCustomEvent<void>>,
+    onPdFilterInput: EventName<PdTableFilterCustomEvent<string>>
 };
 
-export const PdTableFilter: StencilReactComponent<PdTableFilterElement, PdTableFilterEvents> = /*@__PURE__*/ createComponent<PdTableFilterElement, PdTableFilterEvents>({
+export const PdTableFilter: StencilReactComponent<PdTableFilterElement, PdTableFilterEvents, Components.PdTableFilter> = /*@__PURE__*/ createComponent<PdTableFilterElement, PdTableFilterEvents, Components.PdTableFilter>({
     tagName: 'pd-table-filter',
     elementClass: PdTableFilterElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -589,7 +585,7 @@ export const PdTableFilter: StencilReactComponent<PdTableFilterElement, PdTableF
 
 export type PdTabsEvents = { onPdChange: EventName<PdTabsCustomEvent<TabValue>> };
 
-export const PdTabs: StencilReactComponent<PdTabsElement, PdTabsEvents> = /*@__PURE__*/ createComponent<PdTabsElement, PdTabsEvents>({
+export const PdTabs: StencilReactComponent<PdTabsElement, PdTabsEvents, Components.PdTabs> = /*@__PURE__*/ createComponent<PdTabsElement, PdTabsEvents, Components.PdTabs>({
     tagName: 'pd-tabs',
     elementClass: PdTabsElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -599,13 +595,13 @@ export const PdTabs: StencilReactComponent<PdTabsElement, PdTabsEvents> = /*@__P
 });
 
 export type PdTextareaEvents = {
-    onPdChange: EventName<CustomEvent<string>>,
+    onPdChange: EventName<PdTextareaCustomEvent<string>>,
     onPdInput: EventName<PdTextareaCustomEvent<KeyboardEvent>>,
     onPdBlur: EventName<PdTextareaCustomEvent<FocusEvent>>,
     onPdFocus: EventName<PdTextareaCustomEvent<FocusEvent>>
 };
 
-export const PdTextarea: StencilReactComponent<PdTextareaElement, PdTextareaEvents> = /*@__PURE__*/ createComponent<PdTextareaElement, PdTextareaEvents>({
+export const PdTextarea: StencilReactComponent<PdTextareaElement, PdTextareaEvents, Components.PdTextarea> = /*@__PURE__*/ createComponent<PdTextareaElement, PdTextareaEvents, Components.PdTextarea>({
     tagName: 'pd-textarea',
     elementClass: PdTextareaElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -621,7 +617,7 @@ export const PdTextarea: StencilReactComponent<PdTextareaElement, PdTextareaEven
 
 export type PdTimelineEvents = NonNullable<unknown>;
 
-export const PdTimeline: StencilReactComponent<PdTimelineElement, PdTimelineEvents> = /*@__PURE__*/ createComponent<PdTimelineElement, PdTimelineEvents>({
+export const PdTimeline: StencilReactComponent<PdTimelineElement, PdTimelineEvents, Components.PdTimeline> = /*@__PURE__*/ createComponent<PdTimelineElement, PdTimelineEvents, Components.PdTimeline>({
     tagName: 'pd-timeline',
     elementClass: PdTimelineElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -632,7 +628,7 @@ export const PdTimeline: StencilReactComponent<PdTimelineElement, PdTimelineEven
 
 export type PdTimelineDateEvents = NonNullable<unknown>;
 
-export const PdTimelineDate: StencilReactComponent<PdTimelineDateElement, PdTimelineDateEvents> = /*@__PURE__*/ createComponent<PdTimelineDateElement, PdTimelineDateEvents>({
+export const PdTimelineDate: StencilReactComponent<PdTimelineDateElement, PdTimelineDateEvents, Components.PdTimelineDate> = /*@__PURE__*/ createComponent<PdTimelineDateElement, PdTimelineDateEvents, Components.PdTimelineDate>({
     tagName: 'pd-timeline-date',
     elementClass: PdTimelineDateElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
@@ -641,9 +637,9 @@ export const PdTimelineDate: StencilReactComponent<PdTimelineDateElement, PdTime
     defineCustomElement: definePdTimelineDate
 });
 
-export type PdToastEvents = { onPdClosed: EventName<CustomEvent<any>> };
+export type PdToastEvents = { onPdClosed: EventName<PdToastCustomEvent<any>> };
 
-export const PdToast: StencilReactComponent<PdToastElement, PdToastEvents> = /*@__PURE__*/ createComponent<PdToastElement, PdToastEvents>({
+export const PdToast: StencilReactComponent<PdToastElement, PdToastEvents, Components.PdToast> = /*@__PURE__*/ createComponent<PdToastElement, PdToastEvents, Components.PdToast>({
     tagName: 'pd-toast',
     elementClass: PdToastElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.

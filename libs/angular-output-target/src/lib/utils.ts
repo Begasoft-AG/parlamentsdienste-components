@@ -10,6 +10,8 @@ export const OutputTypes: { [key: string]: OutputType } = {
 
 export const toLowerCase = (str: string) => str.toLowerCase();
 
+export const mapPropName = (prop: { name: string }) => prop.name;
+
 export const dashToPascalCase = (str: string) =>
     toLowerCase(str)
         .split('-')
@@ -137,11 +139,16 @@ export const createComponentEventTypeImports = (
         outputType: OutputType;
     },
 ) => {
-    const { componentCorePackage } = options;
+    const { componentCorePackage, customElementsDir } = options;
     const imports: string[] = [];
     const namedImports: Set<string> = new Set();
+    const isCustomElementsBuild = isOutputTypeCustomElementsBuild(options.outputType);
 
-    const importPathName = normalizePath(componentCorePackage);
+    const importPathName = normalizePath(componentCorePackage) + (isCustomElementsBuild ? `/${customElementsDir}` : '');
+
+    if (events.length > 0) {
+        imports.push(`import type { ${componentTagName}CustomEvent } from '${importPathName}';`);
+    }
 
     events.forEach(event => {
         Object.entries(event.complexType.references).forEach(([typeName, refObject]) => {
@@ -160,6 +167,6 @@ export const createComponentEventTypeImports = (
 };
 
 const EXTENDED_PATH_REGEX = /^\\\\\?\\/;
-// eslint-disable-next-line no-control-regex
+
 const NON_ASCII_REGEX = /[^\x00-\x80]+/;
 const SLASH_REGEX = /\\/g;

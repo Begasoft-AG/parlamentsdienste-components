@@ -9,15 +9,27 @@
     },
     "license": "AGPL-3.0",
     "scripts": {
-        "build": "node ../../node_modules/ng-packagr/cli/main.js -p ng-package.json -c tsconfig.lib.prod.json"
+        "build": "ng-packagr -p ng-package.json -c tsconfig.lib.prod.json"
     },
     "publishConfig": {
         "access": "public"
     },
     "peerDependencies": {
-        "@angular/core": ">=17.0.0 <23.0.0",
-        "@angular/forms": ">=17.0.0 <23.0.0",
+        "@angular/core": ">=19.0.0 <23.0.0",
+        "@angular/forms": ">=19.0.0 <23.0.0",
         "rxjs": "^6.5.3 || ^7.4.0"
+    },
+    "devDependencies": {
+        "@angular/common": "catalog:angular22",
+        "@angular/compiler-cli": "catalog:angular22",
+        "@angular/core": "catalog:angular22",
+        "@angular/forms": "catalog:angular22",
+        "@angular/platform-browser": "catalog:angular22",
+        "angular-eslint": "catalog:angular22",
+        "ng-packagr": "catalog:angular22",
+        "rxjs": "catalog:angular22",
+        "tslib": "catalog:toolchain",
+        "typescript": "catalog:toolchain"
     },
     "dependencies": {
         "@parlamentsdienste/pdcomponents-core": "4.0.2"

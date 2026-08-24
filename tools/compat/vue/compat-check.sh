@@ -12,7 +12,7 @@ readonly compat_dir="/tmp/compat-dir"
 readonly prebuilt_pack_dir="/tmp/packs"
 readonly template_dir="$compat_dir/template"
 readonly run_e2e="${RUN_E2E:-false}"
-readonly vite_version="${VITE_VERSION:-latest}"
+readonly create_vite_version="${CREATE_VITE_VERSION:-9.2.0}"
 readonly vue_major="${VUE_VERSION%%.*}"
 readonly project_name="vue${vue_major}-consumer"
 readonly consumer_dir="$consumer_app_root/$project_name"
@@ -34,8 +34,8 @@ cd "$consumer_app_root"
 
 log_step "Using prebuilt component tarballs from image cache"
 
-log_step "Scaffolding fresh Vue ${VUE_VERSION} consumer with Vite ${vite_version}"
-npm create "vite@${vite_version}" "$project_name" -- --template vue-ts
+log_step "Scaffolding fresh Vue ${VUE_VERSION} consumer with create-vite ${create_vite_version}"
+npm create "vite@${create_vite_version}" "$project_name" -- --template vue-ts
 
 cd "$project_name"
 
@@ -47,8 +47,8 @@ npm install --no-audit --no-fund "vue@$VUE_VERSION"
 
 log_step "Installing packed component packages"
 npm install --no-audit --no-fund \
-    "$(compgen -G "$prebuilt_pack_dir/parlamentsdienste-pdcomponents-core-*.tgz" | head -n 1)" \
-    "$(compgen -G "$prebuilt_pack_dir/parlamentsdienste-pdcomponents-vue-*.tgz" | head -n 1)"
+    "$(compgen -G "$prebuilt_pack_dir/core/parlamentsdienste-pdcomponents-core-*.tgz" | head -n 1)" \
+    "$(compgen -G "$prebuilt_pack_dir/vue/parlamentsdienste-pdcomponents-vue-*.tgz" | head -n 1)"
 
 log_step "Injecting Vue compatibility fixture"
 rm -rf src public

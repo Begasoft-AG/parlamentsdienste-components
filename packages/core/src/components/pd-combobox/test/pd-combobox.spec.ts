@@ -21,7 +21,7 @@ describe('pd-combobox', () => {
                         </button>
                     </div>
                 </label>
-               <div class="pd-combobox-dropdown" style="display: none; max-height: calc(3rem * 5 + 0.25rem); position: absolute; left: 0; top: 0; margin: 0;"></div>
+               <div class="pd-combobox-dropdown" data-popper-placement="bottom-start" data-popper-reference-hidden style="display: none; max-height: calc(3rem * 5 + 0.25rem); position: absolute; left: 0; top: 0; margin: 0; right: auto; bottom: auto; transform: translate(0px, 0px);"></div>
                 </mock:shadow-root>
             </pd-combobox>
         `);

@@ -1,7 +1,7 @@
 import type { CompilerJsDoc, ComponentCompilerEvent, ComponentCompilerProperty } from '@stencil/core/internal';
 
-import type { OutputType, ValueAccessorConfig } from './types';
-import { createComponentEventTypeImports, dashToPascalCase, formatToQuotedList } from './utils';
+import type { ComponentInputProperty, OutputType, ValueAccessorConfig } from './types';
+import { createComponentEventTypeImports, dashToPascalCase, formatToQuotedList, mapPropName } from './utils';
 
 /**
  * Creates a property declaration.
@@ -33,6 +33,17 @@ function createPropertyDeclaration(
     }
 }
 
+function formatInputs(inputs: readonly ComponentInputProperty[]): string {
+    return inputs
+        .map(item => {
+            if (item.required) {
+                return `{ name: '${item.name}', required: true }`;
+            }
+            return `'${item.name}'`;
+        })
+        .join(', ');
+}
+
 /**
  * Creates an Angular component declaration from formatted Stencil compiler metadata.
  *
@@ -47,12 +58,12 @@ function createPropertyDeclaration(
  */
 export const createAngularComponentDefinition = (
     tagName: string,
-    inputs: readonly string[],
-    outputs: readonly string[],
+    inputs: readonly ComponentInputProperty[],
     methods: readonly string[],
     includeImportCustomElements = false,
     standalone = false,
     inlineComponentProps: readonly ComponentCompilerProperty[] = [],
+    events: readonly ComponentCompilerEvent[] = [],
     valueAccessorConfigs: ValueAccessorConfig[] = [],
 ) => {
     const valueAccessorConfig = valueAccessorConfigs.find(config => {
@@ -66,13 +77,15 @@ export const createAngularComponentDefinition = (
     };
 
     const tagNameAsPascal = dashToPascalCase(tagName);
+    const outputs = events.filter(event => !event.internal).map(mapPropName);
 
     const hasInputs = inputs.length > 0;
     const hasOutputs = outputs.length > 0;
     const hasMethods = methods.length > 0;
 
     // Formats the input strings into comma separated, single quoted values.
-    const formattedInputs = formatToQuotedList(inputs);
+    const proxyCmpFormattedInputs = formatToQuotedList(inputs.map(mapPropName));
+    const formattedInputs = formatInputs(inputs);
     // Formats the output strings into comma separated, single quoted values.
     const formattedOutputs = formatToQuotedList(outputs);
     // Formats the method strings into comma separated, single quoted values.
@@ -87,7 +100,7 @@ export const createAngularComponentDefinition = (
     }
 
     if (hasInputs) {
-        proxyCmpOptions.push(`\n  inputs: [${formattedInputs}]`);
+        proxyCmpOptions.push(`\n  inputs: [${proxyCmpFormattedInputs}]`);
     }
 
     if (hasMethods) {
@@ -261,7 +274,10 @@ export const createComponentTypeDefinition = (
         outputType,
     });
     const eventTypes = publicEvents.map(event =>
-        createPropertyDeclaration(event, `EventEmitter<CustomEvent<${formatOutputType(tagNameAsPascal, event)}>>`),
+        createPropertyDeclaration(
+            event,
+            `EventEmitter<${tagNameAsPascal}CustomEvent<${formatOutputType(tagNameAsPascal, event)}>>`,
+        ),
     );
     const interfaceDeclaration = `export declare interface ${tagNameAsPascal} extends Components.${tagNameAsPascal} {`;
 

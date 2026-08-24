@@ -1,5 +1,5 @@
-import { Search } from '../pd-search';
 import { newSpecPage } from '@stencil/core/testing';
+import { Search } from '../pd-search';
 
 describe('pd-search', () => {
     it('renders', async () => {
@@ -21,7 +21,7 @@ describe('pd-search', () => {
                   </button>
                 </div>
               </label>
-              <div class="pd-search-dropdown" style="display: none; position: absolute; left: 0; top: 0; margin: 0;"></div>
+              <div class="pd-search-dropdown" data-popper-placement="bottom-start" data-popper-reference-hidden style="display: none; position: absolute; left: 0; top: 0; margin: 0; right: auto; bottom: auto; transform: translate(0px, 0px);"></div>
             </mock:shadow-root>
           </pd-search>
         `);

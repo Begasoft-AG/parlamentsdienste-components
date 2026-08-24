@@ -1,13 +1,14 @@
 import type { CompilerCtx, ComponentCompilerMeta, ComponentCompilerProperty, Config } from '@stencil/core/internal';
-import { dirname, join } from 'path';
+import { dirname, isAbsolute, join, relative } from 'path';
 import { createAngularComponentDefinition, createComponentTypeDefinition } from './generate-angular-component';
 import { generateAngularDirectivesFile } from './generate-angular-directives-file';
 import { generateAngularModuleForComponent } from './generate-angular-modules';
-import type { OutputTargetAngular, PackageJSON } from './types';
+import type { ComponentInputProperty, OutputTargetAngular, PackageJSON } from './types';
 import {
     createImportStatement,
     dashToPascalCase,
     isOutputTypeCustomElementsBuild,
+    mapPropName,
     normalizePath,
     OutputTypes,
     readPackageJson,
@@ -24,15 +25,42 @@ export async function angularDirectiveProxyOutput(
     const filteredComponents = getFilteredComponents(outputTarget.excludeComponents, components);
     const rootDir = config.rootDir as string;
     const pkgData = await readPackageJson(config, rootDir);
+    const isCustomElementsBuild = isOutputTypeCustomElementsBuild(outputTarget.outputType!);
+    const useEsModules = isCustomElementsBuild && outputTarget.esModules === true;
 
-    const finalText = generateProxies(filteredComponents, pkgData, outputTarget, config.rootDir as string);
-
-    await Promise.all([
-        compilerCtx.fs.writeFile(outputTarget.directivesProxyFile, finalText),
+    const tasks: Promise<any>[] = [
         copyResources(config, outputTarget),
         generateAngularDirectivesFile(compilerCtx, filteredComponents, outputTarget),
         // generateValueAccessors(compilerCtx, filteredComponents, outputTarget, config),
-    ]);
+    ];
+
+    if (useEsModules) {
+        const proxiesDir = dirname(outputTarget.directivesProxyFile);
+
+        for (const component of filteredComponents) {
+            const componentFile = join(proxiesDir, `${component.tagName}.ts`);
+            const componentText = generateProxies([component], pkgData, outputTarget, componentFile, config);
+            tasks.push(compilerCtx.fs.writeFile(componentFile, componentText));
+        }
+
+        tasks.push(
+            compilerCtx.fs.writeFile(
+                outputTarget.directivesProxyFile,
+                generateBarrelFile(filteredComponents, outputTarget),
+            ),
+        );
+    } else {
+        const finalText = generateProxies(
+            filteredComponents,
+            pkgData,
+            outputTarget,
+            outputTarget.directivesProxyFile,
+            config,
+        );
+        tasks.push(compilerCtx.fs.writeFile(outputTarget.directivesProxyFile, finalText));
+    }
+
+    await Promise.all(tasks);
 }
 
 function getFilteredComponents(excludeComponents: string[] = [], cmps: ComponentCompilerMeta[]) {
@@ -64,12 +92,13 @@ export function generateProxies(
     components: ComponentCompilerMeta[],
     pkgData: PackageJSON,
     outputTarget: OutputTargetAngular,
-    rootDir: string,
+    proxyFilePath: string,
+    config: Config,
 ) {
     const distTypesDir = dirname(pkgData.types);
-    const dtsFilePath = join(rootDir, distTypesDir, GENERATED_DTS);
+    const dtsFilePath = join(config.rootDir as string, distTypesDir, GENERATED_DTS);
     const { outputType } = outputTarget;
-    const componentsTypeFile = relativeImport(outputTarget.directivesProxyFile, dtsFilePath, '.d.ts');
+    const componentsTypeFile = relativeImport(proxyFilePath, dtsFilePath, '.d.ts');
     const includeSingleComponentAngularModules = outputType === OutputTypes['Scam'];
     const isCustomElementsBuild = isOutputTypeCustomElementsBuild(outputType!);
     const isStandaloneBuild = outputType === OutputTypes['Standalone'];
@@ -112,7 +141,7 @@ ${createImportStatement(componentLibImports, './../generated/angular-component-l
      */
     const generateTypeImports = () => {
         const importLocation = outputTarget.componentCorePackage
-            ? normalizePath(outputTarget.componentCorePackage)
+            ? getPathToComponentTypes(config, outputTarget)
             : normalizePath(componentsTypeFile);
         return `import ${isCustomElementsBuild ? 'type ' : ''}{ ${IMPORT_TYPES} } from '${importLocation}';\n`;
     };
@@ -150,7 +179,10 @@ ${createImportStatement(componentLibImports, './../generated/angular-component-l
     const proxyFileOutput = [];
 
     const filterInternalProps = (prop: { name: string; internal: boolean }) => !prop.internal;
-    const mapPropName = (prop: { name: string }) => prop.name;
+    const mapInputProp = (prop: { name: string; required?: boolean }) => ({
+        name: prop.name,
+        required: prop.required ?? false,
+    });
 
     const { componentCorePackage, customElementsDir } = outputTarget;
 
@@ -163,19 +195,13 @@ ${createImportStatement(componentLibImports, './../generated/angular-component-l
             internalProps.push(...cmpMeta.properties.filter(filterInternalProps));
         }
 
-        const inputs = internalProps.map(mapPropName);
+        const inputs = internalProps.map(mapInputProp);
 
         if (cmpMeta.virtualProperties) {
-            inputs.push(...cmpMeta.virtualProperties.map(mapPropName));
+            inputs.push(...cmpMeta.virtualProperties.map(mapInputProp));
         }
 
-        inputs.sort();
-
-        const outputs: string[] = [];
-
-        if (cmpMeta.events) {
-            outputs.push(...cmpMeta.events.filter(filterInternalProps).map(mapPropName));
-        }
+        const orderedInputs = sortBy(inputs, (input: ComponentInputProperty) => input.name);
 
         const methods: string[] = [];
 
@@ -194,12 +220,12 @@ ${createImportStatement(componentLibImports, './../generated/angular-component-l
 
         const componentDefinition = createAngularComponentDefinition(
             cmpMeta.tagName,
-            inputs,
-            outputs,
+            orderedInputs,
             methods,
             isCustomElementsBuild,
             isStandaloneBuild,
             inlineComponentProps,
+            cmpMeta.events || [],
             outputTarget.valueAccessorConfigs,
         );
         const moduleDefinition = generateAngularModuleForComponent(cmpMeta.tagName);
@@ -225,3 +251,38 @@ ${createImportStatement(componentLibImports, './../generated/angular-component-l
 
 const GENERATED_DTS = 'components.d.ts';
 const IMPORT_TYPES = 'Components';
+
+export function generateBarrelFile(components: ComponentCompilerMeta[], outputTarget: OutputTargetAngular) {
+    const includeSingleComponentAngularModules = outputTarget.outputType === OutputTypes['Scam'];
+    const header = `/* tslint:disable */
+/**
+ * This file was automatically generated by the Stencil Angular Output Target.
+ * Changes to this file may cause incorrect behavior and will be lost if the code is regenerated.
+ */\n\n`;
+    const exports = components
+        .map(component => {
+            const pascalName = dashToPascalCase(component.tagName);
+            const moduleExport = includeSingleComponentAngularModules ? `, ${pascalName}Module` : '';
+            return `export { ${pascalName}${moduleExport} } from './${component.tagName}';`;
+        })
+        .join('\n');
+
+    return header + exports + '\n';
+}
+
+export function getPathToComponentTypes(config: Config, outputTarget: OutputTargetAngular): string {
+    const basePkg = outputTarget.componentCorePackage || '';
+    const typesTarget = config.outputTargets?.find((target: any) => target.type === 'types') as any;
+
+    if (typesTarget) {
+        const rawDir = typesTarget.dir || 'dist/types';
+        const relDir = config.rootDir && isAbsolute(rawDir) ? relative(config.rootDir as string, rawDir) : rawDir;
+        return normalizePath(join(basePkg, relDir, 'components'));
+    }
+
+    const isCustomElementsBuild = isOutputTypeCustomElementsBuild(outputTarget.outputType!);
+    if (isCustomElementsBuild && outputTarget.customElementsDir) {
+        return normalizePath(join(basePkg, outputTarget.customElementsDir));
+    }
+    return normalizePath(basePkg);
+}

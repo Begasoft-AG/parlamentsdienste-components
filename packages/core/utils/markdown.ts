@@ -87,6 +87,7 @@ export async function mdxGenerator(docs: JsonDocs) {
         if (component.dirPath) {
             const storiesPath = path.resolve(__dirname, '../../../docs/stories');
             const mdxFilePath = path.join(storiesPath, component.tag, `Docs.mdx`);
+            await fs.mkdir(path.dirname(mdxFilePath), { recursive: true });
             await fs.writeFile(mdxFilePath, mdx.join(''));
         }
     }

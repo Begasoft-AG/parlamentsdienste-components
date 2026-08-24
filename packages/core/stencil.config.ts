@@ -73,6 +73,7 @@ export const config: Config = {
         angularOutputTarget({
             componentCorePackage: '@parlamentsdienste/pdcomponents-core',
             outputType: 'standalone',
+            esModules: true,
             directivesProxyFile: '../angular/src/lib/angular/components.ts',
             directivesArrayFile: '../angular/src/lib/angular/index.ts',
             valueAccessorConfigs: angularValueAccessorConfigs,

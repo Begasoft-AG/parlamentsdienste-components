@@ -3,8 +3,8 @@
 !pnpm-lock.yaml
 !pnpm-workspace.yaml
 !tsconfig.base.json
+!tsconfig.web.json
 !eslint.config.mjs
-!vitest.workspace.ts
 !libs/
 !libs/angular-output-target/
 !libs/angular-output-target/**

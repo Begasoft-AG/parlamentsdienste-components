@@ -6,5 +6,25 @@
         "build": "ng build",
         "serve": "ng serve",
         "e2e": "playwright test"
+    },
+    "dependencies": {
+        "@angular/common": "catalog:angular22",
+        "@angular/compiler": "catalog:angular22",
+        "@angular/core": "catalog:angular22",
+        "@angular/forms": "catalog:angular22",
+        "@angular/platform-browser": "catalog:angular22",
+        "@parlamentsdienste/pdcomponents-angular": "workspace:*",
+        "@parlamentsdienste/pdcomponents-core": "workspace:*",
+        "rxjs": "catalog:angular22",
+        "tslib": "catalog:toolchain",
+        "zone.js": "catalog:angular22"
+    },
+    "devDependencies": {
+        "@angular/build": "catalog:angular22",
+        "@angular/cli": "catalog:angular22",
+        "@angular/compiler-cli": "catalog:angular22",
+        "@playwright/test": "^1.36.0",
+        "angular-eslint": "catalog:angular22",
+        "typescript": "catalog:toolchain"
     }
 }

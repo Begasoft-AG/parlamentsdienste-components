@@ -49,6 +49,7 @@ import { defineCustomElement as definePdTimelineDate } from '@parlamentsdienste/
 import { defineCustomElement as definePdToast } from '@parlamentsdienste/pdcomponents-core/components/pd-toast.js';
 
 
+
 export const PdAlert: StencilVueComponent<JSX.PdAlert> = /*@__PURE__*/ defineContainer<JSX.PdAlert>('pd-alert', definePdAlert, [
   'color',
   'closable',
@@ -114,7 +115,7 @@ export const PdCheckbox: StencilVueComponent<JSX.PdCheckbox, JSX.PdCheckbox["che
 ], [
   'pd-checked'
 ],
-'checked', 'pd-checked');
+'checked', 'pd-checked', undefined);
 
 
 export const PdChip: StencilVueComponent<JSX.PdChip> = /*@__PURE__*/ defineContainer<JSX.PdChip>('pd-chip', definePdChip, [
@@ -161,7 +162,7 @@ export const PdCombobox: StencilVueComponent<JSX.PdCombobox, JSX.PdCombobox["sel
   'pd-blur',
   'pd-focus'
 ],
-'selected', 'pd-change');
+'selected', 'pd-change', undefined);
 
 
 export const PdDatepicker: StencilVueComponent<JSX.PdDatepicker, JSX.PdDatepicker["date"]> = /*@__PURE__*/ defineContainer<JSX.PdDatepicker, JSX.PdDatepicker["date"]>('pd-datepicker', definePdDatepicker, [
@@ -194,7 +195,7 @@ export const PdDatepicker: StencilVueComponent<JSX.PdDatepicker, JSX.PdDatepicke
   'pd-ready',
   'pd-value-update'
 ],
-'date', 'pd-change');
+'date', 'pd-change', undefined);
 
 
 export const PdDropdown: StencilVueComponent<JSX.PdDropdown, JSX.PdDropdown["selected"]> = /*@__PURE__*/ defineContainer<JSX.PdDropdown, JSX.PdDropdown["selected"]>('pd-dropdown', definePdDropdown, [
@@ -216,7 +217,7 @@ export const PdDropdown: StencilVueComponent<JSX.PdDropdown, JSX.PdDropdown["sel
 ], [
   'pd-change'
 ],
-'selected', 'pd-change');
+'selected', 'pd-change', undefined);
 
 
 export const PdDropdownItem: StencilVueComponent<JSX.PdDropdownItem> = /*@__PURE__*/ defineContainer<JSX.PdDropdownItem>('pd-dropdown-item', definePdDropdownItem, [
@@ -247,7 +248,7 @@ export const PdInput: StencilVueComponent<JSX.PdInput, JSX.PdInput["value"]> = /
   'accept',
   'autocapitalize',
   'autocomplete',
-  'autocorrect',
+  'autoCorrect',
   'autofocus',
   'clearInput',
   'clearOnEdit',
@@ -283,7 +284,7 @@ export const PdInput: StencilVueComponent<JSX.PdInput, JSX.PdInput["value"]> = /
   'pd-blur',
   'pd-focus'
 ],
-'value', 'pd-change');
+'value', 'pd-change', undefined);
 
 
 export const PdLabel: StencilVueComponent<JSX.PdLabel> = /*@__PURE__*/ defineContainer<JSX.PdLabel>('pd-label', definePdLabel, [
@@ -421,7 +422,7 @@ export const PdRadioGroup: StencilVueComponent<JSX.PdRadioGroup, JSX.PdRadioGrou
 ], [
   'pd-change'
 ],
-'value', 'pd-change');
+'value', 'pd-change', undefined);
 
 
 export const PdSearch: StencilVueComponent<JSX.PdSearch> = /*@__PURE__*/ defineContainer<JSX.PdSearch>('pd-search', definePdSearch, [
@@ -481,7 +482,7 @@ export const PdSlider: StencilVueComponent<JSX.PdSlider, JSX.PdSlider["value"]> 
   'pd-input',
   'pd-change'
 ],
-'value', 'pd-change');
+'value', 'pd-change', undefined);
 
 
 export const PdSort: StencilVueComponent<JSX.PdSort> = /*@__PURE__*/ defineContainer<JSX.PdSort>('pd-sort', definePdSort, [
@@ -594,7 +595,7 @@ export const PdTextarea: StencilVueComponent<JSX.PdTextarea, JSX.PdTextarea["val
   'pd-blur',
   'pd-focus'
 ],
-'value', 'pd-change');
+'value', 'pd-change', undefined);
 
 
 export const PdTimeline: StencilVueComponent<JSX.PdTimeline> = /*@__PURE__*/ defineContainer<JSX.PdTimeline>('pd-timeline', definePdTimeline, [
@@ -619,4 +620,5 @@ export const PdToast: StencilVueComponent<JSX.PdToast> = /*@__PURE__*/ defineCon
 ], [
   'pd-closed'
 ]);
+
 

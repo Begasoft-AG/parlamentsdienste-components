@@ -3,10 +3,10 @@
     "description": "Component Library for Swiss Parliamentary Services - React-Wrapper Lib",
     "version": "4.0.2",
     "type": "module",
-    "types": "./dist/index.d.ts",
+    "types": "./dist/src/index.d.ts",
     "exports": {
         ".": {
-            "types": "./dist/index.d.ts",
+            "types": "./dist/src/index.d.ts",
             "default": "./dist/index.js"
         }
     },
@@ -30,8 +30,18 @@
         "react": "^18.0.0 || ^19.0.0",
         "react-dom": "^18.0.0 || ^19.0.0"
     },
+    "devDependencies": {
+        "@types/react": "catalog:react19",
+        "@types/react-dom": "catalog:react19",
+        "@vitejs/plugin-react": "catalog:vite7",
+        "react": "catalog:react19",
+        "react-dom": "catalog:react19",
+        "typescript": "catalog:toolchain",
+        "vite": "catalog:vite7",
+        "vite-plugin-dts": "catalog:vite7"
+    },
     "dependencies": {
         "@parlamentsdienste/pdcomponents-core": "4.0.2",
-        "@stencil/react-output-target": "^1.1.1"
+        "@stencil/react-output-target": "catalog:stencil4"
     }
 }

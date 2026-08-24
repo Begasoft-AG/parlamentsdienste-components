@@ -38,7 +38,7 @@ export class Input implements ComponentInterface {
     /**
      * Whether auto correction should be enabled when the user is entering/editing the text value.
      */
-    @Prop() autocorrect: 'on' | 'off' = 'off';
+    @Prop({ attribute: 'autocorrect' }) autoCorrect: 'on' | 'off' = 'off';
 
     /**
      * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
@@ -277,7 +277,7 @@ export class Input implements ComponentInterface {
                                 accept={this.accept}
                                 autoCapitalize={this.autocapitalize}
                                 autoComplete={this.autocomplete}
-                                autoCorrect={this.autocorrect}
+                                autoCorrect={this.autoCorrect}
                                 autoFocus={this.autofocus}
                                 inputMode={this.inputmode}
                                 min={this.min}

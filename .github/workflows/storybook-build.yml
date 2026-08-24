@@ -1,9 +1,6 @@
 name: storybook build
 
 on:
-  # push:
-  #   branches:
-  #     - main
   workflow_dispatch:
     inputs:
       tag:
@@ -19,7 +16,6 @@ env:
   REGISTRY: ghcr.io
 
 jobs:
-  # ------------------------------------------------------------
   build-storybook:
     runs-on: ubuntu-latest
     steps:
@@ -60,6 +56,7 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: .
+          file: docs/docker/Dockerfile.storybook
           push: true
           tags: |
             ${{ env.REGISTRY }}/${{ env.STORYBOOK_IMAGE }}:${{ env.TAG }}

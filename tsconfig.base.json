@@ -1,27 +1,12 @@
 {
-    "compileOnSave": false,
     "compilerOptions": {
-        "rootDir": ".",
-        "sourceMap": true,
-        "declaration": false,
-        "moduleResolution": "node",
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "noPropertyAccessFromIndexSignature": true,
         "importHelpers": true,
-        "target": "es2015",
-        "module": "esnext",
-        "lib": ["es2020", "dom"],
-        "skipLibCheck": true,
-        "skipDefaultLibCheck": true,
-        "baseUrl": ".",
-        "paths": {
-            "@parlamentsdienste/pdcomponents-angular": ["packages/angular/src/index.ts"],
-            "@parlamentsdienste/angular-output-target": ["libs/angular-output-target/src/index.ts"],
-            "@parlamentsdienste/pdcomponents-core": ["packages/core/src/index.ts"],
-            "@parlamentsdienste/dist": ["dist/packages/angular/index.d.ts"],
-            "@parlamentsdienste/pdcomponents-react": ["packages/react/src/index.ts"],
-            "@parlamentsdienste/pdcomponents-vue": ["packages/vue/src/index.ts"]
-        }
+        "skipLibCheck": true
     },
     "exclude": ["node_modules", "tmp"]
 }
