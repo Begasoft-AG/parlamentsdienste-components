@@ -26,6 +26,18 @@ Die Komponentenimplementierungen liegen ausschließlich unter [packages/core/src
 
 Die zentralen Werkzeugversionen werden über Kataloge in [pnpm-workspace.yaml](../pnpm-workspace.yaml) verwaltet. Der Katalogname `storybook9` ist historisch; die darin hinterlegte und verwendete Version ist Storybook 10.5.0.
 
+### Transitive Sicherheitsupdates
+
+Die Workspace-Konfiguration erzwingt für drei transitive Abhängigkeiten gepatchte Versionen innerhalb ihrer bestehenden Major-Versionen:
+
+| Paket             | Erzwungene Version | Grund                                                          |
+| ----------------- | ------------------ | -------------------------------------------------------------- |
+| `brace-expansion` | 5.0.9              | Behebt zwei Denial-of-Service-Schwachstellen                   |
+| `nanoid`          | 3.3.18             | Verhindert eine Endlosschleife bei benutzerdefinierter Größe 0 |
+| `postcss`         | 8.5.26             | Behebt das Lesen lokaler Source Maps über `sourceMappingURL`   |
+
+Die Pakete gelangen über Stencil-Output-Targets beziehungsweise den Vue-Compiler in den Produktions-Abhängigkeitsgraphen. Sie werden nicht direkt in den Wrappern deklariert und können deshalb nicht über deren `package.json` aktualisiert werden. Die `overrides` machen die Sicherheitsentscheidung reproduzierbar und sichtbar; bei Upstream-Updates müssen sie mit `pnpm audit --prod` überprüft und entfernt werden, sobald die sicheren Versionen regulär aufgelöst werden.
+
 ## 2. Build- und Generierungsgraph
 
 Die Root-Skripte in [package.json](../package.json) bilden die Reihenfolge explizit ab:

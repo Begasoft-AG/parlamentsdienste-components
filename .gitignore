@@ -52,3 +52,4 @@ vitest.config.*.timestamp*
 .github/agent-md-files
 .github/prompts/*
 !.github/prompts/release-readiness.prompt.md
+!.github/prompts/security-supply-chain.prompt.md

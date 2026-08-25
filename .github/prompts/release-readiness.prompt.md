@@ -52,19 +52,7 @@ Prüfe, ob dieses Repository lokal für die Veröffentlichung der vier Produktpa
     - Führe für jeden neu erzeugten Tarball `npm publish --dry-run --ignore-scripts` aus.
     - Veröffentliche unter keinen Umständen ein Paket.
 
-6. **Security und Supply Chain**
-    - Suche in getrackten Dateien, Git-Historie und allen Tarballs nach Secrets: Tokens, Zugangsdaten, private Schlüssel, `.env`-Inhalte, Registry-Credentials und eingebettete Authentifizierung in URLs. Verwende `gitleaks` mit redigierter Ausgabe, falls es bereits verfügbar ist; andernfalls führe sichere Mustersuchen durch und melde die nicht geprüfte Historie ausdrücklich.
-    - Prüfe insbesondere `.npmrc`, Deployment-Manifeste, Docker-Konfiguration, Source Maps, Package-Inhalte und Ignore-Regeln. Secret-Templates dürfen nur Platzhalter enthalten.
-    - Prüfe Lockfile-Konsistenz und Integritätsfelder, gepinnten Package Manager, Node-Engine, pnpm-Kataloge, neue oder unerwartete Dependencies und auffällige Registry-Quellen.
-    - Prüfe alle Lifecycle-Skripte (`preinstall`, `install`, `postinstall`, `prepare`, `prepack`, `prepublishOnly`) und `allowBuilds`. Jede unnötige Ausführung fremden Codes während Install, Build oder Publish ist ein Blocker.
-    - Führe `pnpm audit --prod` aus. Ordne Findings nach Erreichbarkeit und Schweregrad ein; verschweige Fehler durch fehlenden Netzwerkzugriff nicht.
-    - Prüfe GitHub Actions auf minimale `permissions`, unveränderlich gepinnte Drittanbieter-Actions, sichere Secret-Nutzung, gefährliche `pull_request_target`-Nutzung und Injection über untrusted Context-Werte.
-    - Prüfe Build- und Release-Skripte auf Shell-Injection, ungeprüfte Downloads, `curl | sh`, dynamische Codeausführung und Veröffentlichung anderer Dateien als der zuvor geprüften Tarballs.
-    - Prüfe Dockerfiles auf nicht gepinnte oder unnötig privilegierte Images, Root-Ausführung im finalen Image und unbeabsichtigt kopierte Repository-Inhalte.
-    - Prüfe, ob npm 2FA beziehungsweise Trusted Publishing und Provenance vorgesehen sind. Da Kontoeinstellungen lokal nicht verifizierbar sind, führe fehlende Nachweise als offenen Release-Schritt auf.
-    - Behandle exponierte Secrets, veröffentlichbare Credentials, manipulierte Lockfiles, unerwartete Lifecycle-Skripte und nicht reproduzierbare Artefakte als Release-Blocker.
-
-7. **Dokumentation und Infrastruktur**
+6. **Dokumentation und Infrastruktur**
     - Vergleiche die Release-Anleitung im Root-README mit den aktuellen Skripten.
     - Prüfe Changelog, CI und Storybook-Dockerfile auf korrekte Build-Vorstufen.
     - Prüfe, ob verbliebene Nx-Dateien oder Nx-Referenzen den pnpm-Build beeinflussen.

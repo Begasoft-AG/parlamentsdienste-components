@@ -41,9 +41,14 @@ COPY tools/compat/react /tmp/compat-dir
 
 WORKDIR /tmp/compat-dir
 
+ENV PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+
 RUN npm install --no-audit --no-fund \
     && npx playwright install --with-deps chromium
 
-RUN chmod +x /tmp/compat-dir/compat-check.sh
+RUN chmod +x /tmp/compat-dir/compat-check.sh \
+    && chown -R node:node /tmp/compat-dir /ms-playwright
+
+USER node
 
 CMD ["/tmp/compat-dir/compat-check.sh"]

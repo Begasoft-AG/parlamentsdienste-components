@@ -17,7 +17,7 @@ https://parlamentsdienste-components.prod.sw.begasoft.ch
 - [Vue.js](https://vuejs.org)
 - [React](https://react.dev)
 - [Angular](https://angular.io)
-- [Technische Projektanalyse](doc/README-tech-project-analysis.md)
+- [Technische Projektübersicht](doc/project-technical-overview.md)
 
 ## pnpm
 

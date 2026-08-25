@@ -46,12 +46,16 @@ jobs:
 
       - name: Debug Log
         shell: bash
+        env:
+          META_LABELS: ${{ steps.meta.outputs.labels }}
+          STORYBOOK_IMAGE: ${{ env.STORYBOOK_IMAGE }}
+          STORYBOOK_TAG: ${{ env.TAG }}
         run: |
-          echo "ℹ️ DEBUG LOG ⚠️"
-          echo "GITHUB_ACTOR: $GITHUB_ACTOR"
-          echo "META Lables: ${{ steps.meta.outputs.labels }}"
-          echo "image: ${{ env.STORYBOOK_IMAGE }}"
-          echo "tag: ${{ env.TAG }}"
+          printf '%s\n' "ℹ️ DEBUG LOG ⚠️"
+          printf 'GITHUB_ACTOR: %s\n' "$GITHUB_ACTOR"
+          printf 'META Labels: %s\n' "$META_LABELS"
+          printf 'image: %s\n' "$STORYBOOK_IMAGE"
+          printf 'tag: %s\n' "$STORYBOOK_TAG"
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
