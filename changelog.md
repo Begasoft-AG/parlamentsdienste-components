@@ -5,13 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [4.0.2] - 2026-08-25
+
+### Added
+
+- Added compatibility tests for Angular, React and Vue.
 
 ### Changed
 
-- Finalized Wave 6 dependency ownership by moving the Storybook toolchain fully into `docs/` and catalogizing the shared Storybook, Stencil output-target, Node type and `tslib` versions.
-- Hardened the Storybook release path so `pnpm run build:storybook` and `pnpm run start:storybook` prepare the core dist artifacts before running the docs app.
-- Reviewed the temporary TypeScript `ignoreDeprecations` compatibility switches and kept them only on the Angular-related configs that still inherit deprecated `baseUrl` and legacy Node module resolution from the shared base config.
+- Removed Nx and replaced it with pnpm workspace scripts.
+- Updated dependencies, TypeScript configuration, wrapper generation and Storybook.
+- Improved build, CI, packaging and publishing workflows.
+
+### Fixed
+
+- Fixed Angular/esbuild custom-element builds and the `pd-input` `autoCorrect` property.
 
 ## [4.0.1] - 2026-03-05
 
@@ -698,6 +706,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - pd-input now uses a different design for the readonly mode
 - pd-input label font decreased
 
+[4.0.2]: https://github.com/Begasoft-AG/parlamentsdienste-components/releases/tag/v4.0.2
 [4.0.1]: https://github.com/Begasoft-AG/parlamentsdienste-components/releases/tag/v4.0.1
 [4.0.0]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v4.0.0
 [3.0.12]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v3.0.12

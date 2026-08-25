@@ -30,6 +30,25 @@ pnpm install
 
 Die Root-Konfiguration pinnt pnpm explizit über `packageManager`. Unterstützte Node-Version für Entwicklung und CI ist 24.x.
 
+## Entwicklung und Tests
+
+Der vollständige Build läuft in fester Reihenfolge: lokaler Angular Output Target, Core, Angular-, React- und Vue-Wrapper sowie Storybook.
+
+```bash
+pnpm run build:all
+```
+
+Die Komponenten- und Wrapper-Tests können getrennt gestartet werden:
+
+```bash
+pnpm run test:core
+pnpm run test:angular
+pnpm run test:react
+pnpm run test:vue
+```
+
+Unter [tools/compat](tools/compat/README.md) liegen zusätzliche Docker-basierte Kompatibilitätstests. Sie bauen frische Consumer-Projekte mit gepackten Release-Artefakten für Angular 17 bis 22 sowie für React und Vue. Diese Tests werden bewusst manuell ausgeführt und sind nicht Teil der GitHub-Actions-Workflows.
+
 ## Release erstellen
 
 Die Pack- und Publish-Skripte führen keinen Build aus. Deshalb muss vor jedem Release immer zuerst `build:all` ausgeführt werden. Nur so entsprechen die erzeugten Pakete dem aktuellen Quellcode.
@@ -60,11 +79,11 @@ Nach Änderungen am Quellcode, an Versionen oder Paketmetadaten muss der Ablauf 
 
 ## Lizenz
 
-Die vorliegende Bibliothek unterliegt der GNU AGPL 3 Lizenz.
+Diese Bibliothek ist unter der GNU Affero General Public License,
+Version 3 (`AGPL-3.0-only`), verfügbar.
 
-Bei Verwendungen gilt zusätzlich:
-
-> Für die Verwendung der Software für proprietäre oder für andere Verwendungen
-> wird eine schriftliche Zustimmung der Parlamentsdienste benötigt.
+Für Nutzungen, bei denen die Bedingungen der AGPL nicht eingehalten
+werden können oder sollen, kann eine separate proprietäre Lizenz
+vereinbart werden.
 
 Kontakt: https://www.parlament.ch, web@parl.admin.ch

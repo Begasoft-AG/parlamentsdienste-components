@@ -3,6 +3,11 @@
     "version": "4.0.2",
     "type": "module",
     "description": "Component Library for Swiss Parliamentary Services - Webcomponents Core Lib",
+    "author": {
+        "name": "Parlamentsdienste",
+        "email": "web@parl.admin.ch",
+        "url": "https://www.parlament.ch"
+    },
     "types": "dist/types/index.d.ts",
     "collection": "dist/collection/collection-manifest.json",
     "collection:main": "dist/collection/index.js",
@@ -69,5 +74,5 @@
         "jest-cli": "^29.7.0",
         "puppeteer": "^24.3.0"
     },
-    "license": "AGPL-3.0"
+    "license": "AGPL-3.0-only"
 }

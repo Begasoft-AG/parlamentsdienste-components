@@ -35,26 +35,18 @@ const inputValue = ref('');
 const isChecked = ref(false);
 
 const handleClick = () => {
-  console.log('Button clicked!');
+    console.log('Button clicked!');
 };
 </script>
 
 <template>
-  <div>
-    <PdButton @click="handleClick">
-      Click me
-    </PdButton>
+    <div>
+        <PdButton @click="handleClick"> Click me </PdButton>
 
-    <PdInput
-      v-model="inputValue"
-      placeholder="Enter text"
-    />
+        <PdInput v-model="inputValue" placeholder="Enter text" />
 
-    <PdCheckbox
-      v-model="isChecked"
-      label="Accept terms"
-    />
-  </div>
+        <PdCheckbox v-model="isChecked" label="Accept terms" />
+    </div>
 </template>
 ```
 
@@ -64,19 +56,16 @@ The Vue wrappers provide Vue-friendly event handling:
 
 ```vue
 <template>
-  <PdInput
-    @valueChange="handleValueChange"
-    @blur="handleBlur"
-  />
+    <PdInput @valueChange="handleValueChange" @blur="handleBlur" />
 </template>
 
 <script setup>
-const handleValueChange = (event) => {
-  console.log(event.detail); // Access event details
+const handleValueChange = event => {
+    console.log(event.detail); // Access event details
 };
 
 const handleBlur = () => {
-  console.log('Input blurred');
+    console.log('Input blurred');
 };
 </script>
 ```
@@ -95,9 +84,9 @@ const selectedDate = ref('');
 </script>
 
 <template>
-  <PdInput v-model="username" placeholder="Username" />
-  <PdCheckbox v-model="rememberMe" label="Remember me" />
-  <PdDatepicker v-model="selectedDate" />
+    <PdInput v-model="username" placeholder="Username" />
+    <PdCheckbox v-model="rememberMe" label="Remember me" />
+    <PdDatepicker v-model="selectedDate" />
 </template>
 ```
 
@@ -136,7 +125,7 @@ This library provides Vue 3 wrappers for all core components:
 
 ## License
 
-AGPL-3.0
+AGPL-3.0-only
 
 For proprietary or other use cases, written consent from the Swiss Parliamentary Services is required.
 

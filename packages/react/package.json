@@ -2,6 +2,11 @@
     "name": "@parlamentsdienste/pdcomponents-react",
     "description": "Component Library for Swiss Parliamentary Services - React-Wrapper Lib",
     "version": "4.0.2",
+    "author": {
+        "name": "Parlamentsdienste",
+        "email": "web@parl.admin.ch",
+        "url": "https://www.parlament.ch"
+    },
     "type": "module",
     "types": "./dist/src/index.d.ts",
     "exports": {
@@ -12,6 +17,7 @@
     },
     "files": [
         "dist/",
+        "LICENSE",
         "README.md"
     ],
     "publishConfig": {
@@ -22,7 +28,7 @@
         "type": "git",
         "url": "https://github.com/Begasoft-AG/parlamentsdienste-components.git"
     },
-    "license": "AGPL-3.0",
+    "license": "AGPL-3.0-only",
     "scripts": {
         "build": "vite build"
     },

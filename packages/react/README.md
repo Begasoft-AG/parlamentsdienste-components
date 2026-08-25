@@ -31,28 +31,18 @@ npm install @parlamentsdienste/pdcomponents-react
 import { PdButton, PdInput, PdCheckbox } from '@parlamentsdienste/pdcomponents-react';
 
 function App() {
-  const [value, setValue] = useState('');
-  const [checked, setChecked] = useState(false);
+    const [value, setValue] = useState('');
+    const [checked, setChecked] = useState(false);
 
-  return (
-    <div>
-      <PdButton onClick={() => console.log('Clicked!')}>
-        Click me
-      </PdButton>
+    return (
+        <div>
+            <PdButton onClick={() => console.log('Clicked!')}>Click me</PdButton>
 
-      <PdInput
-        value={value}
-        onValueChange={(e) => setValue(e.detail)}
-        placeholder="Enter text"
-      />
+            <PdInput value={value} onValueChange={e => setValue(e.detail)} placeholder="Enter text" />
 
-      <PdCheckbox
-        checked={checked}
-        onCheckedChange={(e) => setChecked(e.detail)}
-        label="Accept terms"
-      />
-    </div>
-  );
+            <PdCheckbox checked={checked} onCheckedChange={e => setChecked(e.detail)} label="Accept terms" />
+        </div>
+    );
 }
 ```
 
@@ -62,10 +52,10 @@ The React wrappers handle custom events from web components and provide React-fr
 
 ```tsx
 <PdInput
-  onValueChange={(event) => {
-    console.log(event.detail); // Access event details
-  }}
-  onBlur={() => console.log('Input blurred')}
+    onValueChange={event => {
+        console.log(event.detail); // Access event details
+    }}
+    onBlur={() => console.log('Input blurred')}
 />
 ```
 
@@ -78,7 +68,7 @@ import { PdButton } from '@parlamentsdienste/pdcomponents-react';
 import type { PdButtonCustomEvent } from '@parlamentsdienste/pdcomponents-react';
 
 const handleClick = (event: PdButtonCustomEvent) => {
-  console.log(event.detail);
+    console.log(event.detail);
 };
 ```
 
@@ -103,7 +93,7 @@ This library provides React wrappers for all core components:
 
 ## License
 
-AGPL-3.0
+AGPL-3.0-only
 
 For proprietary or other use cases, written consent from the Swiss Parliamentary Services is required.
 

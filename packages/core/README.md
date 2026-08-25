@@ -67,7 +67,7 @@ This library includes a comprehensive set of UI components:
 
 ## License
 
-AGPL-3.0
+AGPL-3.0-only
 
 For proprietary or other use cases, written consent from the Swiss Parliamentary Services is required.
 

@@ -34,11 +34,9 @@ import { NgModule } from '@angular/core';
 import { PdComponentsAngularModule } from '@parlamentsdienste/pdcomponents-angular';
 
 @NgModule({
-  imports: [
-    PdComponentsAngularModule
-  ]
+    imports: [PdComponentsAngularModule],
 })
-export class AppModule { }
+export class AppModule {}
 ```
 
 ### 2. Use Components in Templates
@@ -46,15 +44,9 @@ export class AppModule { }
 ```html
 <pd-button (click)="handleClick()">Click me</pd-button>
 
-<pd-input
-  [(ngModel)]="value"
-  placeholder="Enter text">
-</pd-input>
+<pd-input [(ngModel)]="value" placeholder="Enter text"> </pd-input>
 
-<pd-checkbox
-  [formControl]="myControl"
-  label="Accept terms">
-</pd-checkbox>
+<pd-checkbox [formControl]="myControl" label="Accept terms"> </pd-checkbox>
 ```
 
 ### 3. Reactive Forms Support
@@ -66,19 +58,19 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-form',
-  template: `
-    <form [formGroup]="myForm">
-      <pd-input formControlName="username"></pd-input>
-      <pd-checkbox formControlName="remember"></pd-checkbox>
-    </form>
-  `
+    selector: 'app-form',
+    template: `
+        <form [formGroup]="myForm">
+            <pd-input formControlName="username"></pd-input>
+            <pd-checkbox formControlName="remember"></pd-checkbox>
+        </form>
+    `,
 })
 export class FormComponent {
-  myForm = new FormGroup({
-    username: new FormControl(''),
-    remember: new FormControl(false)
-  });
+    myForm = new FormGroup({
+        username: new FormControl(''),
+        remember: new FormControl(false),
+    });
 }
 ```
 
@@ -103,7 +95,7 @@ This library provides Angular wrappers for all core components:
 
 ## License
 
-AGPL-3.0
+AGPL-3.0-only
 
 For proprietary or other use cases, written consent from the Swiss Parliamentary Services is required.
 

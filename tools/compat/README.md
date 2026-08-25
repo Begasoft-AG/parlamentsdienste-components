@@ -13,8 +13,7 @@ Testet die Kompatibilität der parlamentsdienste-components mit verschiedenen Fr
 ### Angular
 
 ```bash
-cd tools/compat/angular
-./run.sh [Optionen] <angular-version>
+./tools/compat/angular/run.sh <angular-version> [Optionen]
 ```
 
 **Optionen:**
@@ -26,14 +25,21 @@ cd tools/compat/angular
 **Beispiel:**
 
 ```bash
-./run.sh --e2e angular-20
+./tools/compat/angular/run.sh 20 --node-version=22 --e2e
 ```
 
 ### React & Vue
 
 ```bash
-cd tools/compat/react  # oder vue
-./run.sh [Optionen] <version>
+./tools/compat/react/run.sh <react-version> [Optionen]
+./tools/compat/vue/run.sh <vue-version> [Optionen]
+```
+
+Beispiel:
+
+```bash
+./tools/compat/react/run.sh 19 --node-version=22 --e2e
+./tools/compat/vue/run.sh 3 --node-version=22 --e2e
 ```
 
 Für React und Vue zusätzlich:

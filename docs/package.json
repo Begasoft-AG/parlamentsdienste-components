@@ -1,6 +1,7 @@
 {
     "name": "docs",
     "version": "4.0.2",
+    "private": true,
     "description": "Documentation (Storybook) for the Swiss Parliamentary Services Component Library",
     "main": "app.js",
     "devDependencies": {
@@ -20,6 +21,5 @@
         "build-storybook": "storybook build"
     },
     "keywords": [],
-    "author": "",
-    "license": "ISC"
+    "author": ""
 }

@@ -50,4 +50,5 @@ vitest.config.*.timestamp*
 *.tgz
 
 .github/agent-md-files
-.github/prompts
+.github/prompts/*
+!.github/prompts/release-readiness.prompt.md

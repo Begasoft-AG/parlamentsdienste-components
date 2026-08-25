@@ -1,7 +1,7 @@
 {
     "name": "@parlamentsdienste/source",
     "version": "4.0.2",
-    "license": "MIT",
+    "license": "AGPL-3.0-only",
     "description": "Component Library for Swiss Parliamentary Services",
     "packageManager": "pnpm@11.23.0",
     "scripts": {
