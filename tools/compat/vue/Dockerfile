@@ -35,16 +35,17 @@ RUN pnpm run pack:core \
 
 FROM base AS runtime
 
-COPY --from=pack-builder /workspace/dist/core /tmp/packs/core
-COPY --from=pack-builder /workspace/dist/vue /tmp/packs/vue
-COPY tools/compat/vue /tmp/compat-dir
-
 WORKDIR /tmp/compat-dir
 
 ENV PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
 
+COPY tools/compat/vue/package.json ./
 RUN npm install --no-audit --no-fund \
     && npx playwright install --with-deps chromium
+
+COPY --from=pack-builder /workspace/dist/core /tmp/packs/core
+COPY --from=pack-builder /workspace/dist/vue /tmp/packs/vue
+COPY tools/compat/vue /tmp/compat-dir
 
 RUN chmod +x /tmp/compat-dir/compat-check.sh \
     && chown -R node:node /tmp/compat-dir /ms-playwright
