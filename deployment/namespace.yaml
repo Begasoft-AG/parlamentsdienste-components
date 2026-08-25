@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-    name: parlamentsdienste-components
-    labels:
-        project: parlamentsdienste-components
