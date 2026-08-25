@@ -10,7 +10,7 @@ This package provides React-specific bindings for [@parlamentsdienste/pdcomponen
 ## Documentation
 
 **Component Documentation (Storybook):**
-https://parlamentsdienste-components.bgs.lambda-it.ch/
+https:///parlamentsdienste-components.prod.sw.begasoft.ch
 
 ## Installation
 

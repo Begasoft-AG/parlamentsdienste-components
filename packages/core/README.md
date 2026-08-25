@@ -11,7 +11,7 @@ This is the core web components library built with [Stencil](https://stenciljs.c
 ## Documentation
 
 **Component Documentation (Storybook):**
-https://parlamentsdienste-components.bgs.lambda-it.ch/
+https:///parlamentsdienste-components.prod.sw.begasoft.ch
 
 ## Installation
 

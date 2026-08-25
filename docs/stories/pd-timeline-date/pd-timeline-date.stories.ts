@@ -3,7 +3,7 @@ import type { ArgTypes, Meta, StoryObj } from '@storybook/html-vite';
 const defaultArgs = {
     date: 'date',
     header: 'header',
-    href: 'http://www.lambda-it.ch',
+    href: 'http://www.parlament.ch',
     target: '_blank',
     content: 'Content text',
 };
