@@ -1,5 +1,5 @@
 import { PdColumn, PdTableRow } from '../../types';
-import { getFilterFunctions, defaultFilterFunc, defaultSortFunc } from './pd-table.helper';
+import { defaultFilterFunc, defaultSortFunc, getFilterFunctions } from './pd-table.helper';
 
 export interface TableState {
     allRows: PdTableRow[];
@@ -91,7 +91,7 @@ export function unselectAll(state: TableState) {
 }
 
 export function checkAllSelected(state: TableState) {
-    state.allSelected = state.visibleRows.every(r => r.pdSelected); // reset if not all checkboxes are selected
+    state.allSelected = state.visibleRows.length > 0 && state.visibleRows.every(r => r.pdSelected);
 }
 
 export function checkIsIndeterminate(state: TableState) {
@@ -100,7 +100,7 @@ export function checkIsIndeterminate(state: TableState) {
 }
 
 export function refresh(state: TableState, rows: PdTableRow[], externalRowHandling: boolean, columns: PdColumn[]) {
-    state.allRows = rows.map((r, i) => ({ ...r, _id: i }));
+    state.allRows = (rows ?? []).map((r, i) => ({ ...r, _id: i }));
     if (externalRowHandling) {
         state.visibleRows = state.allRows;
     } else {

@@ -252,7 +252,10 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
             defaultPageSize: 10,
         });
         this.state = state;
-        this.state.allRows = this.rows.map((r, i) => ({ ...r, _id: i }));
+    }
+
+    public componentWillLoad() {
+        this.state.allRows = (this.rows ?? []).map((r, i) => ({ ...r, _id: i }));
         if (this.externalRowHandling) {
             this.state.visibleRows = this.state.allRows;
         } else {
@@ -260,11 +263,10 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
         }
 
         this.handleSelectedStatusChanged();
-    }
-
-    public componentWillLoad() {
-        S.checkAllSelected(this.state);
-        S.checkIsIndeterminate(this.state);
+        if (!this.externalRowHandling) {
+            S.checkAllSelected(this.state);
+            S.checkIsIndeterminate(this.state);
+        }
         S.initPaging(this.state, +this.pageSizes.find(ps => ps.selected)?.value || this.state.defaultPageSize);
     }
 
@@ -364,7 +366,7 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
         this.onSort.emit({
             sortColumnName: headerCol.columnName,
             sortColumnLabel: headerCol.label,
-            sortDirection: this.state.nextSortDir[columnName] === 'asc' ? 'desc' : 'asc',
+            sortDirection: this.state.nextSortDir[columnName],
         });
     }
 
@@ -428,7 +430,7 @@ export class Table implements ComponentInterface, ComponentWillLoad, ComponentDi
                             'pd-table-header-cell': true,
                             'pd-table-cell-bold': true,
                             'pd-table-sortable': headerCol.sortable,
-                            [`pd-table-sort-${columnSortDir === 'asc' ? 'desc' : 'asc'}`]: !!columnSortDir,
+                            [`pd-table-sort-${columnSortDir}`]: !!columnSortDir,
                             [`pd-table-${this.headerStyle}`]: true,
                         }}
                         ref={el => (this.headerRefs[headerCol.columnName] = el as HTMLElement)}
