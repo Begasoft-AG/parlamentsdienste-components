@@ -38,6 +38,12 @@ Der vollständige Build läuft in fester Reihenfolge: lokaler Angular Output Tar
 pnpm run build:all
 ```
 
+Die lokale Core-Demoseite wird mit folgendem Befehl gestartet:
+
+```bash
+pnpm run start:core
+```
+
 Die Komponenten- und Wrapper-Tests können getrennt gestartet werden:
 
 ```bash

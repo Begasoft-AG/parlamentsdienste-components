@@ -27,7 +27,7 @@ const timeline = args => `
         <pd-timeline-date date="30.10.2019">
             Die <strong>Finanzdelegation</strong> stimmt allen Anträgen des Bundesrates auf dringliche Kredite
             mit Vorschuss zu. <br /><a href="#">Audioaufnahme</a>
-            <img src="https://source.unsplash.com/random/300x300?v=1" class="card-img-top" alt="..." />
+            <img src="https://picsum.photos/300/300?random=1" class="card-img-top" alt="..." />
         </pd-timeline-date>
         <pd-timeline-date date="24.06.2019" header="SiK-NR" href="http://www.google.ch">
             Antrag: Ablehnung <br />

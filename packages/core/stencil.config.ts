@@ -68,7 +68,10 @@ export const config: Config = {
         {
             type: 'www',
             serviceWorker: null, // disable service workers
-            copy: [{ src: 'styles/typography.css', dest: 'build/typography.css' }],
+            copy: [
+                { src: 'styles/typography.css', dest: 'build/typography.css' },
+                { src: 'assets/fonts', dest: 'build/assets/fonts' },
+            ],
         },
         angularOutputTarget({
             componentCorePackage: '@parlamentsdienste/pdcomponents-core',
