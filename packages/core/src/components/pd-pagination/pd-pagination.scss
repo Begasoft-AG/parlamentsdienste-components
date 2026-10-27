@@ -1,0 +1,90 @@
+@include resetControlFonts;
+
+:host {
+    display: flex;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+.pd-pagination-prev,
+.pd-pagination-next,
+.pd-pagination-first,
+.pd-pagination-last,
+.pd-pagination-page {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    border: 0.125rem solid $gray-3;
+    min-width: 2.25rem;
+    color: setcolor(primary, enabled);
+    background-color: $white;
+    padding: 0.25rem;
+
+    &.pd-pagination-active {
+        color: setcolor(primary, enabledContrast);
+        background-color: setcolor(primary, enabled);
+        font-weight: 700;
+    }
+
+    &:hover:enabled {
+        background-color: setcolor(primary, hover);
+        color: setcolor(primary, hoverContrast);
+        cursor: pointer;
+    }
+
+    &:active:enabled {
+        background-color: setcolor(primary, pressed);
+        color: setcolor(primary, pressedContrast);
+    }
+
+    &:focus-visible {
+        @include focus;
+        outline: 0.125rem solid $blue-whale;
+        outline-offset: -0.125rem;
+    }
+
+    span {
+        margin-top: -0.2rem;
+    }
+
+    &:disabled {
+        color: $gray-3;
+    }
+}
+
+.pd-pagination-first {
+    border-right: none;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+}
+
+.pd-pagination-page,
+.pd-pagination-prev,
+.pd-pagination-next {
+    border-right: none;
+}
+
+.pd-pagination-last {
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+}
+
+.pd-pagination-simple {
+    background-color: $white;
+    border: 0.125rem solid $gray-3;
+    border-right: none;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-items: center;
+    justify-items: end;
+    padding: 0 0.25rem;
+}
+
+.pd-pagination-number {
+    padding: 0 0.25rem;
+    font-weight: 900;
+}

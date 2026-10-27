@@ -26,6 +26,7 @@ export { PdMenuItem } from './pd-menu-item';
 export { PdModal } from './pd-modal';
 export { PdNavbar } from './pd-navbar';
 export { PdNavbarItem } from './pd-navbar-item';
+export { PdPagination } from './pd-pagination';
 export { PdPanel } from './pd-panel';
 export { PdPanelContent } from './pd-panel-content';
 export { PdPanelFooter } from './pd-panel-footer';

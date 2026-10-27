@@ -833,6 +833,36 @@ export namespace Components {
          */
         "text": string;
     }
+    /**
+     * Controlled page navigation. Handle pd-change and update currentPage in the parent.
+     */
+    interface PdPagination {
+        /**
+          * Current page number (one-based).
+          * @default 1
+         */
+        "currentPage": number;
+        /**
+          * Separator string in simple mode.
+          * @default 'von'
+         */
+        "separator": string;
+        /**
+          * Show numbered page buttons instead of the current/total page summary.
+          * @default false
+         */
+        "showPageButtons": boolean;
+        /**
+          * Number of pages. Use zero for an empty result.
+          * @default 5
+         */
+        "totalPages": number;
+        /**
+          * Maximum number of visible page buttons in showPageButtons mode.
+          * @default 5
+         */
+        "visiblePages": number;
+    }
     interface PdPanel {
         /**
           * Expands / collapses the panel content
@@ -1441,6 +1471,10 @@ export interface PdNavbarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPdNavbarElement;
 }
+export interface PdPaginationCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPdPaginationElement;
+}
 export interface PdPanelCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPdPanelElement;
@@ -1766,6 +1800,26 @@ declare global {
         prototype: HTMLPdNavbarItemElement;
         new (): HTMLPdNavbarItemElement;
     };
+    interface HTMLPdPaginationElementEventMap {
+        "pd-change": number;
+    }
+    /**
+     * Controlled page navigation. Handle pd-change and update currentPage in the parent.
+     */
+    interface HTMLPdPaginationElement extends Components.PdPagination, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPdPaginationElementEventMap>(type: K, listener: (this: HTMLPdPaginationElement, ev: PdPaginationCustomEvent<HTMLPdPaginationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPdPaginationElementEventMap>(type: K, listener: (this: HTMLPdPaginationElement, ev: PdPaginationCustomEvent<HTMLPdPaginationElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPdPaginationElement: {
+        prototype: HTMLPdPaginationElement;
+        new (): HTMLPdPaginationElement;
+    };
     interface HTMLPdPanelElementEventMap {
         "pd-collapsed": any;
     }
@@ -2048,6 +2102,7 @@ declare global {
         "pd-modal": HTMLPdModalElement;
         "pd-navbar": HTMLPdNavbarElement;
         "pd-navbar-item": HTMLPdNavbarItemElement;
+        "pd-pagination": HTMLPdPaginationElement;
         "pd-panel": HTMLPdPanelElement;
         "pd-panel-content": HTMLPdPanelContentElement;
         "pd-panel-footer": HTMLPdPanelFooterElement;
@@ -2939,6 +2994,40 @@ declare namespace LocalJSX {
          */
         "text"?: string;
     }
+    /**
+     * Controlled page navigation. Handle pd-change and update currentPage in the parent.
+     */
+    interface PdPagination {
+        /**
+          * Current page number (one-based).
+          * @default 1
+         */
+        "currentPage"?: number;
+        /**
+          * Page change request. Returns the selected page without changing currentPage.
+         */
+        "onPd-change"?: (event: PdPaginationCustomEvent<number>) => void;
+        /**
+          * Separator string in simple mode.
+          * @default 'von'
+         */
+        "separator"?: string;
+        /**
+          * Show numbered page buttons instead of the current/total page summary.
+          * @default false
+         */
+        "showPageButtons"?: boolean;
+        /**
+          * Number of pages. Use zero for an empty result.
+          * @default 5
+         */
+        "totalPages"?: number;
+        /**
+          * Maximum number of visible page buttons in showPageButtons mode.
+          * @default 5
+         */
+        "visiblePages"?: number;
+    }
     interface PdPanel {
         /**
           * Expands / collapses the panel content
@@ -3769,6 +3858,13 @@ declare namespace LocalJSX {
         "href": string;
         "target": string;
     }
+    interface PdPaginationAttributes {
+        "currentPage": number;
+        "totalPages": number;
+        "showPageButtons": boolean;
+        "visiblePages": number;
+        "separator": string;
+    }
     interface PdPanelAttributes {
         "collapsed": boolean;
         "collapsible": boolean;
@@ -3921,6 +4017,7 @@ declare namespace LocalJSX {
         "pd-modal": PdModal;
         "pd-navbar": Omit<PdNavbar, keyof PdNavbarAttributes> & { [K in keyof PdNavbar & keyof PdNavbarAttributes]?: PdNavbar[K] } & { [K in keyof PdNavbar & keyof PdNavbarAttributes as `attr:${K}`]?: PdNavbarAttributes[K] } & { [K in keyof PdNavbar & keyof PdNavbarAttributes as `prop:${K}`]?: PdNavbar[K] };
         "pd-navbar-item": Omit<PdNavbarItem, keyof PdNavbarItemAttributes> & { [K in keyof PdNavbarItem & keyof PdNavbarItemAttributes]?: PdNavbarItem[K] } & { [K in keyof PdNavbarItem & keyof PdNavbarItemAttributes as `attr:${K}`]?: PdNavbarItemAttributes[K] } & { [K in keyof PdNavbarItem & keyof PdNavbarItemAttributes as `prop:${K}`]?: PdNavbarItem[K] };
+        "pd-pagination": Omit<PdPagination, keyof PdPaginationAttributes> & { [K in keyof PdPagination & keyof PdPaginationAttributes]?: PdPagination[K] } & { [K in keyof PdPagination & keyof PdPaginationAttributes as `attr:${K}`]?: PdPaginationAttributes[K] } & { [K in keyof PdPagination & keyof PdPaginationAttributes as `prop:${K}`]?: PdPagination[K] };
         "pd-panel": Omit<PdPanel, keyof PdPanelAttributes> & { [K in keyof PdPanel & keyof PdPanelAttributes]?: PdPanel[K] } & { [K in keyof PdPanel & keyof PdPanelAttributes as `attr:${K}`]?: PdPanelAttributes[K] } & { [K in keyof PdPanel & keyof PdPanelAttributes as `prop:${K}`]?: PdPanel[K] };
         "pd-panel-content": PdPanelContent;
         "pd-panel-footer": PdPanelFooter;
@@ -3969,6 +4066,10 @@ declare module "@stencil/core" {
             "pd-modal": LocalJSX.IntrinsicElements["pd-modal"] & JSXBase.HTMLAttributes<HTMLPdModalElement>;
             "pd-navbar": LocalJSX.IntrinsicElements["pd-navbar"] & JSXBase.HTMLAttributes<HTMLPdNavbarElement>;
             "pd-navbar-item": LocalJSX.IntrinsicElements["pd-navbar-item"] & JSXBase.HTMLAttributes<HTMLPdNavbarItemElement>;
+            /**
+             * Controlled page navigation. Handle pd-change and update currentPage in the parent.
+             */
+            "pd-pagination": LocalJSX.IntrinsicElements["pd-pagination"] & JSXBase.HTMLAttributes<HTMLPdPaginationElement>;
             "pd-panel": LocalJSX.IntrinsicElements["pd-panel"] & JSXBase.HTMLAttributes<HTMLPdPanelElement>;
             "pd-panel-content": LocalJSX.IntrinsicElements["pd-panel-content"] & JSXBase.HTMLAttributes<HTMLPdPanelContentElement>;
             "pd-panel-footer": LocalJSX.IntrinsicElements["pd-panel-footer"] & JSXBase.HTMLAttributes<HTMLPdPanelFooterElement>;

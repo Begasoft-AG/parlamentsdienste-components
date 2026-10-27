@@ -274,6 +274,7 @@ Type: `Promise<void>`
 - [pd-menu](../pd-menu)
 - [pd-checkbox](../pd-checkbox)
 - [pd-icon](../pd-icon)
+- [pd-pagination](../pd-pagination)
 - [pd-dropdown](../pd-dropdown)
 
 ### Graph
@@ -283,6 +284,7 @@ graph TD;
   pd-table --> pd-menu
   pd-table --> pd-checkbox
   pd-table --> pd-icon
+  pd-table --> pd-pagination
   pd-table --> pd-dropdown
   pd-table-filter --> pd-icon
   pd-menu --> pd-icon

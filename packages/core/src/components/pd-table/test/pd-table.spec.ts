@@ -1,6 +1,7 @@
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 import { PdColumn, PdTableRow } from '../../../types';
 import { Checkbox } from '../../pd-checkbox/pd-checkbox';
+import { Pagination } from '../../pd-pagination/pd-pagination';
 import { Table } from '../pd-table';
 
 describe('pd-table', () => {
@@ -37,7 +38,7 @@ describe('pd-table', () => {
 
     // frameworks set props as properties after the element is created
     async function renderWithProps(props: Partial<HTMLPdTableElement>) {
-        page = await newSpecPage({ components: [Table, Checkbox], html: '' });
+        page = await newSpecPage({ components: [Table, Checkbox, Pagination], html: '' });
         const el = page.doc.createElement('pd-table');
         Object.assign(el, props);
         page.body.appendChild(el);
@@ -98,5 +99,58 @@ describe('pd-table', () => {
     it('handles null rows', async () => {
         const el = await renderWithProps({ columns, rows: null });
         expect(el.shadowRoot.querySelectorAll('.pd-table-row').length).toBe(0);
+    });
+
+    it('pages rows through the restored pagination and resets when the page size changes', async () => {
+        const el = await renderWithProps({
+            columns,
+            rows: toRows('Anna', 'Beat', 'Cora', 'Dora', 'Emil'),
+            paging: true,
+            pageSizes: [{ id: '1', label: '2', value: 2, selected: true }],
+        });
+        const pagination = el.shadowRoot.querySelector('pd-pagination');
+        const names = () =>
+            Array.from(el.shadowRoot.querySelectorAll('.pd-table-horizontal-scroll .pd-table-cell-value')).map(
+                cell => cell.textContent,
+            );
+        const summary = () => pagination.shadowRoot.querySelector('[role="status"]').textContent;
+
+        expect(names()).toEqual(['Anna', 'Beat']);
+        expect(summary()).toBe('1 von 3');
+
+        pagination.shadowRoot.querySelector<HTMLButtonElement>('[data-test="pd-pagination-next"]').click();
+        await page.waitForChanges();
+        expect(names()).toEqual(['Cora', 'Dora']);
+        expect(summary()).toBe('2 von 3');
+
+        pagination.shadowRoot.querySelector<HTMLButtonElement>('[data-test="pd-pagination-last"]').click();
+        await page.waitForChanges();
+        expect(names()).toEqual(['Emil']);
+        expect(summary()).toBe('3 von 3');
+
+        el.shadowRoot.querySelector('pd-dropdown').dispatchEvent(
+            new CustomEvent('pd-change', { detail: { id: '2', label: '5', value: 5 } }),
+        );
+        await page.waitForChanges();
+        expect(names()).toEqual(['Anna', 'Beat', 'Cora', 'Dora', 'Emil']);
+        expect(summary()).toBe('1 von 1');
+    });
+
+    it('renders disabled pagination for an empty paged table', async () => {
+        const el = await renderWithProps({ columns, rows: [], paging: true });
+        const pagination = el.shadowRoot.querySelector('pd-pagination');
+
+        expect(pagination.shadowRoot.querySelector('[role="status"]').textContent).toBe('0 von 0');
+        for (const control of Array.from(pagination.shadowRoot.querySelectorAll('button'))) {
+            expect(control).toHaveAttribute('disabled');
+        }
+    });
+
+    it('leaves external row handling and pagination to the parent', async () => {
+        const el = await renderWithProps({ columns, rows, paging: true, externalRowHandling: true });
+
+        expect(el.shadowRoot.querySelector('pd-pagination')).toBeNull();
+        expect(el.shadowRoot.querySelector('slot[name="external-pagination"]')).not.toBeNull();
+        expect(el.shadowRoot.querySelectorAll('.pd-table-horizontal-scroll .pd-table-row').length).toBe(2);
     });
 });

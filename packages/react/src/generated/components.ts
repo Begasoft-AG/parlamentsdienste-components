@@ -11,7 +11,7 @@ import type { EventName, StencilReactComponent } from '@stencil/react-output-tar
 import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
 
-import { type ComboboxItem, type DropdownItem, type InputChangeEventDetail, type PdAlertCustomEvent, type PdBackdropCustomEvent, type PdCheckboxCustomEvent, type PdChipCustomEvent, type PdComboboxCustomEvent, type PdDatepickerCustomEvent, type PdDropdownCustomEvent, type PdInputCustomEvent, type PdListItemExpandableCustomEvent, type PdModalCustomEvent, type PdNavbarCustomEvent, type PdPanelCustomEvent, type PdPanelHeaderCustomEvent, type PdRadioGroupCustomEvent, type PdSearchCustomEvent, type PdSliderCustomEvent, type PdSortCustomEvent, type PdTableCustomEvent, type PdTableFilterCustomEvent, type PdTabsCustomEvent, type PdTextareaCustomEvent, type PdToastCustomEvent, type SelectedEvent, type SortDropdownItem, type TabValue } from "@parlamentsdienste/pdcomponents-core";
+import { type ComboboxItem, type DropdownItem, type InputChangeEventDetail, type PdAlertCustomEvent, type PdBackdropCustomEvent, type PdCheckboxCustomEvent, type PdChipCustomEvent, type PdComboboxCustomEvent, type PdDatepickerCustomEvent, type PdDropdownCustomEvent, type PdInputCustomEvent, type PdListItemExpandableCustomEvent, type PdModalCustomEvent, type PdNavbarCustomEvent, type PdPaginationCustomEvent, type PdPanelCustomEvent, type PdPanelHeaderCustomEvent, type PdRadioGroupCustomEvent, type PdSearchCustomEvent, type PdSliderCustomEvent, type PdSortCustomEvent, type PdTableCustomEvent, type PdTableFilterCustomEvent, type PdTabsCustomEvent, type PdTextareaCustomEvent, type PdToastCustomEvent, type SelectedEvent, type SortDropdownItem, type TabValue } from "@parlamentsdienste/pdcomponents-core";
 import type { Components } from "@parlamentsdienste/pdcomponents-core/components";
 import { PdAlert as PdAlertElement, defineCustomElement as definePdAlert } from "@parlamentsdienste/pdcomponents-core/components/pd-alert.js";
 import { PdAnimation as PdAnimationElement, defineCustomElement as definePdAnimation } from "@parlamentsdienste/pdcomponents-core/components/pd-animation.js";
@@ -35,6 +35,7 @@ import { PdMenu as PdMenuElement, defineCustomElement as definePdMenu } from "@p
 import { PdModal as PdModalElement, defineCustomElement as definePdModal } from "@parlamentsdienste/pdcomponents-core/components/pd-modal.js";
 import { PdNavbarItem as PdNavbarItemElement, defineCustomElement as definePdNavbarItem } from "@parlamentsdienste/pdcomponents-core/components/pd-navbar-item.js";
 import { PdNavbar as PdNavbarElement, defineCustomElement as definePdNavbar } from "@parlamentsdienste/pdcomponents-core/components/pd-navbar.js";
+import { PdPagination as PdPaginationElement, defineCustomElement as definePdPagination } from "@parlamentsdienste/pdcomponents-core/components/pd-pagination.js";
 import { PdPanelContent as PdPanelContentElement, defineCustomElement as definePdPanelContent } from "@parlamentsdienste/pdcomponents-core/components/pd-panel-content.js";
 import { PdPanelFooter as PdPanelFooterElement, defineCustomElement as definePdPanelFooter } from "@parlamentsdienste/pdcomponents-core/components/pd-panel-footer.js";
 import { PdPanelHeader as PdPanelHeaderElement, defineCustomElement as definePdPanelHeader } from "@parlamentsdienste/pdcomponents-core/components/pd-panel-header.js";
@@ -366,6 +367,17 @@ export const PdNavbarItem: StencilReactComponent<PdNavbarItemElement, PdNavbarIt
     react: React,
     events: {} as PdNavbarItemEvents,
     defineCustomElement: definePdNavbarItem
+});
+
+export type PdPaginationEvents = { onPdChange: EventName<PdPaginationCustomEvent<number>> };
+
+export const PdPagination: StencilReactComponent<PdPaginationElement, PdPaginationEvents, Components.PdPagination> = /*@__PURE__*/ createComponent<PdPaginationElement, PdPaginationEvents, Components.PdPagination>({
+    tagName: 'pd-pagination',
+    elementClass: PdPaginationElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onPdChange: 'pd-change' } as PdPaginationEvents,
+    defineCustomElement: definePdPagination
 });
 
 export type PdPanelEvents = { onPdCollapsed: EventName<PdPanelCustomEvent<any>> };

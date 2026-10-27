@@ -27,6 +27,7 @@ import { defineCustomElement as definePdMenuItem } from '@parlamentsdienste/pdco
 import { defineCustomElement as definePdModal } from '@parlamentsdienste/pdcomponents-core/components/pd-modal.js';
 import { defineCustomElement as definePdNavbar } from '@parlamentsdienste/pdcomponents-core/components/pd-navbar.js';
 import { defineCustomElement as definePdNavbarItem } from '@parlamentsdienste/pdcomponents-core/components/pd-navbar-item.js';
+import { defineCustomElement as definePdPagination } from '@parlamentsdienste/pdcomponents-core/components/pd-pagination.js';
 import { defineCustomElement as definePdPanel } from '@parlamentsdienste/pdcomponents-core/components/pd-panel.js';
 import { defineCustomElement as definePdPanelContent } from '@parlamentsdienste/pdcomponents-core/components/pd-panel-content.js';
 import { defineCustomElement as definePdPanelFooter } from '@parlamentsdienste/pdcomponents-core/components/pd-panel-footer.js';
@@ -365,6 +366,18 @@ export const PdNavbarItem: StencilVueComponent<JSX.PdNavbarItem> = /*@__PURE__*/
   'enabled',
   'href',
   'target'
+]);
+
+
+export const PdPagination: StencilVueComponent<JSX.PdPagination> = /*@__PURE__*/ defineContainer<JSX.PdPagination>('pd-pagination', definePdPagination, [
+  'currentPage',
+  'totalPages',
+  'showPageButtons',
+  'visiblePages',
+  'separator',
+  'pd-change'
+], [
+  'pd-change'
 ]);
 
 

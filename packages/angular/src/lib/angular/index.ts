@@ -24,6 +24,7 @@ export const DIRECTIVES = [
   d.PdModal,
   d.PdNavbar,
   d.PdNavbarItem,
+  d.PdPagination,
   d.PdPanel,
   d.PdPanelContent,
   d.PdPanelFooter,
