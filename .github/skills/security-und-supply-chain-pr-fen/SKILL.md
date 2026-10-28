@@ -1,9 +1,8 @@
 ---
-name: Security und Supply Chain prüfen
-description: Prüft Repository, Abhängigkeiten, Workflows, Container und Publish-Konfiguration lokal auf Security- und Supply-Chain-Risiken
-agent: agent
+name: security-und-supply-chain-pr-fen
+description: "Prüft Repository, Abhängigkeiten, Workflows, Container und Publish-Konfiguration lokal auf Security- und Supply-Chain-Risiken"
+disable-model-invocation: true
 ---
-
 # Security und Supply Chain prüfen
 
 Prüfe dieses Repository lokal auf Security- und Supply-Chain-Risiken. Arbeite selbstständig und lies zuerst die Repository-Anweisungen sowie die aktuellen Install-, Build-, Pack-, Release- und Publish-Konfigurationen.

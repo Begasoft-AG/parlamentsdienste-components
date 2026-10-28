@@ -1,10 +1,8 @@
 ---
-name: Release-Readiness prüfen
-description: Prüft lokalen Build, Paketmetadaten und Publish-Artefakte vor einem Release, ohne zu veröffentlichen
-author: GitHub Copilot
-agent: agent
+name: release-readiness-pr-fen
+description: "Prüft lokalen Build, Paketmetadaten und Publish-Artefakte vor einem Release, ohne zu veröffentlichen"
+disable-model-invocation: true
 ---
-
 # Release-Readiness prüfen
 
 Prüfe, ob dieses Repository lokal für die Veröffentlichung der vier Produktpakete vorbereitet ist. Arbeite selbstständig und lies zuerst die Repository-Anweisungen sowie die aktuellen Release-, Build-, Pack- und Publish-Skripte.
