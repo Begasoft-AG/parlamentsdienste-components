@@ -1,4 +1,5 @@
 @include resetControlFonts;
+@include formField;
 
 :host {
     display: block;
@@ -12,23 +13,7 @@
     outline: none;
 }
 
-/**
- * @prop --pd-datepicker-vertical-adjust: top margin of label
- */
-.pd-datepicker-label {
-    flex: 1 1 auto;
-    display: flex;
-    flex-direction: column;
-    margin-top: var(--pd-datepicker-vertical-adjust, inherit);
-    width: 100%;
-
-    .pd-datepicker-label-text {
-        font-size: 0.875rem;
-        padding-bottom: 0.25rem;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
+.pd-form-field {
     &.pd-datepicker-disabled {
         pointer-events: none;
         .pd-datepicker-icon {
@@ -50,9 +35,13 @@
     }
 }
 
+/**
+ * @prop --pd-datepicker-vertical-adjust: top margin of datepicker
+ */
 .wrapper {
     display: flex;
     position: relative;
+    margin-top: var(--pd-datepicker-vertical-adjust, 0);
 }
 
 .pd-datepicker-input {
@@ -153,7 +142,7 @@
     border-radius: 0.25rem;
     border: 0.125rem solid setcolor(primary, enabled);
     width: 100%;
-    margin-top: var(--pd-input-vertical-adjust, inherit);
+    margin-top: var(--pd-input-vertical-adjust, 0);
 
     &.pd-datepicker-clearicon {
         padding-right: 5.5rem;

@@ -8,11 +8,11 @@ describe('pd-radio', () => {
             html: `<pd-radio></pd-radio>`,
         });
         expect(page.root).toEqualHtml(`
-          <pd-radio aria-checked="false" aria-disabled="false" role="radio">
+          <pd-radio>
             <label class="pd-radio-label" data-test="pd-radio-label">
                 <input class="pd-radio-input" type="radio">
-                <div class="pd-radio-inner"></div>
-                <div class="pd-radio-text" data-test="pd-radio-text"></div>
+                <span class="pd-radio-inner" aria-hidden="true"></span>
+                <span class="pd-radio-text" data-test="pd-radio-text"></span>
             </label>
           </pd-radio>
         `);

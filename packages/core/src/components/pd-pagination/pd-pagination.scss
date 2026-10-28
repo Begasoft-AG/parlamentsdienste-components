@@ -10,6 +10,10 @@
     box-sizing: border-box;
 }
 
+button:not(:disabled) {
+    cursor: pointer;
+}
+
 .pd-pagination-prev,
 .pd-pagination-next,
 .pd-pagination-first,
@@ -33,7 +37,6 @@
     &:hover:enabled {
         background-color: setcolor(primary, hover);
         color: setcolor(primary, hoverContrast);
-        cursor: pointer;
     }
 
     &:active:enabled {

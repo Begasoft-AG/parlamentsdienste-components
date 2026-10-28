@@ -146,9 +146,9 @@ Type: `Promise<void>`
 
 ## CSS Custom Properties
 
-| Name                            | Description         |
-| ------------------------------- | ------------------- |
-| `--pd-checkbox-vertical-adjust` | top margin of label |
+| Name                            | Description            |
+| ------------------------------- | ---------------------- |
+| `--pd-combobox-vertical-adjust` | top margin of combobox |
 
 
 ## Dependencies

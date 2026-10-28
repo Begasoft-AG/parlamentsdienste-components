@@ -1,4 +1,5 @@
 @include resetControlFonts;
+@include formField;
 
 :host {
     display: block;
@@ -12,19 +13,6 @@
     outline: none;
 }
 
-.pd-textarea-label {
-    width: 100%;
-    margin-bottom: 0;
-    max-width: 100%;
-
-    .pd-textarea-label-text {
-        padding-bottom: 0.25rem;
-        font-size: 0.875rem;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-}
-
 /**
  * @prop --pd-input-vertical-adjust: top margin of textarea
  */
@@ -34,7 +22,7 @@
     border-radius: 0.25rem;
     border: 0.125rem solid setcolor(primary, enabled);
     width: 100%;
-    margin-top: var(--pd-input-vertical-adjust, inherit);
+    margin-top: var(--pd-input-vertical-adjust, 0);
 
     &:hover:enabled {
         border-color: setcolor(primary, hover);
@@ -81,10 +69,6 @@
     &.pd-textarea-character-count-error {
         animation: pd-textarea-charcount-error-animation 1s;
     }
-}
-
-.pd-textarea-label-viewonly {
-    font-weight: 700;
 }
 
 .pd-textarea-viewonly {

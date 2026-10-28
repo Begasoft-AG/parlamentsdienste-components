@@ -1,4 +1,5 @@
 @include resetControlFonts;
+@include formField;
 
 :host {
     display: block;
@@ -12,19 +13,6 @@
     outline: none;
 }
 
-.pd-input-label {
-    width: 100%;
-    margin-bottom: 0;
-    max-width: 100%;
-
-    .pd-input-label-text {
-        font-size: 0.875rem;
-        padding-bottom: 0.25rem;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-}
-
 /**
  * @prop --pd-input-vertical-adjust: top margin of input
  */
@@ -34,7 +22,7 @@
     border-radius: 0.25rem;
     border: 0.125rem solid setcolor(primary, enabled);
     width: 100%;
-    margin-top: var(--pd-input-vertical-adjust, inherit);
+    margin-top: var(--pd-input-vertical-adjust, 0);
 
     &:hover:enabled {
         border-color: setcolor(primary, hover);
@@ -76,10 +64,6 @@
     &.pd-input-character-count-error {
         animation: pd-input-charcount-error-animation 1s;
     }
-}
-
-.pd-input-label-viewonly {
-    font-weight: 700;
 }
 
 .pd-input-viewonly {

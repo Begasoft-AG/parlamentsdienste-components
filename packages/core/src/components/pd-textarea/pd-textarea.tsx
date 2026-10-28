@@ -231,25 +231,28 @@ export class Textarea implements ComponentInterface, ComponentDidLoad {
 
     public render() {
         const value = this.getValue();
+        const LabelTag = this.viewOnly ? 'span' : 'label';
 
         return (
             <Host>
-                <label class="pd-textarea-label">
+                <div class="pd-form-field">
                     {this.label ? (
-                        <div
+                        <LabelTag
                             class={{
-                                'pd-textarea-label-text': true,
-                                'pd-textarea-label-viewonly': this.viewOnly,
+                                'pd-form-field-label': true,
+                                'pd-form-field-label-viewonly': this.viewOnly,
                             }}
+                            htmlFor={this.viewOnly ? undefined : 'pd-textarea-control'}
                             data-test="pd-textarea-label">
                             {this.label}
-                        </div>
+                        </LabelTag>
                     ) : (
                         ''
                     )}
                     {!this.viewOnly ? (
                         <Fragment>
                             <textarea
+                                id="pd-textarea-control"
                                 class={{
                                     'pd-textarea': true,
                                     'pd-textarea-readonly': this.readonly,
@@ -292,7 +295,7 @@ export class Textarea implements ComponentInterface, ComponentDidLoad {
                     ) : (
                         <p class="pd-textarea-viewonly">{this.value}</p>
                     )}
-                </label>
+                </div>
             </Host>
         );
     }

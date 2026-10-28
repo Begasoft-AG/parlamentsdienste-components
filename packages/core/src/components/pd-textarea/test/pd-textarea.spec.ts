@@ -5,14 +5,15 @@ describe('pd-textarea', () => {
     it('renders', async () => {
         const page = await newSpecPage({
             components: [Textarea],
-            html: `<pd-textarea></pd-textarea>`,
+            html: `<pd-textarea label="Label"></pd-textarea>`,
         });
         expect(page.root).toEqualHtml(`
-            <pd-textarea>
+            <pd-textarea label="Label">
                 <mock:shadow-root>
-                    <label class="pd-textarea-label">
-                        <textarea autocapitalize="none" class="pd-textarea" placeholder="" data-test="pd-textarea" rows="1"></textarea>
-                    </label>
+                    <div class="pd-form-field">
+                        <label class="pd-form-field-label" for="pd-textarea-control" data-test="pd-textarea-label">Label</label>
+                        <textarea autocapitalize="none" class="pd-textarea" id="pd-textarea-control" placeholder="" data-test="pd-textarea" rows="1"></textarea>
+                    </div>
                 </mock:shadow-root>
             </pd-textarea>
         `);

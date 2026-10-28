@@ -10,9 +10,9 @@ describe('pd-input', () => {
         expect(page.root).toEqualHtml(`
             <pd-input>
                 <mock:shadow-root>
-                <label class="pd-input-label">
-                   <input autocapitalize="off" autocomplete="off" autocorrect="off" class="pd-input" data-test="pd-input" placeholder="" size="1" type="text" value="">
-                </label>
+                    <div class="pd-form-field">
+                        <input autocapitalize="off" autocomplete="off" autocorrect="off" class="pd-input" data-test="pd-input" id="pd-input-control" placeholder="" size="1" type="text" value="">
+                    </div>
                 </mock:shadow-root>
             </pd-input>
         `);

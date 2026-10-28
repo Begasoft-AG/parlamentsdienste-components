@@ -128,10 +128,10 @@ Type: `Promise<void>`
 
 ## CSS Custom Properties
 
-| Name                              | Description         |
-| --------------------------------- | ------------------- |
-| `--pd-datepicker-vertical-adjust` | top margin of label |
-| `--pd-input-vertical-adjust`      | top margin of input |
+| Name                              | Description              |
+| --------------------------------- | ------------------------ |
+| `--pd-datepicker-vertical-adjust` | top margin of datepicker |
+| `--pd-input-vertical-adjust`      | top margin of input      |
 
 
 ## Dependencies

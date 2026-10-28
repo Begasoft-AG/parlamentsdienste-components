@@ -8,16 +8,18 @@ describe('pd-checkbox', () => {
             html: `<pd-checkbox></pd-checkbox>`,
         });
         expect(page.root).toEqualHtml(`
-            <pd-checkbox aria-checked="false" aria-disabled="false" role="checkbox">
+            <pd-checkbox>
                 <mock:shadow-root>
-                    <label class="pd-checkbox-label" data-test="pd-checkbox-label">
-                        <input class="pd-checkbox-input" type="Checkbox" value="false">
-                        <div class="pd-checkbox-inner">
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <div class="pd-checkbox-text" data-test="pd-checkbox-text"></div>
-                    </label>
+                    <div class="pd-form-field pd-form-field-choice">
+                        <input class="pd-checkbox-input" id="pd-checkbox-control" type="checkbox" value="false">
+                        <label class="pd-checkbox-label pd-form-field-label" data-test="pd-checkbox-label" for="pd-checkbox-control">
+                            <span aria-hidden="true" class="pd-checkbox-inner">
+                                <span></span>
+                                <span></span>
+                            </span>
+                            <span class="pd-checkbox-text" data-test="pd-checkbox-text"></span>
+                        </label>
+                    </div>
                 </mock:shadow-root>
             </pd-checkbox>
         `);

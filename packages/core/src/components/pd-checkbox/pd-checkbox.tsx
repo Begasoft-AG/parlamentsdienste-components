@@ -66,19 +66,19 @@ export class Checkbox implements ComponentInterface {
 
     public render() {
         return (
-            <Host role="checkbox" aria-checked={this.checked ? 'true' : 'false'} aria-disabled={this.disabled ? 'true' : 'false'}>
-                <label
+            <Host>
+                <div
                     class={{
-                        'pd-checkbox-label': true,
+                        'pd-form-field': true,
+                        'pd-form-field-choice': true,
                         'pd-checkbox-readonly': this.readonly,
                         'pd-checkbox-error': this.error,
                     }}
-                    style={this.verticalAdjust ? { '--pd-checkbox-vertical-adjust': '2.3rem' } : {}}
-                    data-test="pd-checkbox-label"
-                >
+                    style={this.verticalAdjust ? { '--pd-checkbox-vertical-adjust': '2.3rem' } : {}}>
                     <input
+                        id="pd-checkbox-control"
                         class="pd-checkbox-input"
-                        type="Checkbox"
+                        type="checkbox"
                         checked={this.checked}
                         disabled={this.disabled || this.readonly}
                         required={this.required}
@@ -86,19 +86,24 @@ export class Checkbox implements ComponentInterface {
                         name={this.name}
                         onClick={this.onClick}
                     />
-                    <div
-                        class={{
-                            'pd-checkbox-inner': true,
-                            'pd-checkbox-checked': this.checked || this.isIndeterminate,
-                        }}
-                    >
-                        <div class={{ 'pd-checkbox-checkmark': this.checked && !this.isIndeterminate }}></div>
-                        <div class={{ 'pd-checkbox-indeterminate': this.isIndeterminate }}></div>
-                    </div>
-                    <div class="pd-checkbox-text" data-test="pd-checkbox-text">
-                        {this.text}
-                    </div>
-                </label>
+                    <label
+                        class="pd-form-field-label pd-checkbox-label"
+                        htmlFor="pd-checkbox-control"
+                        data-test="pd-checkbox-label">
+                        <span
+                            class={{
+                                'pd-checkbox-inner': true,
+                                'pd-checkbox-checked': this.checked || this.isIndeterminate,
+                            }}
+                            aria-hidden="true">
+                            <span class={{ 'pd-checkbox-checkmark': this.checked && !this.isIndeterminate }}></span>
+                            <span class={{ 'pd-checkbox-indeterminate': this.isIndeterminate }}></span>
+                        </span>
+                        <span class="pd-checkbox-text" data-test="pd-checkbox-text">
+                            {this.text}
+                        </span>
+                    </label>
+                </div>
             </Host>
         );
     }

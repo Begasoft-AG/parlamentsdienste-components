@@ -1,3 +1,5 @@
+@include formField;
+
 :host {
     display: block;
 }
@@ -10,22 +12,18 @@
     outline: none;
 }
 
-// readonly styling
-
 /**
- * @prop --pd-checkbox-vertical-adjust: top margin of label
+ * @prop --pd-checkbox-vertical-adjust: top margin of checkbox
  * @prop --pd-checkbox-text-padding-left: padding on the left side of text
  * @prop --pd-checkbox-background-color: background color
  */
-.pd-checkbox-label {
-    display: flex;
-    align-items: center;
-    margin-top: var(--pd-checkbox-vertical-adjust, inherit);
+.pd-form-field-choice {
+    margin-top: var(--pd-checkbox-vertical-adjust, 0);
 
     .pd-checkbox-input {
         @include visually-hidden;
 
-        & + .pd-checkbox-inner {
+        & + .pd-checkbox-label .pd-checkbox-inner {
             cursor: pointer;
             position: relative;
             width: 1.25rem;
@@ -83,8 +81,8 @@
             }
         }
 
-        &:hover:enabled {
-            & + .pd-checkbox-inner {
+        &:enabled + .pd-checkbox-label:hover {
+            .pd-checkbox-inner {
                 &:after {
                     border-color: setcolor(primary, hover);
                 }
@@ -94,8 +92,8 @@
             }
         }
 
-        &:active:enabled {
-            & + .pd-checkbox-inner {
+        &:enabled + .pd-checkbox-label:active {
+            .pd-checkbox-inner {
                 &:after {
                     border-color: setcolor(primary, pressed);
                 }
@@ -106,7 +104,7 @@
         }
 
         &:focus-visible:enabled {
-            & + .pd-checkbox-inner {
+            & + .pd-checkbox-label .pd-checkbox-inner {
                 background-color: $focus;
                 &:after {
                     border-color: $cyan-9;
@@ -125,7 +123,7 @@
         }
 
         &:disabled {
-            & + .pd-checkbox-inner {
+            & + .pd-checkbox-label .pd-checkbox-inner {
                 cursor: default;
                 &:after {
                     border-color: setcolor(primary, disabled);
@@ -136,7 +134,7 @@
                 }
             }
 
-            & ~ .pd-checkbox-text {
+            & + .pd-checkbox-label .pd-checkbox-text {
                 font-style: italic;
             }
         }
@@ -147,7 +145,7 @@
         cursor: default;
 
         & > .pd-checkbox-input {
-            & + .pd-checkbox-inner {
+            & + .pd-checkbox-label .pd-checkbox-inner {
                 background-color: setcolor(primary, readonly);
                 &.pd-checkbox-checked {
                     background-color: setcolor(primary, readonly);
@@ -162,7 +160,7 @@
                 }
             }
 
-            & ~ .pd-checkbox-text {
+            & + .pd-checkbox-label .pd-checkbox-text {
                 font-style: normal;
             }
         }
@@ -170,7 +168,7 @@
 
     &.pd-checkbox-error {
         .pd-checkbox-input {
-            & + .pd-checkbox-inner {
+            & + .pd-checkbox-label .pd-checkbox-inner {
                 &:after {
                     border-color: setcolor(danger, enabled);
                 }
@@ -185,8 +183,8 @@
                     }
                 }
             }
-            &:hover:enabled {
-                & + .pd-checkbox-inner {
+            &:enabled + .pd-checkbox-label:hover {
+                .pd-checkbox-inner {
                     &:after {
                         border-color: setcolor(danger, hover);
                     }
@@ -203,8 +201,8 @@
                 }
             }
 
-            &:active:enabled {
-                & + .pd-checkbox-inner {
+            &:enabled + .pd-checkbox-label:active {
+                .pd-checkbox-inner {
                     &:after {
                         border-color: setcolor(danger, pressed);
                     }
@@ -222,7 +220,7 @@
             }
 
             &:focus-visible:enabled {
-                & + .pd-checkbox-inner {
+                & + .pd-checkbox-label .pd-checkbox-inner {
                     background-color: $focus;
                     &:after {
                         border-color: setcolor(danger, enabled);

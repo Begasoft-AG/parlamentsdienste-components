@@ -52,10 +52,7 @@ export class Radio implements ComponentInterface {
         const { name, value, label, checked } = this;
 
         return (
-            <Host
-                role="radio"
-                aria-checked={this.checked ? 'true' : 'false'}
-                aria-disabled={this.disabled ? 'true' : 'false'}>
+            <Host>
                 <label
                     class={{
                         'pd-radio-label': true,
@@ -72,10 +69,10 @@ export class Radio implements ComponentInterface {
                         value={value}
                         disabled={this.disabled || this.readonly}
                     />
-                    <div class="pd-radio-inner"></div>
-                    <div class="pd-radio-text" data-test="pd-radio-text">
+                    <span class="pd-radio-inner" aria-hidden="true"></span>
+                    <span class="pd-radio-text" data-test="pd-radio-text">
                         {label}
-                    </div>
+                    </span>
                 </label>
             </Host>
         );

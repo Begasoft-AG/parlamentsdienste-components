@@ -47,6 +47,9 @@ const vueComponentModels: ComponentModelConfig[] = [
 export const config: Config = {
     namespace: 'ParlamentsdiensteCore',
     globalStyle: 'src/styles/pd-bootstrap.scss',
+    extras: {
+        addGlobalStyleToComponents: false,
+    },
     outputTargets: [
         {
             type: 'dist',

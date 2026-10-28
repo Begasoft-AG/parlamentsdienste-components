@@ -263,48 +263,48 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
     public render() {
         return (
             <Host>
-                <label
-                    class={{
-                        'pd-dropdown-label': true,
-                        'pd-dropdown-disabled': this.disabled,
-                    }}
-                    onClick={this.toggleDropdown}
-                    data-test="pd-dropdown-label">
+                <div class="pd-form-field">
                     {this.renderLabel()}
-                </label>
-                {!this.viewOnly ? (
-                    <div
-                        class={{
-                            'pd-dropdown': true,
-                            'pd-dropdown-readonly': this.readonly,
-                            'pd-dropdown-error': this.error,
-                        }}
-                        style={this.verticalAdjust ? { '--pd-dropdown-vertical-adjust': '1.5625rem' } : {}}>
-                        <button
-                            ref={el => (this.buttonElement = el)}
-                            class="pd-dropdown-button"
-                            type="button"
-                            aria-haspopup="true"
-                            aria-expanded={`${this.open}`}
-                            onClick={this.toggleDropdown}
-                            disabled={this.disabled || this.readonly}
-                            data-test="pd-dropdown-button">
-                            <span
-                                class={{ 'pd-dropdown-text': true, 'pd-dropdown-text-wrap': this.textWrap === 'wrap' }}
-                                data-test="pd-dropdown-text">
-                                {this.selectedItem?.label || this.placeholder}
-                            </span>
-                            <pd-icon
-                                class="pd-dropdown-caret"
-                                name="dropdown"
-                                rotate={this.open ? 180 : 0}
-                                size={2.4}></pd-icon>
-                        </button>
-                        {this.renderDropDown()}
-                    </div>
-                ) : (
-                    <p class="pd-dropdown-viewonly">{this.selectedItem?.label || ''}</p>
-                )}
+                    {!this.viewOnly ? (
+                        <div
+                            class={{
+                                'pd-dropdown': true,
+                                'pd-dropdown-readonly': this.readonly,
+                                'pd-dropdown-error': this.error,
+                            }}
+                            style={this.verticalAdjust ? { '--pd-dropdown-vertical-adjust': '1.5625rem' } : {}}>
+                            <button
+                                id="pd-dropdown-control"
+                                ref={el => (this.buttonElement = el)}
+                                class="pd-dropdown-button"
+                                type="button"
+                                aria-haspopup="true"
+                                aria-expanded={`${this.open}`}
+                                aria-labelledby={this.label ? 'pd-dropdown-label pd-dropdown-value' : undefined}
+                                onClick={this.toggleDropdown}
+                                disabled={this.disabled || this.readonly}
+                                data-test="pd-dropdown-button">
+                                <span
+                                    id="pd-dropdown-value"
+                                    class={{
+                                        'pd-dropdown-text': true,
+                                        'pd-dropdown-text-wrap': this.textWrap === 'wrap',
+                                    }}
+                                    data-test="pd-dropdown-text">
+                                    {this.selectedItem?.label || this.placeholder}
+                                </span>
+                                <pd-icon
+                                    class="pd-dropdown-caret"
+                                    name="dropdown"
+                                    rotate={this.open ? 180 : 0}
+                                    size={2.4}></pd-icon>
+                            </button>
+                            {this.renderDropDown()}
+                        </div>
+                    ) : (
+                        <p class="pd-dropdown-viewonly">{this.selectedItem?.label || ''}</p>
+                    )}
+                </div>
             </Host>
         );
     }
@@ -348,15 +348,19 @@ export class Dropdown implements ComponentInterface, ComponentWillLoad, Componen
 
     private renderLabel() {
         if (!this.label) return;
+        const LabelTag = this.viewOnly ? 'span' : 'label';
 
         return (
-            <span
+            <LabelTag
+                id="pd-dropdown-label"
+                htmlFor={this.viewOnly ? undefined : 'pd-dropdown-control'}
                 class={{
-                    'pd-dropdown-label-text': true,
-                    'pd-dropdown-label-viewonly': this.viewOnly,
-                }}>
+                    'pd-form-field-label': true,
+                    'pd-form-field-label-viewonly': this.viewOnly,
+                }}
+                data-test="pd-dropdown-label">
                 {this.label}
-            </span>
+            </LabelTag>
         );
     }
 }

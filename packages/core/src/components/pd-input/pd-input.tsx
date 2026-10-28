@@ -248,25 +248,28 @@ export class Input implements ComponentInterface {
 
     public render() {
         const value = this.getValue();
+        const LabelTag = this.viewOnly ? 'span' : 'label';
 
         return (
             <Host>
-                <label class="pd-input-label">
+                <div class="pd-form-field">
                     {this.label ? (
-                        <div
+                        <LabelTag
                             class={{
-                                'pd-input-label-text': true,
-                                'pd-input-label-viewonly': this.viewOnly,
+                                'pd-form-field-label': true,
+                                'pd-form-field-label-viewonly': this.viewOnly,
                             }}
+                            htmlFor={this.viewOnly ? undefined : 'pd-input-control'}
                             data-test="pd-input-label">
                             {this.label}
-                        </div>
+                        </LabelTag>
                     ) : (
                         ''
                     )}
                     {!this.viewOnly ? (
                         <Fragment>
                             <input
+                                id="pd-input-control"
                                 class={{
                                     'pd-input': true,
                                     'pd-input-readonly': this.readonly,
@@ -315,7 +318,7 @@ export class Input implements ComponentInterface {
                     ) : (
                         <p class="pd-input-viewonly">{this.value}</p>
                     )}
-                </label>
+                </div>
             </Host>
         );
     }

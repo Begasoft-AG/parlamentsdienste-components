@@ -11,3 +11,5 @@ pnpm workspace for a Stencil web component library.
 Do not edit generated wrapper files by hand. Regenerate them with `pnpm run build:core`.
 
 Do not create or modify tests unless explicitly requested by the user. Running existing tests is allowed.
+
+Before making changes, always look for existing patterns, templates, naming conventions, and reusable implementations in the codebase. Follow and reuse them whenever possible instead of introducing new conventions or duplicating logic.

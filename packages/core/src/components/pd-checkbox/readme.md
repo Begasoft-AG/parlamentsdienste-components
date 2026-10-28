@@ -51,7 +51,7 @@ For more info on the v-model-pd directive check here [v-model-pd](/story/vuejs-d
 | --------------------------------- | -------------------------------- |
 | `--pd-checkbox-background-color`  | background color                 |
 | `--pd-checkbox-text-padding-left` | padding on the left side of text |
-| `--pd-checkbox-vertical-adjust`   | top margin of label              |
+| `--pd-checkbox-vertical-adjust`   | top margin of checkbox           |
 
 
 ## Dependencies

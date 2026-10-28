@@ -552,21 +552,25 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
             this.state.items.filter(item => item.selected).length > 0;
         return (
             <Host role="combobox">
-                <label
+                <div
                     class={{
-                        'pd-combobox-label': true,
+                        'pd-form-field': true,
+                        'pd-combobox-field': true,
                         'pd-combobox-disabled': this.disabled,
                         'pd-combobox-readonly': this.readonly,
                         'pd-combobox-error': this.error,
                         'pd-combobox-item-selected':
                             this.selectable && this.state.inputValue === this.state.selectedItem?.label,
-                    }}
-                    style={this.verticalAdjust ? { '--pd-combobox-vertical-adjust': '1.5625rem' } : {}}>
+                    }}>
                     {this.renderLabel()}
 
                     {!this.viewOnly ? (
-                        <div class="pd-combobox-input-wrapper" ref={el => (this.wrapperElement = el)}>
+                        <div
+                            class="pd-combobox-input-wrapper"
+                            ref={el => (this.wrapperElement = el)}
+                            style={this.verticalAdjust ? { '--pd-combobox-vertical-adjust': '1.5625rem' } : {}}>
                             <input
+                                id="pd-combobox-control"
                                 class={{
                                     'pd-combobox-input': true,
                                     'pd-combobox-input-with-icon': this.selectable && S.selectedHasIcon(this.state),
@@ -639,7 +643,7 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
                     ) : (
                         <p class="pd-combobox-viewonly">{this.state.selectedItem?.label || ''}</p>
                     )}
-                </label>
+                </div>
                 {this.renderDropdownItems()}
             </Host>
         );
@@ -680,16 +684,18 @@ export class Combobox implements ComponentInterface, ComponentWillLoad, Componen
 
     private renderLabel() {
         if (!this.label) return;
+        const LabelTag = this.viewOnly ? 'span' : 'label';
 
         return (
-            <div
+            <LabelTag
+                htmlFor={this.viewOnly ? undefined : 'pd-combobox-control'}
                 class={{
-                    'pd-combobox-label-text': true,
-                    'pd-combobox-label-viewonly': this.viewOnly,
+                    'pd-form-field-label': true,
+                    'pd-form-field-label-viewonly': this.viewOnly,
                 }}
                 data-test="pd-combobox-label">
                 {this.label}
-            </div>
+            </LabelTag>
         );
     }
 }

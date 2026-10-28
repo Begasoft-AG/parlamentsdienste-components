@@ -1,4 +1,5 @@
 @include resetControlFonts;
+@include formField;
 
 :host {
     display: flex;
@@ -13,27 +14,16 @@
     outline: none;
 }
 
-/**
- * @prop --pd-checkbox-vertical-adjust: top margin of label
- */
-.pd-combobox-label {
+.pd-combobox-field {
     flex: 1 1 auto;
-    display: flex;
-    flex-direction: column;
-    margin-top: var(--pd-combobox-vertical-adjust, inherit);
-    width: 100%;
-    max-width: 100%;
 
-    .pd-combobox-label-text {
-        font-size: 00.875rem;
-        padding-bottom: 0.25rem;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
+    /**
+     * @prop --pd-combobox-vertical-adjust: top margin of combobox
+     */
     .pd-combobox-input-wrapper {
         display: flex;
         position: relative;
+        margin-top: var(--pd-combobox-vertical-adjust, 0);
     }
 
     .pd-combobox-input {
@@ -291,8 +281,4 @@
     display: block;
     margin: 0;
     padding: 0.125rem 0 0.75rem 0;
-}
-
-.pd-combobox-label-viewonly {
-    font-weight: 700;
 }

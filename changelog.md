@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Fixed
+
+- `pd-radio` no longer exposes a redundant `role="radio"` on its host; screen readers announce the native radio once with the correct checked state.
+- `pd-checkbox` no longer exposes a redundant `role="checkbox"` on its host; screen readers announce the native checkbox once with the correct checked state.
+- Global styles (Bootstrap reboot) no longer leak into Shadow DOM components, fixing a regression since the Stencil upgrade in 4.0.2 and the extra `0.5rem` label spacing in combobox, search, datepicker and tabs.
+- Restored the intended timeline title font weight.
+- Unset `vertical-adjust` CSS variables now fall back to `0` instead of inheriting and doubling the host margin, including textarea, combobox, datepicker and radio.
+- Corrected the `--pd-combobox-vertical-adjust` documentation.
+
+### Changed
+
+- `pd-input`, `pd-dropdown`, `pd-checkbox`, `pd-textarea`, `pd-combobox`, `pd-datepicker`, `pd-search` and `pd-radio` use a unified label structure; light-DOM radio retains its implicit label.
+- The label-to-control gap is consistently `0.25rem`; the dropdown previously used `0.75rem`.
+- Corrected the `--pd-dropdown-vertical-adjust` documentation.
+
 ## [4.0.2] - 2026-08-25
 
 ### Added

@@ -268,15 +268,16 @@ export class Search implements ComponentInterface, ComponentWillLoad, ComponentD
 
         return (
             <Host role="search">
-                <label
+                <div
                     class={{
-                        'pd-search-label': true,
+                        'pd-form-field': true,
+                        'pd-search-field': true,
                         'pd-search-disabled': this.disabled,
-                    }}
-                    data-test="pd-search-label">
+                    }}>
                     {this.renderLabel()}
                     <div class="pd-search-input-wrapper" ref={el => (this.wrapperElement = el)}>
                         <input
+                            id="pd-search-control"
                             class="pd-search-input"
                             ref={el => (this.inputElement = el)}
                             disabled={this.disabled}
@@ -300,7 +301,7 @@ export class Search implements ComponentInterface, ComponentWillLoad, ComponentD
                             <pd-icon class="pd-search-button-icon" name="search" size={2.4}></pd-icon>
                         </button>
                     </div>
-                </label>
+                </div>
                 {this.renderDropdownItems()}
             </Host>
         );
@@ -329,6 +330,10 @@ export class Search implements ComponentInterface, ComponentWillLoad, ComponentD
     private renderLabel() {
         if (!this.label) return;
 
-        return <div class="pd-search-label-text">{this.label}</div>;
+        return (
+            <label class="pd-form-field-label" htmlFor="pd-search-control" data-test="pd-search-label">
+                {this.label}
+            </label>
+        );
     }
 }

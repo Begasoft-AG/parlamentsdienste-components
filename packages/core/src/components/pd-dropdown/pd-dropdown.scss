@@ -1,4 +1,5 @@
 @include resetControlFonts;
+@include formField;
 
 :host {
     display: block;
@@ -11,28 +12,14 @@
     outline: none;
 }
 
-.pd-dropdown-label {
-    flex: 1 1 auto;
-    display: flex;
-    flex-direction: column;
-    font-size: 0.875rem;
-    max-width: 100%;
-
-    .pd-dropdown-label-text {
-        padding-bottom: 0.25rem;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-}
-
 /**
- * @prop --pd-datepicker-vertical-adjust: top margin of label
+ * @prop --pd-dropdown-vertical-adjust: top margin of dropdown
  * @prop --pd-dropdown-vertical-padding: Possibility to change inner height of the dropdown
  * @prop --pd-dropdown-horizontal-padding: Possibility to change inner width of the dropdown 
  */
 .pd-dropdown {
     position: relative;
-    margin-top: var(--pd-dropdown-vertical-adjust, inherit);
+    margin-top: var(--pd-dropdown-vertical-adjust, 0);
 
     .pd-dropdown-button {
         @include button-scheme(primary);
@@ -159,8 +146,4 @@
     display: block;
     margin: 0;
     padding: 0.125rem 0 0.75rem 0;
-}
-
-.pd-dropdown-label-viewonly {
-    font-weight: 700;
 }

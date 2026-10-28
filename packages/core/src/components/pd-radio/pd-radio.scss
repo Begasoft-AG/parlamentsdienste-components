@@ -13,7 +13,7 @@ pd-radio {
     display: flex;
     align-items: center;
     margin: 0.375rem 0;
-    margin-top: var(--pd-radio-vertical-adjust, inherit);
+    margin-top: var(--pd-radio-vertical-adjust, 0);
 
     .pd-radio-input {
         @include visually-hidden;

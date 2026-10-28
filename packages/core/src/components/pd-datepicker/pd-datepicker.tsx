@@ -246,17 +246,20 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
     public render() {
         return (
             <Host>
-                <label
+                <div
                     class={{
-                        'pd-datepicker-label': true,
+                        'pd-form-field': true,
                         'pd-datepicker-disabled': this.disabled,
                         'pd-datepicker-readonly': this.readonly,
                         'pd-datepicker-error': this.error,
-                    }}
-                    style={this.verticalAdjust ? { '--pd-datepicker-vertical-adjust': '1.5625rem' } : {}}>
+                    }}>
                     {this.renderLabel()}
-                    <div ref={el => (this.contentWrapperElement = el)} class="wrapper">
+                    <div
+                        ref={el => (this.contentWrapperElement = el)}
+                        class="wrapper"
+                        style={this.verticalAdjust ? { '--pd-datepicker-vertical-adjust': '1.5625rem' } : {}}>
                         <input
+                            id="pd-datepicker-control"
                             ref={el => (this.dateInputField = el)}
                             data-test="pd-datepicker-input"
                             class={{
@@ -280,7 +283,7 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
                         {this.renderClearIcon()}
                         {this.renderIcon()}
                     </div>
-                </label>
+                </div>
             </Host>
         );
     }
@@ -289,9 +292,9 @@ export class Datepicker implements ComponentInterface, ComponentDidLoad {
         if (!this.label) return;
 
         return (
-            <div class="pd-datepicker-label-text" data-test="pd-datepicker-label">
+            <label class="pd-form-field-label" htmlFor="pd-datepicker-control" data-test="pd-datepicker-label">
                 {this.label}
-            </div>
+            </label>
         );
     }
 
