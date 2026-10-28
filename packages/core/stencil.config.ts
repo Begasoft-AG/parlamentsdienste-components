@@ -48,6 +48,8 @@ export const config: Config = {
     namespace: 'ParlamentsdiensteCore',
     globalStyle: 'src/styles/pd-bootstrap.scss',
     extras: {
+        // Keep the global stylesheet (Bootstrap reboot) out of shadow roots; it leaked label margins and
+        // font weights into components. Consumers still load parlamentsdienstecore.css for light DOM and overlays.
         addGlobalStyleToComponents: false,
     },
     outputTargets: [

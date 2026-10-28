@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Restored the intended timeline title font weight.
 - Unset `vertical-adjust` CSS variables now fall back to `0` instead of inheriting and doubling the host margin, including textarea, combobox, datepicker and radio.
 - Corrected the `--pd-combobox-vertical-adjust` documentation.
+- `pd-input`, `pd-search` and `pd-textarea` no longer emit `pd-change` twice when a bound value is written back with a different type (e.g. a number).
+- `PdTableRow`: `pdIconConfig`, `pdStatus`, `pdSelected` and the internal `_id` are now optional, and `pdIconConfig` accepts partial configurations. Plain row objects no longer need a type cast.
 
 ### Changed
 
@@ -59,6 +61,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- New component `pd-radio-group`.
 - New prop `selected` for `pd-dropdown` and `pd-combobox`.  
   Needed for the vue and angular value accessor (2-way-binding). Can be a dropdown-item object for pd-dropdown or an array of dropdown-item objects for pd-combobox to select items.
 

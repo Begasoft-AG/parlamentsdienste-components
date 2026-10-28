@@ -41,10 +41,11 @@ export interface PdTableIconConfiguration {
 
 export interface PdTableRow {
     [key: string]: any;
-    pdIconConfig: PdTableIconConfiguration;
-    pdStatus: PdStatus;
-    pdSelected: boolean;
-    _id: number;
+    pdIconConfig?: Partial<PdTableIconConfiguration>;
+    pdStatus?: PdStatus;
+    pdSelected?: boolean;
+    /** Set internally by `pd-table`; present on rows in emitted events. */
+    _id?: number;
 }
 
 export type PdTableSelectedStatus = 'all' | 'none' | 'indeterminate';

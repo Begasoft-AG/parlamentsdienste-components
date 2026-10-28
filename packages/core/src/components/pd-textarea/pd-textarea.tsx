@@ -134,13 +134,15 @@ export class Textarea implements ComponentInterface, ComponentDidLoad {
      * Update the native input element when the value changes
      */
     @Watch('value')
-    valueChanged() {
+    valueChanged(newValue: unknown, oldValue: unknown) {
         const nativeInput = this.nativeInput;
         const value = this.getValue();
         if (nativeInput && nativeInput.value !== value) {
             nativeInput.value = value;
         }
         this.runAutoGrow();
+        // Wrappers may write back the emitted string as a number; don't emit again for the same value.
+        if (String(newValue) === String(oldValue)) return;
         this.pdChange.emit(value);
     }
 

@@ -101,7 +101,9 @@ export class Search implements ComponentInterface, ComponentWillLoad, ComponentD
      * Update the native input element when the value changes
      */
     @Watch('value')
-    valueChanged() {
+    valueChanged(newValue: unknown, oldValue: unknown) {
+        // Wrappers may write back the emitted string as a number; don't emit again for the same value.
+        if (String(newValue) === String(oldValue)) return;
         this.pdChange.emit(this.value == null ? this.value : this.value.toString());
     }
 

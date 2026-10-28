@@ -53,7 +53,7 @@ const defaultArgs = {
             column2: 'Controlling, Präsentation, Diskussion und Beschluss',
             pdStatus: 'warning',
         },
-    ] as unknown as PdTableRow[],
+    ] satisfies PdTableRow[],
     columns: [
         {
             columnName: 'no',
