@@ -57,6 +57,8 @@ Unter [tools/compat](tools/compat/README.md) liegen zusätzliche Docker-basierte
 
 ## Release erstellen
 
+Die vollständige [Release-Checkliste](RELEASE-CHECKLIST.md) führt durch Vorbereitung, Tests, Paketprüfung und Veröffentlichung.
+
 Die Pack- und Publish-Skripte führen keinen Build aus. Deshalb muss vor jedem Release immer zuerst `build:all` ausgeführt werden. Nur so entsprechen die erzeugten Pakete dem aktuellen Quellcode.
 
 ```bash

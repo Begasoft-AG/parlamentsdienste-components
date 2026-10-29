@@ -7,15 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Restored `pd-pagination`, including Angular, React and Vue wrappers. It supports a page summary or numbered buttons and emits the requested one-based page in `pd-change`; the parent must update `currentPage`. It is also used by `pd-table` for built-in paging.
+
 ### Fixed
 
-- `pd-radio` no longer exposes a redundant `role="radio"` on its host; screen readers announce the native radio once with the correct checked state.
-- `pd-checkbox` no longer exposes a redundant `role="checkbox"` on its host; screen readers announce the native checkbox once with the correct checked state.
+- Fonts now load in the core development server.
 - Global styles (Bootstrap reboot) no longer leak into Shadow DOM components, fixing a regression since the Stencil upgrade in 4.0.2 and the extra `0.5rem` label spacing in combobox, search, datepicker and tabs.
-- Restored the intended timeline title font weight.
-- Unset `vertical-adjust` CSS variables now fall back to `0` instead of inheriting and doubling the host margin, including textarea, combobox, datepicker and radio.
 - Corrected the `--pd-combobox-vertical-adjust` documentation.
 - `pd-input`, `pd-search` and `pd-textarea` no longer emit `pd-change` twice when a bound value is written back with a different type (e.g. a number).
+- `pd-table` now renders rows assigned as properties before initialization and handles null rows as empty.
+- `pd-table` preserves externally controlled selection status on load and no longer checks select-all for an empty table.
+- `pd-table` now emits and displays the applied sort direction instead of its opposite.
 - `PdTableRow`: `pdIconConfig`, `pdStatus`, `pdSelected` and the internal `_id` are now optional, and `pdIconConfig` accepts partial configurations. Plain row objects no longer need a type cast.
 
 ### Changed
