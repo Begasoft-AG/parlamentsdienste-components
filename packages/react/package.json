@@ -1,7 +1,7 @@
 {
     "name": "@parlamentsdienste/pdcomponents-react",
     "description": "Component Library for Swiss Parliamentary Services - React-Wrapper Lib",
-    "version": "4.0.2",
+    "version": "4.0.3",
     "author": {
         "name": "Parlamentsdienste",
         "email": "web@parl.admin.ch",
@@ -47,7 +47,7 @@
         "vite-plugin-dts": "catalog:vite7"
     },
     "dependencies": {
-        "@parlamentsdienste/pdcomponents-core": "4.0.2",
+        "@parlamentsdienste/pdcomponents-core": "4.0.3",
         "@stencil/react-output-target": "catalog:stencil4"
     }
 }

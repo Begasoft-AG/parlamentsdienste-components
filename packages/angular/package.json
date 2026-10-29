@@ -1,6 +1,6 @@
 {
     "name": "@parlamentsdienste/pdcomponents-angular",
-    "version": "4.0.2",
+    "version": "4.0.3",
     "type": "module",
     "description": "Component Library for Swiss Parliamentary Services - Angular-Wrapper Lib",
     "author": {
@@ -37,7 +37,7 @@
         "typescript": "catalog:toolchain"
     },
     "dependencies": {
-        "@parlamentsdienste/pdcomponents-core": "4.0.2"
+        "@parlamentsdienste/pdcomponents-core": "4.0.3"
     },
     "sideEffects": false
 }

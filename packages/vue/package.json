@@ -1,6 +1,6 @@
 {
     "name": "@parlamentsdienste/pdcomponents-vue",
-    "version": "4.0.2",
+    "version": "4.0.3",
     "type": "module",
     "description": "Component Library for Swiss Parliamentary Services - Vue-Wrapper Lib",
     "author": {
@@ -43,7 +43,7 @@
         "vue": "catalog:vue3"
     },
     "dependencies": {
-        "@parlamentsdienste/pdcomponents-core": "4.0.2",
+        "@parlamentsdienste/pdcomponents-core": "4.0.3",
         "@stencil/vue-output-target": "catalog:stencil4"
     }
 }

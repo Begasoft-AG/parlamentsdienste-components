@@ -1,6 +1,6 @@
 {
     "name": "@parlamentsdienste/pdcomponents-core",
-    "version": "4.0.2",
+    "version": "4.0.3",
     "type": "module",
     "description": "Component Library for Swiss Parliamentary Services - Webcomponents Core Lib",
     "author": {

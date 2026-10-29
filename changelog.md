@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.0.3] - 2026-10-29
+
 ### Added
 
 - Restored `pd-pagination`, including Angular, React and Vue wrappers. It supports a page summary or numbered buttons and emits the requested one-based page in `pd-change`; the parent must update `currentPage`. It is also used by `pd-table` for built-in paging.
@@ -730,6 +732,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - pd-input now uses a different design for the readonly mode
 - pd-input label font decreased
 
+[4.0.3]: https://github.com/Begasoft-AG/parlamentsdienste-components/releases/tag/v4.0.3
 [4.0.2]: https://github.com/Begasoft-AG/parlamentsdienste-components/releases/tag/v4.0.2
 [4.0.1]: https://github.com/Begasoft-AG/parlamentsdienste-components/releases/tag/v4.0.1
 [4.0.0]: https://github.com/Lambda-IT/parlamentsdienste-components/releases/tag/v4.0.0

@@ -23,6 +23,34 @@ export const statusConfig = {
 export const compatibilityData = {
     angular: [
         {
+            compLibVersion: '4.0.3',
+            frameworkVersion: '22',
+            nodeVersion: '24.18.0',
+            status: 'compatible',
+            notes: 'Docker build + 11 Chromium E2E tests (2026-10-29)',
+        },
+        {
+            compLibVersion: '4.0.3',
+            frameworkVersion: '21',
+            nodeVersion: '24.18.0',
+            status: 'compatible',
+            notes: 'Docker build + 11 Chromium E2E tests (2026-10-29)',
+        },
+        {
+            compLibVersion: '4.0.3',
+            frameworkVersion: '20',
+            nodeVersion: '24.18.0',
+            status: 'compatible',
+            notes: 'Docker build + 11 Chromium E2E tests (2026-10-29)',
+        },
+        {
+            compLibVersion: '4.0.3',
+            frameworkVersion: '19',
+            nodeVersion: '22.23.4',
+            status: 'compatible',
+            notes: 'Docker build + 11 Chromium E2E tests (2026-10-29)',
+        },
+        {
             compLibVersion: '4.0.2',
             frameworkVersion: '22',
             nodeVersion: '24',
@@ -53,6 +81,22 @@ export const compatibilityData = {
     ],
     react: [
         {
+            compLibVersion: '4.0.3',
+            frameworkVersion: '19',
+            nodeVersion: '24.18.0',
+            viteVersion: '8.3.5',
+            status: 'compatible',
+            notes: 'create-vite 9.2.0; Docker build + 10 Chromium E2E tests (2026-10-29)',
+        },
+        {
+            compLibVersion: '4.0.3',
+            frameworkVersion: '18',
+            nodeVersion: '22.23.4',
+            viteVersion: '8.3.5',
+            status: 'compatible',
+            notes: 'create-vite 9.2.0; Docker build + 10 Chromium E2E tests (2026-10-29)',
+        },
+        {
             compLibVersion: '4.0.2',
             frameworkVersion: '19',
             nodeVersion: '24',
@@ -70,6 +114,22 @@ export const compatibilityData = {
         },
     ],
     vue: [
+        {
+            compLibVersion: '4.0.3',
+            frameworkVersion: '3.5.39',
+            nodeVersion: '24.18.0',
+            viteVersion: '8.3.5',
+            status: 'compatible',
+            notes: 'create-vite 9.2.0; Docker build + 10 Chromium E2E tests (2026-10-29)',
+        },
+        {
+            compLibVersion: '4.0.3',
+            frameworkVersion: '3.4.38',
+            nodeVersion: '22.23.4',
+            viteVersion: '8.3.5',
+            status: 'compatible',
+            notes: 'create-vite 9.2.0; Docker build + 10 Chromium E2E tests (2026-10-29)',
+        },
         {
             compLibVersion: '4.0.2',
             frameworkVersion: '3.5.39',
@@ -167,7 +227,7 @@ export function CompatibilityTable({ columns, rows }) {
 <p>This matrix is maintained manually. A combination is only marked as compatible after explicit confirmation.</p>
 
 <p>
-    Supported peer ranges are Angular 19-22, React 18-19 and Vue 3.4.38+. The table below focuses on a small set of
+    Supported peer ranges are Angular 19-22, React 18-19 and Vue <code>&gt;=3.4.38 &lt;4</code>. The table below focuses on a small set of
     verified reference setups instead of every possible combination.
 </p>
 
